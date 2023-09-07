@@ -1,0 +1,379 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+ }
+
+ .wholebody{
+     width: 100%;
+     margin: 0 auto;
+ }
+
+ .navbar{
+        background-color: #304959;
+        font-size: 18px;
+        width: 100%;
+        height: 70px;
+        color: white;
+        font-weight: 500;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+ }
+
+ body, ul, li {
+    margin: 0;
+    padding: 0;
+}
+
+/* Reset default margin and padding */
+body, ul, li, button {
+    margin: 0;
+    padding: 0;
+}
+
+/* Navbar styles */
+.navbar {
+    background-color: #333;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+}
+
+.navbar-logo{
+    display: flex;
+    align-items: center;
+}
+
+.navbar-logo img {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+}
+
+.brand-name {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.navbar-links {
+    list-style: none;
+    display: flex;
+}
+
+.navbar-links li {
+    margin-right: 20px;
+}
+
+.navbar-links a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+.navbar-links a:hover {
+    color: #ff6600;
+}
+
+/* Media query for screens smaller than 768px */
+@media (max-width: 768px) {
+    .navbar-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        right: 0;
+        background-color: #333;
+        z-index: 2;
+    }
+
+    .navbar-links.active {
+        display: flex;
+    }
+
+    .navbar-links li {
+        margin-right: 0;
+        margin-bottom: 10px;
+        text-align: center;
+    }
+
+    .menu-button {
+        display: block;
+        position: absolute;
+        top: 15px;
+        right: 20px;
+        background-color: transparent;
+        color: #fff;
+        font-size: 24px;
+        border: none;
+        cursor: pointer;
+        z-index: 3;
+    }
+}
+
+/* Media query for screens larger than 768px */
+@media (min-width: 769px) {
+    .menu-button {
+        display: none; /* Hide the menu button */
+    }
+
+    .navbar-links {
+        display: flex; /* Show the navigation links */
+        position: static; /* Reset position */
+        background-color: transparent; /* Reset background color */
+    }
+
+    .navbar-links.active {
+        display: flex; /* Ensure the links are displayed when the button is hidden */
+    }
+}
+
+
+
+.logo {
+    margin-top: 8px;
+    height: 50px;
+}
+
+.head1{
+    display: inline-block;
+}
+
+.head{
+    display: inline-block;
+    font-size: 32px;
+    margin-top: 10px;
+}
+
+ .container-login{
+     width: 100%;
+     min-height: 100vh;
+     display: flex;
+     flex-wrap: wrap;
+     justify-content: center;
+     align-items: center;
+     padding: 15px;
+     background:#ebeeef;
+ }
+
+.wrap-login{
+    margin-top: 5%;
+    width: 670px;
+    background: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+}
+
+
+.headerimg{
+    background-image: url('../images/auth.jpg');
+    width: 100%;
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    padding: 70px 15px  74px 15px;
+}
+
+.headerimg::before{
+    content: "";
+    display: block;
+    position: absolute;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    top:0;
+    left: 0;
+    background-color: rgba(54, 84,99,0.7);
+}
+
+.headerimg span{
+    font-family: 'Poppins', sans-serif;
+    font-size: 30px;
+    color: #fff;
+    line-height: 1.2;
+    text-align: center;
+    font-weight: 800;
+}
+
+.loginform{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 43px 78px 93px 180px;
+}
+
+.login-input, .register-input{
+    margin-left: -50px;
+    width: 100%;
+    padding-bottom:20px ;
+    /* height: 50px; */
+}
+
+
+.input100{
+    font-size: 15px;
+    color: #555555;
+    height: 50px;
+    display: block;
+    width: 100%;
+    background:transparent;
+    padding: 0 5px;
+    border:0px;
+    border-bottom: 1px solid #b2b2b2;
+    outline: none;
+}
+
+.login-btn{
+    width:100%;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.sub-btn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0px;
+    min-width: 130px;
+    height: 40px;
+    background-color: #157efb;
+    border-radius: 25px;
+    font-size: 18px;
+    margin-left: 20%;
+    color: #fff;
+    line-height: 1.2;
+    outline: none;
+    border: none;
+    box-shadow: 3px 3px 10px #888888;
+    margin-top: -20px;
+}
+
+.sub-btn:hover{
+    background-color:#333333;
+    cursor: pointer;
+}
+
+.txt{
+    margin-top: 15px;
+    margin-left:30px;
+    color:#333333 ;
+}
+
+.txt a{
+    text-decoration: none;
+    color:#573faf;
+}
+
+.txt a:hover{
+    text-decoration: underline;
+
+}
+
+.radio-btn{
+    cursor: pointer;
+    margin-left: 5%;
+    color: #555555;
+}
+
+.radio-label{
+    margin-left:2%;
+    font-size: 18px;
+    color: #555555;
+}
+
+
+@media (max-width:604px){
+    .loginform{
+        padding: 43px 15px 57px 125px;
+    }
+
+    .sub-btn{
+        margin-left: 22%;
+    }
+
+    .txt{
+        margin-left: 0px;
+    }
+}
+
+
+
+
+@media (max-width:470px){
+    .loginform{
+        padding: 43px 15px 57px 120px;
+    }
+
+    .sub-btn{
+        margin-left: 7%;
+    }
+
+    .txt{
+        margin-left: -10%;
+    }
+
+    .radio-btn{
+        margin-left: 2%;
+        color: #555555;
+    }
+
+    .radio-label{
+        margin-left: 1%;
+        font-size: 15px;
+    }
+}
+
+@media (max-width:400px){
+
+    .logo{
+        margin-left: -16px;
+    }
+
+    .head{
+        font-size: 25px;
+        margin-top: -45px;
+    }
+
+    .loginform{
+        padding: 40px 5px 57px 70px;
+    }
+
+    .sub-btn{
+        margin-left: 15px;
+    }
+
+    .txt{
+        margin-left: -2px;
+        font-size: 13px;
+    }
+
+    .radio-btn{
+        margin-left: 0px;
+        height: 10px;
+        width: 10px;
+        color: #555555;
+    }
+
+    .radio-label{
+        margin-left: 1%;
+        font-size: 13px;
+    }
+
+    .input100{
+        font-size: 13px;
+    }
+}
+

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="stylesheet" href="../../assets/css/auth.css">
+</head>
+<body>
+
+    <div class = "wholebody">
+        <nav class="navbar">
+            <div class="navbar-logo">
+                <img src="../../assets/images/logo.png" alt="Logo">
+                <span class="brand-name">UTA Course Management</span>
+            </div>
+            <ul class="navbar-links" id="nav-links">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Services</a></li>
+                <li><a href="#">Portfolio</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+            <button class="menu-button" id="menu-button">&#9776;</button>
+        </nav>
+        <div class="container-login">
+            <div class= "wrap-login">
+                <div class = "headerimg">
+                    <span>
+                        SIGN UP
+                    </span>
+                </div>
+                <form class="loginform" action="index.php" method="POST">
+                    <div class="login-input">
+                        <span class="radio-label">Select one:</span>
+                        <input type="radio" class="radio-btn" name="category" value="Employee"><span class="radio-label">Student</span>
+                        <input type="radio" class="radio-btn" name="category" value="Company"><span class="radio-label">Instructor</span>
+                    </div>
+                    
+                    <div class="register-input">
+                        <input class="input100" type="text" name="name" placeholder="Full Name" required />
+                    </div>
+                    <div class="register-input">
+                        <input class="input100" type="email" name="email" placeholder="Enter Email" required />
+                    </div>
+                    <div class="register-input">
+                        <input class="input100" type="password" name="password" placeholder="Create Password" required />
+                    </div>
+                    <div class="login-btn">
+                        <button class="sub-btn" name="submit">Login</button>
+                    </div>
+                    <div class="txt">
+                        Already have an account?&nbsp
+                        <a href="\src\features\authentication\login.html" >
+                             Sign In 
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="../../assets/js/nav.js"></script>
+
+    </body>
+</html>
