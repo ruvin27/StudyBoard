@@ -4,6 +4,12 @@
     margin: 0;
  }
 
+ body{
+    height: 100vh;
+    background:#ebeeef;
+
+ }
+
  .wholebody{
      width: 100%;
      margin: 0 auto;
@@ -21,13 +27,12 @@
 
  .container-login{
      width: 100%;
-     min-height: 100vh;
+     /* height: 100vh; */
      display: flex;
      flex-wrap: wrap;
      justify-content: center;
      align-items: center;
      padding: 15px;
-     background:#ebeeef;
  }
 
 .wrap-login{
