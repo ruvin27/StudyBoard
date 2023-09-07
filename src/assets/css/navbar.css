@@ -15,13 +15,11 @@ margin: 0;
 padding: 0;
 }
 
-/* Reset default margin and padding */
 body, ul, li, button {
 margin: 0;
 padding: 0;
 }
 
-/* Navbar styles */
 .navbar {
 background-color: #333;
 color: #fff;
@@ -72,7 +70,6 @@ transition: color 0.3s;
 color: #ff6600;
 }
 
-/* Media query for screens smaller than 768px */
 @media (max-width: 768px) {
 .navbar-links {
     display: none;
@@ -109,20 +106,19 @@ color: #ff6600;
 }
 }
 
-/* Media query for screens larger than 768px */
 @media (min-width: 769px) {
 .menu-button {
-    display: none; /* Hide the menu button */
+    display: none;
 }
 
 .navbar-links {
-    display: flex; /* Show the navigation links */
-    position: static; /* Reset position */
-    background-color: transparent; /* Reset background color */
+    display: flex; 
+    position: static; 
+    background-color: transparent; 
 }
 
 .navbar-links.active {
-    display: flex; /* Ensure the links are displayed when the button is hidden */
+    display: flex;
 }
 }
 

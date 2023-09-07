@@ -7,20 +7,20 @@
 }
 
 .left-element {
-    flex: 1; /* Takes up available space on the left */
+    flex: 1;
     padding-left: 35px;
 }
 
 .right-element {
-    flex: 1; /* Takes up available space on the right */
+    flex: 1;
     text-align: right;
     padding-right: 30px;
 }
 .courses {
     display: flex;
-    flex-wrap: wrap; /* Allow cards to wrap to the next row */
-    max-width: 100%; /* Set a maximum width for responsiveness */
-    margin: 0 auto; /* Center the container horizontally */
+    flex-wrap: wrap;
+    max-width: 100%;
+    margin: 0 auto; 
     padding: 0px 30px; 
 }
 
@@ -29,26 +29,22 @@
     border-radius: 5px;
     overflow: hidden;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    margin: 10px; /* Add margin between cards */
-    max-width: 300px; /* Make sure it's 100% width within its container */
+    margin: 10px; 
+    max-width: 300px; 
 }
 
-/* Adjustments for smaller screens */
 @media (max-width: 768px) {
     .course-card {
         max-width: calc(50% - 20px);
     }
 }
 
-/* Adjustments for even smaller screens */
 @media (max-width: 480px) {
     .course-card {
         max-width: 100%;
     }
 }
 
-
-/* Course info styles */
 .course-info {
     padding: 20px;
 }
