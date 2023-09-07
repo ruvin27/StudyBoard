@@ -1,0 +1,132 @@
+.navbar{
+    background-color: #304959;
+    font-size: 18px;
+    width: 100%;
+    height: 70px;
+    color: white;
+    font-weight: 500;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+body, ul, li {
+margin: 0;
+padding: 0;
+}
+
+/* Reset default margin and padding */
+body, ul, li, button {
+margin: 0;
+padding: 0;
+}
+
+/* Navbar styles */
+.navbar {
+background-color: #333;
+color: #fff;
+display: flex;
+justify-content: space-between;
+align-items: center;
+}
+
+.navbar-logo{
+display: flex;
+align-items: center;
+padding-left: 20px;
+}
+
+.navbar-logo a{
+    text-decoration: none;
+    color: white;
+}
+
+.navbar-logo img {
+width: 40px;
+height: 40px;
+margin-right: 10px;
+}
+
+.brand-name {
+font-size: 24px;
+font-weight: bold;
+}
+
+.navbar-links {
+list-style: none;
+display: flex;
+}
+
+.navbar-links li {
+margin-right: 20px;
+}
+
+.navbar-links a {
+text-decoration: none;
+color: #fff;
+font-weight: bold;
+transition: color 0.3s;
+}
+
+.navbar-links a:hover {
+color: #ff6600;
+}
+
+/* Media query for screens smaller than 768px */
+@media (max-width: 768px) {
+.navbar-links {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    right: 0;
+    background-color: #333;
+    z-index: 2;
+}
+
+.navbar-links.active {
+    display: flex;
+}
+
+.navbar-links li {
+    margin-right: 0;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.menu-button {
+    display: block;
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    background-color: transparent;
+    color: #fff;
+    font-size: 24px;
+    border: none;
+    cursor: pointer;
+    z-index: 3;
+}
+}
+
+/* Media query for screens larger than 768px */
+@media (min-width: 769px) {
+.menu-button {
+    display: none; /* Hide the menu button */
+}
+
+.navbar-links {
+    display: flex; /* Show the navigation links */
+    position: static; /* Reset position */
+    background-color: transparent; /* Reset background color */
+}
+
+.navbar-links.active {
+    display: flex; /* Ensure the links are displayed when the button is hidden */
+}
+}
+
+.logo {
+margin-top: 8px;
+height: 50px;
+}
