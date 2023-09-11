@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Accounts</title>
+    <link rel="stylesheet" href="../../assets/css/navbar.css">
+    <link rel="stylesheet" href="../../assets/css/newUser.css"></head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-logo">
+            <img src="../../assets/images/logo.png" alt="Logo">
+            <span class="brand-name"><a href="/src/features/dashboard/myCourses.html">Course Management</a></span>
+        </div>
+        <ul class="navbar-links" id="nav-links">
+            <li><a href="#">About</a></li>
+            <li><a href="\src\features\authentication\login.html" >Logout</a></li>
+        </ul>
+        <button class="menu-button" id="menu-button">&#9776;</button>
+    </nav>
+    <script src="../../assets/js/nav.js"></script>  
+    <div class="add-container">
+        <h2 class="add-access-header">Add New Users</h2>
+    </div>
+    <div class="search-container">
+        <input type="text" class="search-input" placeholder="Search...">
+        <button class="search-button">Search</button>
+    </div>
+    <table class="custom-table">
+        <thead>
+          <tr>
+            <th>User Email</th>
+            <th>Role</th>
+            <th>Remove User</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>user1@example.com</td>
+            <td>Admin</td>
+            <td><button class="custom-button">Approve</button></td>
+          </tr>
+          <tr>
+            <td>user2@example.com</td>
+            <td>Instructor</td>
+            <td><button class="custom-button">Approve</button></td>
+          </tr>
+          <tr>
+            <td>user3@example.com</td>
+            <td>Student</td>
+            <td><button class="custom-button">Approve</button></td>
+          </tr>
+        </tbody>
+      </table>
+</body>
+</html>

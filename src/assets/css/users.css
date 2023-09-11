@@ -57,6 +57,7 @@
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  font-size: 18px;
 }
 
 @media (max-width: 768px) {
@@ -96,6 +97,8 @@
   border-radius: 5px;
   cursor: pointer;
   width: 100%;
+  font-size: 15px;
+
 }
 
 @media (max-width: 768px) {
