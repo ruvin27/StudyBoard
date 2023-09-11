@@ -1,4 +1,3 @@
-// JavaScript to toggle the mobile menu
 const menuButton = document.getElementById("menu-button");
 const navLinks = document.getElementById("nav-links");
 
