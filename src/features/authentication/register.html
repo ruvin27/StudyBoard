@@ -28,11 +28,21 @@
                         SIGN UP
                     </span>
                 </div>
-                <form class="loginform" action="index.php" method="POST">
-                    <div class="login-input">
+                <form class="registerform" action="index.php" method="POST">
+                    <div class="register-input radio-role">
                         <span class="radio-label">Select one:</span>
-                        <input type="radio" class="radio-btn" name="category" value="Employee"><span class="radio-label">Student</span>
-                        <input type="radio" class="radio-btn" name="category" value="Company"><span class="radio-label">Instructor</span>
+                        <div class="radio">
+                            <input type="radio" class="radio-btn" name="category" value="Student"><span class="radio-label">Student</span>
+                        </div>
+                        <div class="radio">
+                            <input type="radio" class="radio-btn" name="category" value="Instructor"><span class="radio-label">Instructor</span>
+                        </div>
+                        <div class="radio">
+                            <input type="radio" class="radio-btn" name="category" value="Program Cordinator"><span class="radio-label">Program Cordinator</span>
+                        </div>
+                        <div class="radio">
+                            <input type="radio" class="radio-btn" name="category" value="QA Officer"><span class="radio-label">QA Officer</span>
+                        </div>
                     </div>
                     
                     <div class="register-input">
@@ -45,7 +55,7 @@
                         <input class="input100" type="password" name="password" placeholder="Create Password" required />
                     </div>
                     <div class="login-btn">
-                        <button class="sub-btn" name="submit">Login</button>
+                        <button class="sub-btn" name="submit">Register</button>
                     </div>
                     <div class="txt">
                         Already have an account?&nbsp
