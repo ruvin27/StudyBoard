@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../assets/css/navbar.css">
+    <link rel="stylesheet" href="../../assets/css/courses.css">
+    <title>Course Management</title>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-logo">
+            <img src="../../assets/images/logo.png" alt="Logo">
+            <span class="brand-name"><a href="/src/features/dashboard/myCourses.html">Course Management</a></span>
+        </div>
+        <button class="menu-button" id="menu-button">&#9776;</button>
+        <ul class="navbar-links dropdown" id="nav-links">
+            <li><a href="#">About</a></li>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Account</a></li>
+            <li><a href="\src\features\authentication\login.html">Logout</a></li>
+        </ul>
+    </nav>
+    <header>
+        <div class="header-right">
+            <button id="add-course">Add Course</button>
+        </div>
+    </header>    
+    <section class="content">
+        <div class="left">
+            <div class="card">
+                <h2>Courses</h2>
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td>Course 1</td>
+                            </tr>
+                            <tr>
+                                <td>Course 2</td>
+                            </tr>
+                            <tr>
+                                <td>Course 3</td>
+                            </tr>
+                            <tr>
+                                <td>Course 4</td>
+                            </tr>
+                            <tr>
+                                <td>Course 5</td>
+                            </tr>
+                            <tr>
+                                <td>Course 6</td>
+                            </tr>
+                            <tr>
+                                <td>Course 7</td>
+                            </tr>
+                            <tr>
+                                <td>Course 8</td>
+                            </tr>
+                            <tr>
+                                <td>Course 9</td>
+                            </tr>
+                            <tr>
+                                <td>Course 10</td>
+                            </tr>
+                            <tr>
+                                <td>Course 11</td>
+                            </tr>
+                            <tr>
+                                <td>Course 12</td>
+                            </tr>
+                            <tr>
+                                <td>Course 13</td>
+                            </tr>       
+                        </tbody>
+                    </table>
+
+            </div>
+        </div>
+        <div class="right">
+            <div class="card objectives">
+                <h2>Program Objectives</h2>
+                <div class="objective-item">
+                    <strong>Objective 1:</strong>
+                    <p>Objective 1 Description.</p>
+                </div>
+                <div class="objective-item">
+                    <strong>Objective 2:</strong>
+                    <p>Objective 2 Description.</p>
+                </div>
+                <div class="objective-item">
+                    <strong>Objective 3:</strong>
+                    <p>Objective 3 Description.</p>
+                </div>
+
+            </div>
+            <div class="card representation">
+                <h2>Visual Representation</h2>
+                <div class="responsive-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Course</th>
+                            <th>Objective Covered</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Course 1</td>
+                            <td>Description</td>
+                        </tr>
+                        <tr>
+                            <td>Course 2</td>
+                            <td>Description</td>
+                        </tr>
+                        <tr>
+                            <td>Course 3</td>
+                            <td>Description</td>
+                        </tr>
+                    </tbody>
+                </table>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+        document.getElementById('menu-button').addEventListener('click', function() {
+            var navLinks = document.getElementById('nav-links');
+                if (navLinks.classList.contains('active')) {
+                    navLinks.classList.remove('active');
+        }       else {
+                    navLinks.classList.add('active');
+        }
+        });
+        });
+    </script>
+</body>
+</html>
