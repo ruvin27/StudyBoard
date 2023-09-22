@@ -1,0 +1,25 @@
+.table-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+/* Style for each table */
+table {
+    border-collapse: collapse;
+    width: 48%; /* Adjust the width as needed */
+    margin: 3%; /* Adjust the margin as needed */
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+.download-icon {
+    font-size: 20px;
+    cursor: pointer;
+}

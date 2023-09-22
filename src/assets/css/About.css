@@ -1,0 +1,32 @@
+.team-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+/* Style for each team member card */
+.team-member {
+    width: 300px;
+    margin: 20px;
+    text-align: center;
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+}
+
+.team-member img {
+    max-width: 100%;
+    border-radius: 50%;
+}
+
+/* Style for the member description */
+.member-description {
+    margin-top: 15px;
+    font-size: 16px;
+}
+
+#aboutUs{
+    margin: 15px;
+    
+}
