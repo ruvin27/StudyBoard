@@ -30,3 +30,15 @@
     margin: 15px;
     
 }
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f0f0f0;
+    padding: 10px;
+}
+
+.left-element {
+    flex: 1;
+    padding-left: 35px;
+}

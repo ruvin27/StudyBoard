@@ -1,0 +1,88 @@
+
+body {
+    background-color: #f2f2f2;
+    margin: 0;
+    padding: 0;
+}
+
+.profile {
+    max-width: 600px;
+    margin: 20px auto;
+    background-color: #fff;
+    border-radius: 5px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.profile-picture {
+    text-align: center;
+}
+
+.profile-picture img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+}
+.left-element {
+    flex: 1;
+    padding-left: 35px;
+}
+.container {
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    
+}
+
+label {
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+.upload-btn {
+    background-color: #007BFF;
+    color: #fff;
+    padding: 5px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: small;
+}
+
+.submit-btn {
+    background-color: #007BFF;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center; /* Horizontally center-align the contents */
+    align-items: center;
+
+}
+.btn-group {
+    display: flex;
+    justify-content: center;
+}
+.edit-btn {
+    background-color: #007BFF; /* Change the background color of the Edit button if needed */
+    margin-left: 10px; /* Add some spacing between the buttons */
+}

@@ -40,7 +40,27 @@
     }
   }
 
-  
+.people_list_table{
+  border-collapse: collapse;
+    border: 1px solid #ccc;
+    margin: 20px auto;
+    width: 60%;
+}
+.people_list_table th,
+.people_list_table td{
+  border: 1px solid #ccc;
+  padding: 8px;
+  text-align: center;
+}
+
+
+.custom-table th,
+.custom-table td {
+  border: 1px solid #ccc;
+  padding: 8px;
+  text-align: left;
+}
+
 .custom-table {
     width: 90%;
     border-collapse: collapse;
@@ -65,6 +85,29 @@
     width: 100%;
     font-size: 15px;
   }
+  .remove-button {
+    padding: 5px 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  
+    font-size: 15px;
+  }
+
+  .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f0f0f0;
+    padding: 10px;
+}
+
+.left-element {
+    flex: 1;
+    padding-left: 35px;
+}
   
   @media (max-width: 768px) {
     .custom-table {

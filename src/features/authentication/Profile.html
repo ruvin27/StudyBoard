@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About</title>
+    <link rel="stylesheet" href="../../assets/css/auth.css">
+    <link rel="stylesheet" href="../../assets/css/navbar.css">
+    <link rel="stylesheet" href="../../assets/css/About.css">
+    <link rel="stylesheet" href="../../assets/css/myCourses.css">
+    <link rel="stylesheet" href="../../assets/css/Profile.css">
+
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-logo">
+            <img src="../../assets/images/logo.png" alt="Logo">
+            <span class="brand-name"><a href="/src/features/dashboard/myCourses.html">Course Management</a></span>
+        </div>
+        <ul class="navbar-links" id="nav-links">
+            <li><a href="../authentication/Profile.html" >My Profile</a></li>
+            <li><a href="../authentication/About.html">About</a></li>
+            <li><a href="/src/" >Logout</a></li>
+        </ul>
+        <button class="menu-button" id="menu-button">&#9776;</button>
+    </nav>
+
+
+    <div class="container">
+        <div class="left-element"><h2>My Profile</h2></div>
+    </div>
+
+    <body>
+    <div class="profile">
+        <div class="profile-picture">
+            <img src="../../assets/images/person.png" alt="User Profile Picture">
+        </div>
+        <div class="user-info">
+            <form action="#" method="post" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" value="Jane Smith" name="name" placeholder="Your Name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" value="jane.smith@gmail.com" name="email" placeholder="Your Email" required disabled>
+                </div>
+                <!-- <div class="form-group">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" value="Abc@123" name="password" placeholder="Your Password" required>
+                </div> -->
+                <div class="form-group">
+                    <label for="profile-picture">Profile Picture:</label>
+                    <input type="file" id="profile-picture" name="profile-picture">
+                    <label for="profile-picture" class="upload-btn">Upload</label>
+                </div>
+                <div class="form-group btn-group">
+                    <button type="button" class="submit-btn edit-btn">Edit</button>
+                </div>
+            </form>
+        </div>
+        
+    </div>
+</body>
+
+</html>
