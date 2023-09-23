@@ -100,7 +100,6 @@ body, button, textarea {
     display: flex;
     justify-content: left;
     gap: 50px;
-    margin-top: 20px;
 }
 
 .Upload-Button{
@@ -239,3 +238,4 @@ textarea {
 .send-button:hover {
     background-color: #0056b3;
 }
+
