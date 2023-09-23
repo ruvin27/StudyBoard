@@ -40,7 +40,6 @@
     background: #fff;
     border-radius: 10px;
     overflow: hidden;
-    position: relative;
 }
 
 
@@ -50,9 +49,8 @@
     position: relative;
     z-index: 1;
     display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
     align-items: center;
+    justify-content: center;
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -76,62 +74,47 @@
     font-size: 30px;
     color: #fff;
     line-height: 1.2;
-    text-align: center;
     font-weight: 800;
 }
 
-.loginform{
+.loginform, .newpasswordform, .forgotpasswordform, .registerform{
     width: 100%;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
-    padding: 43px 78px 93px 180px;
+    justify-content: center;
 }
 
-.login-input, .register-input{
-    margin-left: -50px;
-    width: 100%;
-    padding-bottom:20px ;
+.login-input, .register-input, .newpassword-input, .forgot-input{
+    width: 80%;
+    margin: 20px;
 }
-
 
 .input100{
     font-size: 15px;
     color: #555555;
     height: 50px;
-    display: block;
     width: 100%;
-    background:transparent;
-    padding: 0 5px;
     border:0px;
     border-bottom: 1px solid #b2b2b2;
-    outline: none;
 }
 
-.login-btn{
+.login-btn, .newpassword-btn, .forgot-btn{
     width:100%;
     display: flex;
-    flex-wrap: wrap;
-    margin-top: 20px;
+    justify-content: center;
+    margin: 20px 0 20px 0;
 }
 
 .sub-btn{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 0px;
     min-width: 130px;
     height: 40px;
     background-color: #157efb;
     border-radius: 25px;
     font-size: 18px;
-    margin-left: 20%;
     color: #fff;
     line-height: 1.2;
-    outline: none;
     border: none;
     box-shadow: 3px 3px 10px #888888;
-    margin-top: -20px;
 }
 
 .sub-btn:hover{
@@ -140,113 +123,39 @@
 }
 
 .txt{
-    margin-top: 15px;
-    margin-left:30px;
     color:#333333 ;
+    display: flex;
+    flex-direction: column;
+    margin: 15px auto;
+    text-align: center;
 }
 
 .txt a{
     text-decoration: none;
-    color:#573faf;
+    margin: 0 0 10px 0;
 }
 
+.txt div{
+    margin: 10px 0;
+}
 .txt a:hover{
     text-decoration: underline;
-
 }
 
 .radio-btn{
     cursor: pointer;
-    margin-left: 5%;
+    margin: 15px 0 0 10px;
     color: #555555;
 }
 
 .radio-label{
-    margin-left:2%;
+    margin:10px 0 0 10px;
     font-size: 18px;
     color: #555555;
 }
 
-
-@media (max-width:604px){
-    .loginform{
-        padding: 43px 15px 57px 125px;
-    }
-
-    .sub-btn{
-        margin-left: 22%;
-    }
-
-    .txt{
-        margin-left: 0px;
-    }
-}
-
-
-
-
-@media (max-width:470px){
-    .loginform{
-        padding: 43px 15px 57px 120px;
-    }
-
-    .sub-btn{
-        margin-left: 7%;
-    }
-
-    .txt{
-        margin-left: -10%;
-    }
-
-    .radio-btn{
-        margin-left: 2%;
-        color: #555555;
-    }
-
-    .radio-label{
-        margin-left: 1%;
-        font-size: 15px;
-    }
-}
-
-@media (max-width:400px){
-
-    .logo{
-        margin-left: -16px;
-    }
-
-    .head{
-        font-size: 25px;
-        margin-top: -45px;
-    }
-
-    .loginform{
-        padding: 40px 5px 57px 70px;
-    }
-
-    .sub-btn{
-        margin-left: 15px;
-    }
-
-    .txt{
-        margin-left: -2px;
-        font-size: 13px;
-    }
-
-    .radio-btn{
-        margin-left: 0px;
-        height: 10px;
-        width: 10px;
-        color: #555555;
-    }
-
-    .radio-label{
-        margin-left: 1%;
-        font-size: 13px;
-    }
-
-    .input100{
-        font-size: 13px;
-    }
+.radio-role{
+    display: flex;
+    flex-wrap: wrap;
 }
 
