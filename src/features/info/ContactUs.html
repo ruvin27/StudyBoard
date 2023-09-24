@@ -6,6 +6,7 @@
     <title>Home</title>
     <link rel="stylesheet" href="../../assets/css/navbar.css">
     <link rel="stylesheet" href="../../assets/css/contact.css">
+
 </head>
 <body>
     <nav class="navbar">
@@ -14,7 +15,16 @@
             <span class="brand-name"><a href="/src/features/student/myCourses.html">Course Management</a></span>
         </div>
         <ul class="navbar-links" id="nav-links">
-            <li><a href="#">About</a></li>
+            
+            <li class="dropdown">
+                <a href="#" class="dropbtn">Information Links &#9662;</a>
+                <div class="dropdown-content">
+                    <a href="./program.html">Program</a>
+                    <a href="./About.html">About</a>
+                    <a href="./services.html">Services</a>
+                    <a href="./ContactUs.html">Contact US</a>
+                </div>
+            </li>
             <li><a href="\src\features\authentication\login.html" >Login</a></li>
         </ul>
         <button class="menu-button" id="menu-button">&#9776;</button>

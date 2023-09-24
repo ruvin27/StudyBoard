@@ -10,13 +10,21 @@
 <body>
     <nav class="navbar">
         <div class="navbar-logo">
-            <img src="../../assets/images/logo.png" alt="Logo">
-            <span class="brand-name"><a href="/src/features/student/myCourses.html">Course Management</a></span>
+            <img src="../../assets/images/logo.png" alt="Logo" />
+            <span class="brand-name"><a href="./myCourses.html">Course Management</a></span>
         </div>
         <ul class="navbar-links" id="nav-links">
-            <li><a href="../authentication/Profile.html" >My Profile</a></li>
-            <li><a href="../authentication/About.html">About</a></li>
-            <li><a href="/src/features/authentication/login.html" >Logout</a></li>
+            <li><a href="./myCourses.html">My Courses</a></li>
+            <li class="dropdown">
+                <a href="#" class="dropbtn">Information Links &#9662;</a>
+                <div class="dropdown-content">
+                    <a href="../info/program.html">Program</a>
+                    <a href="../info/About.html">About</a>
+                    <a href="../info/services.html">Services</a>
+                    <a href="../info/ContactUs.html">Contact US</a>
+                </div>
+            </li>
+            <li><a href="../authentication/login.html">Logout</a></li>
         </ul>
         <button class="menu-button" id="menu-button">&#9776;</button>
     </nav>
