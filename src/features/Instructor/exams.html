@@ -3,9 +3,9 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Course Management</title>
+		<title>Exams</title>
 		<link rel="stylesheet" href="../../assets/css/navbar.css" />
-		<link rel="stylesheet" href="../../assets/css/grades.css" />
+		<link rel="stylesheet" href="../../assets/css/exams.css" />
 	</head>
 	<body>
 		<nav class="navbar">
@@ -22,35 +22,71 @@
 		<div class="container">
 			<div class="left-element"><h2>Course 1</h2></div>
 			<div class="right-element">
-				<h2>
-					Overall Score : 82%
-				</h2>
+				<a href="/src/features/Instructor/createExam.html"><button class="grades-button">Create Exam</button></a>
 			</div>
 		</div>
-		<div class="grades">
+		<br />
+		<br />
+		<div>
 			<table class="custom-table">
 				<thead>
 					<tr>
-						<th>Exam</th>
+						<th>Upcoming Exams</th>
+						<th>Take Exam</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>Exam 4</td>
+						<td>
+							<a href="../Instructor/createExam.html"><button class="custom-button">Edit</button></a>
+						</td>
+					</tr>
+					<tr>
+						<td>Exam 5</td>
+						<td>
+							<a href="../Instructor/createExam.html"><button class="custom-button">Edit</button></a>
+						</td>
+					</tr>
+					<tr>
+						<td>Exam 6</td>
+						<td>
+							<a href="../Instructor/createExam.html"><button class="custom-button">Edit</button></a>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div>
+			<table class="custom-table">
+				<thead>
+					<tr>
+						<th>Upcoming Exams</th>
 						<th>Grades</th>
-						<th>Feedback</th>
 					</tr>
 				</thead>
 				<tbody>
 					<tr>
 						<td>Exam 1</td>
-						<td>69%</td>
-						<td>Study Harder</td>
+						<td>
+							<a href="../Instructor/grades.html"><button class="custom-button">Grade Exam</button></a>
+						</td>
 					</tr>
 					<tr>
 						<td>Exam 2</td>
-						<td>95%</td>
-						<td>Great Work</td>
+						<td>
+							<a href="../Instructor/grades.html"><button class="custom-button">Grade Exam</button></a>
+						</td>
+					</tr>
+					<tr>
+						<td>Exam 3</td>
+						<td>
+							<a href="../Instructor/grades.html"><button class="custom-button">Grade Exam</button></a>
+						</td>
 					</tr>
 				</tbody>
 			</table>
 		</div>
-
 		<div class="chat-container">
 			<div class="chat-header">Instant Messaging</div>
 			<div class="chat-messages">

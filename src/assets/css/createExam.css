@@ -1,0 +1,175 @@
+.container {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	background-color: #f0f0f0;
+	padding: 10px;
+}
+
+.left-element {
+	flex: 1;
+	padding-left: 35px;
+}
+
+.right-element {
+	flex: 1;
+	text-align: right;
+	padding-right: 30px;
+}
+
+.create-button {
+	background-color: #007bff;
+	color: #fff;
+	border: none;
+	padding: 10px 20px;
+	border-radius: 5px;
+	cursor: pointer;
+	font-size: 16px;
+	transition: background-color 0.3s ease;
+	margin: 10px;
+}
+
+.create-button:hover {
+	background-color: #0056b3;
+}
+
+.grades {
+	width: 90%;
+	margin: 20px auto;
+}
+
+.custom-table {
+	width: 90%;
+	border-collapse: collapse;
+	border: 1px solid #ccc;
+	margin: 20px auto;
+}
+
+.custom-table th,
+.custom-table td {
+	border: 1px solid #ccc;
+	padding: 8px;
+	text-align: left;
+}
+
+.custom-button {
+	padding: 5px 10px;
+	background-color: #007bff;
+	color: #fff;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	width: 100%;
+	font-size: 15px;
+}
+
+@media (max-width: 768px) {
+	.custom-table {
+		width: 100%;
+		border-collapse: collapse;
+		border: 1px solid #ccc;
+		margin: 0 auto;
+	}
+	.custom-table th,
+	.custom-table td {
+		padding: 5px;
+		font-size: 14px;
+	}
+}
+
+.custom-table input {
+	width: 90%;
+}
+
+.custom-table td,
+.custom-button tr {
+	padding: 10px;
+}
+
+.create {
+	width: 100%;
+	text-align: center;
+}
+
+.exam-form-container {
+	background-color: #ffffff;
+	padding: 40px;
+	border-radius: 5px;
+	box-shadow: 3px 3px 10px #888888;
+	max-width: 400px;
+	margin: 20px auto;
+}
+
+.exam-form-container h3 {
+	font-size: 1.5rem;
+	margin-bottom: 20px;
+	text-align: center;
+}
+
+.exam-form-container form label {
+	display: block;
+	font-weight: bold;
+	margin-bottom: 5px;
+}
+
+.exam-form-container form input[type="text"],
+.exam-form-container form input[type="date"],
+.exam-form-container form input[type="number"] {
+	width: 100%;
+	padding: 10px 5px;
+	border: 1px solid #ccc;
+	border-radius: 3px;
+	margin-bottom: 10px;
+}
+
+.question-form-container {
+	background-color: #ffffff;
+	padding: 40px;
+	border-radius: 5px;
+	box-shadow: 3px 3px 10px #888888;
+	max-width: 400px;
+	margin: 20px auto;
+}
+
+.question-form-container h3 {
+	font-size: 1.5rem;
+	margin-bottom: 20px;
+	text-align: center;
+}
+
+.question-form-container form label {
+	display: block;
+	font-weight: bold;
+	margin-bottom: 5px;
+}
+
+.question-form-container form textarea,
+.question-form-container form input[type="text"],
+.question-form-container form input[type="number"] {
+	width: 100%;
+	padding: 10px 5px;
+	border: 1px solid #ccc;
+	border-radius: 3px;
+	margin-bottom: 10px;
+}
+
+.question-form-container form select {
+	width: 100%;
+	padding: 10px 5px;
+	border: 1px solid #ccc;
+	border-radius: 3px;
+	margin-bottom: 10px;
+}
+
+.question-form-container form button {
+	background-color: #007bff;
+	color: #fff;
+	padding: 10px 15px;
+	border: none;
+	border-radius: 3px;
+	cursor: pointer;
+}
+
+.question-form-container form button:hover {
+	background-color: #0056b3;
+}

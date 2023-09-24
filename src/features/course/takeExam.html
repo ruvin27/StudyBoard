@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz - Student View</title>
+    <link rel="stylesheet" href="../../assets/css/navbar.css" />
+    <link rel="stylesheet" href="../../assets/css/takeexam.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-logo">
+            <img src="../../assets/images/logo.png" alt="Logo" />
+            <span class="brand-name"><a href="/src/features/course/myCourses.html">Course Management</a></span>
+        </div>
+        <ul class="navbar-links" id="nav-links">
+            <li><a href="#">About</a></li>
+            <li><a href="\src\features\authentication\login.html">Login</a></li>
+        </ul>
+        <button class="menu-button" id="menu-button">&#9776;</button>
+    </nav>
+    <div class="container">
+        <div class="left-element"><h2>Exam 1</h2></div>
+    </div>
+    <div class="form-container">
+        <div class="quiz-card" id="question1">
+            <h3>Question 1:</h3>
+            <p>What is the capital of France?</p>
+            
+            <label>
+                <input type="radio" name="answer1" value="paris"> Paris
+            </label>
+            <label>
+                <input type="radio" name="answer1" value="london"> London
+            </label>
+            <label>
+                <input type="radio" name="answer1" value="berlin"> Berlin
+            </label>
+            <label>
+                <input type="radio" name="answer1" value="madrid"> Madrid
+            </label>
+        </div>
+        
+        <div class="quiz-card" id="question2">
+            <h3>Question 2:</h3>
+            <p>Which planet is known as the Red Planet?</p>
+            
+            <label>
+                <input type="radio" name="answer2" value="mars"> Mars
+            </label>
+            <label>
+                <input type="radio" name="answer2" value="venus"> Venus
+            </label>
+            <label>
+                <input type="radio" name="answer2" value="jupiter"> Jupiter
+            </label>
+            <label>
+                <input type="radio" name="answer2" value="earth"> Earth
+            </label>
+        </div>
+        
+        <div class="submit">
+            <button type="submit" class="submit-quiz">Submit Quiz</button>
+        </div>
+    </div>
+</body>
+</html>

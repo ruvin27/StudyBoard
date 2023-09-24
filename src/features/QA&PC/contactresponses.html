@@ -3,9 +3,9 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Home</title>
+		<title>Contact Us Responses</title>
 		<link rel="stylesheet" href="../../assets/css/navbar.css" />
-		<link rel="stylesheet" href="../../assets/css/courseInfo.css" />
+		<link rel="stylesheet" href="../../assets/css/grades.css" />
 	</head>
 	<body>
 		<nav class="navbar">
@@ -14,35 +14,38 @@
 				<span class="brand-name"><a href="/src/features/course/myCourses.html">Course Management</a></span>
 			</div>
 			<ul class="navbar-links" id="nav-links">
+				<li><a href="#">Home</a></li>
 				<li><a href="#">About</a></li>
-				<li><a href="\src\features\authentication\login.html">Login</a></li>
+				<li><a href="#">Account</a></li>
 			</ul>
-			<button class="menu-button" id="menu-button">&#9776;</button>
 		</nav>
 		<div class="container">
-			<div class="left-element"><h2>Course Title-1</h2></div>
-			<div class="right-element">
-				<a href="./people.html">
-					<button class="button">People</button>
-				</a>
-			</div>
+			<div class="left-element"><h2>Contact Us Responses</h2></div>
 		</div>
-		<div class="course-Button">
-			<button class="button">Syllabus</button>
-			<a href="./exams.html">
-				<button class="button">Exams</button>
-			</a>
-			<a href="./grades.html">
-			<button class="button">Grades</button></a>
+		<div class="grades">
+			<table class="custom-table">
+				<thead>
+					<tr>
+						<th>Email</th>
+						<th>Date</th>
+						<th>Comment</th>
+					</tr>
+				</thead>
+				<tbody>
+                    <tr>
+                        <td>john@example.com</td>
+                        <td>2023-09-25</td>
+                        <td>This is a sample comment.</td>
+                    </tr>
+                    <tr>
+                        <td>jane@example.com</td>
+                        <td>2023-09-26</td>
+                        <td>Another sample comment here.</td>
+                    </tr>
+                </tbody>
+            </table>
+		</div>
 
-		</div>
-
-		<div class="Course-information">
-			<p>Detailed information about Course-1</p>
-		</div>
-		<div class="Course-information">
-			<p>comments and Discussion</p>
-		</div>
 		<div class="chat-container">
 			<div class="chat-header">Instant Messaging</div>
 			<div class="chat-messages">
@@ -54,6 +57,5 @@
 				<button>Send</button>
 			</div>
 		</div>
-		<script src="../../assets/js/nav.js"></script>
 	</body>
 </html>
