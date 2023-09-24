@@ -3,9 +3,9 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Admin Panel</title>
+		<title>Course Management</title>
 		<link rel="stylesheet" href="../../assets/css/navbar.css" />
-		<link rel="stylesheet" href="../../assets/css/panel.css" />
+		<link rel="stylesheet" href="../../assets/css/grades.css" />
 	</head>
 	<body>
 		<nav class="navbar">
@@ -14,24 +14,38 @@
 				<span class="brand-name"><a href="/src/features/course/myCourses.html">Course Management</a></span>
 			</div>
 			<ul class="navbar-links" id="nav-links">
-				<li><a href="../authentication/Profile.html">My Profile</a></li>
-				<li><a href="../authentication/About.html">About</a></li>
-				<li><a href="\src\features\authentication\login.html">Logout</a></li>
+				<li><a href="#">Home</a></li>
+				<li><a href="#">About</a></li>
+				<li><a href="#">Account</a></li>
 			</ul>
-			<button class="menu-button" id="menu-button">&#9776;</button>
 		</nav>
 		<div class="container">
-			<div class="card">
-				<img class="card-image" src="../../assets/images/courses.png" alt="" />
-				<h3>All Courses</h3>
-			</div>
-			<div class="card">
-				<a href=".\userAccounts.html" class="card-link">
-					<img class="card-image" src="../../assets/images/user.jpg" alt="" />
-					<h3>User Accounts</h3>
-				</a>
-			</div>
+			<div class="left-element"><h2>Course 1</h2></div>
 		</div>
+		<div class="grades">
+			<table class="custom-table">
+				<thead>
+					<tr>
+						<th>Exam</th>
+						<th>Grades</th>
+						<th>Feedback</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>Exam 1</td>
+						<td>69%</td>
+						<td>Study Harder</td>
+					</tr>
+					<tr>
+						<td>Exam 2</td>
+						<td>95%</td>
+						<td>Great Work</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+
 		<div class="chat-container">
 			<div class="chat-header">Instant Messaging</div>
 			<div class="chat-messages">
@@ -43,6 +57,5 @@
 				<button>Send</button>
 			</div>
 		</div>
-		<script src="../../assets/js/nav.js"></script>
 	</body>
 </html>

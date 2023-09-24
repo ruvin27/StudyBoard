@@ -3,9 +3,9 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Admin Panel</title>
+		<title>Find User</title>
 		<link rel="stylesheet" href="../../assets/css/navbar.css" />
-		<link rel="stylesheet" href="../../assets/css/panel.css" />
+		<link rel="stylesheet" href="../../assets/css/finduser.css" />
 	</head>
 	<body>
 		<nav class="navbar">
@@ -21,17 +21,41 @@
 			<button class="menu-button" id="menu-button">&#9776;</button>
 		</nav>
 		<div class="container">
-			<div class="card">
-				<img class="card-image" src="../../assets/images/courses.png" alt="" />
-				<h3>All Courses</h3>
-			</div>
-			<div class="card">
-				<a href=".\userAccounts.html" class="card-link">
-					<img class="card-image" src="../../assets/images/user.jpg" alt="" />
-					<h3>User Accounts</h3>
-				</a>
-			</div>
+			<div class="left-element"><h2>Find User</h2></div>
 		</div>
+		<div class="search-container">
+			<input type="text" class="search-input" placeholder="Search User" />
+			<button class="search-button">Search</button>
+		</div>
+		<table class="custom-table">
+			<thead>
+				<tr>
+					<th>User Email</th>
+					<th>Edit User</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>user1@example.com</td>
+					<td>
+						<a href="../authentication/Profile.html"><button class="custom-button">Edit</button></a>
+					</td>
+				</tr>
+				<tr>
+					<td>user2@example.com</td>
+					<td>
+						<a href="../authentication/Profile.html"><button class="custom-button">Edit</button></a>
+					</td>
+				</tr>
+				<tr>
+					<td>user3@example.com</td>
+					<td>
+						<a href="../authentication/Profile.html"><button class="custom-button">Edit</button></a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+
 		<div class="chat-container">
 			<div class="chat-header">Instant Messaging</div>
 			<div class="chat-messages">
@@ -43,6 +67,8 @@
 				<button>Send</button>
 			</div>
 		</div>
+
 		<script src="../../assets/js/nav.js"></script>
+		<!-- <script src="../../assets/js/userAccounts.js"></script> -->
 	</body>
 </html>

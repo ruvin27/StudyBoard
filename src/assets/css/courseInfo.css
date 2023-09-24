@@ -14,7 +14,7 @@
 .right-element {
     flex: 1;
     text-align: right;
-    padding-right: 30px;
+    padding-right: 15px;
 }
 .courses {
     display: flex;
@@ -92,10 +92,6 @@
     background-color: #0056b3;
 }
 
-body, button, textarea {
-    margin: 0;
-    padding: 0;
-}
 
 .button-row{
     display: flex;
@@ -105,8 +101,7 @@ body, button, textarea {
 
 .Upload-Button{
     display: flex;
-    justify-content: left;
-    gap: 5px;
+    flex-wrap: wrap;
     margin-top: 20px;
 }
 
@@ -127,6 +122,9 @@ gap: 50px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    font-size: 16px;
+    margin: 10px;
+    min-width: 150px;
 }
 
 .button1{
@@ -180,17 +178,13 @@ gap: 50px;
     border: 1px solid #130101;
     border-radius: 5px;
     display: flex;
-    flex-direction: column; /* Stack child elements vertically */
-    max-width: 100%;
-    /*width: 100%; /* Cover the entire width of the page */
-    padding: 10px;
+    flex-direction: column;
+    width: 90%;
+    margin: 10px auto;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    margin: 10px;
     transition: transform 0.3s ease-in-out;
     background-color: white;
-    /* You can adjust the height here or remove it to let the content determine the height */
     height: 200px;
-    margin-top: 20px;
     text-align: center;
     align-items: center;
     overflow-x: hidden;
@@ -202,11 +196,10 @@ gap: 50px;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 80vh; /* Adjust to control the height of the container */
+    height: 80vh; 
 }
-/* Style for the contact form */
 .contact-form {
-    width: 300px; /* Adjust to set the form width */
+    width: 300px; 
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 5px;
