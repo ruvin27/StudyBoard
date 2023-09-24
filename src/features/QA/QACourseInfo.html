@@ -3,10 +3,9 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Course Management</title>
+		<title>Home</title>
 		<link rel="stylesheet" href="../../assets/css/navbar.css" />
-		<!-- <link rel="stylesheet" href="../../assets/css/pages.css" /> -->
-		<link rel="stylesheet" href="../../assets/css/grades.css" />
+		<link rel="stylesheet" href="../../assets/css/courseInfo.css" />
 	</head>
 	<body>
 		<nav class="navbar">
@@ -15,39 +14,34 @@
 				<span class="brand-name"><a href="/src/features/student/myCourses.html">Course Management</a></span>
 			</div>
 			<ul class="navbar-links" id="nav-links">
-				<li><a href="#">Home</a></li>
 				<li><a href="#">About</a></li>
-				<li><a href="#">Account</a></li>
+				<li><a href="\src\features\authentication\login.html">Login</a></li>
 			</ul>
+			<button class="menu-button" id="menu-button">&#9776;</button>
 		</nav>
 		<div class="container">
-			<div class="left-element"><h2>Course 1 - Exam 1</h2></div>
+			<div class="left-element"><h2>Course Title-1</h2></div>
+			<div class="right-element">
+				<a href="../Student/people.html">
+					<button class="button">People</button>
+				</a>
+			</div>
 		</div>
-		<div class="grades">
-			<table class="custom-table">
-				<thead>
-					<tr>
-						<th>Student</th>
-						<th>Grades</th>
-						<th>Feedback</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td>Student 1</td>
-						<td><input type="text" value="86%" /></td>
-						<td><input type="text" value="NA" /></td>
-					</tr>
-					<tr>
-						<td>Student 2</td>
-						<td><input type="text" value="95%" /></td>
-						<td><input type="text" value="Great Work" /></td>
-					</tr>
-				</tbody>
-			</table>
+		<div class="course-Button">
+			<button class="button">Syllabus</button>
+			<a href="../Instructor/instructorExamAnalysis.html">
+				<button class="button">Reports</button>
+			</a>
+			<a href="../Instructor/instructorExamAnalysis.html">
+				<button class="button">Send Recommendation</button>
+			</a>
 		</div>
-		<div class="release">
-			<button class="grades-button">Release Grades</button>
+
+		<div class="Course-information">
+			<p>Detailed information about Course-1</p>
+		</div>
+		<div class="Course-information">
+			<p>comments and Discussion</p>
 		</div>
 		<div class="chat-container">
 			<div class="chat-header">Instant Messaging</div>
@@ -60,5 +54,6 @@
 				<button>Send</button>
 			</div>
 		</div>
+		<script src="../../assets/js/nav.js"></script>
 	</body>
 </html>

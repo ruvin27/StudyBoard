@@ -6,66 +6,54 @@
 		<title>Home</title>
 		<link rel="stylesheet" href="../../assets/css/navbar.css" />
 		<link rel="stylesheet" href="../../assets/css/myCourses.css" />
-        <link rel="stylesheet" href="../../assets/css/createCourse.css"/> 
+		<link rel="stylesheet" href="../../assets/css/createCourse.css" />
 	</head>
 	<body>
 		<nav class="navbar">
 			<div class="navbar-logo">
 				<img src="../../assets/images/logo.png" alt="Logo" />
-				<span class="brand-name"><a href="../info/home.html">Course Management</a></span>
+				<span class="brand-name"><a href="./myCourses.html">Course Management</a></span>
 			</div>
 			<ul class="navbar-links" id="nav-links">
 				<li><a href="../authentication/Profile.html">My Profile</a></li>
 				<li><a href="../authentication/About.html">About</a></li>
 				<li><a href="\src\features\authentication\login.html">Login</a></li>
-
 			</ul>
 			<button class="menu-button" id="menu-button">&#9776;</button>
 		</nav>
 		<div class="container">
-			<div class="left-element"><h2>My Courses</h2></div>
-			<div class="right-element">
-				<!-- <a href="../Instructor/createCourse.html"><button class="mycourses-button">Create Course</button></a> -->
-				<!-- <a href="../QA/belowavgexams.html"><button class="mycourses-button">Below Average Results</button></a> -->
-				<a href="/src/features/info/program.html"><button class="mycourses-button">Program Details</button></a>
-			</div>
+			<div class="left-element"><h2>Create a new Course</h2></div>
 		</div>
-        <div class="createCourse">
-            <form action="#" method="post" enctype="multipart/form-data">
-                <div class="form-group">
-                    <label for="courseName">Course Name:</label>
-                    <input type="text" id="courseName" name="courseName" placeholder="Enter Course Name" required>
-                </div>
-                <div class="form-group">
-                    <label for="courseDescription">Course Description:</label>
-                    <textarea id="courseDescription" name="courseDescription" placeholder="Enter Course Description" rows="4" required></textarea>
-                </div>
-                <div class="form-group">
-                    <label for="courseCode">Course Code:</label>
-                    <input type="text" id="courseCode" name="courseCode" placeholder="Enter Course Code" required>
-                </div>
-                <div class="form-group">
-                    <label for="courseCredit">Course Credit:</label>
-                    <input type="number" id="courseCredit" name="courseCredit" placeholder="Enter Course Credit" required>
-                </div>
-                <div class="form-group">
-                    <label for="courseInstructor">Instructor:</label>
-                    <input type="text" id="courseInstructor" name="courseInstructor" placeholder="Enter Instructor's Name" required>
-                </div>
-                <div class="form-group">
-                    <label for="courseStartDate">Start Date:</label>
-                    <input type="date" id="courseStartDate" name="courseStartDate" required>
-                </div>
-                <div class="form-group">
-                    <label for="courseEndDate">End Date:</label>
-                    <input type="date" id="courseEndDate" name="courseEndDate" required>
-                </div>
-                
-                <div class="form-group">
-                    <button type="submit" class="submit-btn">Create Course</button>
-                </div>
-            </form>
-            
-        </div>
-    </body>
+		<div class="course-form-container">
+			<form id="courseForm">
+				<label for="courseName">Course Name:</label>
+				<input type="text" id="courseName" name="courseName" required /><br /><br />
+
+				<label for="courseDescription">Description:</label>
+				<input type="text" id="courseDescription" name="courseDescription" required /><br /><br />
+
+				<label for="courseCode">Course Code:</label>
+				<input type="text" id="courseCode" name="courseCode" required /><br /><br />
+
+				<label for="courseCredit">Credit:</label>
+				<input type="number" id="courseCredit" name="courseCredit" required /><br /><br />
+
+				<label for="courseStartDate">Start Date:</label>
+				<input type="date" id="courseStartDate" name="courseStartDate" required /><br /><br />
+
+				<label for="courseEndDate">End Date:</label>
+				<input type="date" id="courseEndDate" name="courseEndDate" required /><br /><br />
+
+				<label for="programObjective">Program Objective:</label>
+				<select id="programObjective" name="programObjective" class="programObjective">
+					<option value="objective1">Objective 1</option>
+					<option value="objective2">Objective 2</option>
+					<option value="objective3">Objective 3</option>
+					<option value="objective4">Objective 4</option></select
+				><br /><br />
+
+				<button type="submit" class="submit-btn">Submit</button>
+			</form>
+		</div>
+	</body>
 </html>

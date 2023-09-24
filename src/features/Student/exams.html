@@ -3,15 +3,15 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Course Management</title>
+		<title>Exams</title>
 		<link rel="stylesheet" href="../../assets/css/navbar.css" />
-		<link rel="stylesheet" href="../../assets/css/grades.css" />
+		<link rel="stylesheet" href="../../assets/css/exams.css" />
 	</head>
 	<body>
 		<nav class="navbar">
 			<div class="navbar-logo">
 				<img src="../../assets/images/logo.png" alt="Logo" />
-				<span class="brand-name"><a href="/src/features/course/myCourses.html">Course Management</a></span>
+				<span class="brand-name"><a href="/src/features/student/myCourses.html">Course Management</a></span>
 			</div>
 			<ul class="navbar-links" id="nav-links">
 				<li><a href="#">Home</a></li>
@@ -22,27 +22,66 @@
 		<div class="container">
 			<div class="left-element"><h2>Course 1</h2></div>
 		</div>
-		<div class="grades">
+		<br />
+		<br />
+		<div>
 			<table class="custom-table">
 				<thead>
 					<tr>
-						<th>Student Name</th>
-						<th>Overall Score</th>
+						<th>Upcoming Exams</th>
+						<th>Take Exam</th>
 					</tr>
 				</thead>
 				<tbody>
 					<tr>
-						<td>Ronnie</td>
-						<td>69%</td>
+						<td>Exam 4</td>
+						<td>
+							<a href="./takeExam.html"><button class="custom-button">Take Exam</button></a>
+						</td>
 					</tr>
 					<tr>
-						<td>Alex</td>
-						<td>95%</td>
+						<td>Exam 5</td>
+						<td>
+							<a href="./takeExam.html"><button class="custom-button">Take Exam</button></a>
+						</td>
+					</tr>
+					<tr>
+						<td>Exam 6</td>
+						<td>
+							<a href="./takeExam.html"><button class="custom-button">Take Exam</button></a>
+						</td>
 					</tr>
 				</tbody>
 			</table>
 		</div>
-
+		<div>
+			<table class="custom-table">
+				<thead>
+					<tr>
+						<th>Upcoming Exams</th>
+						<th>Grades</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>Exam 1</td>
+						<td>
+							<h3>69%</h3>
+						</td>
+					</tr>
+					<tr>
+						<td>Exam 2</td>
+						<td>
+							<h3>95%</h3>
+						</td>
+					</tr>
+					<tr>
+						<td>Exam 3</td>
+						<td><h3>90%</h3></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
 		<div class="chat-container">
 			<div class="chat-header">Instant Messaging</div>
 			<div class="chat-messages">

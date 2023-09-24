@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Course Management</title>
+		<title>Below Average Results</title>
 		<link rel="stylesheet" href="../../assets/css/navbar.css" />
 		<link rel="stylesheet" href="../../assets/css/grades.css" />
 	</head>
@@ -11,7 +11,7 @@
 		<nav class="navbar">
 			<div class="navbar-logo">
 				<img src="../../assets/images/logo.png" alt="Logo" />
-				<span class="brand-name"><a href="/src/features/course/myCourses.html">Course Management</a></span>
+				<span class="brand-name"><a href="/src/features/student/myCourses.html">Course Management</a></span>
 			</div>
 			<ul class="navbar-links" id="nav-links">
 				<li><a href="#">Home</a></li>
@@ -20,38 +20,36 @@
 			</ul>
 		</nav>
 		<div class="container">
-			<div class="left-element"><h2>Course 1</h2></div>
-			<div class="right-element">
-				<h2>
-					Overall Score : 82%
-				</h2>
-			</div>
+			<div class="left-element"><h2>Below Average Results</h2></div>
 		</div>
 		<div class="grades">
 			<table class="custom-table">
 				<thead>
 					<tr>
+						<th>Course</th>
 						<th>Exam</th>
-						<th>Grades</th>
-						<th>Feedback</th>
+						<th>Grade</th>
+						<th>QA Officer</th>
+						<th>Program Cordinator</th>
 					</tr>
 				</thead>
 				<tbody>
 					<tr>
+						<td>Course 1</td>
 						<td>Exam 1</td>
 						<td>69%</td>
-						<td>Study Harder</td>
+						<td><button class="grades-button">Resolve</button></td>
+						<td><button class="grades-button">Resolve</button></td>
 					</tr>
 					<tr>
+						<td>Course 2</td>
 						<td>Exam 2</td>
-						<td>95%</td>
-						<td>Great Work</td>
+						<td>65%</td>
+						<td>Resolved</td>
+						<td><button class="grades-button">Resolve</button></td>
 					</tr>
 				</tbody>
 			</table>
-		</div>
-		<div class="reports">
-			<button class="pdf-button">Download PDF</button>
 		</div>
 		<div class="chat-container">
 			<div class="chat-header">Instant Messaging</div>

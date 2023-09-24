@@ -11,16 +11,6 @@
     
 }
 
-/* On hover, scale up the form slightly */
-form:hover {
-    transform: scale(1.02);
-}
-
-/* Style form elements */
-/* .form-group {
-    margin-bottom: 15px;
-} */
-
 label {
     display: block;
     margin-bottom: 5px;
@@ -66,4 +56,40 @@ textarea:focus {
 
 .form-group:last-child {
     margin-bottom: 0;
+}
+
+.course-form-container {
+    background-color: #ffffff;
+    padding: 40px;
+    border-radius: 5px;
+    box-shadow: 3px 3px 10px #888888;
+    max-width: 600px;
+    margin: 20px auto;
+}
+
+.course-form-container h3 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.course-form-container form label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.course-form-container form input[type="text"],
+.course-form-container form input[type="date"],
+.course-form-container form input[type="number"] {
+    width: 100%;
+    padding: 10px 5px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    margin-bottom: 10px;
+}
+
+.programObjective{
+    width: 100%;
+    padding: 10px;
 }
