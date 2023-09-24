@@ -1,0 +1,172 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #fafafa;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #333;
+    padding: 10px 20px;
+}
+
+.navbar-logo img {
+    height: 50px;
+    margin-right: 10px;
+}
+
+.navbar-logo a {
+    color: white;
+    text-decoration: none;
+}
+
+.navbar-links {
+    display: flex;
+    gap: 15px;
+    list-style-type: none;
+    padding: 0;
+}
+
+.navbar-links a {
+    color: white;
+    text-decoration: none;
+    padding: 5px 10px;
+}
+
+.navbar-links a:hover {
+    background-color: #555;
+}
+
+.menu-button {
+    display: none;
+    background-color: #333;
+    color: white;
+    border: none;
+    font-size: 24px;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 30px;
+    background-color: #888888;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.header-right {
+    margin-left: auto;
+}
+
+button {
+    cursor: pointer;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #4CAF50;
+    color: #fff;
+    border: 2px solid #4CAF50; 
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+h2 {
+    text-decoration: underline;
+    color: #444;
+}
+
+#add-course {
+    margin: 0;
+}
+
+.content {
+    display: flex;
+    padding: 20px 30px;
+    gap: 20px;
+}
+
+.left, .right {
+    flex: 1;
+    width: 50%; 
+}
+
+.table, th, td {
+    border: 1px solid #888888;
+}
+
+th, td {
+    padding: 8px 12px;
+    text-align: left;
+}
+
+.card {
+    background-color: #fff;
+    border: 1px solid #888888;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.objective-item {
+    margin-bottom: 20px;
+}
+
+.objective-item strong {
+    display: block;
+    margin-bottom: 10px;
+}
+
+@media (max-width: 767px) {
+    .menu-button {
+        display: block;
+    }
+
+    .navbar-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        position: absolute;
+        top: 60px; 
+        left: 0;
+        background-color: #333;
+        z-index: 1; 
+    }
+
+    .navbar-links.active {
+        display: flex;
+    }
+
+    .navbar-links li {
+        width: 100%;
+    }
+
+    .navbar-links a {
+        display: block;
+        width: 100%;
+        padding: 10px 20px;
+    }
+
+    .left, .right {
+        width: 100%;
+        margin-bottom: 15px;
+    }
+
+    .content {
+        flex-direction: column;
+    }
+
+    .card {
+        overflow-x: auto;
+    }
+    .responsive-table {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+}
