@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Approve User Requests</title>
+    <link rel="stylesheet" href="../../assets/css/navbar.css">
+    <link rel="stylesheet" href="../../assets/css/approveuser.css">
+</head>
+
+<body>
+
+    <nav class="navbar" aria-label="Main Navigation">
+        <div class="navbar-logo">
+            <img src="../../assets/images/logo.png" alt="Logo">
+            <span class="brand-name"><a href="/src/features/dashboard/myCourses.html">Course Management</a></span>
+        </div>
+        <button class="menu-button" id="menu-button" aria-label="Menu">&#9776;</button>
+        <ul class="navbar-links dropdown" id="nav-links">
+            <li><a href="#">About</a></li>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Account</a></li>
+            <li><a href="\src\features\authentication\login.html">Logout</a></li>
+        </ul>
+        
+    </nav>
+
+    <main>
+        <h2>Approve User Requests</h2>
+
+        <div class="search-container">
+            <input type="text" class="search-input" placeholder="Search by Student name, Instructor, Role or Course name..." aria-label="Search Input">
+            <button class="search-button" aria-label="Search Button">Search</button>
+        </div>
+
+        <table aria-label="User Approval Table">
+            <thead>
+                <tr>
+                    <th>Student Name</th>
+                    <th>Role</th>
+                    <th>Course Name</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+        
+            <tbody>
+                <tr>
+                    <td>Student 1</td>
+                    <td>Role 1</td>
+                    <td>Course Name</td>
+                    <td><button class="approve-btn">Approve</button></td>
+                </tr>
+                <tr>
+                    <td>Student 2</td>
+                    <td>Role 2</td>
+                    <td>Course Name</td>
+                    <td><button class="approve-btn">Approve</button></td>
+                </tr>
+                <tr>
+                    <td>Instructor 1 </td>
+                    <td>Role 3</td>
+                    <td>Course Name</td>
+                    <td><button class="approve-btn">Approve</button></td>
+                </tr>
+                <tr>
+                    <td>Student 3</td>
+                    <td>Role 4</td>
+                    <td>Course Name</td>
+                    <td><button class="approve-btn">Approve</button></td>
+                </tr>
+                <tr>
+                    <td>Student 4</td>
+                    <td>Role 5</td>
+                    <td>Course Name</td>
+                    <td><button class="approve-btn">Approve</button></td>
+                </tr>
+                <tr>
+                    <td>Instructor 2</td>
+                    <td>Role 6</td>
+                    <td>Course Name</td>
+                    <td><button class="approve-btn">Approve</button></td>
+                </tr>
+                <tr>
+                    <td>Student 5</td>
+                    <td>Role 7</td>
+                    <td>Course Name</td>
+                    <td><button class="approve-btn">Approve</button></td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                const menuButton = document.getElementById('menu-button');
+                const navLinks = document.getElementById('nav-links');
+
+             menuButton.addEventListener('click', function() {
+                if (navLinks.classList.contains('active')) {
+                    navLinks.classList.remove('active');
+        }       else {
+                    navLinks.classList.add('active');
+            }
+            });
+            });
+
+        </script>
+    </main>
+</body>
+
+</html>
