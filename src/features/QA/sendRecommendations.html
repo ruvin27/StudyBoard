@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>QA Course Info</title>
+		<link rel="stylesheet" href="../../assets/css/navbar.css" />
+        <link rel="stylesheet" href="../../assets/css/sendRecommendations.css"/>
+	</head>
+	<body>
+		<nav class="navbar">
+			<div class="navbar-logo">
+				<img src="../../assets/images/logo.png" alt="Logo" />
+				<span class="brand-name"><a href="./myCourses.html">StudyBoard</a></span>
+			</div>
+			<ul class="navbar-links" id="nav-links">
+				<li><a href="./myCourses.html">Courses</a></li>
+				<li class="dropdown">
+					<a href="#" class="dropbtn">Information Links &#9662;</a>
+					<div class="dropdown-content">
+						<a href="../info/program.html">Program</a>
+						<a href="../info/About.html">About</a>
+						<a href="../info/services.html">Services</a>
+						<a href="../info/ContactUs.html">Contact US</a>
+					</div>
+				</li>
+				<li><a href="../authentication/login.html">Logout</a></li>
+			</ul>
+			<button class="menu-button" id="menu-button">&#9776;</button>
+		</nav>
+        
+            <div class="container">
+                <h2 class="left-element">Course Recommendation</h2>
+            </div>
+            <div class="recommendationform">
+                <form action="#" method="post">
+                    <label for="courseName">Course Name</label>
+                    <input type="text" id="courseName" name="courseName" required>
+        
+                    <label for="instructorName">Instructor Name</label>
+                    <input type="text" id="instructorName" name="instructorName" required>
+        
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" required></textarea>
+        
+                    <button type="submit" class="btn">Send Recommendation</button>
+                </form>
+            </div>
+    </body>
