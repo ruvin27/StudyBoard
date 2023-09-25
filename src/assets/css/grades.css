@@ -17,7 +17,7 @@
 	padding-right: 30px;
 }
 
-.grades-button, .pdf-button {
+.grades-button, .pdf-button, .resolve-button {
 	background-color: #007bff;
 	color: #fff;
 	border: none;
@@ -29,7 +29,7 @@
 	margin: 10px 0;
 }
 
-.grades-button:hover, .pdf-button:hover {
+.grades-button:hover, .pdf-button:hover, .resolve-button:hover {
 	background-color: #0056b3;
 }
 
@@ -72,6 +72,10 @@
 	}
 	.custom-table th,
 	.custom-table td {
+		padding: 5px;
+		font-size: 14px;
+	}
+	.resolve-button{
 		padding: 5px;
 		font-size: 14px;
 	}
