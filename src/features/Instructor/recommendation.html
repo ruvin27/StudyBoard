@@ -3,9 +3,9 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Find User</title>
+		<title>Recommendations</title>
 		<link rel="stylesheet" href="../../assets/css/navbar.css" />
-		<link rel="stylesheet" href="../../assets/css/finduser.css" />
+		<link rel="stylesheet" href="../../assets/css/newUser.css" />
 	</head>
 	<body>
 		<nav class="navbar">
@@ -28,42 +28,40 @@
 			</ul>
 			<button class="menu-button" id="menu-button">&#9776;</button>
 		</nav>
-		<div class="container">
-			<div class="left-element"><h2>Find User</h2></div>
+		<div class="add-container">
+			<h2 class="add-access-header">Recommendations</h2>
 		</div>
 		<div class="search-container">
-			<input type="text" class="search-input" placeholder="Search User" />
+			<input type="text" class="search-input" placeholder="Search..." />
 			<button class="search-button">Search</button>
 		</div>
 		<table class="custom-table">
-			<thead>
-				<tr>
-					<th>User Email</th>
-					<th>Edit User</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td>user1@example.com</td>
-					<td>
-						<a href="../authentication/Profile.html"><button class="custom-button">Edit</button></a>
-					</td>
-				</tr>
-				<tr>
-					<td>user2@example.com</td>
-					<td>
-						<a href="../authentication/Profile.html"><button class="custom-button">Edit</button></a>
-					</td>
-				</tr>
-				<tr>
-					<td>user3@example.com</td>
-					<td>
-						<a href="../authentication/Profile.html"><button class="custom-button">Edit</button></a>
-					</td>
-				</tr>
-			</tbody>
-		</table>
-
+            <thead>
+                <tr>
+                    <th>User Email</th>
+                    <th>Role</th>
+                    <th>Course Change Recommendation</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>user1@example.com</td>
+                    <td>Program Cordinator</td>
+                    <td>Suggest providing more practice questions with hints.</td>
+                </tr>
+                <tr>
+                    <td>user2@example.com</td>
+                    <td>QA Officer</td>
+                    <td>Consider making the exam questions easier.</td>
+                </tr>
+                <tr>
+                    <td>user3@example.com</td>
+                    <td>QA Officer</td>
+                    <td>No change recommended at this time.</td>
+                </tr>
+            </tbody>
+        </table>
+        
 		<div class="chat-container">
     <div class="chat-header">Instant Messaging</div>
     <div class="chat-messages">
@@ -79,8 +77,6 @@
     </div>
 </div>
 
-
 		<script src="../../assets/js/nav.js"></script>
-		<!-- <script src="../../assets/js/userAccounts.js"></script> -->
 	</body>
 </html>

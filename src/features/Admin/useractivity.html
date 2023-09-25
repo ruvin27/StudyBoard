@@ -3,9 +3,9 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Find User</title>
+		<title>User Activity</title>
 		<link rel="stylesheet" href="../../assets/css/navbar.css" />
-		<link rel="stylesheet" href="../../assets/css/finduser.css" />
+		<link rel="stylesheet" href="../../assets/css/newUser.css" />
 	</head>
 	<body>
 		<nav class="navbar">
@@ -28,42 +28,40 @@
 			</ul>
 			<button class="menu-button" id="menu-button">&#9776;</button>
 		</nav>
-		<div class="container">
-			<div class="left-element"><h2>Find User</h2></div>
+		<div class="add-container">
+			<h2 class="add-access-header">User Activity</h2>
 		</div>
 		<div class="search-container">
-			<input type="text" class="search-input" placeholder="Search User" />
+			<input type="text" class="search-input" placeholder="Search..." />
 			<button class="search-button">Search</button>
 		</div>
 		<table class="custom-table">
 			<thead>
 				<tr>
 					<th>User Email</th>
-					<th>Edit User</th>
+					<th>Role</th>
+					<th>Last Logged In</th>
 				</tr>
 			</thead>
 			<tbody>
 				<tr>
 					<td>user1@example.com</td>
-					<td>
-						<a href="../authentication/Profile.html"><button class="custom-button">Edit</button></a>
-					</td>
+					<td>Admin</td>
+					<td>2023-09-21 14:30:00</td>
 				</tr>
 				<tr>
 					<td>user2@example.com</td>
-					<td>
-						<a href="../authentication/Profile.html"><button class="custom-button">Edit</button></a>
-					</td>
+					<td>Instructor</td>
+					<td>2023-09-20 09:45:00
+                    </td>
 				</tr>
 				<tr>
 					<td>user3@example.com</td>
-					<td>
-						<a href="../authentication/Profile.html"><button class="custom-button">Edit</button></a>
-					</td>
+					<td>Student</td>
+					<td>2023-09-19 18:15:00</td>
 				</tr>
 			</tbody>
 		</table>
-
 		<div class="chat-container">
     <div class="chat-header">Instant Messaging</div>
     <div class="chat-messages">
@@ -79,8 +77,6 @@
     </div>
 </div>
 
-
 		<script src="../../assets/js/nav.js"></script>
-		<!-- <script src="../../assets/js/userAccounts.js"></script> -->
 	</body>
 </html>

@@ -1,35 +1,37 @@
-.container{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    max-width: 100%;
-    align-items: center;
+.container {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	max-width: 100%;
+	align-items: center;
 }
 
 .card-link {
-    text-decoration: none; 
-    color: inherit; 
-  }
-
-.card{
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
-    margin: 40px; 
-    max-width: 500px; 
-    transition: transform 0.3s ease-in-out;
+	text-decoration: none;
+	color: inherit;
 }
 
-.card:hover{
-    cursor: pointer;
-    transform: scale(1.05);
+.card {
+	border-radius: 5px;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+	margin: 40px;
+	max-width: 500px;
+	transition: transform 0.3s ease-in-out;
 }
 
-.card-image{
-    max-width: 300px;
-    border-radius: 5px;
-    padding: 20px 20px 0px 20px; 
+.card:hover {
+	cursor: pointer;
+	transform: scale(1.05);
 }
 
-.card h3{
-    text-align: center;
+.card-image {
+	width: 250px;
+	height: 250px;
+	object-fit: cover;
+	border-radius: 5px;
+	padding: 20px 20px 0px 20px;
+}
+
+.card h3 {
+	text-align: center;
 }
