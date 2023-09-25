@@ -98,6 +98,7 @@
     border-bottom: 1px solid #b2b2b2;
 }
 
+
 .login-btn, .newpassword-btn, .forgot-btn{
     width:100%;
     display: flex;
@@ -105,6 +106,17 @@
     margin: 20px 0 20px 0;
 }
 
+.login-btn{
+    display: flex;
+    flex-wrap: wrap;
+    text-align: center;
+}
+
+.login{
+    padding: 10px;
+    margin: 5px;
+    text-decoration: none;
+}
 .sub-btn{
     min-width: 130px;
     height: 40px;

@@ -33,15 +33,30 @@
 					<div class="headerimg">
 						<span> SIGN IN </span>
 					</div>
-					<form class="loginform" action="index.php" method="POST">
+					<form class="loginform" >
 						<div class="login-input">
-							<input class="input100" type="email" name="email" placeholder="Enter Email" required />
+							<input class="input100" type="email" name="email" placeholder="Enter Email" />
 						</div>
 						<div class="login-input">
-							<input class="input100" type="password" name="password" placeholder="Enter Password" required />
+							<input class="input100" type="password" name="password" placeholder="Enter Password" />
 						</div>
 						<div class="login-btn">
-							<button class="sub-btn" name="submit">Login</button>
+							<a href="../Student/myCourses.html" class="sub-btn login">
+								Login as Student
+							</a>
+							<a href="../Instructor/myCourses.html" class="sub-btn login">
+								Login as Instructor
+							</a>
+							<a href="../Admin/panel.html" class="sub-btn login">
+								Login as Admin
+							</a>
+							<a href="../QA/myCourses.html" class="sub-btn login">
+								Login as QA Officer
+							</a>
+							<a href="../PC/myCourses.html" class="sub-btn login">
+								Login as PC
+							</a>
+							<!-- <button class="sub-btn" name="submit">Login as PC</button> -->
 						</div>
 						<div class="txt">
 							<a href=".\forgotpassword.html"> Forgot Password </a>
