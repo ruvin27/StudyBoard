@@ -1,8 +1,19 @@
+/* Team 15
+Ruvin Rodrigues  - 1002029569
+Urmi Manish Sheth - 1002064934
+Vinil Reddy Surakunta – 1002072982
+Srikar Valishetty - 1002088509
+Sri Budhi Sagar Sesetti - 1002131432 */
+
+
+
+
 body {
     margin: 0;
     padding: 0;
     background-color: #fafafa;
 }
+
 
 .container {
     display: flex;
