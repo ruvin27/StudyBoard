@@ -29,7 +29,7 @@ Valishetty,Srikar - 1002088509, Sesetti, Sri Budhi Sagar  - 1002131432 */
     margin-top: 10px;
 }
 
- .container-login{
+ .containerLogin{
      width: 100%;
      display: flex;
      flex-wrap: wrap;
@@ -38,7 +38,7 @@ Valishetty,Srikar - 1002088509, Sesetti, Sri Budhi Sagar  - 1002131432 */
      padding: 15px;
  }
 
-.wrap-login{
+.wrapLogin{
     margin-top: 5%;
     width: 670px;
     background: #fff;
@@ -88,7 +88,7 @@ Valishetty,Srikar - 1002088509, Sesetti, Sri Budhi Sagar  - 1002131432 */
     justify-content: center;
 }
 
-.login-input, .register-input, .newpassword-input, .forgot-input{
+.loginInput, .register-input, .newpassword-input, .forgot-input{
     width: 80%;
     margin: 20px;
 }
@@ -103,14 +103,14 @@ Valishetty,Srikar - 1002088509, Sesetti, Sri Budhi Sagar  - 1002131432 */
 }
 
 
-.login-btn, .newpassword-btn, .forgot-btn{
+.loginBtn, .newpassword-btn, .forgot-btn{
     width:100%;
     display: flex;
     justify-content: center;
     margin: 20px 0 20px 0;
 }
 
-.login-btn{
+.loginBtn{
     display: flex;
     flex-wrap: wrap;
     text-align: center;
@@ -121,7 +121,7 @@ Valishetty,Srikar - 1002088509, Sesetti, Sri Budhi Sagar  - 1002131432 */
     margin: 5px;
     text-decoration: none;
 }
-.sub-btn{
+.subBtn{
     min-width: 130px;
     height: 40px;
     background-color: #157efb;
@@ -133,7 +133,7 @@ Valishetty,Srikar - 1002088509, Sesetti, Sri Budhi Sagar  - 1002131432 */
     box-shadow: 3px 3px 10px #888888;
 }
 
-.sub-btn:hover{
+.subBtn:hover{
     background-color:#333333;
     cursor: pointer;
 }
@@ -158,19 +158,19 @@ Valishetty,Srikar - 1002088509, Sesetti, Sri Budhi Sagar  - 1002131432 */
     text-decoration: underline;
 }
 
-.radio-btn{
+.radioBtn{
     cursor: pointer;
     margin: 15px 0 0 10px;
     color: #555555;
 }
 
-.radio-label{
+.radioLabel{
     margin:10px 0 0 10px;
     font-size: 18px;
     color: #555555;
 }
 
-.radio-role{
+.radioRole{
     display: flex;
     flex-wrap: wrap;
 }
