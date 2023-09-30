@@ -1,177 +1,200 @@
 /* Team 15: Rodrigues, Ruvin - 1002029569, Sheth, Urmi Manish - 1002064934, Surakunta, Vinil Reddy  – 1002072982,
 Valishetty,Srikar - 1002088509, Sesetti, Sri Budhi Sagar  - 1002131432 */
 
-
-* {
-    box-sizing: border-box;
-    padding: 0;
-    margin: 0;
- }
-
- body{
-    height: 100vh;
-    background:#ebeeef;
-
- }
-
- .wholebody{
-     width: 100%;
-     margin: 0 auto;
- }
-
-.head1{
-    display: inline-block;
+.wholebody {
+	width: 100%;
+	margin: 0 auto;
 }
 
-.head{
-    display: inline-block;
-    font-size: 32px;
-    margin-top: 10px;
+.head1 {
+	display: inline-block;
 }
 
- .containerLogin{
-     width: 100%;
-     display: flex;
-     flex-wrap: wrap;
-     justify-content: center;
-     align-items: center;
-     padding: 15px;
- }
-
-.wrapLogin{
-    margin-top: 5%;
-    width: 670px;
-    background: #fff;
-    border-radius: 10px;
-    overflow: hidden;
+.head {
+	display: inline-block;
+	font-size: 32px;
+	margin-top: 10px;
 }
 
-
-.headerimg{
-    background-image: url('../images/auth.jpg');
-    width: 100%;
-    position: relative;
-    z-index: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    padding: 70px 15px  74px 15px;
+.containerLogin,
+.containerRegister,
+.containerforgotpass, .containerNewpass {
+	width: 100%;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+	margin-bottom: 30px;
 }
 
-.headerimg::before{
-    content: "";
-    display: block;
-    position: absolute;
-    z-index: -1;
-    width: 100%;
-    height: 100%;
-    top:0;
-    left: 0;
-    background-color: rgba(54, 84,99,0.7);
+.wrapLogin,
+.wrapRegister,
+.wrapForgotpass,.wrapNewpass {
+	margin-top: 5%;
+	width: 670px;
+	background: #fff;
+	border-radius: 10px;
+	overflow: hidden;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
-.headerimg span{
-    font-family: 'Poppins', sans-serif;
-    font-size: 30px;
-    color: #fff;
-    line-height: 1.2;
-    font-weight: 800;
+.headerimg {
+	background-image: url("../images/auth.jpg");
+	width: 100%;
+	position: relative;
+	z-index: 1;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+	padding: 70px 15px 74px 15px;
 }
 
-.loginform, .newpasswordform, .forgotpasswordform, .registerform{
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+.headerimg::before {
+	content: "";
+	display: block;
+	position: absolute;
+	z-index: -1;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	background-color: rgba(54, 84, 99, 0.7);
 }
 
-.loginInput, .register-input, .newpassword-input, .forgot-input{
-    width: 80%;
-    margin: 20px;
+.headerimg span {
+	font-family: "Poppins", sans-serif;
+	font-size: 30px;
+	color: #fff;
+	line-height: 1.2;
+	font-weight: 800;
 }
 
-.input100{
-    font-size: 15px;
-    color: #555555;
-    height: 50px;
-    width: 100%;
-    border:0px;
-    border-bottom: 1px solid #b2b2b2;
+.loginform,
+.newpasswordform,
+.forgotpasswordform,
+.registerform {
+	width: 100%;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
 }
 
-
-.loginBtn, .newpassword-btn, .forgot-btn{
-    width:100%;
-    display: flex;
-    justify-content: center;
-    margin: 20px 0 20px 0;
+.loginInput,
+.registerInput,
+.newpasswordInput,
+.forgotpassInput {
+	width: 80%;
+	margin: 20px;
 }
 
-.loginBtn{
-    display: flex;
-    flex-wrap: wrap;
-    text-align: center;
+.input100 {
+	font-size: 15px;
+	color: #555555;
+	height: 50px;
+	width: 100%;
+	border: 0px;
+	border-bottom: 1px solid #b2b2b2;
 }
 
-.login{
-    padding: 10px;
-    margin: 5px;
-    text-decoration: none;
-}
-.subBtn{
-    min-width: 130px;
-    height: 40px;
-    background-color: #157efb;
-    border-radius: 25px;
-    font-size: 18px;
-    color: #fff;
-    line-height: 1.2;
-    border: none;
-    box-shadow: 3px 3px 10px #888888;
+.loginBtn,
+.newpasswordBtn,
+.forgotBtn {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	margin: 20px 0 20px 0;
 }
 
-.subBtn:hover{
-    background-color:#333333;
-    cursor: pointer;
+.loginBtn,
+.registerBtn {
+	display: flex;
+	justify-content: center;
+
+	width: 100%;
 }
 
-.txt{
-    color:#333333 ;
-    display: flex;
-    flex-direction: column;
-    margin: 15px auto;
-    text-align: center;
+.login {
+	padding: 10px;
+	margin: 5px;
+	text-decoration: none;
+}
+.subBtn {
+	min-width: 130px;
+	height: 40px;
+	background-color: #157efb;
+	border-radius: 25px;
+	font-size: 18px;
+	color: #fff;
+	line-height: 1.2;
+	border: none;
+	box-shadow: 3px 3px 10px #888888;
 }
 
-.txt a{
-    text-decoration: none;
-    margin: 0 0 10px 0;
+.subBtn:hover {
+	background-color: #333333;
+	cursor: pointer;
 }
 
-.txt div{
-    margin: 10px 0;
-}
-.txt a:hover{
-    text-decoration: underline;
-}
-
-.radioBtn{
-    cursor: pointer;
-    margin: 15px 0 0 10px;
-    color: #555555;
+.txt {
+	color: #333333;
+	display: flex;
+	flex-direction: column;
+	margin: 15px auto;
+	text-align: center;
 }
 
-.radioLabel{
-    margin:10px 0 0 10px;
-    font-size: 18px;
-    color: #555555;
+.txt a {
+	text-decoration: none;
+	margin: 0 0 10px 0;
 }
 
-.radioRole{
-    display: flex;
-    flex-wrap: wrap;
+.txt div {
+	margin: 10px 0;
+}
+.txt a:hover {
+	text-decoration: underline;
 }
 
+.dropdownRole {
+	width: 80%;
+}
+
+.dropdownLabel {
+	display: block;
+	font-weight: bold;
+	margin-bottom: 5px;
+	font-size: 16px;
+	color: #333;
+}
+
+.dropdownSelect {
+	width: 100%;
+	padding: 10px;
+	font-size: 16px;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	outline: none;
+	background-color: #fff;
+	color: #333;
+}
+
+.dropdownSelect option {
+	background-color: #fff;
+	color: #333;
+}
+
+.dropdownSelect::-ms-expand {
+	display: none;
+}
+
+.dropdownSelect::after {
+	content: "▼";
+	position: absolute;
+	top: 50%;
+	right: 10px;
+	transform: translateY(-50%);
+	pointer-events: none;
+}

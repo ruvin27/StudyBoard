@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import NavbarCSS from "../assets/css/navbar.module.css";
 import Logo from "../assets/images/logo.png";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
 	const [isActive, setIsActive] = useState(false);
@@ -30,7 +31,7 @@ const Navbar = () => {
 					</div>
 				</li>
 				<li>
-					<a href="./register.html">Register</a>
+					<Link to={"/register"}>Register</Link>
 				</li>
 			</ul>
 			<button className={NavbarCSS.menuButton} id="menu-button" onClick={toggleMenu}>
