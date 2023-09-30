@@ -9,39 +9,39 @@ Valishetty,Srikar - 1002088509, Sesetti, Sri Budhi Sagar  - 1002131432 */
     align-items: center;
 }
 
-.front-image{
+.frontImage{
     margin: 30px 0px;
     text-align: center;
 }
 
-.front-image img{
+.frontImage img{
     width: 80%;
 }
 
-.program-details{
+.programDetails{
     border: 1px solid black;
     width: 80%;
     padding: 20px;
     margin: 20px;
 }
 
-.content-header{
+.contentHeader{
     text-align: center;
 }
 
-.program-details ul{
+.programDetails ul{
     padding-left: 150px;
     font-size: 20px;
     margin: 30px 0px;
 }
-.program-details ul li{
+.programDetails ul li{
     margin-bottom: 15px;
 }
-.course-button-style{
+.courseButtonStyle{
     text-align: center;
     margin-bottom: 30px;
 }
-.courses-button {
+.coursesButton {
     background-color: #007bff;
     color: #fff;
     border: none;
@@ -53,20 +53,20 @@ Valishetty,Srikar - 1002088509, Sesetti, Sri Budhi Sagar  - 1002131432 */
     width: 250px;
 }
 
-.courses-button:hover {
+.coursesButton:hover {
     background-color: #0056b3;
 }
 
 @media (max-width: 768px) {
-    .front-image img{
+    .frontImage img{
         width: 95%;
     }
     
-    .program-details{
+    .programDetails{
         width: 80%;
     }
 
-    .program-details ul{
+    .programDetails ul{
         padding-left: 30px;
         padding-right: 10px;
     }

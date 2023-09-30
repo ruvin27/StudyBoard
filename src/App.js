@@ -15,6 +15,12 @@ import Panel from "./features/Admin/Panel";
 import UserAccounts from "./features/Admin/UserAccounts";
 import UserActivity from "./features/Admin/UserActivity";
 
+//Information Page Imports
+import About from "./features/info/About";
+import ContactUs from "./features/info/ContactUs";
+import Program from "./features/info/Program";
+import Services from "./features/info/Services";
+
 const App = () => {
 	return (
 		<div>
@@ -33,6 +39,11 @@ const App = () => {
 					<Route path="/panel" exact element={<Panel />} />
 					<Route path="/useraccounts" exact element={<UserAccounts />} />
 					<Route path="/useractivity" exact element={<UserActivity />} />
+					{/* Information Page Routes */}
+					<Route path="/about" exact element={<About />} />
+					<Route path="/contactus" exact element={<ContactUs />} />
+					<Route path="/program" exact element={<Program />} />
+					<Route path="/services" exact element={<Services />} />
 				</Routes>
 			</Router>
 		</div>
