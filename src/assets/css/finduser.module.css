@@ -1,8 +1,24 @@
 /* Team 15: Rodrigues, Ruvin - 1002029569, Sheth, Urmi Manish - 1002064934, Surakunta, Vinil Reddy  – 1002072982,
 Valishetty,Srikar - 1002088509, Sesetti, Sri Budhi Sagar  - 1002131432 */
+ 
 
 
-.search-container {
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f0f0f0;
+    padding: 10px;
+  }
+  
+  .leftElement {
+    flex: 1;
+    padding-left: 35px;
+  }
+ 
+  
+  .searchContainer {
     width: 90%;
     display: flex;
     justify-content: space-between;
@@ -10,7 +26,7 @@ Valishetty,Srikar - 1002088509, Sesetti, Sri Budhi Sagar  - 1002131432 */
     margin: 20px auto;
   }
   
-  .search-input {
+  .searchInput {
     width: 70%;
     padding: 10px;
     border: 1px solid #ccc;
@@ -18,7 +34,7 @@ Valishetty,Srikar - 1002088509, Sesetti, Sri Budhi Sagar  - 1002131432 */
     outline: none;
   }
   
-  .search-button {
+  .searchButton {
     width: 25%;
     padding: 10px;
     background-color: #007bff;
@@ -30,105 +46,56 @@ Valishetty,Srikar - 1002088509, Sesetti, Sri Budhi Sagar  - 1002131432 */
   }
   
   @media (max-width: 768px) {
-    .search-container {
+    .searchContainer {
       flex-direction: column;
     }
   
-    .search-input {
+    .searchInput {
       width: 100%;
       margin-bottom: 10px;
     }
   
-    .search-button {
+    .searchButton {
       width: 100%;
     }
   }
-
-.people_list_table{
-  border-collapse: collapse;
-    border: 1px solid #ccc;
-    margin: 20px auto;
-    width: 60%;
-}
-.people_list_table th,
-.people_list_table td{
-  border: 1px solid #ccc;
-  padding: 8px;
-  text-align: center;
-}
-
-
-.custom-table th,
-.custom-table td {
-  border: 1px solid #ccc;
-  padding: 8px;
-  text-align: left;
-}
-
-.custom-table {
+  
+  .findUserTable {
     width: 90%;
     border-collapse: collapse;
     border: 1px solid #ccc;
     margin: 20px auto;
   }
   
-  .custom-table th,
-  .custom-table td {
+  .findUserTable th,
+  .findUserTable td {
     border: 1px solid #ccc;
     padding: 8px;
     text-align: left;
   }
   
-  .custom-button {
+  .findUserBtn {
     padding: 5px 10px;
-    background-color: #007bff;
+    background-color: #ff0000;
     color: #fff;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     width: 100%;
     font-size: 15px;
-  }
-  .remove-button {
-    padding: 5px 10px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
   
-    font-size: 15px;
   }
-
-  .container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #f0f0f0;
-    padding: 10px;
-}
-
-.left-element {
-    flex: 1;
-    padding-left: 35px;
-}
   
   @media (max-width: 768px) {
-    .custom-table {
+    .findUserTable {
       width: 100%;
       border-collapse: collapse;
       border: 1px solid #ccc;
       margin: 0 auto;
     }
-    .custom-table th,
-    .custom-table td {
+    .findUserTable th,
+    .findUserTable td {
       padding: 5px;
       font-size: 14px;
     }
-  }
-  
-  .add-container {
-    text-align: center;
-    background-color: #f0f0f0;
-    padding: 10px;
   }

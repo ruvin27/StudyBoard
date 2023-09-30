@@ -84,11 +84,12 @@ body {
 		display: none;
 		flex-direction: column;
 		position: absolute;
-		top: 60px;
+		top: 50px;
 		left: 0;
 		right: 0;
 		background-color: #333;
 		z-index: 2;
+		padding: 0px;
 	}
 
 	.navbar.active .navbarLinks {
