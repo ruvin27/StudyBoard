@@ -24,10 +24,10 @@ const Navbar = () => {
 						Information Links &#9662;
 					</a>
 					<div className={NavbarCSS.dropdownContent}>
-						<a href="../info/program.html">Program</a>
-						<a href="../info/About.html">About</a>
-						<a href="../info/services.html">Services</a>
-						<a href="../info/ContactUs.html">Contact US</a>
+						<Link to="/program">Program</Link>
+						<Link to="/about">About</Link>
+						<Link to="/services">Services</Link>
+						<Link to="/contactus">Contact Us</Link>
 					</div>
 				</li>
 				<li>
