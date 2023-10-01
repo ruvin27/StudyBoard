@@ -1,5 +1,6 @@
 import React from "react";
 import UserAccountsCSS from "../../assets/css/userAccounts.module.css";
+import { Link } from "react-router-dom";
 
 const UserAccounts = () => {
 	return (
@@ -9,12 +10,12 @@ const UserAccounts = () => {
 					<h2>User Accounts</h2>
 				</div>
 				<div className={UserAccountsCSS.rightElement}>
-					<a href="./finduser.html">
+					<Link to={'/finduser'}>
 						<button className={UserAccountsCSS.userButton}>Find User Profiles</button>
-					</a>
-					<a href="./newUsers.html">
+					</Link>
+					<Link to={'/newusers'}>
 						<button className={UserAccountsCSS.userButton}>Approve New Users</button>
-					</a>
+					</Link>
 				</div>
 			</div>
 			<div className={UserAccountsCSS.searchContainer}>

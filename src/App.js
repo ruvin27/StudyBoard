@@ -1,6 +1,7 @@
-import Navbar from "./features/navbar";
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Navbar from "./features/navbar";
+import Chat from "./features/Chat";
 //Auth Imports
 import Login from "./features/authentication/Login";
 import Register from "./features/authentication/Register";
@@ -45,6 +46,7 @@ const App = () => {
 					<Route path="/program" exact element={<Program />} />
 					<Route path="/services" exact element={<Services />} />
 				</Routes>
+				<Chat/>
 			</Router>
 		</div>
 	);
