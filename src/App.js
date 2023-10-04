@@ -22,6 +22,17 @@ import ContactUs from "./features/info/ContactUs";
 import Program from "./features/info/Program";
 import Services from "./features/info/Services";
 
+//Instructor Page Imports
+import CreateCourse from "./features/Instructor/CreateCourse";
+import CreateExam from "./features/Instructor/CreateExam";
+import Exams from "./features/Instructor/Exams";
+import Grades from "./features/Instructor/Grades";
+import InstructorCourseInfo from "./features/Instructor/InstructorCourseInfo";
+import InstructorExamAnalysis from "./features/Instructor/InstructorExamAnalysis";
+import MyCourses from "./features/Instructor/MyCourses";
+import Recommendation from "./features/Instructor/Recommendation";
+
+
 const App = () => {
 	return (
 		<div>
@@ -45,6 +56,15 @@ const App = () => {
 					<Route path="/contactus" exact element={<ContactUs />} />
 					<Route path="/program" exact element={<Program />} />
 					<Route path="/services" exact element={<Services />} />
+					{/* Instructor Page Routes */}
+                    <Route path="/createcourse" exact element={<CreateCourse />} />
+                    <Route path="/createexam" exact element={<CreateExam />} />
+                    <Route path="/exams" exact element={<Exams />} />
+                    <Route path="/grades" exact element={<Grades />} />
+                    <Route path="/instructorcourseinfo" exact element={<InstructorCourseInfo />} />
+                    <Route path="/instructorexamanalysis" exact element={<InstructorExamAnalysis />} />
+                    <Route path="/mycourses" exact element={<MyCourses />} />
+                    <Route path="/recommendation" exact element={<Recommendation />} />
 				</Routes>
 				<Chat/>
 			</Router>

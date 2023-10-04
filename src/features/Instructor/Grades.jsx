@@ -1,14 +1,14 @@
 import React from 'react';
-import gradesCSS from "../../assets/css/grades.module.css";
+import GradesCSS from "../../assets/css/Grades.module.css";
 import navbarCSS from "../../assets/css/navbar.module.css";
-const grades = () => {
+const Grades = () => {
     return(
         <div>
-            <div className={gradesCSS.container}>
-			<div className={gradesCSS.leftElement}><h2>Course 1 - Exam 1</h2></div>
+            <div className={GradesCSS.container}>
+			<div className={GradesCSS.leftElement}><h2>Course 1 - Exam 1</h2></div>
 		</div>
-		<div className={gradesCSS.grades}>
-			<table className={gradesCSS.customTable}>
+		<div className={GradesCSS.Grades}>
+			<table className={GradesCSS.customTable}>
 				<thead>
 					<tr>
 						<th>Student</th>
@@ -30,8 +30,8 @@ const grades = () => {
 				</tbody>
 			</table>
 		</div>
-		<div className={gradesCSS.release}>
-			<button className={gradesCSS.gradesButton}>Release Grades</button>
+		<div className={GradesCSS.release}>
+			<button className={GradesCSS.GradesButton}>Release Grades</button>
 		</div>
 		<div className={navbarCSS.chatcontainer}>
 			<div className={navbarCSS.chatHeader}>Instant Messaging</div>
@@ -51,4 +51,4 @@ const grades = () => {
     );
 }
 
-export default grades;
+export default Grades;

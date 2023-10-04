@@ -1,5 +1,5 @@
 import React from "react";
-import UserActivityCSS from "../../assets/css/newUser.module.css";
+import UserActivityCSS from "../../assets/css/NewUser.module.css";
 
 const UserActivity = () => {
 	return (

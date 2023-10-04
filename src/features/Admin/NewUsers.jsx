@@ -1,5 +1,5 @@
 import React from 'react'
-import NewUsersCSS from '../../assets/css/newUser.module.css'
+import NewUsersCSS from '../../assets/css/NewUser.module.css'
 
 const NewUsers = () => {
     return ( 

@@ -1,13 +1,13 @@
 import React from 'react';
-import createExamCSS from "../../assets/css/createExam.module.css";
+import CreateExamCSS from "../../assets/css/CreateExam.module.css";
 import navbarCSS from "../../assets/css/navbar.module.css";
-const createExam = () => {
+const CreateExam = () => {
     return(
         <div>
-            <div className={createExamCSS.container}>
-			<div className={createExamCSS.leftElement}><h2>Course 1</h2></div>
+            <div className={CreateExamCSS.container}>
+			<div className={CreateExamCSS.leftElement}><h2>Course 1</h2></div>
 		</div>
-		<div className={createExamCSS.examFormContainer}>
+		<div className={CreateExamCSS.examFormContainer}>
 			<h3>Create an Exam</h3>
 			<form id="examForm">
 				<label htmlfor="examName">Exam Name:</label>
@@ -24,7 +24,7 @@ const createExam = () => {
 			</form>
 		</div>
 
-		<div className={createExamCSS.questionFormContainer}>
+		<div className={CreateExamCSS.questionFormContainer}>
 			<h3>Add a Question</h3>
 			<form id="questionForm">
 				<label htmlfor="questionText">Question:</label>
@@ -54,8 +54,8 @@ const createExam = () => {
 			</form>
 		</div>
 
-		<div className={createExamCSS.create}>
-			<button className={createExamCSS.createButton}>Create Exam</button>
+		<div className={CreateExamCSS.create}>
+			<button className={CreateExamCSS.createButton}>Create Exam</button>
 		</div>
 		<div className={navbarCSS.chatContainer}>
 			<div className={navbarCSS.chatHeader}>Instant Messaging</div>
@@ -75,4 +75,4 @@ const createExam = () => {
 
     );
 }
-export default createExam;
+export default CreateExam;
