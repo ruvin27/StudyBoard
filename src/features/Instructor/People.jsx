@@ -1,15 +1,15 @@
 import React from 'react';
-import peopleCSS from "../../assets/css/newUser.module.css";
+import PeopleCSS from "../../assets/css/NewUser.module.css";
 import navbarCSS from "../../assets/css/navbar.module.css";
-const people = () => {
+const People = () => {
     return(
         <div>
-            <div className={peopleCSS.container}>
-			<div className={peopleCSS.leftElement}><h2>Course Name</h2></div>
+            <div className={PeopleCSS.container}>
+			<div className={PeopleCSS.leftElement}><h2>Course Name</h2></div>
 		</div>
 
 		<div>
-			<table className={peopleCSS.people_list_table}>
+			<table className={PeopleCSS.people_list_table}>
 				<thead>
 					<tr>
 						<th colspan="3">People</th>
@@ -31,33 +31,33 @@ const people = () => {
 						<td>Student</td>
 						<td>Student 1</td>
 
-						<td><button className={peopleCSS.removeButton}>Remove from this course</button></td>
+						<td><button className={PeopleCSS.removeButton}>Remove from this course</button></td>
 					</tr>
 					<tr>
 						<td>Student</td>
 						<td>Student 2</td>
 
-						<td><button className={peopleCSS.removeButton}>Remove from this course</button></td>
+						<td><button className={PeopleCSS.removeButton}>Remove from this course</button></td>
 					</tr>
 					<tr>
 						<td>Student</td>
 						<td>Student 3</td>
-						<td><button className={peopleCSS.removeButton}>Remove from this course</button></td>
+						<td><button className={PeopleCSS.removeButton}>Remove from this course</button></td>
 					</tr>
 					<tr>
 						<td>Student</td>
 						<td>Student 4</td>
-						<td><button className={peopleCSS.removeButton}>Remove from this course</button></td>
+						<td><button className={PeopleCSS.removeButton}>Remove from this course</button></td>
 					</tr>
 					<tr>
 						<td>Student</td>
 						<td>Student 5</td>
-						<td><button className={peopleCSS.removeButton}>Remove from this course</button></td>
+						<td><button className={PeopleCSS.removeButton}>Remove from this course</button></td>
 					</tr>
 					<tr>
 						<td>Student</td>
 						<td>Student 6</td>
-						<td><button className={peopleCSS.removeButton}>Remove from this course</button></td>
+						<td><button className={PeopleCSS.removeButton}>Remove from this course</button></td>
 					</tr>
 				</tbody>
 			</table>
@@ -79,4 +79,4 @@ const people = () => {
         </div>
     );
 }
-export default people;
+export default People;

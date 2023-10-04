@@ -1,18 +1,18 @@
 import React from 'react';
-import recommendationCSS from "../../assets/css/newUser.module.css";
+import RecommendationCSS from "../../assets/css/NewUser.module.css";
 import navbarCSS from "../../assets/css/navbar.module.css";
-const people = () => {
+const Recommendation = () => {
     return(
     <div>
          <div>
-            <div className={recommendationCSS.addContainer}>
-			<h2 className={recommendationCSS.addAccessHeader}>Recommendations</h2>
+            <div className={RecommendationCSS.addContainer}>
+			<h2 className={RecommendationCSS.addAccessHeader}>Recommendations</h2>
 		</div>
-		<div className={recommendationCSS.searchContainer}>
-			<input type="text" className={recommendationCSS.searchInput} placeholder="Search..." />
-			<button className={recommendationCSS.searchButton}>Search</button>
+		<div className={RecommendationCSS.searchContainer}>
+			<input type="text" className={RecommendationCSS.searchInput} placeholder="Search..." />
+			<button className={RecommendationCSS.searchButton}>Search</button>
 		</div>
-		<table className={recommendationCSS.customTable}>
+		<table className={RecommendationCSS.customTable}>
 			<thead>
 				<tr>
 					<th>User Email</th>
@@ -59,3 +59,4 @@ const people = () => {
     </div>
     );
 }
+export default Recommendation;

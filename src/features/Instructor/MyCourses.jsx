@@ -1,8 +1,8 @@
 import React from 'react';
-import myCoursesCSS from "../../assets/css/myCourses.module.css";
+import myCoursesCSS from "../../assets/css/MyCourses.module.css";
 import navbarCSS from "../../assets/css/navbar.module.css";
 import { Link } from "react-router-dom";
-const myCourses = () => {
+const MyCourses = () => {
     return(
         <div>
             <div className={myCoursesCSS.container}>
@@ -88,4 +88,4 @@ const myCourses = () => {
 
     );
 }
-export default myCourses;
+export default MyCourses;
