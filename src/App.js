@@ -2,6 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./features/navbar";
 import Chat from "./features/Chat";
+
 //Auth Imports
 import Login from "./features/authentication/Login";
 import Register from "./features/authentication/Register";
@@ -32,6 +33,18 @@ import InstructorExamAnalysis from "./features/Instructor/InstructorExamAnalysis
 import MyCourses from "./features/Instructor/MyCourses";
 import Recommendation from "./features/Instructor/Recommendation";
 
+//PC imports
+import BelowAverageResults from "./features/PC/belowavgexams";
+import ContactUsResponses from "./features/PC/contactresponses";
+import MyCoursesPc from "./features/PC/myCourses";
+import PCCourseInfo from "./features/PC/PCCourseInfo";
+import SendRecommendations from "./features/PC/sendRecommendations";
+
+//QA imports
+import BelowAverageResultsQA from "./features/QA/belowavgexams";
+import MyCoursesQA from "./features/QA/myCourses";
+import CourseInfoQA from "./features/QA/QACourseInfo";
+import CourseRecommendationQA from "./features/QA/sendRecommendations";
 
 const App = () => {
 	return (
@@ -65,6 +78,17 @@ const App = () => {
                     <Route path="/instructorexamanalysis" exact element={<InstructorExamAnalysis />} />
                     <Route path="/mycourses" exact element={<MyCourses />} />
                     <Route path="/recommendation" exact element={<Recommendation />} />
+					{/* PC Page Routes */}
+					<Route path="/belowavgexams" exact element={<BelowAverageResults/>}/>
+					<Route path="/contactusresponses" exact element={<ContactUsResponses/>}/>
+					<Route path="/MyCoursesPc" exact element={<MyCoursesPc/>}/>
+					<Route path="/PCCourseInfo" exact element={<PCCourseInfo/>}/>
+					<Route path="/SendRecommendations" exact element={<SendRecommendations/>}/>
+					{/* QA Page Routes */}
+					<Route path="/belowavgexamsQA" exact element={<BelowAverageResultsQA/>}/>
+					<Route path="/mycoursesqa" exact element={<MyCoursesQA/>}/>
+					<Route path="/courseinfoqa" exact element={<CourseInfoQA/>}/>
+					<Route path="/sendrecommendationsqa" exact element={<CourseRecommendationQA/>}/>
 				</Routes>
 				<Chat/>
 			</Router>
