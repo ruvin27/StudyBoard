@@ -19,16 +19,16 @@ body {
     padding: 10px;
 }
 
-.left-element {
+.leftElement {
     flex: 1;
     padding-left: 35px;
 }
 
-.right-element {
+.rightElement {
     flex: 1;
     text-align: right;
 }
-.mycourses-button {
+.mycoursesButton {
     background-color: #007bff;
     color: #fff;
     border: none;
@@ -40,11 +40,11 @@ body {
     margin: 10px;
 }
 
-.courses-button:hover {
+.coursesButton:hover {
     background-color: #0056b3;
 }
 
-.menu-button {
+.menuButton {
     display: none;
     background-color: #333;
     color: white;
@@ -61,7 +61,7 @@ header {
     border-bottom: 1px solid #e0e0e0;
 }
 
-.header-right {
+.headerRight {
     margin-left: auto;
 }
 
@@ -101,17 +101,17 @@ th, td {
     margin-bottom: 20px;
 }
 
-.objective-item {
+.objectiveItem {
     margin-bottom: 20px;
 }
 
-.objective-item strong {
+.objectiveItem strong {
     display: block;
     margin-bottom: 10px;
 }
 
 @media (max-width: 767px) {
-    .menu-button {
+    .menuButton {
         display: block;
     }
 

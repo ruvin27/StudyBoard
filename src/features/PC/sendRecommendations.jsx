@@ -5,7 +5,7 @@ const SendRecommendations = () => {
   return (
     <div>
       <div className={SendRecommendationsCSS.container}>
-        <h2 className={SendRecommendationsCSS["left-element"]}>Course Recommendation</h2>
+        <h2 className={SendRecommendationsCSS.leftElement}>Course Recommendation</h2>
       </div>
       <div className={SendRecommendationsCSS.recommendationform}>
         <form action="#" method="post">

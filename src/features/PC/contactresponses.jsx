@@ -1,17 +1,16 @@
 import React from 'react';
-import '../../assets/css/contact.module.css';
+import GradesCSS from '../../assets/css/Grades.module.css';
 
 const ContactUsResponses = () => {
   return (
     <div>
-     
-      <div className="container">
-        <div className="left-element">
+      <div className={GradesCSS.container}>
+        <div className={GradesCSS.leftElement}>
           <h2>Contact Us Responses</h2>
         </div>
       </div>
-      <div className="grades">
-        <table className="custom-table">
+      <div className={GradesCSS.grades}>
+        <table className={GradesCSS.customTable}>
           <thead>
             <tr>
               <th>Email</th>
@@ -34,9 +33,7 @@ const ContactUsResponses = () => {
         </table>
       </div>
     </div>
-  );}
+  );
+};
 
-  export default ContactUsResponses;
-
-     
-     
+export default ContactUsResponses;

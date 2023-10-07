@@ -11,12 +11,12 @@ Valishetty,Srikar - 1002088509, Sesetti, Sri Budhi Sagar  - 1002131432 */
     padding: 10px;
 }
 
-.left-element {
+.leftElement {
     flex: 1;
     padding-left: 35px;
 }
 
-.right-element {
+.rightElement {
     flex: 1;
     text-align: right;
     padding-right: 15px;
@@ -29,7 +29,7 @@ Valishetty,Srikar - 1002088509, Sesetti, Sri Budhi Sagar  - 1002131432 */
     padding: 0px 30px; 
 }
 
-.course-card {
+.courseCard {
     border: 1px solid #ccc;
     border-radius: 5px;
     overflow: hidden;
@@ -39,49 +39,49 @@ Valishetty,Srikar - 1002088509, Sesetti, Sri Budhi Sagar  - 1002131432 */
     transition: transform 0.3s ease-in-out;
 }
 
-.course-card:hover{
+.courseCard:hover{
     cursor: pointer;
     transform: scale(1.05);
 }
 
 @media (max-width: 768px) {
-    .course-card {
+    .courseCard {
         max-width: calc(50% - 20px);
     }
 }
 
 @media (max-width: 480px) {
-    .course-card {
+    .courseCard {
         max-width: 100%;
     }
 }
 
-.course-info {
+.courseInfo {
     padding: 20px;
 }
 
-.course-title {
+.courseTitle {
     font-size: 24px;
     margin-bottom: 10px;
 }
 
-.course-description {
+.courseDescription {
     font-size: 16px;
     margin-bottom: 10px;
 }
 
-.course-meta {
+.courseMeta {
     display: flex;
     justify-content: space-between;
     font-size: 14px;
     margin-top: 10px;
 }
 
-.course-instructor, .course-duration {
+.courseInstructor, .courseDuration {
     color: #777;
 }
 
-.mycourses-button {
+.mycoursesButton {
     background-color: #007bff;
     color: #fff;
     border: none;
@@ -93,18 +93,18 @@ Valishetty,Srikar - 1002088509, Sesetti, Sri Budhi Sagar  - 1002131432 */
     margin: 10px;
 }
 
-.courses-button:hover {
+.coursesButton:hover {
     background-color: #0056b3;
 }
 
 
-.button-row{
+.buttonRow{
     display: flex;
     justify-content: left;
     gap: 50px;
 }
 
-.Upload-Button{
+.UploadButton{
     display: flex;
     flex-wrap: wrap;
     margin-top: 20px;
@@ -114,7 +114,7 @@ Valishetty,Srikar - 1002088509, Sesetti, Sri Budhi Sagar  - 1002131432 */
     width: 70px;
 }
 
-.button-group{
+.buttonGroup{
 display: flex;
 align-items: left;
 gap: 50px;
@@ -178,7 +178,7 @@ gap: 50px;
     height: 200px;
   }
 
-  .Course-information {
+  .CourseInformation {
     color: auto;
     border: 1px solid #130101;
     border-radius: 5px;

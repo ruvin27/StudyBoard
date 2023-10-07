@@ -46,6 +46,16 @@ import MyCoursesQA from "./features/QA/myCourses";
 import CourseInfoQA from "./features/QA/QACourseInfo";
 import CourseRecommendationQA from "./features/QA/sendRecommendations";
 
+//Student imports
+
+import StudentCouseInfoNavigation from "./features/Student/CourseInfoNavigation"
+import AllStudentCourses from "./features/Student/allcourses"
+import StudentExams from "./features/Student/exams"
+import StudentGrades from "./features/Student/grades"
+import StudentMyCourses from "./features/Student/myCourses"
+import StudentPeople from "./features/Student/people"
+import StudentTakeExam from "./features/Student/takeExam"
+
 const App = () => {
 	return (
 		<div>
@@ -89,6 +99,14 @@ const App = () => {
 					<Route path="/mycoursesqa" exact element={<MyCoursesQA/>}/>
 					<Route path="/courseinfoqa" exact element={<CourseInfoQA/>}/>
 					<Route path="/sendrecommendationsqa" exact element={<CourseRecommendationQA/>}/>
+					{/* Student Page Routes */}
+					<Route path="/allcourses" exact element={<AllStudentCourses />} />
+					<Route path="/studentExams" exact element={<StudentExams />} />
+          			<Route path="/CourseInfoNavigation" exact element={<StudentCouseInfoNavigation />}/>
+          			<Route path="/student-grades" exact element={<StudentGrades />} />
+          			<Route path="/student-myCourses"exact element={<StudentMyCourses />}/>
+          			<Route path="/people" exact element={<StudentPeople />} />
+          			<Route path="/takeExam" exact element={<StudentTakeExam />} />
 				</Routes>
 				<Chat/>
 			</Router>

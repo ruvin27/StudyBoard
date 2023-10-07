@@ -6,12 +6,12 @@ const BelowAverageResultsQA = () => {
     <div>
       
       <div className={GradesCSS.container}>
-        <div className={GradesCSS["left-element"]}>
+        <div className={GradesCSS.leftElement}>
           <h2>Below Average Results</h2>
         </div>
       </div>
       <div className={GradesCSS.grades}>
-        <table className={GradesCSS["custom-table"]}>
+        <table className={GradesCSS.customTable}>
           <thead>
             <tr>
               <th>Course</th>
@@ -27,10 +27,10 @@ const BelowAverageResultsQA = () => {
               <td>Exam 1</td>
               <td>69%</td>
               <td>
-                <button className={GradesCSS["resolve-button"]}>Resolve</button>
+                <button className={GradesCSS.resolveButton}>Resolve</button>
               </td>
               <td>
-                <button className={GradesCSS["resolve-button"]}>Resolve</button>
+                <button className={GradesCSS.resolveButton}>Resolve</button>
               </td>
             </tr>
             <tr>
@@ -39,7 +39,7 @@ const BelowAverageResultsQA = () => {
               <td>65%</td>
               <td>Resolved</td>
               <td>
-                <button className={GradesCSS["resolve-button"]}>Resolve</button>
+                <button className={GradesCSS.resolveButton}>Resolve</button>
               </td>
             </tr>
           </tbody>

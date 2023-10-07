@@ -6,26 +6,26 @@ const CourseInfoQA = () => {
     <div>
      
       <div className={CourseInfoCSS.container}>
-        <div className={CourseInfoCSS["left-element"]}><h2>Course Title-1</h2></div>
-        <div className={CourseInfoCSS["right-element"]}>
+        <div className={CourseInfoCSS.leftElement}><h2>Course Title-1</h2></div>
+        <div className={CourseInfoCSS.rightElement}>
           <a href="../Student/people.html">
-            <button className={CourseInfoCSS["button"]}>People</button>
+            <button className={CourseInfoCSS.button}>People</button>
           </a>
         </div>
       </div>
-      <div className={CourseInfoCSS["course-Button"]}>
-        <button className={CourseInfoCSS["button"]}>Syllabus</button>
-        <a href="../Instructor/instructorExamAnalysis.html">
-          <button className={CourseInfoCSS["button"]}>Reports</button>
+      <div className={CourseInfoCSS.courseButton}>
+        <button className={CourseInfoCSS.button}>Syllabus</button>
+        <a href="/instructorexamanalysis">
+          <button className={CourseInfoCSS.button}>Reports</button>
         </a>
-        <a href="../QA/sendRecommendations.html">
-          <button className={CourseInfoCSS["button"]}>Send Recommendation</button>
+        <a href="/sendrecommendationsqa">
+          <button className={CourseInfoCSS.button}>Send Recommendation</button>
         </a>
       </div>
-      <div className={CourseInfoCSS["Course-information"]}>
+      <div className={CourseInfoCSS.CourseInformation}>
         <p>Detailed information about Course-1</p>
       </div>
-      <div className={CourseInfoCSS["Course-information"]}>
+      <div className={CourseInfoCSS.CourseInformation}>
         <p>Comments and Discussion</p>
       </div>
       

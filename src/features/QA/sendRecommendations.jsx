@@ -5,8 +5,8 @@ const CourseRecommendationQA = () => {
   return (
     <div>
 
-      <div className="container">
-        <h2 className="left-element">Course Recommendation</h2>
+      <div className={RecommendationsqaCSS.container}>
+        <h2 className={RecommendationsqaCSS.leftElement}>Course Recommendation</h2>
       </div>
       <div className={RecommendationsqaCSS.recommendationform}>
         <form action="#" method="post">
