@@ -100,3 +100,19 @@ Valishetty,Srikar - 1002088509, Sesetti, Sri Budhi Sagar  - 1002131432 */
     flex: 1;
     padding-left: 35px;
 }
+.remove-button{
+	padding: 5px 10px;
+	background-color: #007bff;
+	color: #f10303;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	width: 100%;
+	font-size: 15px;
+}
+.people-list-table{
+	width: 90%;
+	border-collapse: collapse;
+	border: 1px solid #ccc;
+	margin: 20px auto;
+}
