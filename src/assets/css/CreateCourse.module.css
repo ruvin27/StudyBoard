@@ -13,17 +13,17 @@ Valishetty,Srikar - 1002088509, Sesetti, Sri Budhi Sagar  - 1002131432 */
     
 }
 
-label {
+.label-class {
     display: block;
     margin-bottom: 5px;
     font-weight: bold;
 }
 
-input[type="text"],
-input[type="email"],
-input[type="number"],
-input[type="date"],
-textarea {
+.input-text,
+.input-email,
+.input-number,
+.input-date,
+.textarea-class {
     width: 100%;
     padding: 10px;
     border: 1px solid #ccc;
@@ -31,7 +31,6 @@ textarea {
     font-size: 16px;
     margin-bottom: 10px;
 }   
-
 
 
 
@@ -49,8 +48,8 @@ textarea {
 }
 
 
-input:focus,
-textarea:focus {
+.input-focus,
+.textarea-focus {
     outline: none;
     border-color: #007BFF; 
 }

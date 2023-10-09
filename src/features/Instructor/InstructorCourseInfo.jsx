@@ -1,6 +1,5 @@
 import React from 'react';
 import InstructorCourseInfoCSS from "../../assets/css/CourseInfo.module.css";
-import navbarCSS from "../../assets/css/navbar.module.css";
 import { Link } from "react-router-dom";
 const InstructorCourseInfo = () => {
     return(
@@ -9,11 +8,11 @@ const InstructorCourseInfo = () => {
 			<div className={InstructorCourseInfoCSS.leftElement}><h2>Course Title-1</h2></div>
 			<div className={InstructorCourseInfoCSS.rightElement}>
 				<Link to="/Instructor/people">
-					<button className="button">People</button>
+					<button className={InstructorCourseInfoCSS.button}>People</button>
 				</Link>
 				<Link to="/createCourse">
-				<button className="button">Manage Course</button></Link>
-				<button className="button">Remove Course</button>
+				<button className={InstructorCourseInfoCSS.button}>Manage Course</button></Link>
+				<button className={InstructorCourseInfoCSS.button}>Remove Course</button>
 			</div>
 		</div>
 		<div className={InstructorCourseInfoCSS.courseButton}>
@@ -36,20 +35,8 @@ const InstructorCourseInfo = () => {
 		<div className={InstructorCourseInfoCSS.CourseInformation}>
 			<p>comments and Discussion</p>
 		</div>
-		<div className={navbarCSS.chatContainer}>
-    <div className={navbarCSS.chatHeader}>Instant Messaging</div>
-    <div className={navbarCSS.chatMessages}>
-        <div className={navbarCSS.message}>Alice: Hi there!</div>
-        <div className={navbarCSS.message}>Bob: Hey, Alice! How are you?</div>
-        <div className={navbarCSS.message}>Alice: I'm good, thanks. How about you?</div>
-        <div className={navbarCSS.message}>Bob: I'm doing well too.</div>
-        <div className={navbarCSS.message}>Alice: That's great to hear!</div>
-    </div>
-    <div className={navbarCSS.chatInput}>
-        <input type="text" placeholder="Type your message..." />
-        <button>Send</button>
-    </div>
-</div>
+		
+<script src="../../assets/js/nav.js"></script>
 
 
        </div>
