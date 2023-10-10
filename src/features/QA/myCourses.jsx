@@ -1,5 +1,6 @@
 import React from 'react';
 import MyCoursesCSS from '../../assets/css/MyCourses.module.css';
+import { Link } from "react-router-dom";
 
 const MyCoursesQA = () => {
   return (
@@ -10,17 +11,17 @@ const MyCoursesQA = () => {
           <h2>My Courses</h2>
         </div>
         <div className={MyCoursesCSS.rightElement}>
-          <a href="/belowavgexamsQA">
+          <Link to={"/belowavgexamsQA"}>
             <button className={MyCoursesCSS.mycoursesButton}>Below Average Results</button>
-          </a>
-          <a href="/program">
+          </Link>
+          <Link to={"/"}>
             <button className={MyCoursesCSS.mycoursesButton}>Program Details</button>
-          </a>
+            </Link>
         </div>
       </div>
       <div className={MyCoursesCSS.courses}>
         {[1, 2, 3, 4, 5].map((index) => (
-          <a href="/courseinfoqa" key={index}>
+          <Link to={"/courseinfoqa"} key={index}>
             <div className={MyCoursesCSS.courseCard}>
               <div className={MyCoursesCSS.courseInfo}>
                 <h2 className={MyCoursesCSS.courseTitle}>Course Title {index}</h2>
@@ -32,11 +33,10 @@ const MyCoursesQA = () => {
                 </div>
               </div>
             </div>
-          </a>
+          </Link>
         ))}
       </div>
       
-      <script src="../../assets/js/nav.js"></script>
     </div>
   );
 };

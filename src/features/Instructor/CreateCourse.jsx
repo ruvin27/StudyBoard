@@ -11,22 +11,22 @@ const CreateCourse = () => {
             <div className={CreateCourseCSS.courseFormContainer}>
                 <form id="courseForm">
                     <label className={CreateCourseCSS.labelClass} htmlFor="courseName">Course Name:</label>
-                    <input type="text" id="courseName" name="courseName" className="input-text" required /><br /><br />
+                    <input type="text" id="courseName" name="courseName" className={CreateCourseCSS.createInput} required /><br /><br />
 
                     <label className={CreateCourseCSS.labelClass} htmlFor="courseDescription">Description:</label>
-                    <input type="text" id="courseDescription" name="courseDescription" className="input-text" required /><br /><br />
+                    <input type="text" id="courseDescription" name="courseDescription" className={CreateCourseCSS.createInput} required /><br /><br />
 
                     <label className={CreateCourseCSS.labelClass} htmlFor="courseCode">Course Code:</label>
-                    <input type="text" id="courseCode" name="courseCode" className="input-text" required /><br /><br />
+                    <input type="text" id="courseCode" name="courseCode" className={CreateCourseCSS.createInput} required /><br /><br />
 
                     <label className={CreateCourseCSS.labelClass} htmlFor="courseCredit">Credit:</label>
-                    <input type="number" id="courseCredit" name="courseCredit" className="input-number" required /><br /><br />
+                    <input type="number" id="courseCredit" name="courseCredit" className={CreateCourseCSS.createInput} required /><br /><br />
 
                     <label className={CreateCourseCSS.labelClass} htmlFor="courseStartDate">Start Date:</label>
-                    <input type="date" id="courseStartDate" name="courseStartDate" className="input-date" required /><br /><br />
+                    <input type="date" id="courseStartDate" name="courseStartDate" className={CreateCourseCSS.createInput} required /><br /><br />
 
                     <label className={CreateCourseCSS.labelClass} htmlFor="courseEndDate">End Date:</label>
-                    <input type="date" id="courseEndDate" name="courseEndDate" className="input-date" required /><br /><br />
+                    <input type="date" id="courseEndDate" name="courseEndDate" className={CreateCourseCSS.createInput} required /><br /><br />
 
                     <label className={CreateCourseCSS.labelClass} htmlFor="programObjective">Program Objective:</label>
                     <select id="programObjective" name="programObjective" className={CreateCourseCSS.programObjective}>
@@ -40,7 +40,6 @@ const CreateCourse = () => {
                     <button type="submit" className={CreateCourseCSS.submitBtn}>Submit</button>
                 </form>
             </div>
-			<script src="../../assets/js/nav.js"></script>
         </div>
     );
 }

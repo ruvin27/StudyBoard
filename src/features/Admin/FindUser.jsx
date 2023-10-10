@@ -1,5 +1,6 @@
 import React from 'react'
 import FindUserCSS from '../../assets/css/finduser.module.css'
+import { Link } from "react-router-dom";
 
 const FindUser = () => {
     return ( 
@@ -22,19 +23,19 @@ const FindUser = () => {
 				<tr>
 					<td>user1@example.com</td>
 					<td>
-						<a href="../authentication/Profile.html"><button className={FindUserCSS.findUserBtn}>Edit</button></a>
+						<Link to={"profile"}><button className={FindUserCSS.findUserBtn}>Edit</button></Link>
 					</td>
 				</tr>
 				<tr>
 					<td>user2@example.com</td>
 					<td>
-						<a href="../authentication/Profile.html"><button className={FindUserCSS.findUserBtn}>Edit</button></a>
+					<Link to={"profile"}><button className={FindUserCSS.findUserBtn}>Edit</button></Link>
 					</td>
 				</tr>
 				<tr>
 					<td>user3@example.com</td>
 					<td>
-						<a href="../authentication/Profile.html"><button className={FindUserCSS.findUserBtn}>Edit</button></a>
+					<Link to={"profile"}><button className={FindUserCSS.findUserBtn}>Edit</button></Link>
 					</td>
 				</tr>
 			</tbody>

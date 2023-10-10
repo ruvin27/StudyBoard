@@ -13,17 +13,13 @@ Valishetty,Srikar - 1002088509, Sesetti, Sri Budhi Sagar  - 1002131432 */
     
 }
 
-.label-class {
+.labelClass {
     display: block;
     margin-bottom: 5px;
     font-weight: bold;
 }
 
-.input-text,
-.input-email,
-.input-number,
-.input-date,
-.textarea-class {
+.createInput {
     width: 100%;
     padding: 10px;
     border: 1px solid #ccc;
@@ -34,7 +30,7 @@ Valishetty,Srikar - 1002088509, Sesetti, Sri Budhi Sagar  - 1002131432 */
 
 
 
-.submit-btn {
+.submitBtn {
     margin-top: 15px;
     display: block;
     width: 100%;
@@ -48,18 +44,18 @@ Valishetty,Srikar - 1002088509, Sesetti, Sri Budhi Sagar  - 1002131432 */
 }
 
 
-.input-focus,
-.textarea-focus {
+.inputFocus,
+.textareaFocus {
     outline: none;
     border-color: #007BFF; 
 }
 
 
-.form-group:last-child {
+.formGroup:last-child {
     margin-bottom: 0;
 }
 
-.course-form-container {
+.courseFormContainer {
     background-color: #ffffff;
     padding: 40px;
     border-radius: 5px;
@@ -68,21 +64,21 @@ Valishetty,Srikar - 1002088509, Sesetti, Sri Budhi Sagar  - 1002131432 */
     margin: 20px auto;
 }
 
-.course-form-container h3 {
+.courseFormContainer h3 {
     font-size: 1.5rem;
     margin-bottom: 20px;
     text-align: center;
 }
 
-.course-form-container form label {
+.courseFormContainer form label {
     display: block;
     font-weight: bold;
     margin-bottom: 5px;
 }
 
-.course-form-container form input[type="text"],
-.course-form-container form input[type="date"],
-.course-form-container form input[type="number"] {
+.courseFormContainer form input[type="text"],
+.courseFormContainer form input[type="date"],
+.courseFormContainer form input[type="number"] {
     width: 100%;
     padding: 10px 5px;
     border: 1px solid #ccc;

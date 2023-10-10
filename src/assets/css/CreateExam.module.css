@@ -9,18 +9,18 @@ Valishetty,Srikar - 1002088509, Sesetti, Sri Budhi Sagar  - 1002131432 */
 	padding: 10px;
 }
 
-.left-element {
+.leftElement {
 	flex: 1;
 	padding-left: 35px;
 }
 
-.right-element {
+.rightElement {
 	flex: 1;
 	text-align: right;
 	padding-right: 30px;
 }
 
-.create-button {
+.createButton {
 	background-color: #007bff;
 	color: #fff;
 	border: none;
@@ -32,7 +32,7 @@ Valishetty,Srikar - 1002088509, Sesetti, Sri Budhi Sagar  - 1002131432 */
 	margin: 10px;
 }
 
-.create-button:hover {
+.createButton:hover {
 	background-color: #0056b3;
 }
 
@@ -41,21 +41,21 @@ Valishetty,Srikar - 1002088509, Sesetti, Sri Budhi Sagar  - 1002131432 */
 	margin: 20px auto;
 }
 
-.custom-table {
+.customTable {
 	width: 90%;
 	border-collapse: collapse;
 	border: 1px solid #ccc;
 	margin: 20px auto;
 }
 
-.custom-table th,
-.custom-table td {
+.customTable th,
+.customTable td {
 	border: 1px solid #ccc;
 	padding: 8px;
 	text-align: left;
 }
 
-.custom-button {
+.customButton {
 	padding: 5px 10px;
 	background-color: #007bff;
 	color: #fff;
@@ -67,25 +67,25 @@ Valishetty,Srikar - 1002088509, Sesetti, Sri Budhi Sagar  - 1002131432 */
 }
 
 @media (max-width: 768px) {
-	.custom-table {
+	.customTable {
 		width: 100%;
 		border-collapse: collapse;
 		border: 1px solid #ccc;
 		margin: 0 auto;
 	}
-	.custom-table th,
-	.custom-table td {
+	.customTable th,
+	.customTable td {
 		padding: 5px;
 		font-size: 14px;
 	}
 }
 
-.custom-table input {
+.customTable input {
 	width: 90%;
 }
 
-.custom-table td,
-.custom-button tr {
+.customTable td,
+.customButton tr {
 	padding: 10px;
 }
 
@@ -94,7 +94,7 @@ Valishetty,Srikar - 1002088509, Sesetti, Sri Budhi Sagar  - 1002131432 */
 	text-align: center;
 }
 
-.exam-form-container {
+.examFormContainer {
 	background-color: #ffffff;
 	padding: 40px;
 	border-radius: 5px;
@@ -103,21 +103,21 @@ Valishetty,Srikar - 1002088509, Sesetti, Sri Budhi Sagar  - 1002131432 */
 	margin: 20px auto;
 }
 
-.exam-form-container h3 {
+.examFormContainer h3 {
 	font-size: 1.5rem;
 	margin-bottom: 20px;
 	text-align: center;
 }
 
-.exam-form-container form label {
+.examFormContainer form label {
 	display: block;
 	font-weight: bold;
 	margin-bottom: 5px;
 }
 
-.exam-form-container form input[type="text"],
-.exam-form-container form input[type="date"],
-.exam-form-container form input[type="number"] {
+.examFormContainer form input[type="text"],
+.examFormContainer form input[type="date"],
+.examFormContainer form input[type="number"] {
 	width: 100%;
 	padding: 10px 5px;
 	border: 1px solid #ccc;
@@ -125,7 +125,7 @@ Valishetty,Srikar - 1002088509, Sesetti, Sri Budhi Sagar  - 1002131432 */
 	margin-bottom: 10px;
 }
 
-.question-form-container {
+.questionFormContainer {
 	background-color: #ffffff;
 	padding: 40px;
 	border-radius: 5px;
@@ -134,21 +134,21 @@ Valishetty,Srikar - 1002088509, Sesetti, Sri Budhi Sagar  - 1002131432 */
 	margin: 20px auto;
 }
 
-.question-form-container h3 {
+.questionFormContainer h3 {
 	font-size: 1.5rem;
 	margin-bottom: 20px;
 	text-align: center;
 }
 
-.question-form-container form label {
+.questionFormContainer form label {
 	display: block;
 	font-weight: bold;
 	margin-bottom: 5px;
 }
 
-.question-form-container form textarea,
-.question-form-container form input[type="text"],
-.question-form-container form input[type="number"] {
+.questionFormContainer form textarea,
+.questionFormContainer form input[type="text"],
+.questionFormContainer form input[type="number"] {
 	width: 100%;
 	padding: 10px 5px;
 	border: 1px solid #ccc;
@@ -156,7 +156,7 @@ Valishetty,Srikar - 1002088509, Sesetti, Sri Budhi Sagar  - 1002131432 */
 	margin-bottom: 10px;
 }
 
-.question-form-container form select {
+.questionFormContainer form select {
 	width: 100%;
 	padding: 10px 5px;
 	border: 1px solid #ccc;
@@ -164,7 +164,7 @@ Valishetty,Srikar - 1002088509, Sesetti, Sri Budhi Sagar  - 1002131432 */
 	margin-bottom: 10px;
 }
 
-.question-form-container form button {
+.questionFormContainer form button {
 	background-color: #007bff;
 	color: #fff;
 	padding: 10px 15px;
@@ -173,6 +173,6 @@ Valishetty,Srikar - 1002088509, Sesetti, Sri Budhi Sagar  - 1002131432 */
 	cursor: pointer;
 }
 
-.question-form-container form button:hover {
+.questionFormContainer form button:hover {
 	background-color: #0056b3;
 }

@@ -1,6 +1,7 @@
 import React from 'react'
 import ProgramImg from '../../assets/images/program.jpg'
 import ProgramCSS from '../../assets/css/program.module.css'
+import { Link } from "react-router-dom";
 
 const Program = () => {
     return ( 
@@ -18,7 +19,7 @@ const Program = () => {
                 <li>Complete a comprehensive data science project from data collection to analysis.</li>
             </ul>
             <div className={ProgramCSS.courseButtonStyle}>
-                <a href="../Student/allcourses.html"><button className={ProgramCSS.coursesButton}>All Courses</button></a>
+                <Link to={"/allcourses"}><button className={ProgramCSS.coursesButton}>All Courses</button></Link>
             </div>
         </div>
     </div>

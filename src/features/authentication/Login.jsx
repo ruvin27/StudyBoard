@@ -11,10 +11,10 @@ const Login = () => {
 				</div>
 				<form className={LoginCSS.loginform}>
 					<div className={LoginCSS.loginInput}>
-						<input className={LoginCSS.input100} type="email" name="email" placeholder="Enter Email" />
+						<input className={LoginCSS.input100} type="email" name="email" placeholder="Enter Email" autoComplete="username"/>
 					</div>
 					<div className={LoginCSS.loginInput}>
-						<input className={LoginCSS.input100} type="password" name="password" placeholder="Enter Password" />
+						<input className={LoginCSS.input100} type="password" name="password" placeholder="Enter Password" autoComplete="current-password" />
 					</div>
 					<div className={LoginCSS.loginBtn}>
 						<button className={LoginCSS.subBtn} name="submit">

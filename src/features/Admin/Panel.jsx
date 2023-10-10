@@ -9,9 +9,10 @@ const Panel = () => {
     return ( 
         <div className={PanelCSS.container}>
 			<div className={PanelCSS.card}>
-				<a href="../Student/allcourses.html" className={PanelCSS.cardLink}>
+			<Link to={'/allcourses'} className={PanelCSS.cardLink}>
 				<img className={PanelCSS.cardImage} src={CoursesImg} alt="" />
-				<h3>All Courses</h3></a>
+				<h3>All Courses</h3>
+				</Link>
 			</div>
 			<div className={PanelCSS.card}>
 				<Link to={'/useraccounts'} className={PanelCSS.cardLink}>

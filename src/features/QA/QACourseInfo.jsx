@@ -1,5 +1,6 @@
 import React from 'react';
 import CourseInfoCSS from '../../assets/css/CourseInfo.module.css';
+import { Link } from "react-router-dom";
 
 const CourseInfoQA = () => {
   return (
@@ -8,19 +9,19 @@ const CourseInfoQA = () => {
       <div className={CourseInfoCSS.container}>
         <div className={CourseInfoCSS.leftElement}><h2>Course Title-1</h2></div>
         <div className={CourseInfoCSS.rightElement}>
-          <a href="../Student/people.html">
+          <Link to={"/people"}>
             <button className={CourseInfoCSS.button}>People</button>
-          </a>
+          </Link>
         </div>
       </div>
       <div className={CourseInfoCSS.courseButton}>
         <button className={CourseInfoCSS.button}>Syllabus</button>
-        <a href="/instructorexamanalysis">
+        <Link to={"/instructorexamanalysis"}>
           <button className={CourseInfoCSS.button}>Reports</button>
-        </a>
-        <a href="/sendrecommendationsqa">
+        </Link>
+        <Link to={"/sendrecommendationsqa"}>
           <button className={CourseInfoCSS.button}>Send Recommendation</button>
-        </a>
+        </Link>
       </div>
       <div className={CourseInfoCSS.CourseInformation}>
         <p>Detailed information about Course-1</p>
@@ -29,7 +30,6 @@ const CourseInfoQA = () => {
         <p>Comments and Discussion</p>
       </div>
       
-      <script src="../../assets/js/nav.js"></script>
     </div>
   );
 };

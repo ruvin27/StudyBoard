@@ -15,9 +15,9 @@ export default function StudentCouseInfoNavigation() {
           </Link>
         </div>
       </div>
-      <div className={CouseInfoCSS.coursesButton}>
+      <div>
         <button className={CouseInfoCSS.button}>Syllabus</button>
-        <Link to="/student-exams">
+        <Link to="/studentExams">
           <button className={CouseInfoCSS.button}>Exams</button>
         </Link>
         <Link to="/student-grades">

@@ -15,7 +15,7 @@ const Navbar = () => {
 			<div className={NavbarCSS.navbarLogo}>
 				<img src={Logo} alt="Logo" />
 				<span className={NavbarCSS.brandName}>
-					<a href="../Student/myCourses.html">StudyBoard</a>
+					<Link to={"/mycourses"}>StudyBoard</Link>
 				</span>
 			</div>
 			<ul className={NavbarCSS.navbarLinks} id="nav-links">
@@ -24,11 +24,14 @@ const Navbar = () => {
 						Information Links &#9662;
 					</a>
 					<div className={NavbarCSS.dropdownContent}>
-						<Link to="/program">Program</Link>
+						<Link to="/">Program</Link>
 						<Link to="/about">About</Link>
 						<Link to="/services">Services</Link>
 						<Link to="/contactus">Contact Us</Link>
 					</div>
+				</li>
+				<li>
+					<a href="http://sxv8509.uta.cloud/" target="_blank">Blog</a>
 				</li>
 				<li>
 					<Link to={"/register"}>Register</Link>

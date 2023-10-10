@@ -26,10 +26,10 @@ const Register = () => {
 						<input className={RegisterCSS.input100} type="text" name="name" placeholder="Full Name" required />
 					</div>
 					<div className={RegisterCSS.registerInput}>
-						<input className={RegisterCSS.input100} type="email" name="email" placeholder="Enter Email" required />
+						<input className={RegisterCSS.input100} type="email" name="email" placeholder="Enter Email" required autoComplete="username"/>
 					</div>
 					<div className={RegisterCSS.registerInput}>
-						<input className={RegisterCSS.input100} type="password" name="password" placeholder="Create Password" required />
+						<input className={RegisterCSS.input100} type="password" name="password" placeholder="Create Password" required autoComplete="current-password"/>
 					</div>
 					<div className={RegisterCSS.registerBtn}>
 						<button className={RegisterCSS.subBtn} name="submit">

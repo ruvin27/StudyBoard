@@ -125,33 +125,7 @@ export default function AllStudentCourses() {
               </p>
             </div>
           </div>
-          {/* <div class="card representation">
-					<h2>Visual Representation</h2>
-					<div class="responsive-table">
-						<table>
-							<thead>
-								<tr>
-									<th>Course</th>
-									<th>Objective Covered</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<td>Course 1</td>
-									<td>Description</td>
-								</tr>
-								<tr>
-									<td>Course 2</td>
-									<td>Description</td>
-								</tr>
-								<tr>
-									<td>Course 3</td>
-									<td>Description</td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
-				</div>  */}
+        
         </div>
       </section>
     </>

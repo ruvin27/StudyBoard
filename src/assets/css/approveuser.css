@@ -1,164 +1,116 @@
 /* Team 15: Rodrigues, Ruvin - 1002029569, Sheth, Urmi Manish - 1002064934, Surakunta, Vinil Reddy  – 1002072982,
 Valishetty,Srikar - 1002088509, Sesetti, Sri Budhi Sagar  - 1002131432 */
 
-
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
+	font-family: Arial, sans-serif;
+	margin: 0;
+	padding: 0;
 }
 
 header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 30px;
-    background-color: #f5f5f5;
-    border-bottom: 1px solid #e0e0e0;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 10px 30px;
+	background-color: #f5f5f5;
+	border-bottom: 1px solid #e0e0e0;
 }
 
 header h1 {
-    margin: 0;
-    font-size: 1rem;
-    flex: 1;
+	margin: 0;
+	font-size: 1rem;
+	flex: 1;
 }
 
 nav {
-    display: flex;
+	display: flex;
 }
 
 nav button {
-    margin-left: 10px;
+	margin-left: 10px;
 }
 
 .search-container {
-    width: 90%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin: 20px auto;
-    border: 1px solid grey;
-    padding: 10px;
-    border-radius: 5px;
+	width: 90%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin: 20px auto;
+	border: 1px solid grey;
+	padding: 10px;
+	border-radius: 5px;
 }
 
 .search-input {
-    width: 70%;
-    padding: 10px;
-    border: 1px solid grey;
-    border-radius: 5px;
-    outline: none;
+	width: 70%;
+	padding: 10px;
+	border: 1px solid grey;
+	border-radius: 5px;
+	outline: none;
 }
 
 .search-button {
-    width: 25%;
-    padding: 10px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 18px;
+	width: 25%;
+	padding: 10px;
+	background-color: #007bff;
+	color: #fff;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	font-size: 18px;
 }
 
 main {
-    padding: 20px 30px;
+	padding: 20px 30px;
 }
 
 h2 {
-    font-size: 1.5rem;
-    margin-bottom: 20px;
+	font-size: 1.5rem;
+	margin-bottom: 20px;
 }
 
 table {
-    width: 100%;
-    border: 1px solid grey;
-    border-collapse: collapse;
+	width: 100%;
+	border: 1px solid grey;
+	border-collapse: collapse;
 }
 
-th, td {
-    padding: 8px 12px;
-    border: 1px solid grey;
+th,
+td {
+	padding: 8px 12px;
+	border: 1px solid grey;
 }
 
 .approve-btn {
-    padding: 5px 10px;
-    background-color: #4CAF50;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    width: 100%;
-    font-size: 15px;
+	padding: 5px 10px;
+	background-color: #4caf50;
+	color: #fff;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	width: 100%;
+	font-size: 15px;
 }
 
 .approve-btn:hover {
-    background-color: #45a049;
+	background-color: #45a049;
 }
 
-.navbar-links {
-    display: flex; 
-    position: static; 
-    background-color: transparent; 
-    border: none; 
-}
-.navbar-links a {
-    display: block;
-    padding: 0 20px;
-    border: none;
-    color: white;
-}
-
-.navbar-links a:hover {
-    background-color: transparent; 
-    color: rgb(255, 106, 0); 
-}
 @media only screen and (max-width: 600px) {
-    .navbar-logo,
-    .navbar-links {
-        display: block;
-        text-align: center;
-    }
+	.search-container {
+		flex-direction: column;
+	}
 
-    .navbar-links {
-        display: none;
-        flex-direction: column;
-        width: 100%;
-        position: absolute;
-        top: 60px; 
-        left: 0;
-        background-color: #333;
-        z-index: 1; 
-    }
+	.search-input {
+		width: 100%;
+		margin-bottom: 10px;
+	}
 
-    .navbar-links.active {
-        display: flex;
-    }
+	.search-button {
+		width: 100%;
+	}
 
-    .navbar-links li {
-        width: 100%;
-    }
-
-    .navbar-links li:first-child {
-        display: block;
-        width: 100%;
-        padding: 10px 20px;
-    }
-
-    .search-container {
-        flex-direction: column;
-    }
-
-    .search-input {
-        width: 100%;
-        margin-bottom: 10px;
-    }
-
-    .search-button {
-        width: 100%;
-    }
-
-    .menu-button {
-        display: block; 
-    }
+	.menu-button {
+		display: block;
+	}
 }

@@ -1,5 +1,5 @@
 import React from 'react';
-import RecommendationsqaCSS from '../../assets/css/sendRecommendations.css';
+import RecommendationsqaCSS from '../../assets/css/sendRecommendations.module.css';
 
 const CourseRecommendationQA = () => {
   return (
@@ -10,19 +10,18 @@ const CourseRecommendationQA = () => {
       </div>
       <div className={RecommendationsqaCSS.recommendationform}>
         <form action="#" method="post">
-          <label htmlFor="courseName">Course Name</label>
-          <input type="text" id="courseName" name="courseName" required />
+          <label htmlFor="courseName" className={RecommendationsqaCSS.label}>Course Name</label>
+          <input type="text" id="courseName" name="courseName" required className={RecommendationsqaCSS.input}/>
 
-          <label htmlFor="instructorName">Instructor Name</label>
-          <input type="text" id="instructorName" name="instructorName" required />
+          <label htmlFor="instructorName" className={RecommendationsqaCSS.label}>Instructor Name</label>
+          <input type="text" id="instructorName" name="instructorName" required className={RecommendationsqaCSS.input}/>
 
-          <label htmlFor="message">Message</label>
-          <textarea id="message" name="message" required></textarea>
+          <label htmlFor="message" className={RecommendationsqaCSS.label}>Message</label>
+          <textarea id="message" name="message" required className={RecommendationsqaCSS.textarea}></textarea>
 
           <button type="submit" className={RecommendationsqaCSS.btn}>Send Recommendation</button>
         </form>
       </div>
-      <script src="../../assets/js/nav.js"></script>
     </div>
   );
 };

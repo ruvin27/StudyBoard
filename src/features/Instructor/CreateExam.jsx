@@ -56,7 +56,6 @@ const CreateExam = () => {
 		<div className={CreateExamCSS.create}>
 			<button className={CreateExamCSS.createButton}>Create Exam</button>
 		</div>
-		<script src="../../assets/js/nav.js"></script>
         </div>
 
     );
