@@ -80,14 +80,15 @@ const App = () => {
 					<Route path="/program" exact element={<Program />} />
 					<Route path="/services" exact element={<Services />} />
 					{/* Instructor Page Routes */}
-                    <Route path="/createcourse" exact element={<CreateCourse />} />
-                    <Route path="/createexam" exact element={<CreateExam />} />
-                    <Route path="/exams" exact element={<Exams />} />
-                    <Route path="/grades" exact element={<Grades />} />
-                    <Route path="/instructorcourseinfo" exact element={<InstructorCourseInfo />} />
-                    <Route path="/instructorexamanalysis" exact element={<InstructorExamAnalysis />} />
-                    <Route path="/mycourses" exact element={<MyCourses />} />
-                    <Route path="/recommendation" exact element={<Recommendation />} />
+          <Route path="/CreateCourse" exact element={<CreateCourse />} />
+          <Route path="/CreateExam" exact element={<CreateExam />} />
+          <Route path="/Exams" exact element={<Exams />} />
+          <Route path="/Grades" exact element={<Grades />} />
+          <Route path="/InstructorCourseInfo" exact element={<InstructorCourseInfo />} />
+          <Route path="/InstructorExamAnalysis" exact element={<InstructorExamAnalysis />} />
+          <Route path="/MyCourses" exact element={<MyCourses />} />
+          <Route path="/Recommendation" exact element={<Recommendation />} />
+
 					{/* PC Page Routes */}
 					<Route path="/belowavgexams" exact element={<BelowAverageResults/>}/>
 					<Route path="/contactusresponses" exact element={<ContactUsResponses/>}/>
@@ -102,11 +103,12 @@ const App = () => {
 					{/* Student Page Routes */}
 					<Route path="/allcourses" exact element={<AllStudentCourses />} />
 					<Route path="/studentExams" exact element={<StudentExams />} />
-          			<Route path="/CourseInfoNavigation" exact element={<StudentCouseInfoNavigation />}/>
-          			<Route path="/student-grades" exact element={<StudentGrades />} />
-          			<Route path="/student-myCourses"exact element={<StudentMyCourses />}/>
-          			<Route path="/people" exact element={<StudentPeople />} />
-          			<Route path="/takeExam" exact element={<StudentTakeExam />} />
+          <Route path="/CourseInfoNavigation" exact element={<StudentCouseInfoNavigation />}/>
+          <Route path="/student-grades" exact element={<StudentGrades />} />
+          <Route path="/student-myCourses"exact element={<StudentMyCourses />}/>
+          <Route path="/people" exact element={<StudentPeople />} />
+          <Route path="/takeExam" exact element={<StudentTakeExam />} />
+
 				</Routes>
 				<Chat/>
 			</Router>

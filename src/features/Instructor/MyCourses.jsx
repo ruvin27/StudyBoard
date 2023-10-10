@@ -1,6 +1,5 @@
 import React from 'react';
 import myCoursesCSS from "../../assets/css/MyCourses.module.css";
-import navbarCSS from "../../assets/css/navbar.module.css";
 import { Link } from "react-router-dom";
 const MyCourses = () => {
     return(
@@ -69,20 +68,8 @@ const MyCourses = () => {
 			</div>
 			</Link>
 		</div>
-		<div className={navbarCSS.chatContainer}>
-    <div className={navbarCSS.chatHeader}>Instant Messaging</div>
-    <div className={navbarCSS.chatMessages}>
-        <div className={navbarCSS.message}>Alice: Hi there!</div>
-        <div className={navbarCSS.message}>Bob: Hey, Alice! How are you?</div>
-        <div className={navbarCSS.message}>Alice: I'm good, thanks. How about you?</div>
-        <div className={navbarCSS.message}>Bob: I'm doing well too.</div>
-        <div className={navbarCSS.message}>Alice: That's great to hear!</div>
-    </div>
-    <div className={navbarCSS.chatInput}>
-        <input type="text" placeholder="Type your message..." />
-        <button>Send</button>
-    </div>
-</div>
+		
+<script src="../../assets/js/nav.js"></script>
 
         </div>
 
