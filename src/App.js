@@ -86,7 +86,7 @@ const App = () => {
 					<Route path="/Grades" exact element={<Grades />} />
 					<Route path="/InstructorCourseInfo" exact element={<InstructorCourseInfo />} />
 					<Route path="/InstructorExamAnalysis" exact element={<InstructorExamAnalysis />} />
-					<Route path="/MyCourses" exact element={<MyCourses />} />
+					<Route path="/MyCoursesInstructor" exact element={<MyCourses />} />
 					<Route path="/Recommendation" exact element={<Recommendation />} />
 
 					{/* PC Page Routes */}
@@ -105,7 +105,7 @@ const App = () => {
 					<Route path="/studentExams" exact element={<StudentExams />} />
 					<Route path="/CourseInfoNavigation" exact element={<StudentCouseInfoNavigation />} />
 					<Route path="/student-grades" exact element={<StudentGrades />} />
-					<Route path="/student-myCourses" exact element={<StudentMyCourses />} />
+					<Route path="/myCourses" exact element={<StudentMyCourses />} />
 					<Route path="/people" exact element={<StudentPeople />} />
 					<Route path="/takeExam" exact element={<StudentTakeExam />} />
 				</Routes>
