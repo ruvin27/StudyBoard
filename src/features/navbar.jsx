@@ -1,13 +1,22 @@
 import React, { useState } from "react";
 import NavbarCSS from "../assets/css/navbar.module.css";
 import Logo from "../assets/images/logo.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useAuth } from "../AuthContext";
 
 const Navbar = () => {
+	const { user, logout } = useAuth();
+	const navigate = useNavigate();
 	const [isActive, setIsActive] = useState(false);
 
 	const toggleMenu = () => {
 		setIsActive(!isActive);
+	};
+	const handleLogout = async () => {
+		console.log("Logging out...");
+		logout();
+		console.log("User logged out.");
+		navigate("/login");
 	};
 
 	return (
@@ -15,14 +24,29 @@ const Navbar = () => {
 			<div className={NavbarCSS.navbarLogo}>
 				<img src={Logo} alt="Logo" />
 				<span className={NavbarCSS.brandName}>
-					<Link to={"/mycourses"}>StudyBoard</Link>
+					<Link
+						to={
+							user && user.role === "Student"
+								? "/mycourses"
+								: user && user.role === "QA Officer"
+								? "/mycoursesqa"
+								: user && user.role === "Program Coordinator"
+								? "/MyCoursesPc"
+								: user && user.role === "Instructor"
+								? "/mycoursesInstructor"
+								: "/"
+						}>
+						StudyBoard
+					</Link>
 				</span>
 			</div>
 			<ul className={NavbarCSS.navbarLinks} id="nav-links">
 				<li className={NavbarCSS.dropdown}>
+					{/* eslint-disable-next-line */}
 					<a href="#" className={NavbarCSS.dropbtn}>
 						Information Links &#9662;
 					</a>
+					
 					<div className={NavbarCSS.dropdownContent}>
 						<Link to="/">Program</Link>
 						<Link to="/about">About</Link>
@@ -31,10 +55,18 @@ const Navbar = () => {
 					</div>
 				</li>
 				<li>
-					<a href="http://sxv8509.uta.cloud/" target="_blank">Blog</a>
+					<a href="http://sxv8509.uta.cloud/" target="_blank" rel="noreferrer">
+						Blog
+					</a>
 				</li>
 				<li>
-					<Link to={"/register"}>Register</Link>
+					{user ? (
+						<Link to={"/login"} onClick={handleLogout}>
+							Logout
+						</Link>
+					) : (
+						<Link to={"/login"}>Login</Link>
+					)}
 				</li>
 			</ul>
 			<button className={NavbarCSS.menuButton} id="menu-button" onClick={toggleMenu}>

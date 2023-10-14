@@ -1,8 +1,11 @@
 import React from "react"
 import StudentAllCoursesCSS from "../../assets/css/courses.module.css"
 import { Link } from "react-router-dom"
+import { useAuth } from "../../AuthContext";
 
 export default function AllStudentCourses() {
+  const { user } = useAuth();
+
   return (
     <>
       <div className={StudentAllCoursesCSS.container}>
@@ -10,7 +13,18 @@ export default function AllStudentCourses() {
           <h2>All Courses</h2>
         </div>
         <div className={StudentAllCoursesCSS.rightElement}>
-          <Link to="/student-myCourses">
+        <Link
+						to={
+							user && user.role === "Student"
+								? "/mycourses"
+								: user && user.role === "QA Officer"
+								? "/mycoursesqa"
+								: user && user.role === "Program Coordinator"
+								? "/MyCoursesPc"
+								: user && user.role === "Instructor"
+								? "/mycoursesInstructor"
+								: "/"
+						}>
             <button className={StudentAllCoursesCSS.mycoursesButton}>
               My Courses
             </button>

@@ -13,7 +13,7 @@ const Profile = () => {
 
 			<div className={ProfileCSS.profile}>
 				<div className={ProfileCSS.profilePicture}>
-					<img src={ProfileImg} alt="User Profile Picture" />
+					<img src={ProfileImg} alt="User Profile" />
 				</div>
 				<form action="#" method="post" enctype="multipart/form-data">
 					<div className={ProfileCSS.formGroup}>

@@ -51,7 +51,7 @@ const Services = () => {
 			</div>
 			<p className={ServicesCSS.attribution}>
 				Icons by{" "}
-				<a target="_blank" href="https://icons8.com">
+				<a target="_blank" href="https://icons8.com" rel="noreferrer">
 					Icons8
 				</a>
 			</p>

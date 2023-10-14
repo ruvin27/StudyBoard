@@ -23,6 +23,12 @@ const Chat = () => {
 						<div className={ChatCSS.message}>Alice: I'm good, thanks. How about you?</div>
 						<div className={ChatCSS.message}>Bob: I'm doing well too.</div>
 						<div className={ChatCSS.message}>Alice: That's great to hear!</div>
+						<div className={ChatCSS.message}>Alice: That's great to hear!</div>
+						<div className={ChatCSS.message}>Alice: That's great to hear!</div>
+						<div className={ChatCSS.message}>Alice: That's great to hear!</div>
+						<div className={ChatCSS.message}>Alice: That's great to hear!</div>
+						<div className={ChatCSS.message}>Alice: That's great to hear!</div>
+						<div className={ChatCSS.message}>Alice: That's great to hear!</div>
 					</div>
 					<div className={ChatCSS.chatInput}>
 						<input type="text" placeholder="Type your message..." />
