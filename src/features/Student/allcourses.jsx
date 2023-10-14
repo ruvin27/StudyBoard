@@ -10,7 +10,7 @@ export default function AllStudentCourses() {
           <h2>All Courses</h2>
         </div>
         <div className={StudentAllCoursesCSS.rightElement}>
-          <Link to="/student-myCourses">
+          <Link to="/myCourses">
             <button className={StudentAllCoursesCSS.mycoursesButton}>
               My Courses
             </button>
