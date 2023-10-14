@@ -80,8 +80,8 @@ export default function StudentMyCourses() {
         </Link>
         <Link to="/CourseInfoNavigation">
           <div className={MyCoursesCSS.courseCard}>
-            <div>
-              <h2 className={MyCoursesCSS.courseTitle}>Course Title 5</h2>
+            <div className={MyCoursesCSS.courseInfo}>
+              <h2 className={MyCoursesCSS.courseTitle}>Course Title 4</h2>
               <p className={MyCoursesCSS.courseDescription}>
                 This is a brief description of the second course.
               </p>
