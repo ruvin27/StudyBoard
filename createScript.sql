@@ -75,7 +75,17 @@ CREATE TABLE comments (
     FOREIGN KEY (course_id) REFERENCES course(course_id)
 );
 
+CREATE TABLE messages (
+    ID INT AUTO_INCREMENT,
+    sender TEXT,
+    receiver TEXT,
+    message TEXT,
+    PRIMARY KEY (ID)
+);
+
+
 -- Drop all Tables
+-- DROP TABLE IF EXISTS messages;
 -- DROP TABLE IF EXISTS comments;
 -- DROP TABLE IF EXISTS grades;
 -- DROP TABLE IF EXISTS question;
