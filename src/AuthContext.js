@@ -1,7 +1,8 @@
 import React, { useState, createContext, useContext, useEffect } from "react";
 import io from "socket.io-client";
 
-const serverURL = "http://localhost:5000"; // Define the server URL
+// const serverURL = "http://localhost:5000"; 
+const serverURL = "https://studyboardchat.azurewebsites.net/";
 const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {

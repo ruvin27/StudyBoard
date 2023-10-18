@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/28d9ed76-0c47-48e6-a092-1827e4dd7109/resourceGroups/appsvc_linux_centralus/providers/Microsoft.Web/sites/studyboardchat",
+    "appService.deploySubpath": "."
+}

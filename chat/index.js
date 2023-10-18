@@ -5,13 +5,22 @@ const { Server } = require("socket.io");
 const cors = require("cors");
 var users = [];
 
-app.use(cors());
+app.use(cors({
+    origin: '*',  // Replace with the actual origin of your frontend app
+    methods: ['GET', 'POST'],
+  }));
+
+  app.get("/", (req, res) => {
+    res.send("Hello, this is your Express.js server!");
+});
+
+const port = process.env.PORT || 5000;
 
 const server = http.createServer(app);
 
 const io = new Server(server, {
 	cors: {
-		origin: "http://localhost:3000",
+		origin: "*",
 	},
 });
 
@@ -41,6 +50,6 @@ io.on("connection", (socket) => {
 	});
 });
 
-server.listen(5000, () => {
-	console.log("SERVER IS RUNNING");
+server.listen(port, () => {
+    console.log(`SERVER IS RUNNING on port ${port}`);
 });
