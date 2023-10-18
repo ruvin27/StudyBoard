@@ -16,7 +16,7 @@ const CourseInfoQA = () => {
       </div>
       <div className={CourseInfoCSS.courseButton}>
         <button className={CourseInfoCSS.button}>Syllabus</button>
-        <Link to={"/instructorexamanalysis"}>
+        <Link to={"/qaexamanalysis"}>
           <button className={CourseInfoCSS.button}>Reports</button>
         </Link>
         <Link to={"/sendrecommendationsqa"}>
