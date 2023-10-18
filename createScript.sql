@@ -1,6 +1,7 @@
 -- Create the user table
 CREATE TABLE user (
-    email VARCHAR(255) PRIMARY KEY NOT NULL, -- Change the column name to 'email'
+    userid INT  AUTO_INCREMENT PRIMARY KEY,
+    email VARCHAR(255) NOT NULL, -- Change the column name to 'email'
     role VARCHAR(255) NOT NULL,
     name VARCHAR(255) NOT NULL,
     password VARCHAR(255) NOT NULL,
@@ -22,9 +23,9 @@ CREATE TABLE course (
     description TEXT,
     course_name VARCHAR(255) NOT NULL,
     program_id INT,
-    instructor_id VARCHAR(255),
+    instructor_id INT,
     FOREIGN KEY (program_id) REFERENCES program(program_id),
-    FOREIGN KEY (instructor_id) REFERENCES user(email) -- Change to reference the 'email' column
+    FOREIGN KEY (instructor_id) REFERENCES user(userid) -- Change to reference the 'email' column
 );
 
 -- Create the exam table
@@ -56,22 +57,29 @@ CREATE TABLE grades (
     grade_id INT PRIMARY KEY,
     exam_id INT,
     course_id INT,
-    email VARCHAR(255), -- Change the data type to VARCHAR to match 'email'
+    student_id INT, -- Change the data type to VARCHAR to match 'email'
     date DATE,
     score DECIMAL(5, 2),
     FOREIGN KEY (exam_id) REFERENCES exam(exam_id),
     FOREIGN KEY (course_id) REFERENCES course(course_id),
-    FOREIGN KEY (email) REFERENCES user(email) -- Change to reference the 'email' column
+    FOREIGN KEY (student_id) REFERENCES user(userid) -- Change to reference the 'email' column
 );
 
 -- Create the comments table
 CREATE TABLE comments (
     comment_id INT PRIMARY KEY,
-    email VARCHAR(255), -- Change the data type to VARCHAR to match 'email'
+    student_id INT, -- Change the data type to VARCHAR to match 'email'
     course_id INT,
     timestamp TIMESTAMP,
     message TEXT NOT NULL,
-    FOREIGN KEY (email) REFERENCES user(email), -- Change to reference the 'email' column
+    FOREIGN KEY (student_id) REFERENCES user(userid), -- Change to reference the 'email' column
+    FOREIGN KEY (course_id) REFERENCES course(course_id)
+);
+
+CREATE TABLE student_enrolls_into_course (
+    student_id INT,
+    course_id INT,
+    FOREIGN KEY (student_id) REFERENCES user(userid), 
     FOREIGN KEY (course_id) REFERENCES course(course_id)
 );
 
