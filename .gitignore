@@ -6,6 +6,7 @@
 .pnp.js
 /backend/config.php
 /backend/mailer.php
+/chat/node_modules
 
 # testing
 /coverage

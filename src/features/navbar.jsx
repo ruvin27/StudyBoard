@@ -13,7 +13,6 @@ const Navbar = () => {
 		setIsActive(!isActive);
 	};
 	const handleLogout = async () => {
-		console.log("Logging out...");
 		logout();
 		console.log("User logged out.");
 		navigate("/login");

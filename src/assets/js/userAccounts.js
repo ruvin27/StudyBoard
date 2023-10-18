@@ -37,7 +37,6 @@ function addUser() {
     const email = document.getElementById("email").value;
     const role = document.getElementById("role").value;
     const course = document.getElementById("course").value;
-    console.log(email,role,course)
 
     document.getElementById("email").value = "";
     document.getElementById("role").value = "student";
