@@ -119,12 +119,14 @@ const App = () => {
 					<Route path="/MyCoursesPc" exact element={getRouteElement(user, "Program Coordinator", user?.email_verified_at, <MyCoursesPc />)} />
 					<Route path="/PCCourseInfo" exact element={getRouteElement(user, "Program Coordinator", user?.email_verified_at, <PCCourseInfo />)} />
 					<Route path="/SendRecommendations" exact element={getRouteElement(user, "Program Coordinator", user?.email_verified_at, <SendRecommendations />)} />
+					<Route path="/PCExamAnalysis" exact element={getRouteElement(user, "Program Coordinator", user?.email_verified_at, <InstructorExamAnalysis />)} />
 
 					{/* QA Page Routes */}
 					<Route path="/belowavgexamsQA" exact element={getRouteElement(user, "QA Officer", user?.email_verified_at, <BelowAverageResultsQA />)} />
 					<Route path="/mycoursesqa" exact element={getRouteElement(user, "QA Officer", user?.email_verified_at, <MyCoursesQA />)} />
 					<Route path="/courseinfoqa" exact element={getRouteElement(user, "QA Officer", user?.email_verified_at, <CourseInfoQA />)} />
 					<Route path="/sendrecommendationsqa" exact element={getRouteElement(user, "QA Officer", user?.email_verified_at, <CourseRecommendationQA />)} />
+					<Route path="/QAExamAnalysis" exact element={getRouteElement(user, "QA Officer", user?.email_verified_at, <InstructorExamAnalysis />)} />
 
 					{/* Student Page Routes */}
 					<Route path="/studentExams" exact element={getRouteElement(user, "Student", user?.email_verified_at, <StudentExams />)} />
