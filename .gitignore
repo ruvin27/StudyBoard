@@ -7,19 +7,20 @@
 /backend/config.php
 /backend/mailer.php
 /chat/node_modules
-
+/backend/vendor
+/backend/vendor/composer
 # testing
 /coverage
+
+# frontend (vite)
+/frontend/node_modules
+/frontend/dist
 
 # production
 /build
 
 # misc
 .DS_Store
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
 
 npm-debug.log*
 yarn-debug.log*

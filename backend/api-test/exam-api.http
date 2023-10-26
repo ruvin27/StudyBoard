@@ -1,0 +1,35 @@
+
+### GET exams by instructor id
+GET http://studyboard-backend.test/exam/getAllByInstructorId.php?id=1
+Accept: application/json
+
+### Create exam
+POST http://studyboard-backend.test/exam/create.php
+Content-Type: application/json
+
+{
+  "exam_title": "My exam 2",
+  "exam_date": "2023-10-19",
+  "exam_description": "My Exam 2 description",
+  "exam_score": 100,
+  "course_id": 1,
+  "student_id": 2,
+  "questions": [
+    {
+      "question": "What is the capital of France?",
+      "answer": "Paris",
+      "mcq1": "London",
+      "mcq2": "Berlin",
+      "mcq3": "Madrid",
+      "mcq4": "Paris"
+    },
+    {
+      "question": "Which gas do plants absorb from the atmosphere?",
+      "answer": "Carbon Dioxide",
+      "mcq1": "Oxygen",
+      "mcq2": "Carbon Dioxide",
+      "mcq3": "Nitrogen",
+      "mcq4": "Helium"
+    }
+  ]
+}

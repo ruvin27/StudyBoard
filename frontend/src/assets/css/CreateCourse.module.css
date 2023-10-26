@@ -1,0 +1,86 @@
+/* Team 15: Rodrigues, Ruvin - 1002029569, Sheth, Urmi Manish - 1002064934, Surakunta, Vinil Reddy  – 1002072982,
+Valishetty,Srikar - 1002088509, Sesetti, Sri Budhi Sagar  - 1002131432 */
+
+.createCourse {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 30px;
+  border-style: ridge;
+  padding: 20px;
+  border: 1px solid black;
+}
+
+.labelClass {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.createInput {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.submitBtn {
+  margin-top: 15px;
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.inputFocus,
+.textareaFocus {
+  outline: none;
+  border-color: #007bff;
+}
+
+.formGroup:last-child {
+  margin-bottom: 0;
+}
+
+.courseFormContainer {
+  background-color: #ffffff;
+  padding: 40px;
+  border-radius: 5px;
+  box-shadow: 3px 3px 10px #888888;
+  max-width: 600px;
+  margin: 20px auto;
+}
+
+.courseFormContainer h3 {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.courseFormContainer form label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.courseFormContainer form input[type='text'],
+.courseFormContainer form input[type='date'],
+.courseFormContainer form input[type='number'] {
+  width: 100%;
+  padding: 10px 5px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  margin-bottom: 10px;
+}
+
+.programObjective {
+  width: 100%;
+  padding: 10px;
+}

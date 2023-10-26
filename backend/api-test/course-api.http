@@ -1,0 +1,34 @@
+### All courses
+GET http://studyboard-backend.test/course/getAll.php
+Accept: application/json
+
+### Courses by id
+GET http://studyboard-backend.test/course/getById.php?id=1
+Accept: application/json
+
+### Courses by instructor id
+GET http://studyboard-backend.test/course/getAllByInstructorId.php?id=1
+Accept: application/json
+
+### Create course
+POST http://studyboard-backend.test/course/create.php
+Content-Type: application/json
+
+{
+  "name": "New Course 2",
+  "description": "New Description 2",
+  "start_date": "2023-08-13",
+  "end_date": "2023-12-13",
+  "code": "NC102",
+  "instructor_id": 1,
+  "program_id": 1
+}
+
+### Remove student
+POST http://studyboard-backend.test/course/removeStudent.php
+Content-Type: application/json
+
+{
+  "course_id": 1,
+  "student_id": 3
+}
