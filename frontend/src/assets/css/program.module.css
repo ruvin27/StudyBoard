@@ -1,0 +1,73 @@
+/* Team 15: Rodrigues, Ruvin - 1002029569, Sheth, Urmi Manish - 1002064934, Surakunta, Vinil Reddy  – 1002072982,
+Valishetty,Srikar - 1002088509, Sesetti, Sri Budhi Sagar  - 1002131432 */
+
+.container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.frontImage {
+  margin: 30px 0px;
+  text-align: center;
+}
+
+.frontImage img {
+  width: 80%;
+}
+
+.programDetails {
+  border: 1px solid black;
+  width: 80%;
+  padding: 20px;
+  margin: 20px;
+}
+
+.contentHeader {
+  text-align: center;
+}
+
+.programDetails ul {
+  padding-left: 150px;
+  font-size: 20px;
+  margin: 30px 0px;
+}
+.programDetails ul li {
+  margin-bottom: 15px;
+}
+.courseButtonStyle {
+  text-align: center;
+  margin-bottom: 30px;
+}
+.coursesButton {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 20px;
+  transition: background-color 0.3s ease;
+  width: 250px;
+}
+
+.coursesButton:hover {
+  background-color: #0056b3;
+}
+
+@media (max-width: 768px) {
+  .frontImage img {
+    width: 95%;
+  }
+
+  .programDetails {
+    width: 80%;
+  }
+
+  .programDetails ul {
+    padding-left: 30px;
+    padding-right: 10px;
+  }
+}

@@ -1,0 +1,66 @@
+/* Team 15: Rodrigues, Ruvin - 1002029569, Sheth, Urmi Manish - 1002064934, Surakunta, Vinil Reddy  – 1002072982,
+Valishetty,Srikar - 1002088509, Sesetti, Sri Budhi Sagar  - 1002131432 */
+
+.formContainer {
+  max-width: 800px;
+  margin: 20px auto;
+}
+
+.quizCard {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 3px 3px 10px #888888;
+  margin-bottom: 20px;
+}
+
+.quizCard h3 {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+}
+
+.quizCard p {
+  margin-bottom: 10px;
+}
+.quizCard label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.quizCard input[type='radio'] {
+  margin-right: 5px;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f0f0f0;
+  padding: 10px;
+}
+
+.leftElement {
+  flex: 1;
+  padding-left: 35px;
+}
+
+.submitQuiz {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+  margin: 10px;
+}
+
+.submitQuiz:hover {
+  background-color: #0056b3;
+}
+
+.submit {
+  width: 100%;
+  text-align: center;
+}
