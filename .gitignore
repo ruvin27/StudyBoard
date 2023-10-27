@@ -4,8 +4,6 @@
 /node_modules
 /.pnp
 .pnp.js
-/backend/config.php
-/backend/mailer.php
 /chat/node_modules
 /backend/vendor
 /backend/vendor/composer
