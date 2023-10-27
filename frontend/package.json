@@ -4,6 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "start" : "npm run dev",
     "build": "vite build",
     "dev": "vite",
     "format": "npx prettier --write .",

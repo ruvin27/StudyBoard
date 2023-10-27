@@ -29,7 +29,6 @@ const Verification = () => {
         } else if (res.data === 'Failed to update email verification status') {
           alert('Failed to update email verification status')
         } else {
-          await login(res.data)
           navigate('/')
         }
       })
