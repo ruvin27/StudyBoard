@@ -39,19 +39,20 @@ const Login = () => {
       return
     }
     await apiClient
-      .post('/authentication/login.php', {
-        email: formData.email,
-        password: formData.password,
-      })
-      .then(async (res) => {
-        if (res.data.status === 'error') {
-          alert(res.data.message)
-          return
-        }
-
-        await login(res.data.data)
-        navigate('/')
-      })
+    .post('/authentication/login.php', {
+      email: formData.email,
+      password: formData.password,
+    })
+    .then(async (res) => {
+      if (res.data.status === 'error') {
+        alert(res.data.message)
+        return
+      }
+      
+      console.log(res.data);
+      await login(res.data.data)
+      navigate('/')
+    })
   }
 
   return (

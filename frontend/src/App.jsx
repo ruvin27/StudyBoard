@@ -65,6 +65,7 @@ import NotAuthorized from '@features/NotAuthorized'
 
 const App = () => {
   const { user, isLoading } = useAuth()
+  console.log(user);
 
   const getRouteElement = (user, role, emailVerifiedAt, component) => {
     if (!user) {
@@ -368,7 +369,7 @@ const App = () => {
 
           {/* Student Page Routes */}
           <Route
-            path="/studentExams"
+            path="/studentExams/:courseId"
             exact
             element={getRouteElement(
               user,
@@ -377,8 +378,19 @@ const App = () => {
               <StudentExams />
             )}
           />
-          <Route
+          {/* <Route
             path="/CourseInfoNavigation"
+            exact
+            element={getRouteElement(
+              user,
+              'Student',
+              user?.email_verified_at,
+              <StudentCouseInfoNavigation />
+            )}
+          /> */}
+          {/* <Route path="/CourseInfoNavigation/:courseId" component={CourseInfoNavigation} /> */}
+          <Route
+            path="/CourseInfoNavigation/:courseId"
             exact
             element={getRouteElement(
               user,
@@ -408,8 +420,7 @@ const App = () => {
             )}
           />
           <Route
-            path="/people"
-            exact
+            path="/people/:courseId"
             element={getRouteElement(
               user,
               'Student',
@@ -417,8 +428,9 @@ const App = () => {
               <StudentPeople />
             )}
           />
+
           <Route
-            path="/takeExam"
+            path="/takeExam/:examId/:courseId"
             exact
             element={getRouteElement(
               user,
