@@ -43,14 +43,28 @@ const Login = () => {
         email: formData.email,
         password: formData.password,
       })
-      .then(async (res) => {
+      .then( (res) => {
         if (res.data.status === 'error') {
           alert(res.data.message)
           return
         }
 
-        await login(res.data.data)
-        navigate('/')
+         login(res.data.data)
+        if(res.data.data.role === 'Admin'){
+          navigate('/panel')
+        }
+        else if(res.data.data.role === 'Instructor'){
+          navigate('/MyCoursesInstructor');
+        }
+        else if(res.data.data.role === 'QA Officer'){
+          navigate('/mycoursesqa');
+        }
+        else if(res.data.data.role === 'Program Coordinator'){
+          navigate('/MyCoursesPc');
+        }
+        else{
+          navigate('/myCourses');
+        }
       })
   }
 
