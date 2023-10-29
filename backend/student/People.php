@@ -16,20 +16,39 @@ if (isset($data->courseId)) {
     INNER JOIN user u ON e.student_id = u.userid
     WHERE e.course_id = $courseId;";
 
-    $result = mysqli_query($conn, $sql);
+    $sql1 = "SELECT u.name AS instructorName, c.name AS courseName, c.instructor_id
+    FROM course c
+    INNER JOIN user u ON u.userid = c.instructor_id
+    WHERE c.course_id = $courseId;";
 
-    if ($result) {
+    $result = mysqli_query($conn, $sql);
+    $result1 = mysqli_query($conn, $sql1); // Execute the second query
+
+    if ($result && $result1) {
         $peopleDetails = array();
 
         while ($row = mysqli_fetch_assoc($result)) {
             $peopleDetails[] = array(
                 "name" => $row['name'],
                 "student_id" => $row['student_id'],
-                "course_id" => $row['course_id'],
-                "role" => $row['role']
+                "course_id" => $courseId,
+                "role" => $row['role'],
             );
         }
 
+        // Append the instructor's name and course name to the peopleDetails array
+        $row = mysqli_fetch_assoc($result1);
+        $instructorName = $row['instructorName'];
+        $courseName = $row['courseName'];
+
+        $peopleDetails[] = array(
+            "name" => $instructorName,
+            "instructor_id" => $row['instructor_id'],
+            "courseName" => $courseName,
+            "role" => "Instructor",
+        );
+
+       
         echo json_encode($peopleDetails);
     } else {
         echo json_encode([]);

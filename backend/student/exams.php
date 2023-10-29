@@ -12,10 +12,11 @@ if (isset($data->courseId) && isset($data->userid)) {
     $courseId = mysqli_real_escape_string($conn, $data->courseId);
     $userid = mysqli_real_escape_string($conn, $data->userid);
 
-    $sql = "SELECT exam_id, course_id, exam_title
-            FROM exam 
-            WHERE course_id = '$courseId'
-            AND student_id = '$userid'";
+    $sql = "SELECT e.exam_id, c.course_id,e.exam_title, c.name
+            FROM exam e 
+            JOIN course c on e.course_id = c.course_id 
+            WHERE e.course_id = '$courseId'
+            AND e.student_id = '$userid'";
 
     $result = mysqli_query($conn, $sql);
 
@@ -26,7 +27,8 @@ if (isset($data->courseId) && isset($data->userid)) {
             $examDetails[] = array(
                 "exam_id" => $row['exam_id'],
                 "course_id" => $courseId,
-                "exam_title" => $row['exam_title']
+                "exam_title" => $row['exam_title'],
+                "name" => $row['name']
             );
         }
 
