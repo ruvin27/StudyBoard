@@ -52,16 +52,14 @@ const CourseInfoNavigation = () => {
             <Link to={`/studentExams/${courseId}`}>
               <button className={CouseInfoCSS.button}>Exams</button>
             </Link>
-            <Link to="/student-grades">
+            <Link to={`/student-grades/${courseId}`}>
               <button className={CouseInfoCSS.button}>Grades</button>
             </Link>
           </div>
           <div className={CouseInfoCSS.CourseInformation}>
             <p>{courseDetails.description}</p>
           </div>
-          <div className={CouseInfoCSS.CourseInformation}>
-            <p>comments and Discussion</p>
-          </div>
+          
         </>
       ) : (
         <p>Loading course details...</p>

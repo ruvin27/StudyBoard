@@ -400,7 +400,7 @@ const App = () => {
             )}
           />
           <Route
-            path="/student-grades"
+            path="/student-grades/:courseId"
             exact
             element={getRouteElement(
               user,
