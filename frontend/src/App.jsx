@@ -62,6 +62,7 @@ import './assets/css/variables.css';
 
 const App = () => {
   const { user, isLoading } = useAuth()
+
   console.log(user)
   const [colors, setColors] = useState([]);
 
@@ -155,13 +156,73 @@ const App = () => {
           <Route path="/sendrecommendationsqa" exact element={getRouteElement(user, 'QA Officer', user?.email_verified_at, <CourseRecommendationQA />)} />
           <Route path="/QAExamAnalysis" exact element={getRouteElement(user, 'QA Officer', user?.email_verified_at, <InstructorExamAnalysis />)} />
 
-          {/* Student Page Routes */}
-          <Route path="/studentExams" exact element={getRouteElement(user, 'Student', user?.email_verified_at, <StudentExams />)} />
+          <Route
+            path="/studentExams/:courseId"
+            exact
+            element={getRouteElement(
+              user,
+              'Student',
+              user?.email_verified_at,
+              <StudentExams />
+            )}
+          />
+
+          <Route
+            path="/CourseInfoNavigation/:courseId"
+            exact
+            element={getRouteElement(
+              user,
+              'Student',
+              user?.email_verified_at,
+              <StudentCouseInfoNavigation />
+            )}
+          />
+          <Route
+            path="/student-grades/:courseId"
+            exact
+            element={getRouteElement(
+              user,
+              'Student',
+              user?.email_verified_at,
+              <StudentGrades />
+            )}
+          />
+          <Route
+            path="/myCourses"
+            exact
+            element={getRouteElement(
+              user,
+              'Student',
+              user?.email_verified_at,
+              <StudentMyCourses />
+            )}
+          />
+          <Route
+            path="/people/:courseId"
+            element={getRouteElement(
+              user,
+              'Student',
+              user?.email_verified_at,
+              <StudentPeople />
+            )}
+          />
+
+          <Route
+            path="/takeExam/:examId/:courseId"
+            exact
+            element={getRouteElement(
+              user,
+              'Student',
+              user?.email_verified_at,
+              <StudentTakeExam />
+            )}
+          />
+          /*<Route path="/studentExams" exact element={getRouteElement(user, 'Student', user?.email_verified_at, <StudentExams />)} />
           <Route path="/CourseInfoNavigation" exact element={getRouteElement(user, 'Student', user?.email_verified_at, <StudentCouseInfoNavigation />)} />
           <Route path="/student-grades" exact element={getRouteElement(user, 'Student', user?.email_verified_at, <StudentGrades />)} />
           <Route path="/myCourses" exact element={getRouteElement(user, 'Student', user?.email_verified_at, <StudentMyCourses />)} />
           <Route path="/people" exact element={getRouteElement(user, 'Student', user?.email_verified_at, <StudentPeople />)} />
-          <Route path="/takeExam" exact element={getRouteElement(user, 'Student', user?.email_verified_at, <StudentTakeExam />)} />
+          <Route path="/takeExam" exact element={getRouteElement(user, 'Student', user?.email_verified_at, <StudentTakeExam />)} />*/
         </Routes>
         {user && <Chat />}
       </Router>
