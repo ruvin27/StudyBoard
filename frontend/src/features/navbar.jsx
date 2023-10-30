@@ -31,6 +31,8 @@ const Navbar = () => {
                 ? '/MyCoursesPc'
                 : user && user.role === 'Instructor'
                 ? '/mycoursesInstructor'
+                : user && user.role === 'Admin'
+                ? '/panel'
                 : '/'
             }
           >
@@ -66,11 +68,7 @@ const Navbar = () => {
           )}
         </li>
       </ul>
-      <button
-        className={NavbarCSS.menuButton}
-        id="menu-button"
-        onClick={toggleMenu}
-      >
+      <button className={NavbarCSS.menuButton} id="menu-button" onClick={toggleMenu}>
         &#9776;
       </button>
     </nav>

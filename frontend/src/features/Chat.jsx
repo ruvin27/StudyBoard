@@ -20,9 +20,7 @@ const Chat = () => {
     setSearchQuery(event.target.value)
   }
 
-  const filteredUsernames = users.filter((username) =>
-    username.toLowerCase().includes(searchQuery.toLowerCase())
-  )
+  const filteredUsernames = users.filter((username) => username.toLowerCase().includes(searchQuery.toLowerCase()))
 
   const toggleChat = () => {
     setIsChatOpen(!isChatOpen)
@@ -44,9 +42,9 @@ const Chat = () => {
         try {
           const response = await apiClient.get(`/chat/users.php`)
           const filteredOtherUsers = response.data.filter((userData) => {
-            const userEmail = user.email.trim().toLowerCase();
-            const userDataEmail = userData.trim().toLowerCase();
-            return userDataEmail !== userEmail;
+            const userEmail = user.email.trim().toLowerCase()
+            const userDataEmail = userData.trim().toLowerCase()
+            return userDataEmail !== userEmail
           })
           setUsers(filteredOtherUsers)
         } catch (error) {
@@ -119,13 +117,11 @@ const Chat = () => {
         message: message,
       },
     ])
-    await apiClient
-      .post(`/chat/storemessage.php`, {
-        sender: user.email,
-        receiver: currentUser,
-        message: message,
-      });
-      
+    await apiClient.post(`/chat/storemessage.php`, {
+      sender: user.email,
+      receiver: currentUser,
+      message: message,
+    })
 
     // Clear the input field
     setMessage('')
@@ -141,11 +137,7 @@ const Chat = () => {
                 <i className="fa fa-arrow-left" onClick={toggleUserView}></i>
               </div>
             )}
-            {isUserView ? (
-              <div>Instant Messaging</div>
-            ) : (
-              <div>{currentUser}</div>
-            )}
+            {isUserView ? <div>Instant Messaging</div> : <div>{currentUser}</div>}
             <div>
               <i className="fa fa-close" onClick={toggleChat}></i>
             </div>
@@ -155,23 +147,13 @@ const Chat = () => {
               <div className={ChatCSS.chatMessages} id="messages">
                 {messages.map((msg, index) => (
                   <div key={index} className={ChatCSS.message}>
-                    <b
-                      style={{ color: msg.sender === 'You' ? 'blue' : 'green' }}
-                    >
-                      {msg.sender}:
-                    </b>{' '}
-                    {msg.message}
+                    <b style={{ color: msg.sender === 'You' ? 'blue' : 'green' }}>{msg.sender}:</b> {msg.message}
                   </div>
                 ))}
               </div>
               <form onSubmit={(e) => sendMessage(e)}>
                 <div className={ChatCSS.chatInput}>
-                  <input
-                    type="text"
-                    placeholder="Type your message..."
-                    value={message}
-                    onChange={(e) => setMessage(e.target.value)}
-                  />
+                  <input type="text" placeholder="Type your message..." value={message} onChange={(e) => setMessage(e.target.value)} />
                   <button type="submit">Send</button>
                 </div>
               </form>
@@ -179,12 +161,7 @@ const Chat = () => {
           ) : (
             <div className={ChatCSS.userListCard}>
               <div className={ChatCSS.searchBar}>
-                <input
-                  type="text"
-                  placeholder="Search usernames"
-                  value={searchQuery}
-                  onChange={handleSearchChange}
-                />
+                <input type="text" placeholder="Search usernames" value={searchQuery} onChange={handleSearchChange} />
               </div>
               <ul className={ChatCSS.userList}>
                 {filteredUsernames.map((username, index) => (

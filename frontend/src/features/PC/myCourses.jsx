@@ -14,6 +14,11 @@ const MyCoursesPc = () => {
               Contact Responses
             </button>
           </Link>
+          <Link to={'/pcobjectives'}>
+            <button className={MyCoursesCSS.mycoursesButton}>
+              Program Objectives
+            </button>
+          </Link>
           <Link to={'/belowavgexams'}>
             <button className={MyCoursesCSS.mycoursesButton}>
               Below Average Results

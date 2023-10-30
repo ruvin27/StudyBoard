@@ -17,25 +17,25 @@ const Settings = () => {
   }, [])
 
   const handleColorCodeChange = (colorId, hexColor) => {
-    const updatedColors = [...colors];
-    
-    const colorIndex = updatedColors.findIndex((color) => color.id === colorId);
+    const updatedColors = [...colors]
+
+    const colorIndex = updatedColors.findIndex((color) => color.id === colorId)
     if (colorIndex !== -1) {
-      updatedColors[colorIndex].hexColor = hexColor;
+      updatedColors[colorIndex].hexColor = hexColor
     }
-    
-    setColors(updatedColors);
-  };
+
+    setColors(updatedColors)
+  }
 
   const handleChange = (index) => {
     apiClient
       .post('/webdesign/setcolor.php', {
         hexColor: colors[index].hexColor,
-        id: colors[index].id
+        id: colors[index].id,
       })
-      .then( (res) => {
-        alert(res.data);
-      });
+      .then((res) => {
+        alert(res.data)
+      })
   }
   return (
     <div>
@@ -55,15 +55,14 @@ const Settings = () => {
         <tbody>
           {colors.map((color, index) => (
             <tr key={color.id}>
-            <td>{color.desc}</td>
-            <td>
-              <input
-                type="text"
-                value={color.hexColor}
-                onChange={(e) => handleColorCodeChange(color.id, e.target.value)}
-              /></td>
+              <td>{color.desc}</td>
               <td>
-                <button className={FindUserCSS.findUserBtn} onClick={() =>handleChange(index)}>Change</button>
+                <input type="text" value={color.hexColor} onChange={(e) => handleColorCodeChange(color.id, e.target.value)} />
+              </td>
+              <td>
+                <button className={FindUserCSS.findUserBtn} onClick={() => handleChange(index)}>
+                  Change
+                </button>
               </td>
             </tr>
           ))}
