@@ -44,11 +44,6 @@ const Login = () => {
         password: formData.password,
       })
       .then( (res) => {
-        if (res.data.status === 'error') {
-          alert(res.data.message)
-          return
-        }
-
          login(res.data.data)
         if(res.data.data.role === 'Admin'){
           navigate('/panel')
@@ -65,6 +60,9 @@ const Login = () => {
         else{
           navigate('/myCourses');
         }
+      })
+      .catch((error) => {
+          alert(error.response.data.message);
       })
   }
 

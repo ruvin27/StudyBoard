@@ -51,7 +51,7 @@ label {
 }
 
 .uploadBtn {
-  background-color: #007bff;
+  background-color: var(--theme);
   color: #fff;
   padding: 10px 20px;
   width: 150px;
@@ -63,7 +63,7 @@ label {
 }
 
 .submitBtn {
-  background-color: #007bff;
+  background-color: var(--theme);
   color: #fff;
   border: none;
   width: 90%;

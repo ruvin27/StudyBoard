@@ -124,10 +124,8 @@ const Chat = () => {
         sender: user.email,
         receiver: currentUser,
         message: message,
-      })
-      .then((res) => {
-        console.log(res.data)
-      })
+      });
+      
 
     // Clear the input field
     setMessage('')

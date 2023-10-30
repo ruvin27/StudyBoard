@@ -1,33 +1,24 @@
 <?php
 require_once(BASE_DIR . '/service/AuthService.php');
 
-CorsHeaders::standardPost();
+# CorsHeaders::standardPost();
 
 $json = file_get_contents('php://input');
 $data = json_decode($json);
 
-$requiredFields = ['email', 'password', 'name', 'phone_number', 'role'];
+$requiredFields = ['email', 'code', 'password'];
 $errors = Validator::validate($data, $requiredFields);
+
 if ($errors) {
     ApiResponse::error($errors, 400);
     die();
 }
 
 $authService = new AuthService();
-
-$userData = new UserModel(
-    $data->email,
-    $data->password,
-    $data->name,
-    $data->phone_number,
-    $data->role
-);
-
-$result = $authService->register($userData);
+$result = $authService->resetPassword($data->email, $data->password);
 
 if ($result->isSuccess()) {
-    ApiResponse::success($result->getData());
+    ApiResponse::success(null, $result->getMessage());
 } else {
     ApiResponse::error($result->getMessage(), 401);
 }
-

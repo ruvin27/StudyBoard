@@ -40,4 +40,12 @@ class User
         $stmt->bindParam(':otp', $otp);
         return $stmt->execute();
     }
+
+    public function updatePasswordThroughReset($email, $password)
+    {
+        $stmt = $this->connection->prepare("UPDATE user SET password = :password WHERE email = :email");
+        $stmt->bindParam(':email', $email);
+        $stmt->bindParam(':password', $password);
+        return $stmt->execute();
+    }
 }

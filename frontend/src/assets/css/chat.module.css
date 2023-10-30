@@ -14,7 +14,7 @@ Valishetty,Srikar - 1002088509, Sesetti, Sri Budhi Sagar  - 1002131432 */
 
 .chatHeader {
   padding: 10px;
-  background-color: #007bff;
+  background-color: var(--theme);
   color: white;
   text-align: center;
   border-radius: 8px 8px 0 0;
@@ -57,7 +57,7 @@ Valishetty,Srikar - 1002088509, Sesetti, Sri Budhi Sagar  - 1002131432 */
 }
 
 .chatInput button {
-  background-color: #007bff;
+  background-color: var(--theme);
   color: white;
   padding: 8px 16px;
   border: none;
@@ -90,7 +90,7 @@ Valishetty,Srikar - 1002088509, Sesetti, Sri Budhi Sagar  - 1002131432 */
   position: fixed;
   bottom: 10px;
   right: 10px;
-  background-color: #007bff;
+  background-color: var(--theme);
   color: white;
   padding: 10px;
   border: none;

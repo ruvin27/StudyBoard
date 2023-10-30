@@ -3,7 +3,6 @@ import Logo from '@assets/images/logo.png'
 import { useAuth } from '@contexts/AuthContext'
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-
 const Navbar = () => {
   const { user, logout } = useAuth()
   const navigate = useNavigate()

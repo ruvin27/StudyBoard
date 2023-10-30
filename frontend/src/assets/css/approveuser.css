@@ -52,7 +52,7 @@ nav button {
 .search-button {
   width: 25%;
   padding: 10px;
-  background-color: #007bff;
+  background-color: var(--theme);
   color: #fff;
   border: none;
   border-radius: 5px;

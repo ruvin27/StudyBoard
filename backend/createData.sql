@@ -14,6 +14,8 @@ DELETE
 FROM user;
 DELETE
 FROM program;
+DELETE
+FROM colortable;
 
 INSERT INTO user (userid, email, role, name, password, phone_number, verification_code, email_verified_at)
 VALUES (1, 'instructor@app.com', 'Instructor', 'John Doe',
@@ -45,5 +47,11 @@ VALUES (1, 2, 1, CURRENT_TIMESTAMP, 'Great course!');
 
 INSERT INTO enrollment (student_id, course_id)
 VALUES (2, 1);
+
+INSERT INTO `colortable` (`id`, `usedFor`, `hexColor`, `description`) VALUES
+(1, 'theme', '007bff', 'Theme Color for the Website'),
+(2, 'nav-bar-hover', 'ff6600', 'Hover Color for Navbar Links'),
+(3, 'nav-bar', '333', 'Navbar background Color'),
+(4, 'nav-bar-text', 'fff', 'NavBar Color for Links');
 
 COMMIT;

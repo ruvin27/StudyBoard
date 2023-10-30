@@ -25,7 +25,7 @@ body {
   text-align: right;
 }
 .mycoursesButton {
-  background-color: #007bff;
+  background-color: var(--theme);
   color: #fff;
   border: none;
   padding: 10px 20px;

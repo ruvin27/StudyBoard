@@ -70,14 +70,17 @@ const Register = () => {
         role: formData.role,
       })
       .then(async (res) => {
-        if (!res.data) {
-          alert(res.data)
+        if (res.data.status === 'error') {
+          alert(res.data.message)
           return
         }
 
         await login(formData)
         navigate('/verify')
       })
+      .catch((error) => {
+        alert(error.response.data.message);
+    })
   }
 
   return (
