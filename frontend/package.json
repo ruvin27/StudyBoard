@@ -4,6 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "start" : "npm run dev",
     "build": "vite build",
     "dev": "vite",
     "format": "npx prettier --write .",
@@ -15,7 +16,8 @@
     "semi": false,
     "singleQuote": true,
     "tabWidth": 2,
-    "trailingComma": "es5"
+    "trailingComma": "es5",
+    "printWidth": 200 
   },
   "dependencies": {
     "@tanstack/react-query": "^5.0.0",

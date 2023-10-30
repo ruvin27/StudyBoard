@@ -43,9 +43,11 @@ const Chat = () => {
       if (user) {
         try {
           const response = await apiClient.get(`/chat/users.php`)
-          const filteredOtherUsers = response.data.filter(
-            (userData) => userData !== user.email
-          )
+          const filteredOtherUsers = response.data.filter((userData) => {
+            const userEmail = user.email.trim().toLowerCase();
+            const userDataEmail = userData.trim().toLowerCase();
+            return userDataEmail !== userEmail;
+          })
           setUsers(filteredOtherUsers)
         } catch (error) {
           console.error('Error fetching users:', error)
@@ -122,10 +124,8 @@ const Chat = () => {
         sender: user.email,
         receiver: currentUser,
         message: message,
-      })
-      .then((res) => {
-        console.log(res.data)
-      })
+      });
+      
 
     // Clear the input field
     setMessage('')

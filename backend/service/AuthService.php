@@ -64,6 +64,34 @@ class AuthService
         }
     }
 
+    public function forgotPassword($email): ServiceResponse
+    {
+        $userData = $this->userRepository->findUserByEmail($email);
+
+        if (!$userData) {
+            return ServiceResponse::error('User Not Found');
+        }
+        $this->mailService->sendForgotPassEmail($userData['email'], $userData['name'], $userData['verification_code']);
+        return ServiceResponse::success($userData, 'Email with Reset Link sent successfully');
+    }
+
+    public function resetPassword($email, $password): ServiceResponse
+    {
+        $user = $this->userRepository->findUserByEmail($email);
+
+        if (!$user) {
+            return ServiceResponse::error('User Not Found');
+        }
+        $hashpassword = password_hash($password, PASSWORD_BCRYPT);
+        if ($this->userRepository->updatePasswordThroughReset($email, $hashpassword)) {
+            return ServiceResponse::success(null, 'Password changed successfully');
+        } else {
+            return ServiceResponse::error('Failed to change password');
+        }
+
+        
+    }
+
 
 }
 

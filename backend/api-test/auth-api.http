@@ -13,9 +13,9 @@ POST http://studyboard-backend.test/authentication/register.php
 Content-Type: application/json
 
 {
-  "email": "k.gautam.t@gmail.com",
+  "email": "ruvin27@gmail.com",
   "password": "password",
-  "name": "Kapil Gautam",
+  "name": "Ruvin Rodrigues",
   "role": "Student",
   "phone_number": "1234567890"
 }
@@ -26,6 +26,6 @@ POST http://studyboard-backend.test/authentication/verifyotp.php
 Content-Type: application/json
 
 {
-  "email": "k.gautam.t@gmail.com",
+  "email": "ruvin27@gmail.com",
   "otp": "164636"
 }

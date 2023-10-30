@@ -1,4 +1,5 @@
 # Drop all Tables
+DROP TABLE IF EXISTS colortable;
 DROP TABLE IF EXISTS enrollment;
 DROP TABLE IF EXISTS messages;
 DROP TABLE IF EXISTS comments;
@@ -117,4 +118,8 @@ CREATE TABLE messages
     message  TEXT
 );
 
-
+CREATE TABLE ColorTable (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    usedFor VARCHAR(255) NOT NULL,
+    hexColor VARCHAR(7) NOT NULL
+);

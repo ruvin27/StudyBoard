@@ -21,7 +21,7 @@ Valishetty,Srikar - 1002088509, Sesetti, Sri Budhi Sagar  - 1002131432 */
 }
 
 .userButton {
-  background-color: #007bff;
+  background-color: var(--theme);
   color: #fff;
   border: none;
   padding: 10px 20px;
@@ -56,7 +56,7 @@ Valishetty,Srikar - 1002088509, Sesetti, Sri Budhi Sagar  - 1002131432 */
 .searchButton {
   width: 25%;
   padding: 10px;
-  background-color: #007bff;
+  background-color: var(--theme);
   color: #fff;
   border: none;
   border-radius: 5px;
@@ -149,7 +149,7 @@ Valishetty,Srikar - 1002088509, Sesetti, Sri Budhi Sagar  - 1002131432 */
 }
 
 .button {
-  background-color: #007bff;
+  background-color: var(--theme);
   color: #fff;
   border: none;
   padding: 10px 20px;
@@ -188,7 +188,7 @@ Valishetty,Srikar - 1002088509, Sesetti, Sri Budhi Sagar  - 1002131432 */
 
 .select:hover,
 .select:focus {
-  border-color: #007bff; /* Border color on hover/focus */
+  border-color: var(--theme); /* Border color on hover/focus */
 }
 
 .autocompleteContainer {

@@ -29,8 +29,26 @@ const Verification = () => {
         } else if (res.data === 'Failed to update email verification status') {
           alert('Failed to update email verification status')
         } else {
-          await login(res.data)
-          navigate('/')
+          const userData = {
+            ...user,
+            email_verified_at	: true
+          }
+          login(userData);
+          if(user.role === 'Admin'){
+            navigate('/panel')
+          }
+          else if(user.role === 'Instructor'){
+            navigate('/MyCoursesInstructor');
+          }
+          else if(user.role === 'QA Officer'){
+            navigate('/mycoursesqa');
+          }
+          else if(user.role === 'Program Coordinator'){
+            navigate('/MyCoursesPc');
+          }
+          else{
+            navigate('/myCourses');
+          }
         }
       })
   }

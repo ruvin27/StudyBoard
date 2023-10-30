@@ -39,20 +39,31 @@ const Login = () => {
       return
     }
     await apiClient
-    .post('/authentication/login.php', {
-      email: formData.email,
-      password: formData.password,
-    })
-    .then(async (res) => {
-      if (res.data.status === 'error') {
-        alert(res.data.message)
-        return
-      }
-      
-      console.log(res.data);
-      await login(res.data.data)
-      navigate('/')
-    })
+      .post('/authentication/login.php', {
+        email: formData.email,
+        password: formData.password,
+      })
+      .then( (res) => {
+         login(res.data.data)
+        if(res.data.data.role === 'Admin'){
+          navigate('/panel')
+        }
+        else if(res.data.data.role === 'Instructor'){
+          navigate('/MyCoursesInstructor');
+        }
+        else if(res.data.data.role === 'QA Officer'){
+          navigate('/mycoursesqa');
+        }
+        else if(res.data.data.role === 'Program Coordinator'){
+          navigate('/MyCoursesPc');
+        }
+        else{
+          navigate('/myCourses');
+        }
+      })
+      .catch((error) => {
+          alert(error.response.data.message);
+      })
   }
 
   return (

@@ -7,8 +7,9 @@ body {
 }
 
 .navbar {
-  background-color: #333;
-  color: #fff;
+  /* background-color: #333; */
+  background-color: var(--nav-bar);
+  color: var(--nav-bar-text);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -50,13 +51,13 @@ body {
 
 .navbarLinks a {
   text-decoration: none;
-  color: #fff;
+  color: var(--nav-bar-text);
   font-weight: bold;
   transition: color 0.3s;
 }
 
 .navbarLinks a:hover {
-  color: #ff6600;
+  color: var(--nav-bar-hover);
 }
 
 @media (min-width: 769px) {
@@ -87,7 +88,7 @@ body {
     top: 50px;
     left: 0;
     right: 0;
-    background-color: #333;
+    background-color: var(--nav-bar);
     z-index: 2;
     padding: 0px;
   }
@@ -108,7 +109,7 @@ body {
     top: 15px;
     right: 20px;
     background-color: transparent;
-    color: #fff;
+    color: var(--nav-bar-text);
     font-size: 24px;
     border: none;
     cursor: pointer;
@@ -129,13 +130,13 @@ body {
 .dropdownContent {
   display: none;
   position: absolute;
-  background-color: #333;
+  background-color: var(--nav-bar);
   min-width: 160px;
   z-index: 1;
 }
 
 .dropdownContent a {
-  color: #fff;
+  color: var(--nav-bar-text);
   padding: 12px 16px;
   text-decoration: none;
   display: block;
