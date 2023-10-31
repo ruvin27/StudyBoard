@@ -1,92 +1,72 @@
-import PeopleCSS from '@assets/css/NewUser.module.css'
+import React, { useState, useEffect } from 'react';
+import { Link, useParams } from 'react-router-dom';
+import PeopleCSS from '@assets/css/NewUser.module.css';
+import { useAuth } from '@contexts/AuthContext';
+import { apiClient } from '@lib/apiClient';
+
 const People = () => {
+  const { courseId } = useParams();
+  const { user } = useAuth();
+  const [peopleDetails, setPeopleDetails] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await apiClient.post('student/People.php', {
+          courseId: courseId,
+          userid: user.userid,
+        });
+
+        setPeopleDetails(response.data);
+        console.log(response.data[2]);
+      
+      } catch (error) {
+        console.error('Error fetching people details:', error);
+      }
+    };
+
+    if (user) {
+      fetchData();
+    }
+  }, [courseId, user]);
+
   return (
-    <div>
-      <div className={PeopleCSS.container}>
-        <div className={PeopleCSS.leftElement}>
-          <h2>Course Name</h2>
-        </div>
-      </div>
+    <>
+      {peopleDetails.length > 0 ? (
+        
+        <>
+          <div className={PeopleCSS.container}>
+            <div className={PeopleCSS.leftElement}>
+              <h2>{peopleDetails[peopleDetails.length-1].courseName}</h2>
+            </div>
+          </div>
 
-      <div>
-        <table className={PeopleCSS.people_list_table}>
-          <thead>
-            <tr>
-              <th colSpan="3">People</th>
-            </tr>
-            <tr>
-              <th>Role</th>
-              <th>Name</th>
-              <th>Action</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Instructor</td>
-              <td>Instructor Name</td>
-
-              <td></td>
-            </tr>
-            <tr>
-              <td>Student</td>
-              <td>Student 1</td>
-
-              <td>
-                <button className={PeopleCSS.removeButton}>
-                  Remove from this course
-                </button>
-              </td>
-            </tr>
-            <tr>
-              <td>Student</td>
-              <td>Student 2</td>
-
-              <td>
-                <button className={PeopleCSS.removeButton}>
-                  Remove from this course
-                </button>
-              </td>
-            </tr>
-            <tr>
-              <td>Student</td>
-              <td>Student 3</td>
-              <td>
-                <button className={PeopleCSS.removeButton}>
-                  Remove from this course
-                </button>
-              </td>
-            </tr>
-            <tr>
-              <td>Student</td>
-              <td>Student 4</td>
-              <td>
-                <button className={PeopleCSS.removeButton}>
-                  Remove from this course
-                </button>
-              </td>
-            </tr>
-            <tr>
-              <td>Student</td>
-              <td>Student 5</td>
-              <td>
-                <button className={PeopleCSS.removeButton}>
-                  Remove from this course
-                </button>
-              </td>
-            </tr>
-            <tr>
-              <td>Student</td>
-              <td>Student 6</td>
-              <td>
-                <button className={PeopleCSS.removeButton}>
-                  Remove from this course
-                </button>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
+          <div>
+            <table className={PeopleCSS.newUsersTable}>
+              <thead>
+                <tr>
+                  <th colSpan="3">People</th>
+                </tr>
+                <tr>
+                  <th>Role</th>
+                  <th>Name</th>
+                </tr>
+              </thead>
+              <tbody>
+                {peopleDetails.map((student, index) => (
+                  <tr key={index}>
+                    <td>{student.role}</td>
+                    <td>{student.name}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </>
+      ) : (
+        <p>No people found for this course.</p>
+      )}
+    </>
   )
 }
 export default People

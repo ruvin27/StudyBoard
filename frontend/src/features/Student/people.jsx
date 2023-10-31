@@ -9,7 +9,6 @@ const StudentPeople = () => {
   const { courseId } = useParams();
   const { user } = useAuth();
   const [peopleDetails, setPeopleDetails] = useState([]);
-  const [courseName, setCourseName] = useState('');
 
   useEffect(() => {
     const fetchData = async () => {
@@ -20,7 +19,6 @@ const StudentPeople = () => {
         });
 
         setPeopleDetails(response.data);
-        console.log(response.data[2]);
       
       } catch (error) {
         console.error('Error fetching people details:', error);

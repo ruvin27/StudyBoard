@@ -47,7 +47,7 @@ const StudentDashboard = () => {
           <h2>My Courses</h2>
         </div>
         <div className={MyCoursesCSS.rightElement}>
-          <Link to="/program_details">
+          <Link to="/">
             <button className={MyCoursesCSS.mycoursesButton}>Program Details</button>
           </Link>
         </div>

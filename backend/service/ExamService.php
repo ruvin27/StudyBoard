@@ -1,17 +1,17 @@
 <?php
 require_once(BASE_DIR . '/database/Database.php');
-require_once(BASE_DIR . '/model/ExamModel.php');
+require_once(BASE_DIR . '/model/Exam.php');
+require_once(BASE_DIR . '/model/ExamUpdateModel.php');
 
 class ExamService
 {
     private Exam $examRepository;
-    private QuestionService $questionService;
 
     public function __construct()
     {
-        $this->questionService = new QuestionService();
         $this->examRepository = new Exam();
     }
+
 
     public function create(ExamModel $examData): ServiceResponse
     {
@@ -21,20 +21,18 @@ class ExamService
             return ServiceResponse::error('Failed to create exam');
         }
 
-        foreach ($examData->questions as $question) {
-            $this->questionService->create(new QuestionModel(
-                    $examId,
-                    $question->question,
-                    $question->answer,
-                    $question->mcq1,
-                    $question->mcq2,
-                    $question->mcq3,
-                    $question->mcq4
-                )
-            );
+        return ServiceResponse::success($examId, "Exam created successfully");
+    }
+
+    public function update($examId, ExamUpdateModel $examData): ServiceResponse
+    {
+        $examId = $this->examRepository->update($examId, $examData);
+
+        if (!$examId) {
+            return ServiceResponse::error('Failed to update exam');
         }
 
-        return ServiceResponse::success($examId, "Exam created successfully");
+        return ServiceResponse::success(true, "Exam updated successfully");
     }
 }
 

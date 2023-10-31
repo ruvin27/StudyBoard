@@ -1,14 +1,17 @@
-# Drop all Tables
-DROP TABLE IF EXISTS colortable;
 DROP TABLE IF EXISTS enrollment;
-DROP TABLE IF EXISTS messages;
 DROP TABLE IF EXISTS comments;
 DROP TABLE IF EXISTS grades;
 DROP TABLE IF EXISTS question;
 DROP TABLE IF EXISTS exam;
+DROP TABLE IF EXISTS objectives;
+DROP TABLE IF EXISTS recommendation;
+DROP TABLE IF EXISTS messages;
 DROP TABLE IF EXISTS course;
 DROP TABLE IF EXISTS program;
 DROP TABLE IF EXISTS user;
+DROP TABLE IF EXISTS exam_resolution;
+DROP TABLE IF EXISTS qa_policies;
+DROP TABLE IF EXISTS ColorTable;
 
 
 -- Create the user table
@@ -44,22 +47,21 @@ CREATE TABLE course
     objective     TEXT,
     program_id    INT,
     instructor_id INT,
-    FOREIGN KEY (program_id) REFERENCES program (program_id),
-    FOREIGN KEY (instructor_id) REFERENCES user (userid)
+    FOREIGN KEY (program_id) REFERENCES program (program_id) ON DELETE CASCADE,
+    FOREIGN KEY (instructor_id) REFERENCES user (userid) ON DELETE CASCADE
 );
 
 -- Create the exam table
 CREATE TABLE exam
 (
-    exam_id     INT PRIMARY KEY AUTO_INCREMENT,
-    course_id   INT,
-    student_id  INT,
-    date        DATE,
-    description TEXT,
-    score       DECIMAL(5, 2),
-    exam_title  VARCHAR(255),
-    FOREIGN KEY (course_id) REFERENCES course (course_id),
-    FOREIGN KEY (student_id) REFERENCES user (userid)
+    exam_id       INT PRIMARY KEY AUTO_INCREMENT,
+    course_id     INT,
+    date          DATE,
+    description   TEXT,
+    score         DECIMAL(5, 2),
+    exam_duration INT,
+    exam_title    VARCHAR(255),
+    FOREIGN KEY (course_id) REFERENCES course (course_id) ON DELETE CASCADE
 );
 
 -- Create the question table
@@ -73,7 +75,7 @@ CREATE TABLE question
     mcq2        VARCHAR(255),
     mcq3        VARCHAR(255),
     mcq4        VARCHAR(255),
-    FOREIGN KEY (exam_id) REFERENCES exam (exam_id)
+    FOREIGN KEY (exam_id) REFERENCES exam (exam_id) ON DELETE CASCADE
 );
 
 -- Create the grades table
@@ -81,13 +83,13 @@ CREATE TABLE grades
 (
     grade_id   INT PRIMARY KEY AUTO_INCREMENT,
     exam_id    INT,
-    course_id  INT,
+#     course_id  INT,
     student_id INT,
     date       DATE,
     score      DECIMAL(5, 2),
     FOREIGN KEY (exam_id) REFERENCES exam (exam_id),
-    FOREIGN KEY (course_id) REFERENCES course (course_id),
-    FOREIGN KEY (student_id) REFERENCES user (userid)
+#     FOREIGN KEY (course_id) REFERENCES course (course_id),
+    FOREIGN KEY (student_id) REFERENCES user (userid) ON DELETE CASCADE
 );
 
 -- Create the comments table
@@ -98,16 +100,16 @@ CREATE TABLE comments
     course_id  INT,
     timestamp  TIMESTAMP,
     message    TEXT NOT NULL,
-    FOREIGN KEY (student_id) REFERENCES user (userid),
-    FOREIGN KEY (course_id) REFERENCES course (course_id)
+    FOREIGN KEY (student_id) REFERENCES user (userid) ON DELETE CASCADE,
+    FOREIGN KEY (course_id) REFERENCES course (course_id) ON DELETE CASCADE
 );
 
 CREATE TABLE enrollment
 (
     student_id INT,
     course_id  INT,
-    FOREIGN KEY (student_id) REFERENCES user (userid),
-    FOREIGN KEY (course_id) REFERENCES course (course_id)
+    FOREIGN KEY (student_id) REFERENCES user (userid) ON DELETE CASCADE,
+    FOREIGN KEY (course_id) REFERENCES course (course_id) ON DELETE CASCADE
 );
 
 CREATE TABLE messages
@@ -118,8 +120,44 @@ CREATE TABLE messages
     message  TEXT
 );
 
-CREATE TABLE ColorTable (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    usedFor VARCHAR(255) NOT NULL,
-    hexColor VARCHAR(7) NOT NULL
+CREATE TABLE exam_resolution
+(
+    resolution_id                INT PRIMARY KEY AUTO_INCREMENT,
+    exam_id                      INT,
+    qa_officer_resolved          INT,
+    program_coordinator_resolved INT,
+    FOREIGN KEY (exam_id) REFERENCES exam (exam_id)
+);
+
+CREATE TABLE qa_policies
+(
+    id       INT AUTO_INCREMENT PRIMARY KEY,
+    policies TEXT
+);
+
+CREATE TABLE ColorTable
+(
+    id          INT AUTO_INCREMENT PRIMARY KEY,
+    usedFor     VARCHAR(255) NOT NULL,
+    hexColor    VARCHAR(7)   NOT NULL,
+    description VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE objectives
+(
+    objective_id INT AUTO_INCREMENT PRIMARY KEY,
+    program_id   INT,
+    objective    TEXT,
+    FOREIGN KEY (program_id) REFERENCES program (program_id)
+);
+
+CREATE TABLE recommendation
+(
+    recommendation_id INT AUTO_INCREMENT PRIMARY KEY,
+    course_id         INT           NOT NULL,
+    message           varchar(1000) NOT NULL,
+    sender_id         INT           NOT NULL,
+
+    FOREIGN KEY (course_id) REFERENCES course (course_id) ON DELETE CASCADE,
+    FOREIGN KEY (sender_id) REFERENCES user (userid) ON DELETE CASCADE
 );

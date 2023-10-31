@@ -12,7 +12,7 @@ if (isset($data->courseId)) {
     $courseId = mysqli_real_escape_string($conn, $data->courseId);
 
     // Modify the SQL query to select course details by course_id
-    $sql = "SELECT name, description, instructor_id
+    $sql = "SELECT *
             FROM course
             WHERE course_id = '$courseId'";
 
@@ -26,7 +26,10 @@ if (isset($data->courseId)) {
                 "name" => $row['name'],
                 "description" => $row['description'],
                 "instructor_id" => $row['instructor_id'],
-                "course_id" => $courseId
+                "course_id" => $courseId,
+                "code" => $row['code'],
+                "start_date" => $row['start_date'],
+                "end_date" => $row['end_date'],
             );
         }
 

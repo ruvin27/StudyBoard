@@ -2,13 +2,13 @@
 
 class Validator
 {
-    public static function validate($data, $requiredFields)
+    public static function validate($data, $requiredFields): ?array
     {
         $errors = [];
 
         foreach ($requiredFields as $field) {
-            $value = is_array($data) ? (isset($data[$field]) ? $data[$field] : null) : (isset($data->$field) ? $data->$field : null);
-            if (empty(trim($value))) {
+            $value = is_array($data) ? ($data[$field] ?? null) : ($data->$field ?? null);
+            if (is_null($value) || trim((string)$value) === '') {
                 $errors[$field] = "$field is required";
             }
         }
