@@ -1,8 +1,9 @@
-import { Navigate, Route, BrowserRouter as Router, Routes } from 'react-router-dom'
-import React, { useState, useEffect } from 'react'
-import { apiClient } from '@lib/apiClient'
-import { useAuth } from '@contexts/AuthContext'
-import './assets/css/variables.css'
+import {
+  Navigate,
+  Route,
+  BrowserRouter as Router,
+  Routes,
+} from 'react-router-dom'
 
 //Auth Imports
 import ForgotPassword from '@features/authentication/ForgotPaswword'
@@ -18,7 +19,7 @@ import NewUsers from '@features/Admin/NewUsers'
 import Panel from '@features/Admin/Panel'
 import UserAccounts from '@features/Admin/UserAccounts'
 import UserActivity from '@features/Admin/UserActivity'
-import Settings from '@features/Admin/Settings'
+
 //Information Page Imports
 import About from '@features/info/About'
 import ContactUs from '@features/info/ContactUs'
@@ -41,15 +42,16 @@ import ContactUsResponses from '@features/PC/contactresponses'
 import MyCoursesPc from '@features/PC/myCourses'
 import PCCourseInfo from '@features/PC/PCCourseInfo'
 import SendRecommendations from '@features/PC/sendRecommendations'
-import PCObjectives from '@features/PC/PCObjectives'
 
 //QA imports
 import BelowAverageResultsQA from '@features/QA/belowavgexams'
 import MyCoursesQA from '@features/QA/myCourses'
 import CourseInfoQA from '@features/QA/QACourseInfo'
 import CourseRecommendationQA from '@features/QA/sendRecommendations'
+import QAExamAnalysis from '@features/QA/QAExamAnalysis'
+import QAPolicies from '@features/QA/QAPolicies'
+import QACourseInfoNavigation from '@features/QA/QACourseInfoNavigation'
 
-//Student imports
 import AllStudentCourses from '@features/Student/allcourses'
 import StudentCouseInfoNavigation from '@features/Student/CourseInfoNavigation'
 import StudentExams from '@features/Student/exams'
@@ -58,6 +60,7 @@ import StudentMyCourses from '@features/Student/myCourses'
 import StudentPeople from '@features/Student/people'
 import StudentTakeExam from '@features/Student/takeExam'
 
+import { useAuth } from '@contexts/AuthContext'
 import Chat from '@features/Chat'
 import LoadingSpinner from '@features/LoadingSpinner'
 import Navbar from '@features/navbar'
@@ -65,34 +68,7 @@ import NotAuthorized from '@features/NotAuthorized'
 
 const App = () => {
   const { user, isLoading } = useAuth()
-
-  console.log(user)
-  const [colors, setColors] = useState([])
-
-  useEffect(() => {
-    // Fetch color data from the database using Axios
-    apiClient
-      .get('/webdesign/colors.php')
-      .then((response) => {
-        setColors(response.data)
-      })
-      .catch((error) => {
-        console.error('Error fetching color data:', error)
-      })
-  }, [])
-
-  useEffect(() => {
-    if (colors) {
-      const cssContent = `:root {
-        ${colors.map((color) => `--${color.usedFor}: #${color.hexColor};`).join('\n')}
-      }`
-
-      const styleElement = document.createElement('style')
-      styleElement.innerHTML = cssContent
-      document.head.appendChild(styleElement)
-    }
-  }, [colors])
-
+  console.log(user);
   const getRouteElement = (user, role, emailVerifiedAt, component) => {
     if (!user) {
       return <NotAuthorized />
@@ -102,9 +78,6 @@ const App = () => {
       return <Verification />
     } else if (user.role === role) {
       return component
-    }
-    else{
-      return <NotAuthorized />
     }
   }
   if (isLoading) {
@@ -116,12 +89,37 @@ const App = () => {
         <Navbar />
         <Routes>
           {/* Authentication Routes */}
-          <Route path="/login" element={user ? <Navigate to="/" /> : <Login />} />
-          <Route path="/register" element={user ? <Navigate to="/" /> : <Register />} />
-          <Route path="/forgotpassword" element={user ? <Navigate to="/" /> : <ForgotPassword />} />
-          <Route path="/verify" element={user && user.email_verified_at == null ? <Verification /> : <Navigate to="/" />} />
-          <Route path="/profile" element={user ? <Profile /> : <Navigate to="/login" />} />
-          <Route path="/newpassword/:email/:code" element={user ? <Navigate to="/login" /> : <NewPassword />} />
+          <Route
+            path="/login"
+            element={user ? <Navigate to="/" /> : <Login />}
+          />
+          <Route
+            path="/register"
+            element={user ? <Navigate to="/" /> : <Register />}
+          />
+          <Route
+            path="/forgotpassword"
+            element={user ? <Navigate to="/" /> : <ForgotPassword />}
+          />
+          <Route
+            path="/verify"
+            element={
+              user && user.email_verified_at == null ? (
+                <Verification />
+              ) : (
+                <Navigate to="/" />
+              )
+            }
+          />
+          <Route
+            path="/profile"
+            element={user ? <Profile /> : <Navigate to="/login" />}
+          />
+          <Route
+            path="/newpassword"
+            element={user ? <Navigate to="/login" /> : <NewPassword />}
+          />
+
           {/* Information Page Routes */}
           <Route path="/about" exact element={<About />} />
           <Route path="/contactus" exact element={<ContactUs />} />
@@ -129,44 +127,348 @@ const App = () => {
           <Route path="/services" exact element={<Services />} />
           <Route path="/allcourses" exact element={<AllStudentCourses />} />
           {/* Admin routes */}
-          <Route path="/finduser" element={getRouteElement(user, 'Admin', user?.email_verified_at, <FindUser />)} />
-          <Route path="/newusers" element={getRouteElement(user, 'Admin', user?.email_verified_at, <NewUsers />)} />
-          <Route path="/panel" element={getRouteElement(user, 'Admin', user?.email_verified_at, <Panel />)} />
-          <Route path="/useraccounts" element={getRouteElement(user, 'Admin', user?.email_verified_at, <UserAccounts />)} />
-          <Route path="/useractivity" element={getRouteElement(user, 'Admin', user?.email_verified_at, <UserActivity />)} />
-          <Route path="/settings" element={getRouteElement(user, 'Admin', user?.email_verified_at, <Settings />)} />
+          <Route
+            path="/finduser"
+            element={getRouteElement(
+              user,
+              'Admin',
+              user?.email_verified_at,
+              <FindUser />
+            )}
+          />
+          <Route
+            path="/newusers"
+            element={getRouteElement(
+              user,
+              'Admin',
+              user?.email_verified_at,
+              <NewUsers />
+            )}
+          />
+          <Route
+            path="/panel"
+            element={getRouteElement(
+              user,
+              'Admin',
+              user?.email_verified_at,
+              <Panel />
+            )}
+          />
+          <Route
+            path="/useraccounts"
+            element={getRouteElement(
+              user,
+              'Admin',
+              user?.email_verified_at,
+              <UserAccounts />
+            )}
+          />
+          <Route
+            path="/useractivity"
+            element={getRouteElement(
+              user,
+              'Admin',
+              user?.email_verified_at,
+              <UserActivity />
+            )}
+          />
+
           {/* Instructor Page Routes */}
-          <Route path="/CreateCourse" exact element={getRouteElement(user, 'Instructor', user?.email_verified_at, <CreateCourse />)} />
-          <Route path="/CreateExam" exact element={getRouteElement(user, 'Instructor', user?.email_verified_at, <CreateExam />)} />
-          <Route path="/Exams" exact element={getRouteElement(user, 'Instructor', user?.email_verified_at, <Exams />)} />
-          <Route path="/Grades" exact element={getRouteElement(user, 'Instructor', user?.email_verified_at, <Grades />)} />
-          <Route path="/InstructorCourseInfo" exact element={getRouteElement(user, 'Instructor', user?.email_verified_at, <InstructorCourseInfo />)} />
-          <Route path="/InstructorExamAnalysis" exact element={getRouteElement(user, 'Instructor', user?.email_verified_at, <InstructorExamAnalysis />)} />
-          <Route path="/MyCoursesInstructor" exact element={getRouteElement(user, 'Instructor', user?.email_verified_at, <MyCourses />)} />
-          <Route path="/Recommendation" exact element={getRouteElement(user, 'Instructor', user?.email_verified_at, <Recommendation />)} />
+          <Route
+            path="/CreateCourse"
+            exact
+            element={getRouteElement(
+              user,
+              'Instructor',
+              user?.email_verified_at,
+              <CreateCourse />
+            )}
+          />
+          <Route
+            path="/CreateExam"
+            exact
+            element={getRouteElement(
+              user,
+              'Instructor',
+              user?.email_verified_at,
+              <CreateExam />
+            )}
+          />
+          <Route
+            path="/Exams"
+            exact
+            element={getRouteElement(
+              user,
+              'Instructor',
+              user?.email_verified_at,
+              <Exams />
+            )}
+          />
+          <Route
+            path="/Grades"
+            exact
+            element={getRouteElement(
+              user,
+              'Instructor',
+              user?.email_verified_at,
+              <Grades />
+            )}
+          />
+          <Route
+            path="/InstructorCourseInfo"
+            exact
+            element={getRouteElement(
+              user,
+              'Instructor',
+              user?.email_verified_at,
+              <InstructorCourseInfo />
+            )}
+          />
+          <Route
+            path="/InstructorExamAnalysis"
+            exact
+            element={getRouteElement(
+              user,
+              'Instructor',
+              user?.email_verified_at,
+              <InstructorExamAnalysis />
+            )}
+          />
+          <Route
+            path="/MyCoursesInstructor"
+            exact
+            element={getRouteElement(
+              user,
+              'Instructor',
+              user?.email_verified_at,
+              <MyCourses />
+            )}
+          />
+          <Route
+            path="/Recommendation"
+            exact
+            element={getRouteElement(
+              user,
+              'Instructor',
+              user?.email_verified_at,
+              <Recommendation />
+            )}
+          />
+
           {/* PC Page Routes */}
-          <Route path="/belowavgexams" exact element={getRouteElement(user, 'Program Coordinator', user?.email_verified_at, <BelowAverageResults />)} />
-          <Route path="/contactusresponses" exact element={getRouteElement(user, 'Program Coordinator', user?.email_verified_at, <ContactUsResponses />)} />
-          <Route path="/MyCoursesPc" exact element={getRouteElement(user, 'Program Coordinator', user?.email_verified_at, <MyCoursesPc />)} />
-          <Route path="/PCCourseInfo" exact element={getRouteElement(user, 'Program Coordinator', user?.email_verified_at, <PCCourseInfo />)} />
-          <Route path="/SendRecommendations" exact element={getRouteElement(user, 'Program Coordinator', user?.email_verified_at, <SendRecommendations />)} />
-          <Route path="/PCExamAnalysis" exact element={getRouteElement(user, 'Program Coordinator', user?.email_verified_at, <InstructorExamAnalysis />)} />
-          <Route path="/pcobjectives" exact element={getRouteElement(user, 'Program Coordinator', user?.email_verified_at, <PCObjectives />)} />
-
+          <Route
+            path="/belowavgexams"
+            exact
+            element={getRouteElement(
+              user,
+              'Program Coordinator',
+              user?.email_verified_at,
+              <BelowAverageResults />
+            )}
+          />
+          <Route
+            path="/contactusresponses"
+            exact
+            element={getRouteElement(
+              user,
+              'Program Coordinator',
+              user?.email_verified_at,
+              <ContactUsResponses />
+            )}
+          />
+          <Route
+            path="/MyCoursesPc"
+            exact
+            element={getRouteElement(
+              user,
+              'Program Coordinator',
+              user?.email_verified_at,
+              <MyCoursesPc />
+            )}
+          />
+          <Route
+            path="/PCCourseInfo"
+            exact
+            element={getRouteElement(
+              user,
+              'Program Coordinator',
+              user?.email_verified_at,
+              <PCCourseInfo />
+            )}
+          />
+          <Route
+            path="/SendRecommendations"
+            exact
+            element={getRouteElement(
+              user,
+              'Program Coordinator',
+              user?.email_verified_at,
+              <SendRecommendations />
+            )}
+          />
+          <Route
+            path="/PCExamAnalysis"
+            exact
+            element={getRouteElement(
+              user,
+              'Program Coordinator',
+              user?.email_verified_at,
+              <InstructorExamAnalysis />
+            )}
+          />
+          <Route
+            path="/QAExamAnalysis"
+            exact
+            element={getRouteElement(
+              user,
+              'Program Coordinator',
+              user?.email_verified_at,
+              <QAExamAnalysis />
+            )}
+            />
           {/* QA Page Routes */}
-          <Route path="/belowavgexamsQA" exact element={getRouteElement(user, 'QA Officer', user?.email_verified_at, <BelowAverageResultsQA />)} />
-          <Route path="/mycoursesqa" exact element={getRouteElement(user, 'QA Officer', user?.email_verified_at, <MyCoursesQA />)} />
-          <Route path="/courseinfoqa" exact element={getRouteElement(user, 'QA Officer', user?.email_verified_at, <CourseInfoQA />)} />
-          <Route path="/sendrecommendationsqa" exact element={getRouteElement(user, 'QA Officer', user?.email_verified_at, <CourseRecommendationQA />)} />
-          <Route path="/QAExamAnalysis" exact element={getRouteElement(user, 'QA Officer', user?.email_verified_at, <InstructorExamAnalysis />)} />
-           {/* Student Page Routes */}
-          <Route path="/studentExams/:courseId" exact element={getRouteElement(user, 'Student', user?.email_verified_at, <StudentExams />)} />
-          <Route path="/CourseInfoNavigation/:courseId" exact element={getRouteElement(user, 'Student', user?.email_verified_at, <StudentCouseInfoNavigation />)} />
-          <Route path="/student-grades/:courseId" exact element={getRouteElement(user, 'Student', user?.email_verified_at, <StudentGrades />)} />
-          <Route path="/myCourses" exact element={getRouteElement(user, 'Student', user?.email_verified_at, <StudentMyCourses />)} />
-          <Route path="/people/:courseId" element={getRouteElement(user, 'Student', user?.email_verified_at, <StudentPeople />)} />
-          <Route path="/takeExam/:examId/:courseId" exact element={getRouteElement(user, 'Student', user?.email_verified_at, <StudentTakeExam />)} />
+          <Route
+            path="/belowavgexams"
+            exact
+            element={getRouteElement(
+              user,
+              'QA Officer',
+              user?.email_verified_at,
+              <BelowAverageResultsQA />
+            )}
+          />
+          <Route
+            path="/CourseInfoNavigation/:courseId"
+            exact
+            element={getRouteElement(
+              user,
+              'QA Officer',
+              user?.email_verified_at,
+              <QACourseInfoNavigation />
+            )}
+          />
+          <Route
+            path="/qa-processes"
+            exact
+            element={getRouteElement(
+              user,
+              'QA Officer',
+              user?.email_verified_at,
+              <QAPolicies />
+            )}
+          />
+          <Route
+            path="/mycoursesqa"
+            exact
+            element={getRouteElement(
+              user,
+              'QA Officer',
+              user?.email_verified_at,
+              <MyCoursesQA />
+            )}
+          />
+          <Route
+            path="/courseinfoqa"
+            exact
+            element={getRouteElement(
+              user,
+              'QA Officer',
+              user?.email_verified_at,
+              <CourseInfoQA />
+            )}
+          />
+          <Route
+            path="/sendrecommendationsqa"
+            exact
+            element={getRouteElement(
+              user,
+              'QA Officer',
+              user?.email_verified_at,
+              <CourseRecommendationQA />
+            )}
+          />
+          <Route
+            path="/QAExamAnalysis"
+            exact
+            element={getRouteElement(
+              user,
+              'QA Officer',
+              user?.email_verified_at,
+              <QAExamAnalysis />
+            )}
+          />
+          <Route
+            path="/student-reports/:courseId"
+            exact
+            element={getRouteElement(
+              user,
+              'QA Officer',
+              user?.email_verified_at,
+              <QAExamAnalysis />
+            )}
+          />
 
+          {/* Student Page Routes */}
+          <Route
+            path="/studentExams"
+            exact
+            element={getRouteElement(
+              user,
+              'Student',
+              user?.email_verified_at,
+              <StudentExams />
+            )}
+          />
+          <Route
+            path="/CourseInfoNavigation"
+            exact
+            element={getRouteElement(
+              user,
+              'Student',
+              user?.email_verified_at,
+              <StudentCouseInfoNavigation />
+            )}
+          />
+          <Route
+            path="/student-grades"
+            exact
+            element={getRouteElement(
+              user,
+              'Student',
+              user?.email_verified_at,
+              <StudentGrades />
+            )}
+          />
+          <Route
+            path="/myCourses"
+            exact
+            element={getRouteElement(
+              user,
+              'Student',
+              user?.email_verified_at,
+              <StudentMyCourses />
+            )}
+          />
+          <Route
+            path="/people"
+            exact
+            element={getRouteElement(
+              user,
+              'Student',
+              user?.email_verified_at,
+              <StudentPeople />
+            )}
+          />
+          <Route
+            path="/takeExam"
+            exact
+            element={getRouteElement(
+              user,
+              'Student',
+              user?.email_verified_at,
+              <StudentTakeExam />
+            )}
+          />
         </Routes>
         {user && <Chat />}
       </Router>
