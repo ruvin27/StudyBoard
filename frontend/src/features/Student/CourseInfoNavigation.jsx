@@ -56,9 +56,30 @@ const CourseInfoNavigation = () => {
               <button className={CouseInfoCSS.button}>Grades</button>
             </Link>
           </div>
-          <div className={CouseInfoCSS.CourseInformation}>
-            <p>{courseDetails.description}</p>
-          </div>
+          <div className={CouseInfoCSS.CourseInformation} style={{height: "380px"}}>
+        <p style={{marginTop: "20px"}}>
+          <strong>Course Code:</strong> {courseDetails.code}
+        </p>
+        <p>
+          <strong>Course Name:</strong> {courseDetails.name}
+        </p>
+        {/* <p>
+          <strong>Course Instructor:</strong> {course.data.instructor.name}
+        </p> */}
+        <p>
+          <strong>Course Description:</strong> {courseDetails.description}
+        </p>
+        <p>
+          <strong>Course Start Date:</strong> {courseDetails.start_date}
+        </p>
+        <p>
+          <strong>Course End Date:</strong> {courseDetails.end_date}
+        </p>
+
+        {/* <p>
+          <strong>Students:</strong> {course.data.students.length}
+        </p> */}
+      </div>
           
         </>
       ) : (

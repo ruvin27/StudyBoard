@@ -1,6 +1,7 @@
 <?php
 require_once(BASE_DIR . '/database/Database.php');
 require_once(BASE_DIR . '/model/CourseModel.php');
+require_once(BASE_DIR . '/model/CourseUpdateModel.php');
 
 class Course
 {
@@ -62,6 +63,7 @@ class Course
                     u.userid AS instructor_id,
                     u.email AS instructor_email, 
                     u.name AS instructor_name, 
+                    c.objective AS course_objective,
                     p.program_id, 
                     p.program_name, 
                     p.description AS program_description,
@@ -94,7 +96,7 @@ class Course
 
     public function create(CourseModel $courseData)
     {
-        $stmt = $this->connection->prepare("INSERT INTO course (name, description, start_date, end_date, code, instructor_id, program_id) VALUES (:name, :description, :start_date, :end_date, :code, :instructor_id, :program_id)");
+        $stmt = $this->connection->prepare("INSERT INTO course (name, description, start_date, end_date, code, instructor_id, program_id, objective) VALUES (:name, :description, :start_date, :end_date, :code, :instructor_id, :program_id, :objective)");
         $stmt->bindParam(':name', $courseData->courseName);
         $stmt->bindParam(':description', $courseData->courseDescription);
         $stmt->bindParam(':start_date', $courseData->startDate);
@@ -102,10 +104,28 @@ class Course
         $stmt->bindParam(':code', $courseData->code);
         $stmt->bindParam(':instructor_id', $courseData->instructorId);
         $stmt->bindParam(':program_id', $courseData->programId);
+        $stmt->bindParam(':objective', $courseData->objective);
         $stmt->execute();
 
         return $this->connection->lastInsertId();
     }
+
+    public function update($courseId, CourseUpdateModel $courseData)
+    {
+        $stmt = $this->connection->prepare("UPDATE course SET name = :name, description = :description, start_date = :start_date, end_date = :end_date, code = :code, objective = :objective WHERE course_id = :course_id");
+        $stmt->bindParam(':course_id', $courseId);
+        $stmt->bindParam(':name', $courseData->courseName);
+        $stmt->bindParam(':description', $courseData->courseDescription);
+        $stmt->bindParam(':start_date', $courseData->startDate);
+        $stmt->bindParam(':end_date', $courseData->endDate);
+        $stmt->bindParam(':code', $courseData->code);
+
+        $stmt->bindParam(':objective', $courseData->objective);
+        $stmt->execute();
+
+        return $stmt->rowCount();
+    }
+
 
     public function removeStudent($courseId, $studentId): bool
     {
@@ -125,6 +145,7 @@ class Course
                 c.description AS course_description,
                 c.start_date AS course_start_date,
                 c.end_date AS course_end_date,
+                c.objective AS course_objective,
                 c.code AS course_code,
                 u.userid AS instructor_id,
                 u.email AS instructor_email, 
@@ -157,6 +178,15 @@ class Course
         }
 
         return $result;
+    }
+
+    public function remove($courseId): bool
+    {
+        $stmt = $this->connection->prepare("DELETE FROM course WHERE course_id = :course_id");
+        $stmt->bindParam(':course_id', $courseId);
+        $stmt->execute();
+
+        return $stmt->rowCount() > 0;
     }
 
 }

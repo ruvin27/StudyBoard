@@ -126,16 +126,16 @@ const StudentTakeExam = () => {
               </label>
             </div>
           ))}
-          <div className={TakeExamCSS.submit}>
-            <button type="submit" className={TakeExamCSS.submitQuiz} onClick={handleQuizSubmit}>
-              Submit Quiz
-            </button>
-          </div>
-          {earnedPoints !== null && (
-            <p>
-              Earned Points: {earnedPoints} / Total Points: {totalPoints}
+
+          {earnedPoints !== null ? (
+            <p style={{textAlign: "center"}}>
+              Earned Points: {earnedPoints} /  {totalPoints}
             </p>
-          )}
+          ): <div className={TakeExamCSS.submit}>
+          <button type="submit" className={TakeExamCSS.submitQuiz} onClick={handleQuizSubmit}>
+            Submit Quiz
+          </button>
+        </div>}
         </div>
       )}
     </div>

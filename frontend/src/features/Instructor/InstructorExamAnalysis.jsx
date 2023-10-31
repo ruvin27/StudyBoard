@@ -11,6 +11,7 @@ const InstructorExamAnalysis = () => {
 
       <div className={ReportsCSS.tableContainer}>
         <table className={ReportsCSS.table}>
+          <tbody>
           <tr>
             <th colSpan="2">Exam Analysis</th>
           </tr>
@@ -44,9 +45,11 @@ const InstructorExamAnalysis = () => {
               <span className={ReportsCSS.downloadIcon}>&#x1F4E5;</span>
             </td>
           </tr>
+          </tbody>
         </table>
 
         <table className={ReportsCSS.table}>
+        <tbody>
           <tr>
             <th colSpan="2">Student Reports</th>
           </tr>
@@ -80,6 +83,7 @@ const InstructorExamAnalysis = () => {
               <span className={ReportsCSS.downloadIcon}>&#x1F4E5;</span>
             </td>
           </tr>
+          </tbody>
         </table>
       </div>
     </div>

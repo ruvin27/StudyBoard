@@ -9,7 +9,6 @@ const StudentPeople = () => {
   const { courseId } = useParams();
   const { user } = useAuth();
   const [peopleDetails, setPeopleDetails] = useState([]);
-  const [courseName, setCourseName] = useState('');
 
   useEffect(() => {
     const fetchData = async () => {

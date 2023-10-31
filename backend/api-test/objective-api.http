@@ -1,0 +1,3 @@
+### Get all
+GET http://studyboard-backend.test/objective/getAll.php
+Accept: application/json

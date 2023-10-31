@@ -4,12 +4,12 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "start" : "npm run dev",
     "build": "vite build",
     "dev": "vite",
     "format": "npx prettier --write .",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "start": "npm run dev"
   },
   "prettier": {
     "endOfLine": "auto",
@@ -17,18 +17,20 @@
     "singleQuote": true,
     "tabWidth": 2,
     "trailingComma": "es5",
-    "printWidth": 200 
+    "printWidth": 200
   },
   "dependencies": {
     "@tanstack/react-query": "^5.0.0",
     "@tanstack/react-query-devtools": "^5.0.3",
     "axios": "^1.5.1",
+    "dayjs": "^1.11.10",
     "font-awesome": "^4.7.0",
     "jspdf": "^2.5.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.16.0",
-    "socket.io-client": "^4.7.2"
+    "socket.io-client": "^4.7.2",
+    "sonner": "^1.1.0"
   },
   "devDependencies": {
     "@tanstack/eslint-plugin-query": "^5.0.0",

@@ -8,7 +8,7 @@ CorsHeaders::standardPost();
 $request_body = file_get_contents('php://input');
 $data = json_decode($request_body);
 
-$required_fields = ['exam_title', 'exam_date', 'exam_description', 'exam_score', 'course_id', 'exam_duration'];
+$required_fields = ['exam_id', 'exam_title', 'exam_date', 'exam_description', 'exam_score', 'exam_duration'];
 $errors = Validator::validate($data, $required_fields);
 
 if (!empty($errors)) {
@@ -17,20 +17,19 @@ if (!empty($errors)) {
 }
 
 
-$examDataInstance = new ExamModel(
+$examDataInstance = new ExamUpdateModel(
     $data->exam_title,
     $data->exam_date,
     $data->exam_description,
     $data->exam_score,
-    $data->course_id,
     $data->exam_duration
 );
 
 $examService = new ExamService();
-$response = $examService->create($examDataInstance);
+$response = $examService->update($data->exam_id, $examDataInstance);
 
 if (!$response->isSuccess()) {
-    ApiResponse::error("Failed to create exam", 500);
+    ApiResponse::error($response->getMessage(), 400);
     die();
 }
 

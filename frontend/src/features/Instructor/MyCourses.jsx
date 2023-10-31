@@ -1,6 +1,34 @@
 import myCoursesCSS from '@assets/css/MyCourses.module.css'
+import { useAuth } from '@contexts/AuthContext'
+import LoadingSpinner from '@features/LoadingSpinner'
+import { apiClient } from '@lib/apiClient'
+import { useQuery } from '@tanstack/react-query'
 import { Link } from 'react-router-dom'
 const MyCourses = () => {
+  const { user: instructor } = useAuth()
+
+  const {
+    data: courses,
+    isLoading,
+    isPaused,
+  } = useQuery({
+    queryKey: ['courses', { instructorId: instructor.id }],
+    queryFn: async () => {
+      const response = await apiClient('/course/getAllByInstructorId.php', {
+        params: {
+          id: instructor.userid,
+        },
+      })
+
+      return response.data
+    },
+    enabled: !!instructor,
+  })
+
+  if (isLoading || isPaused) {
+    return <LoadingSpinner />
+  }
+
   return (
     <div>
       <div className={myCoursesCSS.container}>
@@ -21,81 +49,32 @@ const MyCourses = () => {
         </div>
       </div>
       <div className={myCoursesCSS.courses}>
-        <Link to="/InstructorCourseInfo">
-          <div className={myCoursesCSS.courseCard}>
-            <div className={myCoursesCSS.courseInfo}>
-              <h2 className={myCoursesCSS.courseTitle}>Course Title 1</h2>
-              <p className={myCoursesCSS.courseDescription}>
-                This is a brief description of the first course.
-              </p>
-              <div className={myCoursesCSS.courseMeta}>
-                <p className={myCoursesCSS.courseInstructor}>
-                  Instructor: John Doe
-                </p>
+        {courses?.data.length > 0 ? (
+          courses.data.map((course) => (
+            <Link
+              to={`/InstructorCourseInfo?courseId=${course.course_id}`}
+              key={course.course_id}
+            >
+              <div className={myCoursesCSS.courseCard}>
+                <div className={myCoursesCSS.courseInfo}>
+                  <h2 className={myCoursesCSS.courseTitle}>
+                    {course.course_name}
+                  </h2>
+                  <p className={myCoursesCSS.courseDescription}>
+                    {course.course_description}
+                  </p>
+                  <div className={myCoursesCSS.courseMeta}>
+                    <p className={myCoursesCSS.courseInstructor}>
+                      Students: {course.students.length}
+                    </p>
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
-        </Link>
-        <Link to="/InstructorCourseInfo">
-          <div className={myCoursesCSS.courseCard}>
-            <div className={myCoursesCSS.courseInfo}>
-              <h2 className={myCoursesCSS.courseTitle}>Course Title 2</h2>
-              <p className={myCoursesCSS.courseDescription}>
-                This is a brief description of the second course.
-              </p>
-              <div className={myCoursesCSS.courseMeta}>
-                <p className={myCoursesCSS.courseInstructor}>
-                  Instructor: Jane Smith
-                </p>
-              </div>
-            </div>
-          </div>
-        </Link>
-        <Link to="/InstructorCourseInfo">
-          <div className={myCoursesCSS.courseCard}>
-            <div className={myCoursesCSS.courseInfo}>
-              <h2 className={myCoursesCSS.courseTitle}>Course Title 3</h2>
-              <p className={myCoursesCSS.courseDescription}>
-                This is a brief description of the second course.
-              </p>
-              <div className={myCoursesCSS.courseMeta}>
-                <p className={myCoursesCSS.courseInstructor}>
-                  Instructor: Jane Smith
-                </p>
-              </div>
-            </div>
-          </div>
-        </Link>
-        <Link to="/InstructorCourseInfo">
-          <div className={myCoursesCSS.courseCard}>
-            <div className={myCoursesCSS.courseInfo}>
-              <h2 className={myCoursesCSS.courseTitle}>Course Title 4</h2>
-              <p className={myCoursesCSS.courseDescription}>
-                This is a brief description of the second course.
-              </p>
-              <div className={myCoursesCSS.courseMeta}>
-                <p className={myCoursesCSS.courseInstructor}>
-                  Instructor: Jane Smith
-                </p>
-              </div>
-            </div>
-          </div>
-        </Link>
-        <Link to="/InstructorCourseInfo">
-          <div className={myCoursesCSS.courseCard}>
-            <div className={myCoursesCSS.courseInfo}>
-              <h2 className={myCoursesCSS.courseTitle}>Course Title 5</h2>
-              <p className={myCoursesCSS.courseDescription}>
-                This is a brief description of the second course.
-              </p>
-              <div className={myCoursesCSS.courseMeta}>
-                <p className={myCoursesCSS.courseInstructor}>
-                  Instructor: Jane Smith
-                </p>
-              </div>
-            </div>
-          </div>
-        </Link>
+            </Link>
+          ))
+        ) : (
+          <p>No courses found.</p>
+        )}
       </div>
     </div>
   )

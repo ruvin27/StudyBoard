@@ -1,0 +1,3 @@
+### Courses by instructor id
+GET http://studyboard-backend.test/recommendation/getAllByCourseId.php?id=1
+Accept: application/json

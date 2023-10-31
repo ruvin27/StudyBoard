@@ -21,8 +21,6 @@ import { apiClient } from '@lib/apiClient'
  * @param {number} data.exam_score - The score of the exam.
  * @param {number} data.course_id - The ID of the course to which the exam belongs.
  * @param {Question[]} data.questions - The list of questions for the exam.
- *
- * @returns {Object} Mutation object with methods to trigger mutation and track its status.
  */
 const useCreateExam = (data) => {
   return useMutation({

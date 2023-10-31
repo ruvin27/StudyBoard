@@ -90,7 +90,7 @@ const StudentExams = () => {
               examDetails.map((grade, index) => (
                 <tr key={index}>
                   <td>{grade.exam_title}</td>
-                  {grade.score && <td>{(grade.score)}/{grade.total}</td>}
+                  {grade.score && <td>{parseInt(grade.score)}/{parseInt(grade.total)}</td>}
                 </tr>
               ))
             )}

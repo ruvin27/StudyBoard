@@ -1,5 +1,41 @@
 import RecommendationCSS from '@assets/css/NewUser.module.css'
+import LoadingSpinner from '@features/LoadingSpinner'
+import { apiClient } from '@lib/apiClient'
+import { useQuery } from '@tanstack/react-query'
+import * as React from 'react'
+import { useNavigate, useSearchParams } from 'react-router-dom'
+
 const Recommendation = () => {
+  const navigate = useNavigate()
+  const [searchParams] = useSearchParams()
+
+  React.useEffect(() => {
+    const courseId = searchParams.get('courseId')
+
+    if (!courseId) {
+      navigate('/InstructorCourseInfo')
+    }
+  }, [navigate, searchParams])
+
+  const courseId = searchParams.get('courseId')
+
+  const { data: recommendations, isLoading } = useQuery({
+    queryKey: ['recommendation', { courseId }],
+    queryFn: async () => {
+      const response = await apiClient('/recommendation/getAllByCourseId.php', {
+        params: {
+          id: courseId,
+        },
+      })
+
+      return response.data
+    },
+  })
+
+  if (isLoading) {
+    return <LoadingSpinner />
+  }
+
   return (
     <div>
       <div>
@@ -14,32 +50,29 @@ const Recommendation = () => {
           />
           <button className={RecommendationCSS.searchButton}>Search</button>
         </div>
-        <table className={RecommendationCSS.newUsersTable}>
-          <thead>
-            <tr>
-              <th>User Email</th>
-              <th>Role</th>
-              <th>Course Change Recommendation</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>user1@example.com</td>
-              <td>Program Cordinator</td>
-              <td>Suggest providing more practice questions with hints.</td>
-            </tr>
-            <tr>
-              <td>user2@example.com</td>
-              <td>QA Officer</td>
-              <td>Consider making the exam questions easier.</td>
-            </tr>
-            <tr>
-              <td>user3@example.com</td>
-              <td>QA Officer</td>
-              <td>No change recommended at this time.</td>
-            </tr>
-          </tbody>
-        </table>
+
+        {recommendations.data.length > 0 ? (
+          <table className={RecommendationCSS.newUsersTable}>
+            <thead>
+              <tr>
+                <th>User Email</th>
+                <th>Role</th>
+                <th>Course Change Recommendation</th>
+              </tr>
+            </thead>
+            <tbody>
+              {recommendations.data.map((recommendation) => (
+                <tr key={recommendation.recommendation_id}>
+                  <td>{recommendation.sender.email}</td>
+                  <td>{recommendation.sender.role}</td>
+                  <td>{recommendation.message}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        ) : (
+          <p>No recommendations found</p>
+        )}
       </div>
     </div>
   )
