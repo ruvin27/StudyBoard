@@ -2,11 +2,12 @@
 	/**
 	* Database Connection
 	*/
+	include BASE_DIR . '/backend/config.php'; // Including config.php
 	class DbConnect {
-		private $server = 'localhost';
-		private $dbname = 'rrr9569_studyboard';
-		private $user = 'root';
-		private $pass = '';
+		private $server = DB_HOST;
+		private $dbname = DB_NAME;
+		private $user = DB_USER;
+		private $pass = DB_PASS;
 
 		public function connect() {
 			try {
