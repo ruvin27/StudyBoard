@@ -37,8 +37,11 @@ const MyCoursesQA = () => {
           <Link to="/">
             <button className={MyCoursesCSS.mycoursesButton}>Program Details</button>
           </Link>
-          <Link to="/belowavgexamsqa"> {/* Add the "Below Average Exams" button */}
+          <Link to="/belowavgexamsqa">
             <button className={MyCoursesCSS.mycoursesButton}>Below Average Exams</button>
+          </Link>
+          <Link to="/qapolicies"> 
+            <button className={MyCoursesCSS.mycoursesButton}>Policies and Processes</button>
           </Link>
         </div>
       </div>

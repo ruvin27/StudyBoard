@@ -158,6 +158,7 @@ const App = () => {
           <Route path="/mycoursesqa" exact element={getRouteElement(user, 'QA Officer', user?.email_verified_at, <MyCoursesQA />)} />
           <Route path="/courseinfoqa/:courseId" exact element={getRouteElement(user, 'QA Officer', user?.email_verified_at, <QACourseInfoNavigation />)} />
           <Route path="/student-reports/:courseId" exact element={getRouteElement(user, 'QA Officer', user?.email_verified_at, <QAExamAnalysis />)} />
+          <Route path="/qapolicies" exact element={getRouteElement(user, 'QA Officer', user?.email_verified_at, <QAPolicies />)} />
 
           {/* Student Page Routes */}
           <Route path="/studentExams/:courseId/:name" exact element={getRouteElement(user, 'Student', user?.email_verified_at, <StudentExams />)} />

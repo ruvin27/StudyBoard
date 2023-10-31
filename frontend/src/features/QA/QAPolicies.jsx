@@ -54,7 +54,7 @@ const QAPolicies = () => {
               onChange={(e) => setPolicies(e.target.value)}
             ></textarea>
           ) : (
-            policies.split('\n').map((point, index) => (
+            policies.split('\n\n').map((point, index) => (
               <li key={index}>{point}</li>
             ))
           )}
