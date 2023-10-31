@@ -49,7 +49,7 @@ const CourseInfoNavigation = () => {
           </div>
           <div>
             <button className={CouseInfoCSS.button}>Syllabus</button>
-            <Link to={`/studentExams/${courseId}`}>
+            <Link to={`/studentExams/${courseId}/${courseDetails.name}`}>
               <button className={CouseInfoCSS.button}>Exams</button>
             </Link>
             <Link to={`/student-grades/${courseId}`}>
