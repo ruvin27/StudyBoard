@@ -1,43 +1,37 @@
-import React, { useState, useEffect } from 'react'
-import { Link, useParams } from 'react-router-dom'
 import CourseInfoCSS from '@assets/css/CourseInfo.module.css'
-import { useAuth } from '@contexts/AuthContext'
+import * as React from 'react'
 import { apiClient } from '@lib/apiClient'
+import LoadingSpinner from '@features/LoadingSpinner'
+import { useQuery } from '@tanstack/react-query'
+import { Link, useNavigate, useSearchParams, useParams } from 'react-router-dom'
 
 const QACourseInfoNavigation = () => {
-  const { courseId } = useParams()
-  const { user } = useAuth()
-  const [courseDetails, setCourseDetails] = useState(null)
+  const {courseId} = useParams()
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await apiClient.post(
-          'student/CourseInfoNavigation.php',
-          {
-            courseId: courseId,
-            userid: user.userid,
-          }
-        )
+  const { data: course, isLoading } = useQuery({
+    queryKey: ['course', { courseId }],
+    queryFn: async () => {
+      const response = await apiClient('/course/getById.php', {
+        params: {
+          id: courseId,
+        },
+      })
 
-        setCourseDetails(response.data)
-      } catch (error) {
-        console.error('Error fetching course details:', error)
-      }
-    }
+      return response.data
+    },
+  })
 
-    if (user) {
-      fetchData()
-    }
-  }, [courseId, user])
+
+
+  if (isLoading) {
+    return <LoadingSpinner />
+  }
 
   return (
     <>
-      {courseDetails ? (
-        <>
           <div className={CourseInfoCSS.container}>
             <div className={CourseInfoCSS.leftElement}>
-              <h2>{courseDetails.name}</h2>
+              <h2>{course.data.course_name}</h2>
             </div>
             <div className={CourseInfoCSS.rightElement}>
               <Link to={`/people/${courseId}`}>
@@ -57,14 +51,32 @@ const QACourseInfoNavigation = () => {
               <button className={CourseInfoCSS.button}>Reports</button>
             </Link>
           </div>
-          <div className={CourseInfoCSS.CourseInformation}>
-            <p>{courseDetails.description}</p>
-          </div>
+         <div className={CourseInfoCSS.CourseInformation} style={{height: "300px"}}>
+         <p>
+          <strong>Course Code:</strong> {course.data.course_code}
+        </p>
+        <p>
+          <strong>Course Name:</strong> {course.data.course_name}
+        </p>
+        <p>
+          <strong>Course Instructor:</strong> {course.data.instructor.name}
+        </p>
+        <p>
+          <strong>Course Description:</strong> {course.data.course_description}
+        </p>
+        <p>
+          <strong>Course Start Date:</strong> {course.data.course_start_date}
+        </p>
+        <p>
+          <strong>Course End Date:</strong> {course.data.course_end_date}
+        </p>
+
+        <p>
+          <strong>Students:</strong> {course.data.students.length}
+        </p>
+      </div>
         </>
-      ) : (
-        <p>Loading course details...</p>
-      )}
-    </>
+     
   )
 }
 

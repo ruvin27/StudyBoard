@@ -2,44 +2,31 @@
 import React, { useState, useEffect } from "react";
 import MyCoursesCSS from "../../assets/css/MyCourses.module.css";
 import { Link } from "react-router-dom";
-import axios from "axios";
 import { useAuth } from '@contexts/AuthContext'
 import { apiClient } from '@lib/apiClient'
+import LoadingSpinner from "@features/LoadingSpinner";
+import { useQuery } from "@tanstack/react-query";
 
 const MyCoursesQA = () => {
-  const { user } = useAuth();
-  const [courses, setCourses] = useState([]);
+  const { user: qa } = useAuth()
 
-  useEffect(() => {
-    const fetchData = async () => {
-      // try {
-      //   const response = await axios.post(`http://localhost/backend/src/student/myCourses.php`, {
-      //       userid: user.userid,
-      //   });
-      //   console.log(response.data)
-      //   setCourses(response.data);
-      // } catch (error) {
-      //   console.error("Error fetching courses:", error);
-      // }
-      await apiClient
-    .post('/student/myCourses.php', {
-      userid: user.userid
+  const {
+    data: courses,
+    isLoading,
+    isPaused,
+  } = useQuery({
+    queryKey: ['courses', { QAId: qa.id }],
+    queryFn: async () => {
+      const response = await apiClient('/course/getAll.php')
+
+      return response.data
+    },
+    enabled: !!qa,
   })
-    .then(async (res) => {
-      if (res.data === 'error') {
-        alert(res.data.message)
-        return
-      }
-        setCourses(res.data);
 
-    })
-    };
-    if(user){
-      fetchData();
-    }
-      
-  }, [user]);
-
+  if (isLoading || isPaused) {
+    return <LoadingSpinner />
+  }
   return (
     <>
       <div className={MyCoursesCSS.container}>
@@ -47,34 +34,42 @@ const MyCoursesQA = () => {
           <h2>My Courses</h2>
         </div>
         <div className={MyCoursesCSS.rightElement}>
-          <Link to="/program_details">
+          <Link to="/">
             <button className={MyCoursesCSS.mycoursesButton}>Program Details</button>
           </Link>
-          <Link to="/belowavgexams"> {/* Add the "Below Average Exams" button */}
+          <Link to="/belowavgexamsqa"> {/* Add the "Below Average Exams" button */}
             <button className={MyCoursesCSS.mycoursesButton}>Below Average Exams</button>
           </Link>
         </div>
       </div>
       <div className={MyCoursesCSS.courses}>
-        {courses.length > 0 ? (
-          courses.map((course, index) => (
-            <Link to={`/CourseInfoNavigation/${course.course_id}`} key={index}>
-         
+      {courses?.data.length > 0 ? (
+          courses.data.map((course,index) => (
+            <Link
+              to={`/courseinfoqa/${course.course_id}`}
+              key={index}
+            >
               <div className={MyCoursesCSS.courseCard}>
                 <div className={MyCoursesCSS.courseInfo}>
-                  <h2 className={MyCoursesCSS.courseTitle}>{course.name}</h2>
-                  <p className={MyCoursesCSS.courseDescription}>{course.course_desc}</p>
+                  <h2 className={MyCoursesCSS.courseTitle}>
+                    {course.course_name}
+                  </h2>
+                  <p className={MyCoursesCSS.courseDescription}>
+                    {course.course_description}
+                  </p>
                   <div className={MyCoursesCSS.courseMeta}>
-                    <p className={MyCoursesCSS.courseInstructor}>Instructor: {course.instructor_name}</p>
+                    <p className={MyCoursesCSS.courseInstructor}>
+                      Students: {course.students.length}
+                    </p>
                   </div>
                 </div>
               </div>
             </Link>
           ))
         ) : (
-          <p>No courses enrolled.</p>
+          <p>No courses found.</p>
         )}
-      </div>
+        </div>
     </>
   );
 };

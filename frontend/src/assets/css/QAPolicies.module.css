@@ -1,0 +1,28 @@
+/* QAPolicies.module.css */
+
+/* Styles for the edit button */
+.editButton {
+    background-color: blue;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  /* Styles for the text box when in editing mode */
+  .editPolicies {
+    width: 90%; /* Adjust the width as needed (e.g., 90% of the container's width) */
+    height: 300px; /* Adjust the height as needed */
+    padding: 10px;
+    box-sizing: border-box;
+  }
+  
+  /* Styles for the submit button */
+  .submitButton {
+    background-color: blue;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+  }
+  
