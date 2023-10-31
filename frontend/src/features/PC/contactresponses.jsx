@@ -1,6 +1,25 @@
-import GradesCSS from '@assets/css/Grades.module.css'
+import GradesCSS from '@assets/css/Grades.module.css';
+import { useAuth } from '@contexts/AuthContext';
+import { apiClient } from '@lib/apiClient';
+import React, { useState, useEffect } from 'react';
 
 const ContactUsResponses = () => {
+  const [responses, setResponses] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await apiClient.post('PC/getcontact.php');
+        console.log(response.data);
+        setResponses(response.data);
+      } catch (error) {
+        console.error('Error fetching contact responses:', error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
   return (
     <div>
       <div className={GradesCSS.container}>
@@ -18,21 +37,18 @@ const ContactUsResponses = () => {
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>john@example.com</td>
-              <td>2023-09-25</td>
-              <td>This is a sample comment.</td>
-            </tr>
-            <tr>
-              <td>jane@example.com</td>
-              <td>2023-09-26</td>
-              <td>Another sample comment here.</td>
-            </tr>
+            {responses.map((response, index) => (
+              <tr key={index}>
+                <td>{response.email}</td>
+                <td>{response.date}</td>
+                <td>{response.message}</td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default ContactUsResponses
+export default ContactUsResponses;

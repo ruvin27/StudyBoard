@@ -50,7 +50,7 @@ const CourseInfo = () => {
       </div>
       <div>
         <button className={CourseInfoCSS.button}>Syllabus</button>
-        <Link to={'/pcexamanalysis'}>
+        <Link to={`/PCExamAnalysis/${courseId}`}>
           <button className={CourseInfoCSS.button}>Reports</button>
         </Link>
         <Link to={`/sendRecommendations/${courseId}/${course.data.course_name}`}>

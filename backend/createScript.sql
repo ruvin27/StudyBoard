@@ -161,3 +161,11 @@ CREATE TABLE recommendation
     FOREIGN KEY (course_id) REFERENCES course (course_id) ON DELETE CASCADE,
     FOREIGN KEY (sender_id) REFERENCES user (userid) ON DELETE CASCADE
 );
+
+CREATE TABLE contact (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  email VARCHAR(255) NOT NULL,
+  message TEXT NOT NULL,
+  date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+

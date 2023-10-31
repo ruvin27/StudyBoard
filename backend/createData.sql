@@ -74,4 +74,8 @@ VALUES (1, 'Highly recommended for beginners.', 1);
 INSERT INTO messages (sender, receiver, message)
 VALUES ('instructor@app.com', 'student@app.com', 'Welcome to the course.');
 
+INSERT INTO contact (email, message) VALUES
+  ('user1@example.com', 'Hello, I have a question about your services.'),
+  ('user2@example.com', "Hi there, I'd like to provide some feedback on your website.");
+
 COMMIT;

@@ -27,7 +27,9 @@ if (isset($_GET['exam_title']) && isset($_GET['courseId'])) {
         INNER JOIN
             grades g ON e.exam_id = g.exam_id
         INNER JOIN
-            User u ON e.student_id = u.userid
+            enrollment en ON en.student_id = g.student_id
+        INNER JOIN
+            user u ON u.userid = en.student_id
         WHERE
             e.exam_title = '$exam_title' AND g.course_id = $courseId
         ORDER BY
@@ -38,7 +40,8 @@ if (isset($_GET['exam_title']) && isset($_GET['courseId'])) {
     SELECT
             e.exam_title AS exam_name,
             AVG(g.score) AS class_average,
-            (AVG(g.score) / MAX(e.score)) * 100 AS class_marks_percentage
+            e.score AS total,
+            (SUM(g.score) / SUM(e.score)) * 100 AS class_marks_percentage
         FROM
             exam e
         INNER JOIN
@@ -46,7 +49,7 @@ if (isset($_GET['exam_title']) && isset($_GET['courseId'])) {
         WHERE
             e.exam_title = '$exam_title' AND g.course_id = $courseId
         GROUP BY
-            e.exam_title
+            e.exam_title, total
     ";
 
     $resultStudentData = mysqli_query($connection, $sqlStudentData);
@@ -66,7 +69,7 @@ if (isset($_GET['exam_title']) && isset($_GET['courseId'])) {
 
         // output class data
         fputcsv($output, array(''));
-        fputcsv($output, array('exam_name', 'class_average', 'class_marks_percentage'));
+        fputcsv($output, array('exam_name', 'class_average', 'total', 'class_marks_percentage'));
         while ($row = mysqli_fetch_assoc($resultClassData)) {
             fputcsv($output, $row);
         }

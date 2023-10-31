@@ -41,14 +41,11 @@ const QACourseInfoNavigation = () => {
           </div>
           <div>
             <button className={CourseInfoCSS.button}>Syllabus</button>
-            <Link to={`/studentExams/${courseId}`}>
-              <button className={CourseInfoCSS.button}>Exams</button>
-            </Link>
-            <Link to={`/student-grades/${courseId}`}>
-              <button className={CourseInfoCSS.button}>Grades</button>
-            </Link>
             <Link to={`/student-reports/${courseId}`}> {/* Add Reports button */}
               <button className={CourseInfoCSS.button}>Reports</button>
+            </Link>
+            <Link to={`/sendRecommendations/${courseId}/${course.data.course_name}`}>
+              <button className={CourseInfoCSS.button}>Send Recommendation</button>
             </Link>
           </div>
          <div className={CourseInfoCSS.CourseInformation} style={{height: "300px"}}>

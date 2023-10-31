@@ -27,8 +27,8 @@ const SendRecommendations = () => {
         course_id: courseId,
         sender_id: user.userid
       }).then((res)=>{
-          console.log(res.data)
-        // alert("Message Posted");
+          // console.log(res.data)
+        alert("Message Posted");
       })
     } catch (error) {
       console.error('Error sending recommendation:', error)

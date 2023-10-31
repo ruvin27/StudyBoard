@@ -26,7 +26,9 @@ if (isset($_GET['name'])) {
     INNER JOIN
         grades g ON e.exam_id = g.exam_id
     INNER JOIN
-        User u ON e.student_id = u.userid
+        enrollment en ON en.student_id = g.student_id
+    INNER JOIN
+        user u ON u.userid = en.student_id
     WHERE
         u.name = '$student_name'
     ORDER BY
