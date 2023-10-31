@@ -151,7 +151,7 @@ const App = () => {
           <Route path="/contactusresponses" exact element={getRouteElement(user, 'Program Coordinator', user?.email_verified_at, <ContactUsResponses />)} />
           <Route path="/MyCoursesPc" exact element={getRouteElement(user, 'Program Coordinator', user?.email_verified_at, <MyCoursesPc />)} />
           <Route path="/PCCourseInfo" exact element={getRouteElement(user, 'Program Coordinator', user?.email_verified_at, <PCCourseInfo />)} />
-          <Route path="/SendRecommendations" exact element={getRouteElement(user, 'Program Coordinator', user?.email_verified_at, <SendRecommendations />)} />
+          <Route path="/SendRecommendations/:courseId/:name" exact element={getRouteElement(user, 'Program Coordinator', user?.email_verified_at, <SendRecommendations />)} />
           <Route path="/PCExamAnalysis" exact element={getRouteElement(user, 'Program Coordinator', user?.email_verified_at, <InstructorExamAnalysis />)} />
           <Route path="/pcobjectives" exact element={getRouteElement(user, 'Program Coordinator', user?.email_verified_at, <PCObjectives />)} />
 

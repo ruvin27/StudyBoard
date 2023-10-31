@@ -1,7 +1,30 @@
 import MyCoursesCSS from '@assets/css/MyCourses.module.css'
+import LoadingSpinner from '@features/LoadingSpinner'
+import { apiClient } from '@lib/apiClient'
+import { useQuery } from '@tanstack/react-query'
 import { Link } from 'react-router-dom'
+import { useAuth } from '@contexts/AuthContext'
 
 const MyCoursesPc = () => {
+  const { user: pc } = useAuth()
+
+  const {
+    data: courses,
+    isLoading,
+    isPaused,
+  } = useQuery({
+    queryKey: ['courses', { PCId: pc.id }],
+    queryFn: async () => {
+      const response = await apiClient('/course/getAll.php')
+
+      return response.data
+    },
+    enabled: !!pc,
+  })
+
+  if (isLoading || isPaused) {
+    return <LoadingSpinner />
+  }
   return (
     <div>
       <div className={MyCoursesCSS.container}>
@@ -32,26 +55,33 @@ const MyCoursesPc = () => {
         </div>
       </div>
       <div className={MyCoursesCSS.courses}>
-        {Array.from({ length: 5 }).map((_, index) => (
-          <Link to={'/PCCourseInfo'} key={index}>
-            <div className={MyCoursesCSS.courseCard}>
-              <div className={MyCoursesCSS.courseInfo}>
-                <h2 className={MyCoursesCSS.courseTitle}>
-                  Course Title {index + 1}
-                </h2>
-                <p className={MyCoursesCSS.courseDescription}>
-                  This is a brief description of the {index + 1} course.
-                </p>
-                <div className={MyCoursesCSS.courseMeta}>
-                  <p className={MyCoursesCSS.courseInstructor}>
-                    Instructor: Jane Smith
+      {courses?.data.length > 0 ? (
+          courses.data.map((course) => (
+            <Link
+              to={`/PCCourseInfo?courseId=${course.course_id}`}
+              key={course.course_id}
+            >
+              <div className={MyCoursesCSS.courseCard}>
+                <div className={MyCoursesCSS.courseInfo}>
+                  <h2 className={MyCoursesCSS.courseTitle}>
+                    {course.course_name}
+                  </h2>
+                  <p className={MyCoursesCSS.courseDescription}>
+                    {course.course_description}
                   </p>
+                  <div className={MyCoursesCSS.courseMeta}>
+                    <p className={MyCoursesCSS.courseInstructor}>
+                      Students: {course.students.length}
+                    </p>
+                  </div>
                 </div>
               </div>
-            </div>
-          </Link>
-        ))}
-      </div>
+            </Link>
+          ))
+        ) : (
+          <p>No courses found.</p>
+        )}
+        </div>
     </div>
   )
 }

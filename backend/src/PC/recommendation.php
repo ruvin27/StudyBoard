@@ -1,33 +1,31 @@
 <?php
-include 'dbConnect.php';
-$objDb = new DbConnect;
-$conn = $objDb->connect();
-$method = $_SERVER['REQUEST_METHOD'];
-switch($method) {
-    case "POST":
-        $recommendation = json_decode(file_get_contents("php://input"));
-        $courseName = $recommendation->courseName;
-        $instructorName = $recommendation->instructorName;
-        $message = $recommendation->message;
+$conn = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME);
 
-        $sql = "INSERT INTO recommendation (courseName, instructorName, message) VALUES (:courseName, :instructorName, :message)";
-        $stmt = $conn->prepare($sql);
-        $stmt->bindParam(':courseName', $courseName);
-        $stmt->bindParam(':instructorName', $instructorName);
-        $stmt->bindParam(':message', $message);
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
 
-        if($stmt->execute()){
-            $response=[
-                'status' => 1,
-                'status_message' =>'Recommendation Added Successfully.'
-            ];
-        }else{
-            $response=[
-                'status' => 0,
-                'status_message' =>'Recommendation Addition Failed.'
-            ];
-        }
-        echo json_encode($response);
-        break;
+$json = file_get_contents('php://input');
+$data = json_decode($json);
+
+if (isset($data->course_id) && isset($data->sender_id) && isset($data->message)) {
+    // Assuming you want to fetch courses based on the user ID.
+    $course_id = mysqli_real_escape_string($conn, $data->course_id);
+    $sender_id = mysqli_real_escape_string($conn, $data->sender_id);
+    $message = mysqli_real_escape_string($conn, $data->message);
+
+
+    $sql = "INSERT INTO recommendation (course_id, sender_id, message) VALUES ('$course_id', '$sender_id', '$message');";
+
+    $result = mysqli_query($conn, $sql);
+
+    if ($result) {
+
+        echo ("Message Sent");
+    } else {
+        echo ("Message not Sent");
+    }
+} else {
+    echo json_encode(["error" => "Invalid request"]);
 }
 ?>
