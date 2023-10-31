@@ -58,6 +58,11 @@ const Navbar = () => {
             Blog
           </a>
         </li>
+        {user && (
+          <li>
+            <Link to="/profile"> Profile</Link>
+          </li>
+        )}
         <li>
           {user ? (
             <Link to={'/login'} onClick={handleLogout}>

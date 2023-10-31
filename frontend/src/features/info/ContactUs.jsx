@@ -1,6 +1,46 @@
-import ContactUsCSS from '@assets/css/contact.module.css'
-
+import ContactUsCSS from '@assets/css/contact.module.css';
+import { useAuth } from '@contexts/AuthContext';
+import React, { useState } from 'react';
+import { apiClient } from '@lib/apiClient';
 const ContactUs = () => {
+  const { user } = useAuth();
+  const [formData, setFormData] = useState({
+    email: user?.email || '',
+    message: '',
+  });
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
+  const isEmailValid = (email) => {
+    // Regular expression for basic email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+    return emailRegex.test(email)
+  }
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (!isEmailValid(formData.email)) {
+      alert('Please enter a valid email address.')
+      return
+    }
+
+    
+    apiClient
+      .post('/PC/storeContact.php', formData)
+      .then((response) => {
+        alert(response.data);
+        window.location.reload();
+
+      })
+      .catch((error) => {
+        console.error('Error fetching color data:', error)
+      })
+  };
+
   return (
     <div>
       <div className={ContactUsCSS.contactContainer}>
@@ -8,33 +48,31 @@ const ContactUs = () => {
           <h2>Contact Us</h2>
         </div>
       </div>
-      <form className={ContactUsCSS.contactForm}>
-        <label
-          htmlFor={ContactUsCSS.email}
-          className={ContactUsCSS.contactLabel}
-        >
+      <form className={ContactUsCSS.contactForm} onSubmit={handleSubmit}>
+        <label htmlFor={ContactUsCSS.email} className={ContactUsCSS.contactLabel}>
           Enter your email:
         </label>
         <input
           type="email"
           id={ContactUsCSS.email}
-          name={ContactUsCSS.email}
+          name="email"
           className={ContactUsCSS.contactInput}
           placeholder="Your email address"
+          value={formData.email}
+          onChange={handleInputChange}
           required
         />
 
-        <label
-          htmlFor={ContactUsCSS.message}
-          className={ContactUsCSS.contactLabel}
-        >
+        <label htmlFor={ContactUsCSS.message} className={ContactUsCSS.contactLabel}>
           Message:
         </label>
         <textarea
           id={ContactUsCSS.message}
-          name={ContactUsCSS.message}
+          name="message"
           className={ContactUsCSS.contactTextarea}
           placeholder="Your message"
+          value={formData.message}
+          onChange={handleInputChange}
           rows="4"
           required
         ></textarea>
@@ -44,7 +82,7 @@ const ContactUs = () => {
         </button>
       </form>
     </div>
-  )
-}
+  );
+};
 
-export default ContactUs
+export default ContactUs;

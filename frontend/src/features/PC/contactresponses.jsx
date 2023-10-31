@@ -10,7 +10,6 @@ const ContactUsResponses = () => {
     const fetchData = async () => {
       try {
         const response = await apiClient.post('PC/getcontact.php');
-        console.log(response.data);
         setResponses(response.data);
       } catch (error) {
         console.error('Error fetching contact responses:', error);
