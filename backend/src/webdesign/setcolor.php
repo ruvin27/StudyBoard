@@ -16,7 +16,7 @@ if (isset($data->hexColor) && isset($data->id)) {
     $hexColor = mysqli_real_escape_string($connection, $data->hexColor);
     $id = mysqli_real_escape_string($connection, $data->id);
 
-    $query = "UPDATE colortable SET hexColor = '$hexColor' WHERE id = '$id'";
+    $query = "UPDATE ColorTable SET hexColor = '$hexColor' WHERE id = '$id'";
     $result = mysqli_query($connection, $query);
 
     if ($result) {

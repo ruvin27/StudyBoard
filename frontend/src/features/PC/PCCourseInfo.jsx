@@ -49,7 +49,9 @@ const CourseInfo = () => {
         </div>
       </div>
       <div>
-        <button className={CourseInfoCSS.button}>Syllabus</button>
+      <Link to="/Syllabus.pdf" target="_blank" >
+              <button className={CourseInfoCSS.button}>Syllabus</button>
+            </Link>
         <Link to={`/PCExamAnalysis/${courseId}`}>
           <button className={CourseInfoCSS.button}>Reports</button>
         </Link>

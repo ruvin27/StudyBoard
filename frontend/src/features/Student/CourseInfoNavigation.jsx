@@ -14,13 +14,10 @@ const CourseInfoNavigation = () => {
     const fetchData = async () => {
       try {
         // You can use axios or apiClient to fetch course details
-        const response = await apiClient.post(
-          'student/CourseInfoNavigation.php',
-          {
-            courseId: courseId,
-            userid: user.userid, // If you need to send user information
-          }
-        )
+        const response = await apiClient.post('student/CourseInfoNavigation.php', {
+          courseId: courseId,
+          userid: user.userid, // If you need to send user information
+        })
 
         setCourseDetails(response.data) // Update the state with the course details
       } catch (error) {
@@ -42,13 +39,18 @@ const CourseInfoNavigation = () => {
               <h2>{courseDetails.name}</h2>
             </div>
             <div className={CouseInfoCSS.rightElement}>
-              <Link to={`/people/${courseId}`}> {/* Include courseId in the URL */}
+              <Link to={`/people/${courseId}`}>
+                {' '}
+                {/* Include courseId in the URL */}
                 <button className={CouseInfoCSS.button}>People</button>
               </Link>
-            </div> 
+            </div>
           </div>
           <div>
-            <button className={CouseInfoCSS.button}>Syllabus</button>
+            <Link to="/Syllabus.pdf" target="_blank" >
+              <button className={CouseInfoCSS.button}>Syllabus</button>
+            </Link>
+
             <Link to={`/studentExams/${courseId}/${courseDetails.name}`}>
               <button className={CouseInfoCSS.button}>Exams</button>
             </Link>
@@ -56,31 +58,30 @@ const CourseInfoNavigation = () => {
               <button className={CouseInfoCSS.button}>Grades</button>
             </Link>
           </div>
-          <div className={CouseInfoCSS.CourseInformation} style={{height: "380px"}}>
-        <p >
-          <strong>Course Code:</strong> {courseDetails.code}
-        </p>
-        <p>
-          <strong>Course Name:</strong> {courseDetails.name}
-        </p>
-        {/* <p>
+          <div className={CouseInfoCSS.CourseInformation} style={{ height: '380px' }}>
+            <p>
+              <strong>Course Code:</strong> {courseDetails.code}
+            </p>
+            <p>
+              <strong>Course Name:</strong> {courseDetails.name}
+            </p>
+            {/* <p>
           <strong>Course Instructor:</strong> {course.data.instructor.name}
         </p> */}
-        <p>
-          <strong>Course Description:</strong> {courseDetails.description}
-        </p>
-        <p>
-          <strong>Course Start Date:</strong> {courseDetails.start_date}
-        </p>
-        <p>
-          <strong>Course End Date:</strong> {courseDetails.end_date}
-        </p>
+            <p>
+              <strong>Course Description:</strong> {courseDetails.description}
+            </p>
+            <p>
+              <strong>Course Start Date:</strong> {courseDetails.start_date}
+            </p>
+            <p>
+              <strong>Course End Date:</strong> {courseDetails.end_date}
+            </p>
 
-        {/* <p>
+            {/* <p>
           <strong>Students:</strong> {course.data.students.length}
         </p> */}
-      </div>
-          
+          </div>
         </>
       ) : (
         <p>Loading course details...</p>

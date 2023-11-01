@@ -1,23 +1,29 @@
-import { Link } from 'react-router-dom'
-import FindUserCSS from '@assets/css/finduser.module.css'
-import { apiClient } from '@lib/apiClient'
-import React, { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom';
+import FindUserCSS from '@assets/css/finduser.module.css';
+import { apiClient } from '@lib/apiClient';
+import React, { useState, useEffect } from 'react';
 
 const FindUser = () => {
-
-  const [users, setUsers] = useState([])
+  const [users, setUsers] = useState([]);
+  const [searchInput, setSearchInput] = useState('');
 
   useEffect(() => {
-    // Fetch color data from the database using Axios
+    // Fetch user data from the database using Axios
     apiClient
       .get('/webdesign/getusers.php')
       .then((response) => {
-        setUsers(response.data)
+        setUsers(response.data);
       })
       .catch((error) => {
-        console.error('Error fetching Objectives data:', error)
-      })
-  }, [])
+        console.error('Error fetching users data:', error);
+      });
+  }, []);
+
+  // Create a filtered user list based on the search input
+  const filteredUsers = users.filter((user) => {
+    return user.email.toLowerCase().includes(searchInput.toLowerCase());
+  });
+
   return (
     <div>
       <div className={FindUserCSS.container}>
@@ -30,6 +36,8 @@ const FindUser = () => {
           type="text"
           className={FindUserCSS.searchInput}
           placeholder="Search User"
+          value={searchInput}
+          onChange={(e) => setSearchInput(e.target.value)}
         />
         <button className={FindUserCSS.searchButton}>Search</button>
       </div>
@@ -41,21 +49,26 @@ const FindUser = () => {
           </tr>
         </thead>
         <tbody>
-          {users.map((user,index) => (
-            <tr key={index}>
-            <td>{user.email}</td>
-            <td>
-              <Link to={`/admin_profile/${user.userId}`}>
-                <button className={FindUserCSS.findUserBtn}>Edit</button>
-              </Link>
-            </td>
-          </tr>
-          ))}
-          
+          {filteredUsers.length > 0 ? (
+            filteredUsers.map((user, index) => (
+              <tr key={index}>
+                <td>{user.email}</td>
+                <td>
+                  <Link to={`/admin_profile/${user.userId}`}>
+                    <button className={FindUserCSS.findUserBtn}>Edit</button>
+                  </Link>
+                </td>
+              </tr>
+            ))
+          ) : (
+            <tr>
+              <td colSpan="2">No similar users found.</td>
+            </tr>
+          )}
         </tbody>
       </table>
     </div>
-  )
-}
+  );
+};
 
-export default FindUser
+export default FindUser;

@@ -4,7 +4,7 @@ import { apiClient } from '@lib/apiClient'
 import { useAuth } from '@contexts/AuthContext'
 import './assets/css/variables.css'
 //Auth Imports
-import ForgotPassword from '@features/authentication/ForgotPaswword'
+import ForgotPassword from '@features/authentication/ForgotPassword'
 import Login from '@features/authentication/Login'
 import NewPassword from '@features/authentication/NewPassword'
 import Profile from '@features/authentication/Profile'
@@ -122,7 +122,7 @@ const App = () => {
           <Route path="/forgotpassword" element={user ? <Navigate to="/" /> : <ForgotPassword />} />
           <Route path="/verify" element={user && user.email_verified_at == null ? <Verification /> : <Navigate to="/" />} />
           <Route path="/profile" element={user ? <Profile /> : <Navigate to="/login" />} />
-          <Route path="/newpassword" element={user ? <Navigate to="/login" /> : <NewPassword />} />
+          <Route path="/newpassword/:email/:code" element={user ? <Navigate to="/login" /> : <NewPassword />} />
           {/* Information Page Routes */}
           <Route path="/about" exact element={<About />} />
           <Route path="/contactus" exact element={<ContactUs />} />

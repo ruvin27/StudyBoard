@@ -19,6 +19,7 @@ git clone https://github.com/ruvin27/studyboard.git
 2. **Navigate to the project directory.**
 
 cd studyboard
+cd frontend
 
 
 3. **Install project dependencies using npm.**
@@ -41,7 +42,8 @@ The project structure is organized as follows:
 - **src/features/:** Reusable React components.
 - **src/assets/:** Static assets containing CSS, JS, and images for the application.
 - **src/App.js:** Top-level components representing different pages/routes.
-
+- **src/hooks:** Data Management for the frontend
+- **src/lib:** Api Client for calling api
 - **public/:** Static assets and the `index.html` file.
 
 ## Deployment
@@ -57,5 +59,15 @@ You will get a `build` folder containing the optimized production build of your 
 You can use services like Netlify, Vercel, or traditional web hosting to deploy your application.
 
 ---
+**Backend
+
+Place the backend folder in htdocs in xampp folder.
+
+SQL
+
+1. Create a database named rrr9569_studyboard.
+2. Run the file name createScripts.sql and tables will be created.
+3. Run the createData.sql and data will be populated in the tables.
+
 
 That's it! You should now have the StudyBoard website up and running on your local machine.

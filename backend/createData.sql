@@ -56,15 +56,36 @@ VALUES (1, 1, 1);
 
 -- Insert 1 record in the 'qa_policies' table
 INSERT INTO qa_policies (policies)
-VALUES ('Sample QA policy.');
+VALUES ('Academic Integrity Policy:
+This policy outlines the university''s expectations for academic honesty and integrity.
+It includes rules on plagiarism, cheating, and consequences for violations.
+
+Code of Conduct:
+A code of conduct sets the expectations for student behavior on and off campus.
+It may cover issues such as harassment, discrimination, and disruptive behavior.
+
+Admissions Policy:
+This policy explains the criteria and procedures for admitting students to the university.
+It includes information on admission requirements and application deadlines.
+
+Privacy Policy:
+This policy explains how the university collects, uses, and protects student and employee data.');
+
 
 -- Insert 1 record in the 'ColorTable' table
-INSERT INTO ColorTable (usedFor, hexColor, description)
-VALUES ('Header', '#FFFFFF', 'White color for header.');
+INSERT INTO ColorTable (`id`, `usedFor`, `hexColor`, `description`) VALUES
+(1, 'theme', '007bff', 'Theme Color for the Website'),
+(2, 'nav-bar-hover', 'ff6600', 'Hover Color for Navbar Links'),
+(3, 'nav-bar', '333', 'Navbar background Color'),
+(4, 'nav-bar-text', 'fff', 'NavBar Color for Links');
 
 -- Insert 1 record in the 'objectives' table
 INSERT INTO objectives (program_id, objective)
-VALUES (1, 'To provide a comprehensive understanding of computer science.');
+VALUES (1, 'To provide a comprehensive understanding of computer science.'),
+    (1, 'To develop problem-solving skills using programming languages.'),
+    (1, 'To introduce fundamental concepts in data structures and algorithms.'),
+    (1, 'To foster creativity and innovation in software development.'),
+    (1, 'To prepare students for careers in software engineering and related fields');
 
 -- Insert 1 record in the 'recommendation' table
 INSERT INTO recommendation (course_id, message, sender_id)

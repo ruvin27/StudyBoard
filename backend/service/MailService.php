@@ -67,7 +67,7 @@ class MailService
 
     public function sendForgotPassEmail($email, $name, $code): void
     {
-        $link = 'http://localhost:3000';
+        $link = 'https://rrr9569.uta.cloud';
         $mail = new PHPMailer(true);
         try {
             $mail->isSMTP();

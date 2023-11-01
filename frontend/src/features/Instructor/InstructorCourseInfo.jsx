@@ -80,7 +80,9 @@ const InstructorCourseInfo = () => {
         </div>
       </div>
       <div className={InstructorCourseInfoCSS.courseButton}>
-        <button className={InstructorCourseInfoCSS.button}>Syllabus</button>
+      <Link to="/Syllabus.pdf" target="_blank" >
+              <button className={InstructorCourseInfoCSS.button}>Syllabus</button>
+            </Link>
         <button className={InstructorCourseInfoCSS.button}>Upload File</button>
         <Link to={`/exams?courseId=${courseId}`}>
           <button className={InstructorCourseInfoCSS.button}>Exams</button>
