@@ -42,7 +42,7 @@ const MyCoursesPc = () => {
               Program Objectives
             </button>
           </Link>
-          <Link to={'/belowavgexams'}>
+          <Link to={'/belowavgexamspc'}>
             <button className={MyCoursesCSS.mycoursesButton}>
               Below Average Results
             </button>

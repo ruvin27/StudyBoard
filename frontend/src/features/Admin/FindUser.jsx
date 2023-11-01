@@ -1,7 +1,23 @@
 import { Link } from 'react-router-dom'
 import FindUserCSS from '@assets/css/finduser.module.css'
+import { apiClient } from '@lib/apiClient'
+import React, { useState, useEffect } from 'react'
 
 const FindUser = () => {
+
+  const [users, setUsers] = useState([])
+
+  useEffect(() => {
+    // Fetch color data from the database using Axios
+    apiClient
+      .get('/webdesign/getusers.php')
+      .then((response) => {
+        setUsers(response.data)
+      })
+      .catch((error) => {
+        console.error('Error fetching Objectives data:', error)
+      })
+  }, [])
   return (
     <div>
       <div className={FindUserCSS.container}>
@@ -25,30 +41,17 @@ const FindUser = () => {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>user1@example.com</td>
+          {users.map((user,index) => (
+            <tr key={index}>
+            <td>{user.email}</td>
             <td>
-              <Link to={'profile'}>
+              <Link to={`/admin_profile/${user.userId}`}>
                 <button className={FindUserCSS.findUserBtn}>Edit</button>
               </Link>
             </td>
           </tr>
-          <tr>
-            <td>user2@example.com</td>
-            <td>
-              <Link to={'profile'}>
-                <button className={FindUserCSS.findUserBtn}>Edit</button>
-              </Link>
-            </td>
-          </tr>
-          <tr>
-            <td>user3@example.com</td>
-            <td>
-              <Link to={'profile'}>
-                <button className={FindUserCSS.findUserBtn}>Edit</button>
-              </Link>
-            </td>
-          </tr>
+          ))}
+          
         </tbody>
       </table>
     </div>

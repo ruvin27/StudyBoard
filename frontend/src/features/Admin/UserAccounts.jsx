@@ -14,11 +14,11 @@ const UserAccounts = () => {
               Find User Profiles
             </button>
           </Link>
-          <Link to={'/newusers'}>
+          {/* <Link to={'/newusers'}>
             <button className={UserAccountsCSS.userButton}>
               Approve New Users
             </button>
-          </Link>
+          </Link> */}
         </div>
       </div>
       <div className={UserAccountsCSS.searchContainer}>

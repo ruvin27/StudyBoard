@@ -24,16 +24,13 @@ const Verification = () => {
         otp: otp,
       })
       .then(async (res) => {
+        console.log(res.data)
         if (res.data === 'Incorrect OTP') {
           alert('Incorrect OTP')
         } else if (res.data === 'Failed to update email verification status') {
           alert('Failed to update email verification status')
         } else {
-          const userData = {
-            ...user,
-            email_verified_at	: true
-          }
-          login(userData);
+          login(res.data.data);
           if(user.role === 'Admin'){
             navigate('/panel')
           }

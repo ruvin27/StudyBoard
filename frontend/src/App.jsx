@@ -18,6 +18,7 @@ import Panel from '@features/Admin/Panel'
 import UserAccounts from '@features/Admin/UserAccounts'
 import UserActivity from '@features/Admin/UserActivity'
 import Settings from '@features/Admin/Settings'
+import AdminProfile from '@features/Admin/AdminProfile'
 //Information Page Imports
 import About from '@features/info/About'
 import ContactUs from '@features/info/ContactUs'
@@ -37,7 +38,7 @@ import MyCourses from '@features/Instructor/MyCourses'
 import Recommendation from '@features/Instructor/Recommendation'
 
 //PC imports
-import BelowAverageResults from '@features/PC/belowavgexams'
+import BelowAverageResultsPC from '@features/PC/PCbelowavgexams'
 import ContactUsResponses from '@features/PC/contactresponses'
 import MyCoursesPc from '@features/PC/myCourses'
 import PCCourseInfo from '@features/PC/PCCourseInfo'
@@ -45,7 +46,7 @@ import SendRecommendations from '@features/PC/sendRecommendations'
 import PCObjectives from '@features/PC/PCObjectives'
 
 //QA imports
-import BelowAverageResultsQA from '@features/QA/belowavgexams'
+import BelowAverageResultsQA from '@features/QA/QAbelowavgexams'
 import MyCoursesQA from '@features/QA/myCourses'
 import QAExamAnalysis from '@features/QA/QAExamAnalysis'
 import QAPolicies from '@features/QA/QAPolicies'
@@ -134,6 +135,9 @@ const App = () => {
           <Route path="/panel" element={getRouteElement(user, 'Admin', user?.email_verified_at, <Panel />)} />
           <Route path="/useraccounts" element={getRouteElement(user, 'Admin', user?.email_verified_at, <UserAccounts />)} />
           <Route path="/useractivity" element={getRouteElement(user, 'Admin', user?.email_verified_at, <UserActivity />)} />
+          <Route path="/settings" element={getRouteElement(user, 'Admin', user?.email_verified_at, <Settings />)} />
+          <Route path="/admin_profile/:userId" element={getRouteElement(user, 'Admin', user?.email_verified_at, <AdminProfile />)} />
+
           {/* Instructor Page Routes */}
           <Route path="/CreateCourse" exact element={getRouteElement(user, 'Instructor', user?.email_verified_at, <CreateCourse />)} />
           <Route path="/CreateExam" exact element={getRouteElement(user, 'Instructor', user?.email_verified_at, <CreateExam />)} />
@@ -145,7 +149,7 @@ const App = () => {
           <Route path="/MyCoursesInstructor" exact element={getRouteElement(user, 'Instructor', user?.email_verified_at, <MyCourses />)} />
           <Route path="/Recommendation" exact element={getRouteElement(user, 'Instructor', user?.email_verified_at, <Recommendation />)} />
           {/* PC Page Routes */}
-          <Route path="/belowavgexams" exact element={getRouteElement(user, 'Program Coordinator', user?.email_verified_at, <BelowAverageResults />)} />
+          <Route path="/belowavgexamspc" exact element={getRouteElement(user, 'Program Coordinator', user?.email_verified_at, <BelowAverageResultsPC />)} />
           <Route path="/contactusresponses" exact element={getRouteElement(user, 'Program Coordinator', user?.email_verified_at, <ContactUsResponses />)} />
           <Route path="/MyCoursesPc" exact element={getRouteElement(user, 'Program Coordinator', user?.email_verified_at, <MyCoursesPc />)} />
           <Route path="/PCCourseInfo" exact element={getRouteElement(user, 'Program Coordinator', user?.email_verified_at, <PCCourseInfo />)} />

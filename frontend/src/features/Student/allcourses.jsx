@@ -48,7 +48,7 @@ const AllStudentCourses = () => {
         <div className={StudentAllCoursesCSS.leftElement}>
           <h2>All Courses</h2>
         </div>
-        <div className={StudentAllCoursesCSS.rightElement}>
+       {user && user.role !== 'Admin' && <div className={StudentAllCoursesCSS.rightElement}>
           <Link
             to={
               user && user.role === 'Student'
@@ -59,8 +59,6 @@ const AllStudentCourses = () => {
                 ? '/MyCoursesPc'
                 : user && user.role === 'Instructor'
                 ? '/mycoursesInstructor'
-                : user && user.role === 'Admin'
-                ? '/panel'
                 : '/'
             }
           >
@@ -68,7 +66,7 @@ const AllStudentCourses = () => {
               My Courses
             </button>
           </Link>
-        </div>
+        </div>}
       </div>
       <section className={StudentAllCoursesCSS.content}>
         <div className={StudentAllCoursesCSS.left}>
