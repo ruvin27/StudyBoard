@@ -3,6 +3,7 @@ header('Access-Control-Allow-Origin: http://localhost:3000');
 header('Access-Control-Allow-Headers: Content-Type');
 header('Access-Control-Allow-Methods: POST');
 require('../config.php');
+require_once(BASE_DIR . '/service/AuthService.php');
 
 $connection = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME);
 
@@ -12,6 +13,24 @@ if (!$connection) {
 
 $json = file_get_contents('php://input');
 $data = json_decode($json);
+
+$requiredFields = ['email', 'password'];
+$errors = Validator::validate($data, $requiredFields);
+
+if ($errors) {
+    ApiResponse::error($errors, 400);
+    die();
+}
+
+$authService = new AuthService();
+$result = $authService->login($data->email, $data->password);
+
+if ($result->isSuccess()) {
+    $authService->updateUserActivity($data->email, $result->getData()['role']);
+    ApiResponse::success($result->getData());
+} else {
+    ApiResponse::error($result->getMessage(), 401);
+}
 
 if (isset($data->email) && isset($data->password)) {
     $email = mysqli_real_escape_string($connection, $data->email);
