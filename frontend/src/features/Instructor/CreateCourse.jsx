@@ -127,7 +127,7 @@ const CreateCourse = () => {
             type="text"
             id="courseName"
             name="courseName"
-            defaultValue={course.data?.course_name}
+            defaultValue={course?.data?.course_name}
             className={CreateCourseCSS.createInput}
             required
           />
@@ -144,7 +144,7 @@ const CreateCourse = () => {
             type="text"
             id="courseDescription"
             name="courseDescription"
-            defaultValue={course.data?.course_description}
+            defaultValue={course?.data?.course_description}
             className={CreateCourseCSS.createInput}
             required
           />
@@ -158,7 +158,7 @@ const CreateCourse = () => {
             type="text"
             id="courseCode"
             name="courseCode"
-            defaultValue={course.data?.course_code}
+            defaultValue={course?.data?.course_code}
             className={CreateCourseCSS.createInput}
             required
           />
@@ -175,7 +175,7 @@ const CreateCourse = () => {
             type="date"
             id="courseStartDate"
             name="courseStartDate"
-            defaultValue={course.data?.course_start_date}
+            defaultValue={course?.data?.course_start_date}
             className={CreateCourseCSS.createInput}
             required
           />
@@ -189,7 +189,7 @@ const CreateCourse = () => {
             type="date"
             id="courseEndDate"
             name="courseEndDate"
-            defaultValue={course.data?.course_end_date}
+            defaultValue={course?.data?.course_end_date}
             className={CreateCourseCSS.createInput}
             required
           />
@@ -205,7 +205,7 @@ const CreateCourse = () => {
           <select
             id="programObjective"
             name="programObjective"
-            defaultValue={course.data?.course_objective}
+            defaultValue={course?.data?.course_objective}
             className={CreateCourseCSS.programObjective}
             required
           >

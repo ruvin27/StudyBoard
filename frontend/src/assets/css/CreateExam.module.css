@@ -176,3 +176,16 @@ Valishetty,Srikar - 1002088509, Sesetti, Sri Budhi Sagar  - 1002131432 */
 .questionFormContainer form button:hover {
   background-color: #0056b3;
 }
+
+.button {
+  background-color: var(--theme);
+  color: #fff;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: #0056b3;
+}

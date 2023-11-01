@@ -22,7 +22,6 @@ const AllStudentCourses = () => {
       })
   }, [])
 
-
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -48,25 +47,28 @@ const AllStudentCourses = () => {
         <div className={StudentAllCoursesCSS.leftElement}>
           <h2>All Courses</h2>
         </div>
-       {user && user.role !== 'Admin' && <div className={StudentAllCoursesCSS.rightElement}>
-          <Link
-            to={
-              user && user.role === 'Student'
-                ? '/mycourses'
-                : user && user.role === 'QA Officer'
-                ? '/mycoursesqa'
-                : user && user.role === 'Program Coordinator'
-                ? '/MyCoursesPc'
-                : user && user.role === 'Instructor'
-                ? '/mycoursesInstructor'
-                : '/'
-            }
-          >
-            <button className={StudentAllCoursesCSS.mycoursesButton}>
-              My Courses
-            </button>
+        <div className={StudentAllCoursesCSS.rightElement}>
+          {user && user.role !== 'Admin' && (
+            <Link
+              to={
+                user && user.role === 'Student'
+                  ? '/mycourses'
+                  : user && user.role === 'QA Officer'
+                  ? '/mycoursesqa'
+                  : user && user.role === 'Program Coordinator'
+                  ? '/MyCoursesPc'
+                  : user && user.role === 'Instructor'
+                  ? '/mycoursesInstructor'
+                  : '/'
+              }
+            >
+              <button className={StudentAllCoursesCSS.mycoursesButton}>My Courses</button>
+            </Link>
+          )}
+          <Link to={'/policies'}>
+            <button className={StudentAllCoursesCSS.mycoursesButton}>Policies</button>
           </Link>
-        </div>}
+        </div>
       </div>
       <section className={StudentAllCoursesCSS.content}>
         <div className={StudentAllCoursesCSS.left}>
@@ -91,19 +93,15 @@ const AllStudentCourses = () => {
           </div>
         </div>
         <div className={StudentAllCoursesCSS.right}>
-          <div
-            className={`${StudentAllCoursesCSS.card} ${StudentAllCoursesCSS.objectives}`}
-          >
+          <div className={`${StudentAllCoursesCSS.card} ${StudentAllCoursesCSS.objectives}`}>
             <h2>Program Objectives</h2>
-            
+
             {objectives.map((objective, index) => (
-          <div className={StudentAllCoursesCSS.objectiveItem} key={index}>
-          <strong>Objective {index +1}:</strong>
-          <p>
-          {objective.objective}
-          </p>
-        </div>
-          ))}
+              <div className={StudentAllCoursesCSS.objectiveItem} key={index}>
+                <strong>Objective {index + 1}:</strong>
+                <p>{objective.objective}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>

@@ -85,7 +85,7 @@ const InstructorCourseInfo = () => {
         <Link to={`/exams?courseId=${courseId}`}>
           <button className={InstructorCourseInfoCSS.button}>Exams</button>
         </Link>
-        <Link to="/instructorExamAnalysis">
+        <Link to={`/instructorExamAnalysis/${courseId}`}>
           <button className={InstructorCourseInfoCSS.button}>Reports</button>
         </Link>
         <Link to={`/recommendation?courseId=${courseId}`}>

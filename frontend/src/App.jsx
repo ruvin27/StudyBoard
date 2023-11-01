@@ -33,7 +33,6 @@ import CreateQuestions from '@features/Instructor/CreateQuestions'
 import Exams from '@features/Instructor/Exams'
 import Grades from '@features/Instructor/Grades'
 import InstructorCourseInfo from '@features/Instructor/InstructorCourseInfo'
-import InstructorExamAnalysis from '@features/Instructor/InstructorExamAnalysis'
 import MyCourses from '@features/Instructor/MyCourses'
 import Recommendation from '@features/Instructor/Recommendation'
 
@@ -44,6 +43,7 @@ import MyCoursesPc from '@features/PC/myCourses'
 import PCCourseInfo from '@features/PC/PCCourseInfo'
 import SendRecommendations from '@features/PC/sendRecommendations'
 import PCObjectives from '@features/PC/PCObjectives'
+import Policies from '@features/info/Policies'
 
 //QA imports
 import BelowAverageResultsQA from '@features/QA/QAbelowavgexams'
@@ -129,6 +129,8 @@ const App = () => {
           <Route path="/" exact element={<Program />} />
           <Route path="/services" exact element={<Services />} />
           <Route path="/allcourses" exact element={<AllStudentCourses />} />
+          <Route path="/policies" exact element={<Policies />} />
+
           {/* Admin routes */}
           <Route path="/finduser" element={getRouteElement(user, 'Admin', user?.email_verified_at, <FindUser />)} />
           <Route path="/newusers" element={getRouteElement(user, 'Admin', user?.email_verified_at, <NewUsers />)} />
@@ -145,7 +147,7 @@ const App = () => {
           <Route path="/Exams" exact element={getRouteElement(user, 'Instructor', user?.email_verified_at, <Exams />)} />
           <Route path="/Grades" exact element={getRouteElement(user, 'Instructor', user?.email_verified_at, <Grades />)} />
           <Route path="/InstructorCourseInfo" exact element={getRouteElement(user, 'Instructor', user?.email_verified_at, <InstructorCourseInfo />)} />
-          <Route path="/InstructorExamAnalysis" exact element={getRouteElement(user, 'Instructor', user?.email_verified_at, <InstructorExamAnalysis />)} />
+          <Route path="/InstructorExamAnalysis/:courseId" exact element={getRouteElement(user, 'Instructor', user?.email_verified_at, <QAExamAnalysis />)} />
           <Route path="/MyCoursesInstructor" exact element={getRouteElement(user, 'Instructor', user?.email_verified_at, <MyCourses />)} />
           <Route path="/Recommendation" exact element={getRouteElement(user, 'Instructor', user?.email_verified_at, <Recommendation />)} />
           {/* PC Page Routes */}

@@ -11,6 +11,9 @@ const CreateQuestions = () => {
   const navigate = useNavigate()
   const [searchParams] = useSearchParams()
 
+  const [isFetched, setIsFetched] = React.useState(false)
+  const [questions, setQuestions] = React.useState([])
+
   React.useEffect(() => {
     const examId = searchParams.get('examId')
     const courseId = searchParams.get('courseId')
@@ -40,109 +43,37 @@ const CreateQuestions = () => {
     },
   })
 
-  // const { mutate: mutateUpdateQuestions } = useMutation({
-  //   mutationFn: async (data) => {
-  //     return apiClient.post('/exam/updateQuestion.php', data)
-  //   },
-  //   onSuccess: () => {
-  //     toast.success('Question updated successfully')
-  //     navigate('/exams')
-  //   },
-  //   onError: () => {
-  //     toast.error("Couldn't update question")
-  //   },
-  // })
+  const handleSaveExam = () => {
+    console.log('Save exam')
+    // check if all questions are filled
+    const isAllQuestionsFilled = questions.every((q) => {
+      return q.question && q.mcq1 && q.mcq2 && q.mcq3 && q.mcq4 && q.answer
+    })
 
-  const handleAddQuestion = (e) => {
-    console.log('handleAddQuestion')
-    e.preventDefault()
-    const formData = new FormData(e.target)
-
-    const question = formData.get('questionText')
-    const mcq1 = formData.get('option1')
-    const mcq2 = formData.get('option2')
-    const mcq3 = formData.get('option3')
-    const mcq4 = formData.get('option4')
-    const answer = formData.get('correctAnswer')
-
-    const correctOptionNumber = parseInt(answer)
-    let _answer = mcq1
-    switch (correctOptionNumber) {
-      case 1:
-        _answer = mcq1
-        break
-      case 2:
-        _answer = mcq2
-        break
-      case 3:
-        _answer = mcq3
-        break
-      case 4:
-        _answer = mcq4
-        break
-      default:
-        _answer = mcq1
+    if (!isAllQuestionsFilled) {
+      return toast.error('Please fill all questions')
     }
 
-    const newQuestion = {
-      question,
-      mcq1,
-      mcq2,
-      mcq3,
-      mcq4,
-      answer: _answer,
-    }
+    // remove question_id from questions
+    const questionsWithoutId = questions.map((q) => {
+      const { question_id, ...rest } = q
+      return rest
+    })
 
     mutateCreateQuestions({
       exam_id: examId,
-      questions: [newQuestion],
+      questions: questionsWithoutId,
     })
   }
 
-  const handleUpdateQuestion = (e) => {
-    e.preventDefault()
-    const formData = new FormData(e.target)
+  React.useEffect(() => {
+    if (isLoading || isFetched) return
 
-    const question = formData.get('questionText')
-    const mcq1 = formData.get('option1')
-    const mcq2 = formData.get('option2')
-    const mcq3 = formData.get('option3')
-    const mcq4 = formData.get('option4')
-    const answer = formData.get('correctAnswer')
+    if (!exam.data?.questions) return
 
-    const correctOptionNumber = parseInt(answer)
-    let _answer = mcq1
-    switch (correctOptionNumber) {
-      case 1:
-        _answer = mcq1
-        break
-      case 2:
-        _answer = mcq2
-        break
-      case 3:
-        _answer = mcq3
-        break
-      case 4:
-        _answer = mcq4
-        break
-      default:
-        _answer = mcq1
-    }
-
-    const newQuestion = {
-      question,
-      mcq1,
-      mcq2,
-      mcq3,
-      mcq4,
-      answer: _answer,
-    }
-
-    mutateCreateQuestions({
-      exam_id: examId,
-      questions: [newQuestion],
-    })
-  }
+    setQuestions(exam.data.questions)
+    setIsFetched(true)
+  }, [exam, isFetched, isLoading])
 
   if (isLoading) {
     return <LoadingSpinner />
@@ -158,91 +89,143 @@ const CreateQuestions = () => {
 
       <div className={CreateExamCSS.questionFormContainer}>
         <h3>Question</h3>
-        <form
-          id="questionForm"
-          onSubmit={(e) => {
-            if (exam.data?.questions[0]?.question) {
-              handleUpdateQuestion(e)
-            } else {
-              handleAddQuestion(e)
-            }
+
+        {questions.map((question, index) => (
+          <QuestionBox key={index} question={question} setQuestions={setQuestions} />
+        ))}
+      </div>
+
+      <div
+        style={{
+          display: 'flex',
+          justifyContent: 'center',
+          marginTop: '1rem',
+          gap: '1rem',
+        }}
+      >
+        <button
+          className={CreateExamCSS.button}
+          onClick={() => {
+            setQuestions((prevQuestions) => {
+              return [
+                ...prevQuestions,
+                {
+                  question_id: '',
+                  question: '',
+                  mcq1: '',
+                  mcq2: '',
+                  mcq3: '',
+                  mcq4: '',
+                  answer: '',
+                },
+              ]
+            })
           }}
         >
-          <div
-            style={{
-              display: 'flex',
-              flexDirection: 'column',
-              gap: '1rem',
-            }}
-          >
-            <label htmlFor="questionText">Question</label>
-            <textarea
-              id="questionText"
-              name="questionText"
-              defaultValue={exam.data?.questions[0]?.question}
-              rows="4"
-              required
-            ></textarea>
-
-            <label htmlFor="option1">Option 1</label>
-            <input
-              type="text"
-              name="option1"
-              defaultValue={exam.data?.questions[0]?.mcq1}
-              required
-            />
-
-            <label htmlFor="option2">Option 2</label>
-            <input
-              type="text"
-              name="option2"
-              defaultValue={exam.data?.questions[0]?.mcq2}
-              required
-            />
-
-            <label htmlFor="option3">Option 3</label>
-            <input
-              type="text"
-              name="option3"
-              defaultValue={exam.data?.questions[0]?.mcq3}
-              required
-            />
-
-            <label htmlFor="option4">Option 4</label>
-            <input
-              type="text"
-              name="option4"
-              defaultValue={exam.data?.questions[0]?.mcq4}
-              required
-            />
-
-            <label htmlFor="correctAnswer">Correct Answer</label>
-            <select
-              name="correctAnswer "
-              required
-              defaultValue={exam.data?.questions[0]?.answer?.slice(-1)}
-            >
-              <option value="1">Option 1</option>
-              <option value="2">Option 2</option>
-              <option value="3">Option 3</option>
-              <option value="4">Option 4</option>
-            </select>
-          </div>
-
-          <div
-            style={{
-              display: 'flex',
-              justifyContent: 'center',
-              marginTop: '1rem',
-            }}
-          >
-            <button type="submit">
-              {exam.data?.questions[0]?.question ? 'Update' : 'Add'}
-            </button>
-          </div>
-        </form>
+          Add question
+        </button>
+        <button className={CreateExamCSS.button} onClick={handleSaveExam}>
+          Save exam
+        </button>
       </div>
     </div>
   )
 }
+
+function QuestionBox({ question, setQuestions }) {
+  const handleUpdateQuestion = (e) => {
+    e.preventDefault()
+    const formData = new FormData(e.target)
+
+    const updatedQuestion = {
+      ...question,
+      question: formData.get('questionText'),
+      mcq1: formData.get('option1'),
+      mcq2: formData.get('option2'),
+      mcq3: formData.get('option3'),
+      mcq4: formData.get('option4'),
+      answer: formData.get('correctAnswer'),
+    }
+
+    const curAnswerNumber = parseInt(updatedQuestion.answer)
+
+    if (curAnswerNumber === 1) {
+      updatedQuestion.answer = updatedQuestion.mcq1
+    } else if (curAnswerNumber === 2) {
+      updatedQuestion.answer = updatedQuestion.mcq2
+    }
+    if (curAnswerNumber === 3) {
+      updatedQuestion.answer = updatedQuestion.mcq3
+    }
+    if (curAnswerNumber === 4) {
+      updatedQuestion.answer = updatedQuestion.mcq4
+    }
+
+    setQuestions((prevQuestions) => {
+      return prevQuestions.map((q) => (q.question_id === question.question_id ? updatedQuestion : q))
+    })
+  }
+
+  return (
+    <form id="questionForm" onSubmit={handleUpdateQuestion}>
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '1rem',
+        }}
+      >
+        <label htmlFor="questionText">Question</label>
+        <textarea id="questionText" name="questionText" defaultValue={question.question} rows="4" required></textarea>
+
+        <label htmlFor="option1">Option 1</label>
+        <input type="text" name="option1" defaultValue={question.mcq1} required />
+
+        <label htmlFor="option2">Option 2</label>
+        <input type="text" name="option2" defaultValue={question.mcq2} required />
+
+        <label htmlFor="option3">Option 3</label>
+        <input type="text" name="option3" defaultValue={question.mcq3} required />
+
+        <label htmlFor="option4">Option 4</label>
+        <input type="text" name="option4" defaultValue={question.mcq4} required />
+
+        <label htmlFor="correctAnswer">Correct Answer</label>
+        <select name="correctAnswer" required defaultValue={question.answer?.slice(-1)}>
+          <option value="1">Option 1</option>
+          <option value="2">Option 2</option>
+          <option value="3">Option 3</option>
+          <option value="4">Option 4</option>
+        </select>
+      </div>
+
+      <div
+        style={{
+          display: 'flex',
+          justifyContent: 'center',
+          marginTop: '1rem',
+          gap: '1rem',
+        }}
+      >
+        <button type="submit">Save</button>
+        <button
+          type="button"
+          onClick={() => {
+            setQuestions((prevQuestions) => {
+              if (prevQuestions.length === 1) {
+                toast.error('You must have at least one question')
+                return prevQuestions
+              }
+
+              return prevQuestions.filter((q) => q.question_id !== question.question_id)
+            })
+          }}
+        >
+          Remove
+        </button>
+      </div>
+    </form>
+  )
+}
+
 export default CreateQuestions
