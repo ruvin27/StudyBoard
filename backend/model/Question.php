@@ -43,5 +43,28 @@ class Question
         return $stmt->execute();
     }
 
+
+    public function deleteByExamId($examId): bool
+    {
+        $stmt = $this->connection->prepare("DELETE FROM question WHERE exam_id = :exam_id");
+        $stmt->bindParam(':exam_id', $examId);
+        return $stmt->execute();
+    }
+
+    public function beginTransaction(): void
+    {
+        $this->connection->beginTransaction();
+    }
+
+    public function commit(): void
+    {
+        $this->connection->commit();
+    }
+
+    public function rollBack(): void
+    {
+        $this->connection->rollBack();
+    }
+
 }
 

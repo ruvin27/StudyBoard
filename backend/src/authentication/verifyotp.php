@@ -17,4 +17,9 @@ if (!empty($errors)) {
 $authService = new AuthService();
 $result = $authService->verifyOTP($data->email, $data->otp);
 
-ApiResponse::success(null, $result->getMessage());
+if ($result->isSuccess()) {
+    $response = $authService->loginAfterRegister($data->email);
+    ApiResponse::success($response->getData(), $response->getMessage());
+} else {
+    ApiResponse::error($result->getMessage(), 401);
+}

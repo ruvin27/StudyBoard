@@ -57,7 +57,7 @@ const CourseInfoNavigation = () => {
             </Link>
           </div>
           <div className={CouseInfoCSS.CourseInformation} style={{height: "380px"}}>
-        <p style={{marginTop: "20px"}}>
+        <p >
           <strong>Course Code:</strong> {courseDetails.code}
         </p>
         <p>

@@ -48,7 +48,7 @@ const QACourseInfoNavigation = () => {
               <button className={CourseInfoCSS.button}>Send Recommendation</button>
             </Link>
           </div>
-         <div className={CourseInfoCSS.CourseInformation} style={{height: "300px"}}>
+         <div className={CourseInfoCSS.CourseInformation} style={{height: "380px"}}>
          <p>
           <strong>Course Code:</strong> {course.data.course_code}
         </p>

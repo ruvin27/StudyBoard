@@ -92,6 +92,16 @@ class AuthService
         
     }
 
+    public function loginAfterRegister($email): ServiceResponse
+    {
+        $userData = $this->userRepository->findUserByEmail($email);
+
+        if (!$userData) {
+            return ServiceResponse::error('User Not Found');
+        }
+        return ServiceResponse::success($userData, 'User Data Found');
+    }
+
 
 }
 

@@ -42,7 +42,7 @@ if (count($questionsData) === 0) {
 }
 
 $questionService = new QuestionService();
-$response = $questionService->createQuestions($data->exam_id, $questionsData);
+$response = $questionService->replaceQuestions($data->exam_id, $questionsData);
 
 if (!$response->isSuccess()) {
     ApiResponse::error("Failed to create questions", 500);
