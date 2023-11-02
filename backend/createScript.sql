@@ -26,7 +26,8 @@ CREATE TABLE user
     password          VARCHAR(255)        NOT NULL,
     phone_number      VARCHAR(255),
     verification_code text                NOT NULL,
-    email_verified_at datetime DEFAULT NULL
+    email_verified_at datetime DEFAULT NULL,
+    approved          BOOLEAN DEFAULT false
 );
 
 -- Create the program table
@@ -128,6 +129,8 @@ CREATE TABLE exam_resolution
     exam_id                      INT,
     qa_officer_resolved          INT,
     program_coordinator_resolved INT,
+    avg_score INT,
+    total INT,
     FOREIGN KEY (exam_id) REFERENCES exam (exam_id) ON DELETE CASCADE
 );
 

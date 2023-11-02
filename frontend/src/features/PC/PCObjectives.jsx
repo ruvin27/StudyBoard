@@ -7,7 +7,7 @@ const PCObjectives = () => {
   useEffect(() => {
     // Fetch color data from the database using Axios
     apiClient
-      .get('/webdesign/getobjectives.php')
+      .get('/Admin/getobjectives.php')
       .then((response) => {
         setObjectives(response.data)
       })
@@ -29,7 +29,7 @@ const PCObjectives = () => {
 
   const handleChange = (index) => {
     apiClient
-      .post('/webdesign/setobjective.php', {
+      .post('/PC/setobjective.php', {
         objective: objectives[index].objective,
         objective_id: objectives[index].objective_id,
       })

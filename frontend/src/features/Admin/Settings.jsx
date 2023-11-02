@@ -7,7 +7,7 @@ const Settings = () => {
   useEffect(() => {
     // Fetch color data from the database using Axios
     apiClient
-      .get('/webdesign/colors.php')
+      .get('/Admin/colors.php')
       .then((response) => {
         setColors(response.data)
       })
@@ -29,7 +29,7 @@ const Settings = () => {
 
   const handleChange = (index) => {
     apiClient
-      .post('/webdesign/setcolor.php', {
+      .post('/Admin/setcolor.php', {
         hexColor: colors[index].hexColor,
         id: colors[index].id,
       })

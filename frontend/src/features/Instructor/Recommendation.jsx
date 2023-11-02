@@ -42,14 +42,14 @@ const Recommendation = () => {
         <div className={RecommendationCSS.addContainer}>
           <h2 className={RecommendationCSS.addAccessHeader}>Recommendations</h2>
         </div>
-        <div className={RecommendationCSS.searchContainer}>
+        {/* <div className={RecommendationCSS.searchContainer}>
           <input
             type="text"
             className={RecommendationCSS.searchInput}
             placeholder="Search..."
           />
           <button className={RecommendationCSS.searchButton}>Search</button>
-        </div>
+        </div> */}
 
         {recommendations.data.length > 0 ? (
           <table className={RecommendationCSS.newUsersTable}>

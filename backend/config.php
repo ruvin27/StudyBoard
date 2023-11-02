@@ -3,7 +3,7 @@
 const BASE_DIR = __DIR__;
 const DB_HOST = 'localhost:3306';
 // const DB_USER = 'root';
-
+// const DB_PASS = '';
 const DB_USER = 'rrr9569_root';
 const DB_PASS = 'studyboard@2023';
 const DB_NAME = 'rrr9569_studyboard';

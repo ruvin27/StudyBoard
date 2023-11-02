@@ -10,7 +10,7 @@ const NotAuthorized = () => {
       }}
     >
       <h1>Not Authorized</h1>
-      <p>You are not authorized to access this page.</p>
+      <p>You are not authorized to access this page. Contact Your Administrator for approval.</p>
     </div>
   )
 }

@@ -15,12 +15,13 @@ TRUNCATE TABLE qa_policies;
 TRUNCATE TABLE ColorTable;
 
 -- Insert 1 record for an instructor and a student in the 'user' table
-INSERT INTO user (email, role, name, password, phone_number, verification_code, email_verified_at)
+INSERT INTO user (email, role, name, password, phone_number, verification_code, email_verified_at, approved)
 VALUES ('instructor@app.com', 'Instructor', 'John Doe', '$2y$10$sfltmQxzMmWfrgD8k7PXI.dV5eoZltnKOtZoa528NfiHMiaX08OyC',
-        '123-456-7890', 'SAMPLECODE', CURRENT_DATE),
+        '123-456-7890', 'SAMPLECODE', CURRENT_DATE, 1),
        ('student@app.com', 'Student', 'Jane Doe', '$2y$10$sfltmQxzMmWfrgD8k7PXI.dV5eoZltnKOtZoa528NfiHMiaX08OyC',
-        '123-456-7891', 'SAMPLECODE', CURRENT_DATE);
-
+        '123-456-7891', 'SAMPLECODE', CURRENT_DATE, 1),
+('ruvin27@gmail.com', 'Admin', 'Ruvin Admin', '$2y$10$4yekZaGJzjQcHJ1vZsRYrOVn.8ReyK7/70Kg2NMAFj5CjcWqLRzWi',
+        '6823746900', 'SAMPLECODE', CURRENT_DATE, 1);
 -- Insert 1 record in the 'program' table
 INSERT INTO program (program_name, description)
 VALUES ('Computer Science', 'Study of computation and information.');

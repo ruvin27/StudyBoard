@@ -19,15 +19,19 @@ const StudentGrades = () => {
           courseId: courseId,
           userId: user.userid,
         });
-
+        console.log(response.data)
         setGradeDetails(response.data);
 
         if (response.data.length > 0) {
           setCourseName(response.data[0].name);
           const scores = response.data.map((gradeDetail) => gradeDetail.score);
-          const totalScore = scores.reduce((acc, score) => acc + score, 0);
-          const averageScore = totalScore / scores.length;
-          setOverallScore(averageScore);
+          const totalScores = response.data.map((gradeDetail) => gradeDetail.total);
+          const sumOfScores = scores.reduce((total, score) => total + score, 0);
+          const sumOfTotalScores = totalScores.reduce((total, totalScore) => total + totalScore, 0);
+
+          // Calculate the average percentage
+          const averagePercentage = (sumOfScores / sumOfTotalScores) * 100;
+          setOverallScore(averagePercentage);
         }
       } catch (error) {
         console.error('Error fetching grade details:', error);
@@ -80,7 +84,7 @@ const StudentGrades = () => {
               takeGradeDetails.map((gradeDetail, index) => (
                 <tr key={index}>
                   <td>{gradeDetail.exam_title}</td>
-                  <td>{gradeDetail.score}%</td>
+                  <td>{((gradeDetail.score/gradeDetail.total)*100).toFixed(2)}%</td>
                 </tr>
               ))
             )}

@@ -12,7 +12,7 @@ if (isset($data->courseId)) {
     $courseId = mysqli_real_escape_string($conn, $data->courseId);
     $userId = mysqli_real_escape_string($conn, $data->userId); // Use consistent variable name
 
-    $sql = "SELECT e.exam_title, g.score, c.name
+    $sql = "SELECT e.exam_title, g.score as score, c.name, e.score as total
     FROM exam e
     JOIN grades g ON e.exam_id = g.exam_id 
     JOIN course c on g.course_id = c.course_id
@@ -27,7 +27,8 @@ if (isset($data->courseId)) {
             $takeGradeDetails[] = array(
                 "exam_title" => $row['exam_title'],
                 "score" => $row['score'],
-                "name" => $row['name']
+                "name" => $row['name'],
+                "total" => $row['total']
             );
         }
 

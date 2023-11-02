@@ -67,9 +67,9 @@ import NotAuthorized from '@features/NotAuthorized'
 
 const App = () => {
   const { user, isLoading } = useAuth()
-  console.log(user)
+  console.log(user);
   const getRouteElement = (user, role, emailVerifiedAt, component) => {
-    if (!user) {
+    if (!user || user?.approved === 0) {
       return <NotAuthorized />
     }
 
@@ -87,7 +87,7 @@ const App = () => {
   useEffect(() => {
     // Fetch color data from the database using Axios
     apiClient
-      .get('/webdesign/colors.php')
+      .get('/Admin/colors.php')
       .then((response) => {
         setColors(response.data)
       })

@@ -13,7 +13,7 @@ const AllStudentCourses = () => {
   useEffect(() => {
     // Fetch color data from the database using Axios
     apiClient
-      .get('/webdesign/getobjectives.php')
+      .get('/Admin/getobjectives.php')
       .then((response) => {
         setObjectives(response.data)
       })

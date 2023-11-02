@@ -31,7 +31,6 @@ const QAExamAnalysis = () => {
       .get(`/QA/getStudentNames.php?courseId=${courseId}`) // Pass courseId as a query parameter
       .then((response) => {
         setStudentNames(response.data);
-        console.log("Fetched student names:", response.data);
       })
       .catch((error) => {
         console.error("Error fetching student names:", error);

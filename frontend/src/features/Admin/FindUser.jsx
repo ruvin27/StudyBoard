@@ -10,7 +10,7 @@ const FindUser = () => {
   useEffect(() => {
     // Fetch user data from the database using Axios
     apiClient
-      .get('/webdesign/getusers.php')
+      .get('/Admin/getusers.php')
       .then((response) => {
         setUsers(response.data);
       })
@@ -62,7 +62,7 @@ const FindUser = () => {
             ))
           ) : (
             <tr>
-              <td colSpan="2">No similar users found.</td>
+              <td colSpan="2">No users found.</td>
             </tr>
           )}
         </tbody>

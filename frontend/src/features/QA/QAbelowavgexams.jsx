@@ -8,29 +8,19 @@ const BelowAverageResultsQA = () => {
   const [feedback, setFeedback] = useState('')
   const [resolutionStatus, setResolutionStatus] = useState({})
 
+
   useEffect(() => {
+    const fetchBelowAvgExamsData = () => {
+      apiClient
+        .get('/PC/belowAvgExams.php').then((res)=> {
+          setExamData(res.data);
+        })
+        .catch((error) => {
+          console.error('Error fetching below-average exams data:', error)
+        })
+    }
     fetchBelowAvgExamsData()
-    fetchResolutionStatus()
   }, [])
-
-  const fetchBelowAvgExamsData = () => {
-    apiClient
-      .get('/PC/belowAvgExams.php')
-      .catch((error) => {
-        console.error('Error fetching below-average exams data:', error)
-      })
-  }
-
-  const fetchResolutionStatus = () => {
-    apiClient
-      .get('/PC/FetchQAOfficerStatus.php')
-      .then((response) => {
-        setExamData(response.data)
-      })
-      .catch((error) => {
-        console.error('Error fetching resolution status:', error)
-      })
-  }
 
   const resolveExam = (examId, resolvedBy) => {
     setLoading(true)
@@ -76,9 +66,10 @@ const BelowAverageResultsQA = () => {
         <table className={GradesCSS.customTable}>
           <thead>
             <tr>
-              <th>Course</th>
+            <th>Course</th>
               <th>Exam</th>
-              {/* <th>Grade</th> */}
+              <th>Class Average</th>
+              <th>Total</th>
               <th>QA Officer</th>
               <th>Program Coordinator</th>
             </tr>
@@ -87,8 +78,9 @@ const BelowAverageResultsQA = () => {
             {examData.map((exam) => (
               <tr key={exam.exam_id}>
                 <td>{exam.name}</td>
-                <td>{exam.title}</td>
-                {/* <td>{Number(exam.class_avg).toFixed(2)}%</td> */}
+                <td>{exam.exam_title}</td>
+                <td>{exam.avg_score}</td>
+                <td>{exam.total}</td>
                 <td>
                   {exam.qa_officer_resolved === '0' ? (
                     <button className={GradesCSS.resolveButton} onClick={() => resolveExam(exam.exam_id, 'QA Officer')}>

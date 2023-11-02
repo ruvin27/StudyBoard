@@ -59,11 +59,11 @@ const CreateQuestions = () => {
       const { question_id, ...rest } = q
       return rest
     })
-
-    mutateCreateQuestions({
-      exam_id: examId,
-      questions: questionsWithoutId,
-    })
+    console.log(questionsWithoutId)
+    // mutateCreateQuestions({
+    //   exam_id: examId,
+    //   questions: questionsWithoutId,
+    // })
   }
 
   React.useEffect(() => {
@@ -110,7 +110,7 @@ const CreateQuestions = () => {
               return [
                 ...prevQuestions,
                 {
-                  question_id: '',
+                  question_id: Math.random()*9999999999999,
                   question: '',
                   mcq1: '',
                   mcq2: '',

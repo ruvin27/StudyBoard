@@ -19,7 +19,7 @@ const AdminProfile = () => {
     useEffect(() => {
         // Fetch color data from the database using Axios
         apiClient
-          .post('/webdesign/getuser.php',{
+          .post('/Admin/getuser.php',{
             userId: userId
           })
           .then((response) => {
