@@ -44,7 +44,6 @@ const CreateQuestions = () => {
   })
 
   const handleSaveExam = () => {
-    console.log('Save exam')
     // check if all questions are filled
     const isAllQuestionsFilled = questions.every((q) => {
       return q.question && q.mcq1 && q.mcq2 && q.mcq3 && q.mcq4 && q.answer
@@ -59,11 +58,11 @@ const CreateQuestions = () => {
       const { question_id, ...rest } = q
       return rest
     })
-    console.log(questionsWithoutId)
-    // mutateCreateQuestions({
-    //   exam_id: examId,
-    //   questions: questionsWithoutId,
-    // })
+    // console.log(questionsWithoutId)
+    mutateCreateQuestions({
+      exam_id: examId,
+      questions: questionsWithoutId,
+    })
   }
 
   React.useEffect(() => {
@@ -164,6 +163,7 @@ function QuestionBox({ question, setQuestions }) {
     setQuestions((prevQuestions) => {
       return prevQuestions.map((q) => (q.question_id === question.question_id ? updatedQuestion : q))
     })
+    toast.success('Questions added successfully');
   }
 
   return (

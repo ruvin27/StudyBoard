@@ -24,8 +24,8 @@ const StudentGrades = () => {
 
         if (response.data.length > 0) {
           setCourseName(response.data[0].name);
-          const scores = response.data.map((gradeDetail) => gradeDetail.score);
-          const totalScores = response.data.map((gradeDetail) => gradeDetail.total);
+          const scores = response.data.map((gradeDetail) => parseInt(gradeDetail.score));
+          const totalScores = response.data.map((gradeDetail) => parseInt(gradeDetail.total));
           const sumOfScores = scores.reduce((total, score) => total + score, 0);
           const sumOfTotalScores = totalScores.reduce((total, totalScore) => total + totalScore, 0);
 

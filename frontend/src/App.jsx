@@ -67,9 +67,9 @@ import NotAuthorized from '@features/NotAuthorized'
 
 const App = () => {
   const { user, isLoading } = useAuth()
-  console.log(user);
+  // console.log(user);
   const getRouteElement = (user, role, emailVerifiedAt, component) => {
-    if (!user || user?.approved === 0) {
+    if (!user || user.approved === '0') {
       return <NotAuthorized />
     }
 

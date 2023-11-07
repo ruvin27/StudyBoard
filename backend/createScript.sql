@@ -86,7 +86,7 @@ CREATE TABLE grades
 (
     grade_id   INT PRIMARY KEY AUTO_INCREMENT,
     exam_id    INT,
-     course_id  INT,
+    course_id  INT,
     student_id INT,
     date       DATE,
     score      DECIMAL(5, 2),
@@ -96,16 +96,16 @@ CREATE TABLE grades
 );
 
 -- Create the comments table
-CREATE TABLE comments
-(
-    comment_id INT PRIMARY KEY AUTO_INCREMENT,
-    student_id INT,
-    course_id  INT,
-    timestamp  TIMESTAMP,
-    message    TEXT NOT NULL,
-    FOREIGN KEY (student_id) REFERENCES user (userid) ON DELETE CASCADE,
-    FOREIGN KEY (course_id) REFERENCES course (course_id) ON DELETE CASCADE
-);
+-- CREATE TABLE comments
+-- (
+--     comment_id INT PRIMARY KEY AUTO_INCREMENT,
+--     student_id INT,
+--     course_id  INT,
+--     timestamp  TIMESTAMP,
+--     message    TEXT NOT NULL,
+--     FOREIGN KEY (student_id) REFERENCES user (userid) ON DELETE CASCADE,
+--     FOREIGN KEY (course_id) REFERENCES course (course_id) ON DELETE CASCADE
+-- );
 
 CREATE TABLE enrollment
 (
@@ -118,9 +118,11 @@ CREATE TABLE enrollment
 CREATE TABLE messages
 (
     ID       INT AUTO_INCREMENT PRIMARY KEY,
-    sender   TEXT,
-    receiver TEXT,
-    message  TEXT
+    sender   VARCHAR(255),
+    receiver VARCHAR(255),
+    message  TEXT,
+    FOREIGN KEY (sender) REFERENCES user (email) ON DELETE CASCADE,
+    FOREIGN KEY (receiver) REFERENCES user (email) ON DELETE CASCADE
 );
 
 CREATE TABLE exam_resolution

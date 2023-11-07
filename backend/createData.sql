@@ -52,8 +52,8 @@ INSERT INTO enrollment (student_id, course_id)
 VALUES (2, 1);
 
 -- Insert 1 record in the 'exam_resolution' table
-INSERT INTO exam_resolution (exam_id, qa_officer_resolved, program_coordinator_resolved)
-VALUES (1, 1, 1);
+-- INSERT INTO exam_resolution (exam_id, qa_officer_resolved, program_coordinator_resolved)
+-- VALUES (1, 1, 1);
 
 -- Insert 1 record in the 'qa_policies' table
 INSERT INTO qa_policies (policies)
