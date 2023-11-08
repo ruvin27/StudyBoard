@@ -26,7 +26,7 @@ $result = $authService->login($data->email, $data->password);
 if ($result->isSuccess()) {
     $user = $result->getData();
     $role = $user['role'];
-    $sql = "Insert into user_activity (User_email, Role)
+    $sql = "Insert into userActivity (email, Role)
     VALUES ('$data->email', '$role');";
     $insertResult = mysqli_query($connection, $sql);
     ApiResponse::success($result->getData());

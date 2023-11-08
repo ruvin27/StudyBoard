@@ -1,13 +1,15 @@
 import FindUserCSS from '@assets/css/finduser.module.css'
 import React, { useState, useEffect } from 'react'
 import { apiClient } from '@lib/apiClient'
+import axios from 'axios'
+import { LARAVEL_BACKEND_URL } from '../../config'
+
 const Settings = () => {
   const [colors, setColors] = useState([])
 
   useEffect(() => {
     // Fetch color data from the database using Axios
-    apiClient
-      .get('/Admin/colors.php')
+    axios.get(`${LARAVEL_BACKEND_URL}/getcolors`)
       .then((response) => {
         setColors(response.data)
       })
@@ -28,13 +30,13 @@ const Settings = () => {
   }
 
   const handleChange = (index) => {
-    apiClient
-      .post('/Admin/setcolor.php', {
+    axios.post(`${LARAVEL_BACKEND_URL}/updatecolor`, {
         hexColor: colors[index].hexColor,
         id: colors[index].id,
       })
       .then((res) => {
         alert(res.data)
+        window.location.reload();
       })
   }
   return (

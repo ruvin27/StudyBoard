@@ -95,20 +95,9 @@ CREATE TABLE grades
     FOREIGN KEY (student_id) REFERENCES user (userid) ON DELETE CASCADE
 );
 
--- Create the comments table
--- CREATE TABLE comments
--- (
---     comment_id INT PRIMARY KEY AUTO_INCREMENT,
---     student_id INT,
---     course_id  INT,
---     timestamp  TIMESTAMP,
---     message    TEXT NOT NULL,
---     FOREIGN KEY (student_id) REFERENCES user (userid) ON DELETE CASCADE,
---     FOREIGN KEY (course_id) REFERENCES course (course_id) ON DELETE CASCADE
--- );
-
 CREATE TABLE enrollment
-(
+(   
+    enrollment_id INT PRIMARY KEY AUTO_INCREMENT,
     student_id INT,
     course_id  INT,
     FOREIGN KEY (student_id) REFERENCES user (userid) ON DELETE CASCADE,
@@ -177,9 +166,9 @@ CREATE TABLE contact (
 );
 
 
-CREATE TABLE user_activity (
-  user_activity_id int(10) NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  User_email varchar(50) NOT NULL,
+CREATE TABLE userActivity (
+  userActivity_id int(10) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  email varchar(50) NOT NULL,
   Role varchar(50) NOT NULL,
   Last_logged_in timestamp NOT NULL DEFAULT current_timestamp()
 );

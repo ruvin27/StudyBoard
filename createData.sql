@@ -44,8 +44,8 @@ INSERT INTO grades (exam_id, course_id, student_id, date, score)
 VALUES (1,1, 2, CURRENT_DATE, 95);
 
 -- Insert 1 record in the 'comments' table
-INSERT INTO comments (student_id, course_id, timestamp, message)
-VALUES (2, 1, CURRENT_TIMESTAMP, 'Great course!');
+-- INSERT INTO comments (student_id, course_id, timestamp, message)
+-- VALUES (2, 1, CURRENT_TIMESTAMP, 'Great course!');
 
 -- Insert 1 record in the 'enrollment' table
 INSERT INTO enrollment (student_id, course_id)

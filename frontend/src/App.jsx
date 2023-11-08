@@ -1,6 +1,5 @@
 import { Navigate, Route, BrowserRouter as Router, Routes } from 'react-router-dom'
 import React, { useState, useEffect } from 'react'
-import { apiClient } from '@lib/apiClient'
 import { useAuth } from '@contexts/AuthContext'
 import './assets/css/variables.css'
 //Auth Imports
@@ -64,7 +63,8 @@ import Chat from '@features/Chat'
 import LoadingSpinner from '@features/LoadingSpinner'
 import Navbar from '@features/navbar'
 import NotAuthorized from '@features/NotAuthorized'
-
+import axios from 'axios'
+import { LARAVEL_BACKEND_URL } from './config'
 const App = () => {
   const { user, isLoading } = useAuth()
   // console.log(user);
@@ -86,8 +86,7 @@ const App = () => {
 
   useEffect(() => {
     // Fetch color data from the database using Axios
-    apiClient
-      .get('/Admin/colors.php')
+    axios.get(`${LARAVEL_BACKEND_URL}/getcolors`)
       .then((response) => {
         setColors(response.data)
       })
