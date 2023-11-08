@@ -4,18 +4,15 @@ import { apiClient } from '@lib/apiClient'
 import LoadingSpinner from '@features/LoadingSpinner'
 import { useQuery } from '@tanstack/react-query'
 import { Link, useNavigate, useSearchParams, useParams } from 'react-router-dom'
-
+import axios from 'axios'
+import { LARAVEL_BACKEND_URL } from '../../config'
 const QACourseInfoNavigation = () => {
   const {courseId} = useParams()
 
   const { data: course, isLoading } = useQuery({
     queryKey: ['course', { courseId }],
     queryFn: async () => {
-      const response = await apiClient('/course/getById.php', {
-        params: {
-          id: courseId,
-        },
-      })
+      const response = await axios.get(`${LARAVEL_BACKEND_URL}/courses/getCourseById/${courseId}`)
 
       return response.data
     },

@@ -4,6 +4,8 @@ import LoadingSpinner from '@features/LoadingSpinner'
 import { apiClient } from '@lib/apiClient'
 import { useQuery } from '@tanstack/react-query'
 import { Link } from 'react-router-dom'
+import axios from 'axios'
+import { LARAVEL_BACKEND_URL } from '../../config'
 const MyCourses = () => {
   const { user: instructor } = useAuth()
 
@@ -14,11 +16,7 @@ const MyCourses = () => {
   } = useQuery({
     queryKey: ['courses', { instructorId: instructor.id }],
     queryFn: async () => {
-      const response = await apiClient('/course/getAllByInstructorId.php', {
-        params: {
-          id: instructor.userid,
-        },
-      })
+      const response = await axios.get(`${LARAVEL_BACKEND_URL}/courses/getAllByInstructorId/${instructor.userid}`)
 
       return response.data
     },

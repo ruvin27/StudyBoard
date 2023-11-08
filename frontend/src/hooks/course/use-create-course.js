@@ -1,5 +1,7 @@
 import { useMutation } from '@tanstack/react-query'
 import { apiClient } from '@lib/apiClient'
+import axios from 'axios'
+import { LARAVEL_BACKEND_URL } from '../../config'
 
 /**
  * Custom hook for creating a new course.
@@ -13,7 +15,7 @@ import { apiClient } from '@lib/apiClient'
 const useCreateCourse = () => {
   return useMutation({
     mutationFn: async (data) => {
-      const res = await apiClient.post('/course/create.php', data)
+      const res = await axios.post(`${LARAVEL_BACKEND_URL}/courses/create`, data)
       return res.data
     },
   })

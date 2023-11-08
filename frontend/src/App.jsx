@@ -30,7 +30,7 @@ import CreateExam from '@features/Instructor/CreateExam'
 import CreateQuestions from '@features/Instructor/CreateQuestions'
 
 import Exams from '@features/Instructor/Exams'
-import Grades from '@features/Instructor/Grades'
+// import Grades from '@features/Instructor/Grades'
 import InstructorCourseInfo from '@features/Instructor/InstructorCourseInfo'
 import MyCourses from '@features/Instructor/MyCourses'
 import Recommendation from '@features/Instructor/Recommendation'
@@ -144,7 +144,7 @@ const App = () => {
           <Route path="/CreateExam" exact element={getRouteElement(user, 'Instructor', user?.email_verified_at, <CreateExam />)} />
           <Route path="/CreateQuestions" exact element={getRouteElement(user, 'Instructor', user?.email_verified_at, <CreateQuestions />)} />
           <Route path="/Exams" exact element={getRouteElement(user, 'Instructor', user?.email_verified_at, <Exams />)} />
-          <Route path="/Grades" exact element={getRouteElement(user, 'Instructor', user?.email_verified_at, <Grades />)} />
+          {/* <Route path="/Grades" exact element={getRouteElement(user, 'Instructor', user?.email_verified_at, <Grades />)} /> */}
           <Route path="/InstructorCourseInfo" exact element={getRouteElement(user, 'Instructor', user?.email_verified_at, <InstructorCourseInfo />)} />
           <Route path="/InstructorExamAnalysis/:courseId" exact element={getRouteElement(user, 'Instructor', user?.email_verified_at, <QAExamAnalysis />)} />
           <Route path="/MyCoursesInstructor" exact element={getRouteElement(user, 'Instructor', user?.email_verified_at, <MyCourses />)} />

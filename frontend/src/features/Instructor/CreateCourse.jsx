@@ -6,6 +6,8 @@ import { apiClient } from '@lib/apiClient'
 import { useMutation, useQuery } from '@tanstack/react-query'
 import { useNavigate, useSearchParams } from 'react-router-dom'
 import { toast } from 'sonner'
+import axios from 'axios'
+import { LARAVEL_BACKEND_URL } from '../../config'
 
 const CreateCourse = () => {
   const navigate = useNavigate()
@@ -18,7 +20,7 @@ const CreateCourse = () => {
     queryKey: ['course', courseId],
     enabled: !!courseId,
     queryFn: async () => {
-      const response = await apiClient.get(`/course/getById.php?id=${courseId}`)
+      const response = await axios.get(`${LARAVEL_BACKEND_URL}/courses/getCourseById/${courseId}`)
       return response.data
     },
   })
@@ -26,14 +28,14 @@ const CreateCourse = () => {
   const { data: objectives, isLoading: isObjectivesLoading } = useQuery({
     queryKey: ['objectives'],
     queryFn: async () => {
-      const response = await apiClient.get('/objective/getAll.php')
+      const response = await axios.get(`${LARAVEL_BACKEND_URL}/objectives`)
       return response.data
     },
   })
 
   const { mutate: mutateCreateCourse } = useMutation({
     mutationFn: async (data) => {
-      const response = await apiClient.post('/course/create.php', data)
+      const response = await axios.post(`${LARAVEL_BACKEND_URL}/courses/create`, data)
 
       return response.data
     },
@@ -48,7 +50,7 @@ const CreateCourse = () => {
 
   const { mutate: mutateUpdateCourse } = useMutation({
     mutationFn: async (data) => {
-      const response = await apiClient.post('/course/update.php', data)
+      const response = await axios.post(`${LARAVEL_BACKEND_URL}/courses/update-course`, data)
 
       return response.data
     },
@@ -94,7 +96,6 @@ const CreateCourse = () => {
       end_date: formData.get('courseEndDate'),
       objective: formData.get('programObjective'),
     }
-
     mutateUpdateCourse(_data)
   }
 
@@ -123,92 +124,42 @@ const CreateCourse = () => {
           <label className={CreateCourseCSS.labelClass} htmlFor="courseName">
             Course Name:
           </label>
-          <input
-            type="text"
-            id="courseName"
-            name="courseName"
-            defaultValue={course?.data?.course_name}
-            className={CreateCourseCSS.createInput}
-            required
-          />
+          <input type="text" id="courseName" name="courseName" defaultValue={course?.data?.course_name} className={CreateCourseCSS.createInput} required />
           <br />
           <br />
 
-          <label
-            className={CreateCourseCSS.labelClass}
-            htmlFor="courseDescription"
-          >
+          <label className={CreateCourseCSS.labelClass} htmlFor="courseDescription">
             Description:
           </label>
-          <input
-            type="text"
-            id="courseDescription"
-            name="courseDescription"
-            defaultValue={course?.data?.course_description}
-            className={CreateCourseCSS.createInput}
-            required
-          />
+          <input type="text" id="courseDescription" name="courseDescription" defaultValue={course?.data?.course_description} className={CreateCourseCSS.createInput} required />
           <br />
           <br />
 
           <label className={CreateCourseCSS.labelClass} htmlFor="courseCode">
             Course Code:
           </label>
-          <input
-            type="text"
-            id="courseCode"
-            name="courseCode"
-            defaultValue={course?.data?.course_code}
-            className={CreateCourseCSS.createInput}
-            required
-          />
+          <input type="text" id="courseCode" name="courseCode" defaultValue={course?.data?.course_code} className={CreateCourseCSS.createInput} required />
           <br />
           <br />
 
-          <label
-            className={CreateCourseCSS.labelClass}
-            htmlFor="courseStartDate"
-          >
+          <label className={CreateCourseCSS.labelClass} htmlFor="courseStartDate">
             Start Date:
           </label>
-          <input
-            type="date"
-            id="courseStartDate"
-            name="courseStartDate"
-            defaultValue={course?.data?.course_start_date}
-            className={CreateCourseCSS.createInput}
-            required
-          />
+          <input type="date" id="courseStartDate" name="courseStartDate" defaultValue={course?.data?.course_start_date} className={CreateCourseCSS.createInput} required />
           <br />
           <br />
 
           <label className={CreateCourseCSS.labelClass} htmlFor="courseEndDate">
             End Date:
           </label>
-          <input
-            type="date"
-            id="courseEndDate"
-            name="courseEndDate"
-            defaultValue={course?.data?.course_end_date}
-            className={CreateCourseCSS.createInput}
-            required
-          />
+          <input type="date" id="courseEndDate" name="courseEndDate" defaultValue={course?.data?.course_end_date} className={CreateCourseCSS.createInput} required />
           <br />
           <br />
 
-          <label
-            className={CreateCourseCSS.labelClass}
-            htmlFor="programObjective"
-          >
+          <label className={CreateCourseCSS.labelClass} htmlFor="programObjective">
             Program Objective:
           </label>
-          <select
-            id="programObjective"
-            name="programObjective"
-            defaultValue={course?.data?.course_objective}
-            className={CreateCourseCSS.programObjective}
-            required
-          >
+          <select id="programObjective" name="programObjective" defaultValue={course?.data?.course_objective} className={CreateCourseCSS.programObjective} required>
             {objectives.data?.map((objective) => (
               <option key={objective.objective_id} value={objective.objective}>
                 {objective.objective}

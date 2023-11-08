@@ -6,6 +6,8 @@ import { useMutation, useQuery } from '@tanstack/react-query'
 import { apiClient } from '@lib/apiClient'
 import LoadingSpinner from '@features/LoadingSpinner'
 import { toast } from 'sonner'
+import axios from 'axios'
+import { LARAVEL_BACKEND_URL } from '../../config'
 
 const InstructorCourseInfo = () => {
   const navigate = useNavigate()
@@ -22,11 +24,7 @@ const InstructorCourseInfo = () => {
   const { data: course, isLoading } = useQuery({
     queryKey: ['course', { courseId }],
     queryFn: async () => {
-      const response = await apiClient('/course/getById.php', {
-        params: {
-          id: courseId,
-        },
-      })
+      const response = await axios.get(`${LARAVEL_BACKEND_URL}/courses/getCourseById/${courseId}`)
 
       return response.data
     },
@@ -35,9 +33,7 @@ const InstructorCourseInfo = () => {
   const { mutate } = useMutation({
     mutationKey: 'deleteCourse',
     mutationFn: async () => {
-      const response = await apiClient.post('/course/remove.php', {
-        course_id: courseId,
-      })
+      const response = await axios.delete(`${LARAVEL_BACKEND_URL}/courses/remove/${courseId}`)
 
       return response.data
     },

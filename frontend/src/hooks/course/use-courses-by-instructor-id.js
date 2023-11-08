@@ -1,7 +1,8 @@
 import { apiClient } from '@lib/apiClient'
 import { useQuery } from '@tanstack/react-query'
 import { COURSES_QUERY_KEY } from './use-courses'
-
+import axios from 'axios'
+import { LARAVEL_BACKEND_URL } from '../../config'
 /**
  * Custom hook to get all courses taught by a specific instructor.
  *
@@ -15,12 +16,7 @@ const useCoursesByInstructor = ({ instructorId }) => {
     queryKey: [COURSES_QUERY_KEY, instructorId],
     enabled: !!instructorId,
     queryFn: () =>
-      apiClient
-        .get('/course/getAllByInstructorId.php', {
-          params: {
-            id: instructorId,
-          },
-        })
+    axios.get(`${LARAVEL_BACKEND_URL}/courses/getAllByInstructorId/${instructorId}`)
         .then((res) => res.data),
   })
 }

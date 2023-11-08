@@ -4,6 +4,8 @@ import { apiClient } from '@lib/apiClient'
 import { useQuery } from '@tanstack/react-query'
 import * as React from 'react'
 import { useNavigate, useSearchParams } from 'react-router-dom'
+import axios from 'axios'
+import { LARAVEL_BACKEND_URL } from '../../config'
 
 const Recommendation = () => {
   const navigate = useNavigate()
@@ -22,11 +24,7 @@ const Recommendation = () => {
   const { data: recommendations, isLoading } = useQuery({
     queryKey: ['recommendation', { courseId }],
     queryFn: async () => {
-      const response = await apiClient('/recommendation/getAllByCourseId.php', {
-        params: {
-          id: courseId,
-        },
-      })
+      const response = await axios.get(`${LARAVEL_BACKEND_URL}/recommendations/${courseId}`)
 
       return response.data
     },

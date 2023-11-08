@@ -1,5 +1,7 @@
 import { useMutation } from '@tanstack/react-query'
 import { apiClient } from '@lib/apiClient'
+import axios from 'axios'
+import { LARAVEL_BACKEND_URL } from '../../config'
 
 /**
  * @typedef Question
@@ -25,7 +27,7 @@ import { apiClient } from '@lib/apiClient'
 const useCreateExam = (data) => {
   return useMutation({
     mutationFn: async () => {
-      const res = await apiClient.post('/exam/create.php', data)
+      const res = await axios.post(`${LARAVEL_BACKEND_URL}/exams/create`, data)
       return res.data
     },
   })

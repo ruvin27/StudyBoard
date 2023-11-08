@@ -1,5 +1,7 @@
 import { apiClient } from '@lib/apiClient'
 import { useQuery } from '@tanstack/react-query'
+import axios from 'axios'
+import { LARAVEL_BACKEND_URL } from '../../config'
 
 const EXAM_QUERY_KEY = 'exam'
 
@@ -15,12 +17,7 @@ const useExamById = (examId) => {
     queryKey: [EXAM_QUERY_KEY, examId],
     enabled: !!examId,
     queryFn: () =>
-      apiClient
-        .get('/exam/getById.php', {
-          params: {
-            id: examId,
-          },
-        })
+    axios.get(`${LARAVEL_BACKEND_URL}/exams/getById/${examId}`)
         .then((res) => res.data),
   })
 }

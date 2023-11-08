@@ -7,6 +7,8 @@ import { useMutation } from '@tanstack/react-query'
 import * as React from 'react'
 import { useNavigate, useSearchParams } from 'react-router-dom'
 import { toast } from 'sonner'
+import axios from 'axios'
+import { LARAVEL_BACKEND_URL } from '../../config'
 
 const CreateExam = () => {
   const navigate = useNavigate()
@@ -27,7 +29,7 @@ const CreateExam = () => {
 
   const { mutate: mutateCreateExam } = useMutation({
     mutationFn: async (data) => {
-      return apiClient.post('/exam/create.php', data)
+      return axios.post(`${LARAVEL_BACKEND_URL}/exams/create`, data)
     },
     onSuccess: ({ data }) => {
       toast.success('Exam created successfully')
@@ -40,7 +42,7 @@ const CreateExam = () => {
 
   const { mutate: mutateUpdateExam } = useMutation({
     mutationFn: async (data) => {
-      return apiClient.post('/exam/update.php', data)
+      return axios.put(`${LARAVEL_BACKEND_URL}/exams/update`, data)
     },
     onSuccess: () => {
       toast.success('Exam updated successfully')

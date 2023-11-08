@@ -13,8 +13,33 @@ class Course extends Model
     protected $primaryKey = 'course_id';
     public $timestamps = false;
 
-    public function enrollments()
+    protected $fillable = [
+        'name',
+        'description',
+        'start_date',
+        'end_date',
+        'code',
+        'objective',
+    ];
+
+    public function students()
     {
         return $this->hasMany(Enrollment::class, 'course_id', 'course_id');
     }
+
+    public function instructor()
+    {
+        return $this->belongsTo(UserModel::class, 'instructor_id', 'userid');
+    }
+
+    public function program()
+    {
+        return $this->belongsTo(Program::class, 'program_id', 'program_id');
+    }
+
+    public function exams()
+    {
+        return $this->hasMany(Exam::class, 'course_id', 'course_id');
+    }
+
 }
