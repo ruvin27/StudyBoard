@@ -1,6 +1,8 @@
 import AuthCSS from '@assets/css/auth.module.css'
 import React, {useState} from 'react';
 import { apiClient } from '@lib/apiClient';
+import axios from 'axios'
+import { LARAVEL_BACKEND_URL } from '../../config'
 const ForgotPassword = () => {
   const [email, setEmail] = useState('');
 
@@ -13,8 +15,7 @@ const ForgotPassword = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-     apiClient
-      .post(`/authentication/forgotpassword.php`, {
+    axios.post(`${LARAVEL_BACKEND_URL}/resetpassword`, {
         email: email,
       })
       .then(async (res) => {

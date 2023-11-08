@@ -3,6 +3,8 @@ import { useAuth } from '@contexts/AuthContext'
 import { apiClient } from '@lib/apiClient'
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
+import axios from 'axios'
+import { LARAVEL_BACKEND_URL } from '../../config'
 
 const Login = () => {
   const { login } = useAuth()
@@ -38,28 +40,32 @@ const Login = () => {
       alert('Password must be at least 6 characters long.')
       return
     }
-    await apiClient
-      .post('/authentication/login.php', {
+    await axios.post(`${LARAVEL_BACKEND_URL}/login`, {
         email: formData.email,
         password: formData.password,
       })
       .then( (res) => {
-         login(res.data.data)
-        if(res.data.data.role === 'Admin'){
-          navigate('/panel')
-        }
-        else if(res.data.data.role === 'Instructor'){
-          navigate('/MyCoursesInstructor');
-        }
-        else if(res.data.data.role === 'QA Officer'){
-          navigate('/mycoursesqa');
-        }
-        else if(res.data.data.role === 'Program Coordinator'){
-          navigate('/MyCoursesPc');
-        }
-        else{
+        if(res.data.code === 200){
+
+          login(res.data.data)
+          if(res.data.data.role === 'Admin'){
+            navigate('/panel')
+          }
+          else if(res.data.data.role === 'Instructor'){
+            navigate('/MyCoursesInstructor');
+          }
+          else if(res.data.data.role === 'QA Officer'){
+            navigate('/mycoursesqa');
+          }
+          else if(res.data.data.role === 'Program Coordinator'){
+            navigate('/MyCoursesPc');
+          }
+          else{
           navigate('/myCourses');
         }
+      }else{
+        alert(res.data.message);
+      }
       })
       .catch((error) => {
           alert(error.response.data.message);

@@ -3,6 +3,8 @@ import { useAuth } from '@contexts/AuthContext'
 import { apiClient } from '@lib/apiClient'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import axios from 'axios'
+import { LARAVEL_BACKEND_URL } from '../../config'
 
 const Verification = () => {
   const [otp, setOtp] = useState('')
@@ -25,11 +27,6 @@ const Verification = () => {
       })
       .then(async (res) => {
         console.log(res.data)
-        if (res.data === 'Incorrect OTP') {
-          alert('Incorrect OTP')
-        } else if (res.data === 'Failed to update email verification status') {
-          alert('Failed to update email verification status')
-        } else {
           login(res.data.data);
           if(user.role === 'Admin'){
             navigate('/panel')
@@ -46,7 +43,9 @@ const Verification = () => {
           else{
             navigate('/myCourses');
           }
-        }
+      })
+      .catch((error) => {
+        alert(error.response.data.message);
       })
   }
 

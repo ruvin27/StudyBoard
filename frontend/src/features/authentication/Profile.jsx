@@ -3,6 +3,8 @@ import ProfileImg from '@assets/images/user.jpg';
 import { useAuth } from '@contexts/AuthContext';
 import { apiClient } from '@lib/apiClient';
 import React, { useState } from 'react';
+import axios from 'axios'
+import { LARAVEL_BACKEND_URL } from '../../config'
 
 const Profile = () => {
   const { user, login } = useAuth();
@@ -31,10 +33,9 @@ const Profile = () => {
       return
     }
 
-    apiClient
-      .post('/authentication/updateProfile.php', formData)
+    axios.post(`${LARAVEL_BACKEND_URL}/update-user`, formData)
       .then((response) => {
-        alert(response.data);
+        alert(response.data.message);
         login({ ...user, phone_number: formData.phone, name: formData.name });
         window.location.reload();
 

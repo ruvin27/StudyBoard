@@ -3,6 +3,8 @@ import AuthCSS from '@assets/css/auth.module.css';
 import { useParams } from 'react-router-dom';
 import { apiClient } from '@lib/apiClient';
 import { useNavigate } from 'react-router-dom'
+import axios from 'axios'
+import { LARAVEL_BACKEND_URL } from '../../config'
 
 const NewPassword = () => {
   const [password, setPassword] = useState('');
@@ -27,8 +29,7 @@ const NewPassword = () => {
     } else if (password.length <= 5) {
       alert('Password too short. Please use a longer password.'); // Password is too short.
     } else {
-      apiClient
-      .post(`/authentication/resetpassword.php`, {
+      axios.put(`${LARAVEL_BACKEND_URL}/newpassword`, {
         email: email,
         code: code,
         password: password

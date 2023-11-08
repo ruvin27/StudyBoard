@@ -14,4 +14,12 @@ class UserActivityController extends Controller
 
         return response()->json($userActivities);
     }
+
+    public function logActivity($email, $role)
+    {
+        UserActivity::create([
+            'email' => $email,
+            'role' => $role,
+        ]);
+    }
 }

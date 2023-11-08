@@ -9,5 +9,9 @@ class UserActivity extends Model
 {
     use HasFactory;
     protected $table = 'userActivity'; 
+    protected $primaryKey = 'userActivity_id';
     public $timestamps = false;
+
+    protected $fillable = ['email', 'role'];
+
 }

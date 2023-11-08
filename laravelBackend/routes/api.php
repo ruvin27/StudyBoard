@@ -12,6 +12,7 @@ use App\Http\Controllers\ObjectiveController;
 use App\Http\Controllers\ExamController;
 use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\RecommendationController;
+use App\Http\Controllers\AuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -63,3 +64,9 @@ Route::get('recommendations/{courseId}', [RecommendationController::class, 'getA
 
 
 Route::get('objectives', [ObjectiveController::class, 'listAll']);
+
+Route::post('login', [AuthController::class, 'login']);
+Route::post('register', [AuthController::class, 'register']);
+Route::post('verifyotp', [AuthController::class, 'verifyOTP']);
+Route::post('resetpassword', [AuthController::class, 'forgotPassword']);
+Route::put('newpassword', [AuthController::class, 'newPassword']);

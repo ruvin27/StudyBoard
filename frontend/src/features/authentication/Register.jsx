@@ -3,6 +3,8 @@ import { useAuth } from '@contexts/AuthContext'
 import { apiClient } from '@lib/apiClient'
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
+import axios from 'axios'
+import { LARAVEL_BACKEND_URL } from '../../config'
 
 const Register = () => {
   const { login } = useAuth()
@@ -61,8 +63,7 @@ const Register = () => {
       alert('Password must be at least 6 characters long.')
       return
     }
-    await apiClient
-      .post(`/authentication/register.php`, {
+    await axios.post(`${LARAVEL_BACKEND_URL}/register`, {
         email: formData.email,
         password: formData.password,
         name: formData.name,
