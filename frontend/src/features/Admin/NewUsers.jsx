@@ -1,13 +1,14 @@
 import NewUsersCSS from '@assets/css/NewUser.module.css'
 import { apiClient } from '@lib/apiClient';
 import React, { useState, useEffect } from 'react';
+import axios from 'axios'
+import { LARAVEL_BACKEND_URL } from '../../config'
 const NewUsers = () => {
   const [users, setUsers] = useState([]);
   const [searchInput, setSearchInput] = useState('');
 
   useEffect(() => {
-    apiClient
-      .get('/Admin/newUsers.php')
+    axios.get(`${LARAVEL_BACKEND_URL}/unapproved-users`)
       .then((response) => {
         setUsers(response.data);
       })
@@ -17,16 +18,15 @@ const NewUsers = () => {
   }, []);
 
   const Approve = (id) => {
-    apiClient
-      .post('/Admin/approveUser.php', {
+    axios.post(`${LARAVEL_BACKEND_URL}/approve-user`, {
         id: id
       })
       .then((response) => {
-        alert(response.data);
+        alert(response.data.message);
         window.location.reload();
       })
       .catch((error) => {
-        console.error('Error fetching users data:', error);
+        alert(error.response.data.error)
       });
   }
 
@@ -63,13 +63,13 @@ const NewUsers = () => {
                 <td>{user.email}</td>
                 <td>{user.role}</td>
                 <td>
-                  <button className={NewUsersCSS.newUsersButton} onClick={()=> Approve(user.userId)}>Approve</button>
+                  <button className={NewUsersCSS.newUsersButton} onClick={()=> Approve(user.userid)}>Approve</button>
                 </td>
               </tr>
             ))
           ) : (
             <tr>
-              <td colSpan="2">No users found.</td>
+              <td colSpan="3" style={{textAlign: "center"}}>No users found.</td>
             </tr>
           )}
          

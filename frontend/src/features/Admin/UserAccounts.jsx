@@ -37,8 +37,8 @@ const UserAccounts = () => {
   }
 
   const fetchCourseOptions = () => {
-    apiClient
-      .get('/QA/getCourses.php')
+    axios
+      .get(`${LARAVEL_BACKEND_URL}/get-all-courses`)
       .then((response) => {
         setCourseOptions(response.data)
         if (response.data.length > 0) {

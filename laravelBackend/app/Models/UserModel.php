@@ -12,7 +12,12 @@ class UserModel extends Model
     protected $table = 'user'; 
     protected $primaryKey = 'userid';
     public $timestamps = false;
-
+    protected $fillable = [
+        'approved',
+        'name',
+        'phone_number'
+    ];
+    
     public function enrollments()
     {
         return $this->hasMany(Enrollment::class, 'student_id', 'userid');

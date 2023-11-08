@@ -7,6 +7,7 @@ use App\Http\Controllers\ColorController;
 use App\Http\Controllers\UserActivityController;
 use App\Http\Controllers\EnrollmentController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\CourseController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,3 +33,9 @@ Route::get('enrollment-data', [EnrollmentController::class, 'getEnrollmentData']
 Route::delete('enrollments/{userid}/{courseid}', [EnrollmentController::class, 'deleteEnrollment']);
 Route::get('get-student-emails', [UserController::class, 'getStudentEmails']);
 Route::post('add-enrollment', [EnrollmentController::class, 'addEnrollment']);
+Route::get('unapproved-users', [UserController::class, 'getUnapprovedUsers']);
+Route::post('approve-user', [UserController::class, 'approveUser']);
+Route::get('get-all-users', [UserController::class, 'getAllUsers']);
+Route::get('get-user/{userid}', [UserController::class, 'getUserById']);
+Route::post('update-user', [UserController::class, 'updateUser']);
+Route::get('get-all-courses', [CourseController::class, 'getAllCourses']);

@@ -3,25 +3,20 @@ import ProfileImg from '@assets/images/user.jpg';
 import { apiClient } from '@lib/apiClient';
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import axios from 'axios'
+import { LARAVEL_BACKEND_URL } from '../../config'
 
 const AdminProfile = () => {
     const {userId} = useParams();
-    const [user, setUser] = useState({
-        email: "",
-        phone: "",
-        name: ""
-    })
+  
     const [formData, setFormData] = useState({
-        name: user.name || '',
-        email: user.email || '',
-        phone: user.phone_number || ''
+        name:  '',
+        email: '',
+        phone: ''
       });
     useEffect(() => {
         // Fetch color data from the database using Axios
-        apiClient
-          .post('/Admin/getuser.php',{
-            userId: userId
-          })
+        axios.get(`${LARAVEL_BACKEND_URL}/get-user/${userId}`)
           .then((response) => {
             setFormData({
                 email: response.data.email,
@@ -54,16 +49,12 @@ const AdminProfile = () => {
           return
         }
     
-        apiClient
-          .post('/authentication/updateProfile.php', formData)
+        axios.post(`${LARAVEL_BACKEND_URL}/update-user`, formData)
           .then((response) => {
-            alert(response.data);
-            login({ ...user, phone_number: formData.phone, name: formData.name });
-            window.location.reload();
-    
+            alert(response.data.message);    
           })
           .catch((error) => {
-            console.error('Error updating data:', error)
+            alert(error.response.data.error)
           })
       };
     return ( 
