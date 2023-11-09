@@ -4,7 +4,8 @@ import ChatCSS from '@assets/css/chat.module.css'
 import { useAuth } from '@contexts/AuthContext'
 import { apiClient } from '@lib/apiClient'
 import { useEffect, useState } from 'react'
-
+import axios from 'axios'
+import { LARAVEL_BACKEND_URL } from '../config'
 const Chat = () => {
   const { socket, user } = useAuth()
 
@@ -40,7 +41,7 @@ const Chat = () => {
     const fetchData = async () => {
       if (user) {
         try {
-          const response = await apiClient.get(`/chat/users.php`)
+          const response = await axios.get(`${LARAVEL_BACKEND_URL}/get-all-emails`)
           const filteredOtherUsers = response.data.filter((userData) => {
             const userEmail = user.email.trim().toLowerCase()
             const userDataEmail = userData.trim().toLowerCase()
@@ -60,7 +61,7 @@ const Chat = () => {
     const fetchData = async () => {
       if (currentUser) {
         try {
-          const response = await apiClient.post(`/chat/getmessages.php`, {
+          const response = await axios.post(`${LARAVEL_BACKEND_URL}/get-messages`, {
             sender: user.email,
             receiver: currentUser,
           })
@@ -117,7 +118,7 @@ const Chat = () => {
         message: message,
       },
     ])
-    await apiClient.post(`/chat/storemessage.php`, {
+    await axios.post(`${LARAVEL_BACKEND_URL}/store-message`, {
       sender: user.email,
       receiver: currentUser,
       message: message,

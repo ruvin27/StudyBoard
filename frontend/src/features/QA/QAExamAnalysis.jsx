@@ -2,24 +2,23 @@ import React, { useState, useEffect } from "react";
 import ReportsCSS from "../../assets/css/Reports.module.css";
 import { useAuth } from "@contexts/AuthContext";
 import { apiClient } from "@lib/apiClient";
-import { useParams } from "react-router-dom"; // Import useParams to get the courseId
-
+import { useParams } from "react-router-dom";
+import axios from 'axios'
+import { LARAVEL_BACKEND_URL } from '../../config'
 const QAExamAnalysis = () => {
   const [examTitles, setExamTitles] = useState([]);
   const [studentNames, setStudentNames] = useState([]);
-  const { courseId } = useParams(); // Get courseId from the URL
+  const { courseId } = useParams();
 
   useEffect(() => {
-    // Fetch exam titles and student names from the API when the component mounts
     fetchExamTitles();
     fetchStudentNames();
   }, [courseId]);
 
   const fetchExamTitles = () => {
-    apiClient
-      .get(`/QA/getExamTitles.php?courseId=${courseId}`) // Pass courseId as a query parameter
+    axios.get(`${LARAVEL_BACKEND_URL}/exams/getAllByCourseId/${courseId}`)
       .then((response) => {
-        setExamTitles(response.data);
+        setExamTitles(response.data.data.exams);
       })
       .catch((error) => {
         console.error("Error fetching exam titles:", error);
@@ -27,8 +26,7 @@ const QAExamAnalysis = () => {
   };
 
   const fetchStudentNames = () => {
-    apiClient
-      .get(`/QA/getStudentNames.php?courseId=${courseId}`) // Pass courseId as a query parameter
+    axios.get(`${LARAVEL_BACKEND_URL}/get-students-by-course/${courseId}`)
       .then((response) => {
         setStudentNames(response.data);
       })
@@ -37,14 +35,14 @@ const QAExamAnalysis = () => {
       });
   };
 
-  const downloadExamData = (examTitle) => {
-    // Make an API call to download exam data for the selected exam title and courseId
-    window.location.href = `${apiClient.defaults.baseURL}/QA/downloadExamData.php?exam_title=${examTitle}&courseId=${courseId}`;
+  const downloadExamData = (exam_id) => {
+    // console.log(`${LARAVEL_BACKEND_URL}/download-grades-by-exam/${courseId}/${exam_id}`)
+    window.location.href = `${LARAVEL_BACKEND_URL}/download-grades-by-exam/${courseId}/${exam_id}`;
   };
 
-  const downloadStudentData = (studentName) => {
+  const downloadStudentData = (userid) => {
     // Make an API call to download student data for the selected student name and courseId
-    window.location.href = `${apiClient.defaults.baseURL}/QA/downloadStudentData.php?name=${studentName}&courseId=${courseId}`;
+    window.location.href = `${LARAVEL_BACKEND_URL}/download-grades-by-student/${userid}/${courseId}`;
   };
 
   return (
@@ -64,13 +62,13 @@ const QAExamAnalysis = () => {
           </thead>
           <tbody>
             {examTitles.length > 0 ? (
-              examTitles.map((examTitle) => (
-                <tr key={examTitle}>
-                  <td>{examTitle}</td>
+              examTitles.map((exam, index) => (
+                <tr key={index}>
+                  <td>{exam.exam_title}</td>
                   <td>
                     <button
                       className={ReportsCSS.downloadIcon}
-                      onClick={() => downloadExamData(examTitle)}
+                      onClick={() => downloadExamData(exam.exam_id)}
                     >
                       &#x1F4E5;
                     </button>
@@ -93,13 +91,13 @@ const QAExamAnalysis = () => {
           </thead>
           <tbody>
             {studentNames.length > 0 ? (
-              studentNames.map((studentName) => (
-                <tr key={studentName}>
-                  <td>{studentName}</td>
+              studentNames.map((student, index) => (
+                <tr key={index}>
+                  <td>{student.name}</td>
                   <td>
                     <button
                       className={ReportsCSS.downloadIcon}
-                      onClick={() => downloadStudentData(studentName)}
+                      onClick={() => downloadStudentData(student.userid)}
                     >
                       &#x1F4E5;
                     </button>

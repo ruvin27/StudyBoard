@@ -4,7 +4,8 @@ import { apiClient } from '@lib/apiClient'
 import { useQuery } from '@tanstack/react-query'
 import { Link } from 'react-router-dom'
 import { useAuth } from '@contexts/AuthContext'
-
+import axios from 'axios'
+import { LARAVEL_BACKEND_URL } from '../../config'
 const MyCoursesPc = () => {
   const { user: pc } = useAuth()
 
@@ -15,8 +16,7 @@ const MyCoursesPc = () => {
   } = useQuery({
     queryKey: ['courses', { PCId: pc.id }],
     queryFn: async () => {
-      const response = await apiClient('/course/getAll.php')
-
+      const response = await axios.get(`${LARAVEL_BACKEND_URL}/get-all-courses`)
       return response.data
     },
     enabled: !!pc,

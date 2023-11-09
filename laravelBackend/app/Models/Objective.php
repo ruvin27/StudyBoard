@@ -10,7 +10,8 @@ class Objective extends Model
     use HasFactory;
     protected $primaryKey = 'objective_id';
     public $timestamps = false;
-
+    protected $fillable = [
+        'objective'    ];
     public function program()
     {
         return $this->belongsTo(Program::class, 'program_id', 'program_id');

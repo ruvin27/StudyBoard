@@ -20,13 +20,13 @@ const Verification = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    await apiClient
-      .post(`/authentication/verifyotp.php`, {
+    await axios.post(`${LARAVEL_BACKEND_URL}/verifyotp`, {
         email: user.email,
         otp: otp,
       })
       .then(async (res) => {
-        console.log(res.data)
+        if(res.data.code === 200){
+
           login(res.data.data);
           if(user.role === 'Admin'){
             navigate('/panel')
@@ -42,6 +42,10 @@ const Verification = () => {
           }
           else{
             navigate('/myCourses');
+          }
+          }
+          else{
+            alert(res.data.message);
           }
       })
       .catch((error) => {

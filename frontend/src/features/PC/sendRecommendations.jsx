@@ -3,6 +3,8 @@ import SendRecommendationsCSS from '@assets/css/sendRecommendations.module.css'
 import { apiClient } from '@lib/apiClient'
 import { useParams } from 'react-router-dom'
 import { useAuth } from '@contexts/AuthContext'
+import axios from 'axios'
+import { LARAVEL_BACKEND_URL } from '../../config'
 
 const SendRecommendations = () => {
   const {user} = useAuth();
@@ -22,12 +24,11 @@ const SendRecommendations = () => {
     event.preventDefault()
 
     try {
-      apiClient.post('PC/recommendation.php', {
+      axios.post(`${LARAVEL_BACKEND_URL}/store-recommendation`, {
         message: inputs.message,
         course_id: courseId,
         sender_id: user.userid
       }).then((res)=>{
-          // console.log(res.data)
         alert("Message Posted");
       })
     } catch (error) {

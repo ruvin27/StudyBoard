@@ -92,4 +92,6 @@ class ExamController extends Controller
         $examsArray = $exams->toArray();
         return response()->json(['code' => 200, 'status' => 'success', 'data' => $this->formatter->formatAllExamsResponse($examsArray), 'message' => 'Exams fetched successfully']);
     }
+
+
 }

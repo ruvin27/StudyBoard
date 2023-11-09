@@ -1,15 +1,16 @@
 import FindUserCSS from '@assets/css/finduser.module.css'
 import React, { useState, useEffect } from 'react'
 import { apiClient } from '@lib/apiClient'
+import axios from 'axios'
+import { LARAVEL_BACKEND_URL } from '../../config'
+
 const PCObjectives = () => {
   const [objectives, setObjectives] = useState([])
 
   useEffect(() => {
-    // Fetch color data from the database using Axios
-    apiClient
-      .get('/Admin/getobjectives.php')
+    axios.get(`${LARAVEL_BACKEND_URL}/objectives`)
       .then((response) => {
-        setObjectives(response.data)
+        setObjectives(response.data.data)
       })
       .catch((error) => {
         console.error('Error fetching Objectives data:', error)
@@ -28,13 +29,12 @@ const PCObjectives = () => {
   }
 
   const handleChange = (index) => {
-    apiClient
-      .post('/PC/setobjective.php', {
+    axios.put(`${LARAVEL_BACKEND_URL}/update-objective`, {
         objective: objectives[index].objective,
         objective_id: objectives[index].objective_id,
       })
       .then((res) => {
-        alert(res.data)
+        alert(res.data.message)
       })
   }
   return (

@@ -1,55 +1,38 @@
 import React, { useState, useEffect } from 'react'
 import GradesCSS from '@assets/css/Grades.module.css'
 import { apiClient } from '@lib/apiClient'
+import axios from 'axios'
+import { LARAVEL_BACKEND_URL } from '../../config'
 
 const BelowAverageResultsQA = () => {
   const [examData, setExamData] = useState([])
-  const [loading, setLoading] = useState(false)
-  const [feedback, setFeedback] = useState('')
-  const [resolutionStatus, setResolutionStatus] = useState({})
-
 
   useEffect(() => {
-    const fetchBelowAvgExamsData = () => {
-      apiClient
-        .get('/PC/belowAvgExams.php').then((res)=> {
-          setExamData(res.data);
-        })
-        .catch((error) => {
-          console.error('Error fetching below-average exams data:', error)
-        })
-    }
     fetchBelowAvgExamsData()
   }, [])
 
+  const fetchBelowAvgExamsData = () => {
+    axios.get(`${LARAVEL_BACKEND_URL}/get-below-avg-exams`).then((res)=> {
+        setExamData(res.data);
+      })
+      .catch((error) => {
+        console.error('Error fetching below-average exams data:', error)
+      })
+  }
+
   const resolveExam = (examId, resolvedBy) => {
-    setLoading(true)
-    apiClient
-      .post('/PC/resolveExam.php', { examId, resolvedBy })
+    axios.put(`${LARAVEL_BACKEND_URL}/resolve-below-avg-exams`, { examId, resolvedBy })
       .then((response) => {
         if (response.data.success) {
-          const updatedExamData = examData.map((exam) => {
-            if (exam.exam_id === examId) {
-              const resolvedColumnName = `${resolvedBy.toLowerCase().replace(' ', '_')}_resolved`
-              exam[resolvedColumnName] = 1
-              setResolutionStatus({
-                ...resolutionStatus,
-                [examId]: {
-                  ...resolutionStatus[examId],
-                  [resolvedColumnName]: 1,
-                },
-              })
-            }
-            return exam
-          })
-          setExamData(updatedExamData)
+          fetchBelowAvgExamsData();
         }
-        setFeedback(response.data.message)
-        setLoading(false)
+        else{
+          console.log(response.data)
+        }
+
       })
       .catch((error) => {
         console.error('Error resolving the exam:', error)
-        setLoading(false)
       })
   }
 
@@ -60,8 +43,6 @@ const BelowAverageResultsQA = () => {
           <h2>Below Average Results</h2>
         </div>
       </div>
-      {loading && <p>Loading...</p>}
-      {feedback && <p>{feedback}</p>}
       <div className={GradesCSS.grades}>
         <table className={GradesCSS.customTable}>
           <thead>
@@ -82,7 +63,7 @@ const BelowAverageResultsQA = () => {
                 <td>{exam.avg_score}</td>
                 <td>{exam.total}</td>
                 <td>
-                  {exam.qa_officer_resolved === '0' ? (
+                  {parseInt(exam.qa_officer_resolved) === 0 ? (
                     <button className={GradesCSS.resolveButton} onClick={() => resolveExam(exam.exam_id, 'QA Officer')}>
                       Resolve
                     </button>
@@ -90,7 +71,7 @@ const BelowAverageResultsQA = () => {
                     'Resolved'
                   )}
                 </td>
-                <td>{exam.program_coordinator_resolved === '0' ? 'Not Resolved' : 'Resolved'}</td>
+                <td>{parseInt(exam.program_coordinator_resolved) === 0 ? 'Not Resolved' : 'Resolved'}</td>
               </tr>
             ))}
           </tbody>

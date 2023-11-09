@@ -40,9 +40,10 @@ const UserAccounts = () => {
     axios
       .get(`${LARAVEL_BACKEND_URL}/get-all-courses`)
       .then((response) => {
-        setCourseOptions(response.data)
-        if (response.data.length > 0) {
-          setCourse(response.data[0].course_id)
+        console.log(response.data)
+        setCourseOptions(response.data.data)
+        if (response.data.data.length > 0) {
+          setCourse(response.data.data[0].course_id)
         }
       })
       .catch((error) => {
@@ -201,7 +202,7 @@ const UserAccounts = () => {
         <select id="course" name="course" className={UserAccountsCSS.select} value={course} onChange={(e) => setCourse(e.target.value)}>
           {courseOptions.map((course, index) => (
             <option key={index} value={course.course_id}>
-              {course.name}
+              {course.course_name}
             </option>
           ))}
         </select>

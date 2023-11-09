@@ -11,7 +11,11 @@ class Recommendation extends Model
     protected $table = 'recommendation';
     protected $primaryKey = 'recommendation_id';
     public $timestamps = false;
-
+    protected $fillable = [
+        'course_id',
+        'sender_id',
+        'message'
+    ];
     public function course()
     {
         return $this->belongsTo(Course::class, 'course_id', 'course_id');

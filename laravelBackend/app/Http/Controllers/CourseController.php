@@ -17,9 +17,33 @@ class CourseController extends Controller
 
     public function getAllCourses()
     {
-        $courses = Course::all();
+        $courses = Course::select([
+            'course.course_id as course_id',
+            'course.name as course_name',
+            'course.description as course_description',
+            'course.start_date as course_start_date',
+            'course.end_date as course_end_date',
+            'course.code as course_code',
+            'u.userid as instructor_id',
+            'u.email as instructor_email',
+            'u.name as instructor_name',
+            'course.objective as course_objective',
+            'p.program_id as program_id',
+            'p.program_name as program_name',
+            'p.description as program_description',
+            's.userid as student_id',
+            's.email as student_email',
+            's.name as student_name'
+        ])
+        ->join('user as u', 'course.instructor_id', '=', 'u.userid')
+        ->join('program as p', 'course.program_id', '=', 'p.program_id')
+        ->leftJoin('enrollment as sec', 'course.course_id', '=', 'sec.course_id')
+        ->leftJoin('user as s', 'sec.student_id', '=', 's.userid')
+        ->get();
 
-        return response()->json($courses);
+        $coursesArray = $courses->toArray();
+
+        return response()->json(['code' => 200, 'status' => 'success', 'data' => $this->formatter->formatInstructorResponse($coursesArray), 'message' => null]);
     }
 
     public function listAllByInstructorId($instructorId)

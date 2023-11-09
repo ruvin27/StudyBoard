@@ -13,6 +13,11 @@ use App\Http\Controllers\ExamController;
 use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\RecommendationController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ChatController;
+use App\Http\Controllers\ContactController;
+use App\Http\Controllers\PolicyController;
+use App\Http\Controllers\ResolutionController;
+use App\Http\Controllers\GradeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -43,9 +48,9 @@ Route::post('approve-user', [UserController::class, 'approveUser']);
 Route::get('get-all-users', [UserController::class, 'getAllUsers']);
 Route::get('get-user/{userid}', [UserController::class, 'getUserById']);
 Route::post('update-user', [UserController::class, 'updateUser']);
+
+
 Route::get('get-all-courses', [CourseController::class, 'getAllCourses']);
-
-
 Route::get('courses/getAllByInstructorId/{instructorId}', [CourseController::class, 'listAllByInstructorId']);
 Route::get('courses/getCourseById/{courseId}', [CourseController::class, 'getById']);
 Route::delete('courses/remove/{courseId}', [CourseController::class, 'removeCourse']);
@@ -56,17 +61,39 @@ Route::get('exams/getAllByCourseId/{courseId}', [ExamController::class, 'getAllB
 Route::post('exams/create', [ExamController::class, 'create']);
 Route::put('exams/update', [ExamController::class, 'update']);
 Route::get('exams/getById/{id}', [ExamController::class, 'getById']);
+// Route::get('get-exam-titles/{courseId}', [ExamController::class, 'getExamTitles']);
 
 
 Route::post('questions/replace', [QuestionController::class, 'replaceQuestions']);
 
 Route::get('recommendations/{courseId}', [RecommendationController::class, 'getAllByCourseId']);
+Route::post('store-recommendation', [RecommendationController::class, 'storeRecommendation']);
 
 
 Route::get('objectives', [ObjectiveController::class, 'listAll']);
+Route::put('update-objective', [ObjectiveController::class, 'updateObjective']);
+
+Route::get('get-policies', [PolicyController::class, 'listAll']);
+Route::put('update-policies', [PolicyController::class, 'updatePolicy']);
 
 Route::post('login', [AuthController::class, 'login']);
 Route::post('register', [AuthController::class, 'register']);
 Route::post('verifyotp', [AuthController::class, 'verifyOTP']);
 Route::post('resetpassword', [AuthController::class, 'forgotPassword']);
 Route::put('newpassword', [AuthController::class, 'newPassword']);
+
+
+Route::get('get-all-emails', [ChatController::class, 'getAllEmails']);
+Route::post('get-messages', [ChatController::class, 'getMessages']);
+Route::post('store-message', [ChatController::class, 'storeMessage']);
+
+Route::post('store-contact', [ContactController::class, 'storeContactResponse']);
+Route::get('get-contact-responses', [ContactController::class, 'listAll']);
+
+
+Route::get('get-below-avg-exams', [ResolutionController::class, 'getBelowAvgExams']);
+Route::put('resolve-below-avg-exams', [ResolutionController::class, 'updateResolution']);
+
+Route::get('get-students-by-course/{courseId}', [GradeController::class, 'getStudentsByCourseId']);
+Route::get('download-grades-by-exam/{courseId}/{examId}', [GradeController::class, 'downloadExamData']);
+Route::get('download-grades-by-student/{userid}/{courseId}', [GradeController::class, 'downloadStudentGrades']);

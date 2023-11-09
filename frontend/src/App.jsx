@@ -69,7 +69,7 @@ const App = () => {
   const { user, isLoading } = useAuth()
   // console.log(user);
   const getRouteElement = (user, role, emailVerifiedAt, component) => {
-    if (!user || user.approved === '0') {
+    if (!user || parseInt(user.approved) === 0) {
       return <NotAuthorized />
     }
 

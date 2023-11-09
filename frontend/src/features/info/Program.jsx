@@ -3,16 +3,17 @@ import ProgramCSS from '@assets/css/program.module.css'
 import ProgramImg from '@assets/images/program.jpg'
 import React,{useEffect, useState} from 'react'
 import { apiClient } from '@lib/apiClient'
+import axios from 'axios'
+import { LARAVEL_BACKEND_URL } from '../../config'
 
 const Program = () => {
   const [objectives, setObjectives] = useState([])
 
   useEffect(() => {
     // Fetch color data from the database using Axios
-    apiClient
-      .get('/Admin/getobjectives.php')
+    axios.get(`${LARAVEL_BACKEND_URL}/objectives`)
       .then((response) => {
-        setObjectives(response.data)
+        setObjectives(response.data.data)
       })
       .catch((error) => {
         console.error('Error fetching Objectives data:', error)

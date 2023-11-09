@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from "react";
 import MyCoursesCSS from "../../assets/css/MyCourses.module.css";
 import { Link } from "react-router-dom";
@@ -6,6 +5,8 @@ import { useAuth } from '@contexts/AuthContext'
 import { apiClient } from '@lib/apiClient'
 import LoadingSpinner from "@features/LoadingSpinner";
 import { useQuery } from "@tanstack/react-query";
+import axios from 'axios'
+import { LARAVEL_BACKEND_URL } from '../../config'
 
 const MyCoursesQA = () => {
   const { user: qa } = useAuth()
@@ -17,7 +18,7 @@ const MyCoursesQA = () => {
   } = useQuery({
     queryKey: ['courses', { QAId: qa.id }],
     queryFn: async () => {
-      const response = await apiClient('/course/getAll.php')
+      const response = await axios.get(`${LARAVEL_BACKEND_URL}/get-all-courses`)
 
       return response.data
     },

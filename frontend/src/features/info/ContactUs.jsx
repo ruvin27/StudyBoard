@@ -2,6 +2,9 @@ import ContactUsCSS from '@assets/css/contact.module.css';
 import { useAuth } from '@contexts/AuthContext';
 import React, { useState } from 'react';
 import { apiClient } from '@lib/apiClient';
+import axios from 'axios'
+import { LARAVEL_BACKEND_URL } from '../../config'
+
 const ContactUs = () => {
   const { user } = useAuth();
   const [formData, setFormData] = useState({
@@ -29,10 +32,9 @@ const ContactUs = () => {
     }
 
     
-    apiClient
-      .post('/PC/storeContact.php', formData)
+    axios.post(`${LARAVEL_BACKEND_URL}/store-contact`, formData)
       .then((response) => {
-        alert(response.data);
+        alert(response.data.message);
         window.location.reload();
 
       })
