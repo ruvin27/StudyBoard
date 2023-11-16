@@ -93,5 +93,18 @@ class ExamController extends Controller
         return response()->json(['code' => 200, 'status' => 'success', 'data' => $this->formatter->formatAllExamsResponse($examsArray), 'message' => 'Exams fetched successfully']);
     }
 
+    public function getExamDetailsByStudentId($courseId, $userId)
+    {
+        $examDetails = Exam::select('exam.exam_id', 'exam.course_id', 'g.score', 'exam.exam_title', 'exam.score as total')
+            ->leftJoin('grades as g', function ($join) use ($userId) {
+                $join->on('exam.exam_id', '=', 'g.exam_id')
+                    ->where('g.student_id', '=', $userId);
+            })
+            ->where('exam.course_id', $courseId)
+            ->get();
+
+        return response()->json($examDetails);
+    }
+
 
 }

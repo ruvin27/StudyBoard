@@ -4,7 +4,8 @@ import { Link } from "react-router-dom";
 import { useAuth } from '@contexts/AuthContext';
 import { apiClient } from '@lib/apiClient';
 import { useParams } from "react-router-dom";
-
+import axios from 'axios'
+import { LARAVEL_BACKEND_URL } from '../../config'
 const StudentExams = () => {
   const { courseId, name } = useParams();
   const { user } = useAuth();
@@ -14,11 +15,9 @@ const StudentExams = () => {
   useEffect(() => {
     const fetchData = async () => {
         // Fetch exam details
-        const examResponse = await apiClient.post('student/exams.php', {
-          courseId: courseId,
-          userid: user.userid,
-        });
-      
+        const examResponse = await axios.get(`${LARAVEL_BACKEND_URL}/exams/get-by-student-course/${courseId}/${user.userid}`)
+        console.log(examResponse.data);
+
         setExamDetails(examResponse.data);
         let counter = 0;
         for(let i=0; i<examResponse.data.length; i++){
@@ -27,6 +26,7 @@ const StudentExams = () => {
           }
         }
         setGradeCount(counter);
+        console.log(counter)
       }
     if (user) {
       fetchData();
@@ -59,15 +59,15 @@ const StudentExams = () => {
               </tr>
             ) : (
               examDetails.map((exam) => (
-                <tr key={exam.exam_id}>
-                  <td>{exam.exam_title}</td>
-                  <td>
-                    {!exam.score && <Link to={`/takeExam/${exam.exam_id}/${courseId}`}>
-                      <button className={ExamsCSS.customButton}>Take Exam</button>
-                    </Link>}
-                    
-                  </td>
-                </tr>
+                exam.score ? null : (
+                  <tr key={exam.exam_id}>
+                    <td>{exam.exam_title}</td>
+                    <td>
+                      <Link to={`/takeExam/${exam.exam_id}/${courseId}`}>
+                        <button className={ExamsCSS.customButton}>Take Exam</button>
+                      </Link>
+                    </td>
+                  </tr>)
               ))
             )}
           </tbody>
@@ -88,10 +88,10 @@ const StudentExams = () => {
               </tr>
             ) : (
               examDetails.map((grade, index) => (
-                <tr key={index}>
+                grade.score && (<tr key={index}>
                   <td>{grade.exam_title}</td>
                   {grade.score && <td>{parseInt(grade.score)}/{parseInt(grade.total)}</td>}
-                </tr>
+                </tr>)
               ))
             )}
           </tbody>

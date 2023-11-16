@@ -4,6 +4,7 @@ import CouseInfoCSS from '@assets/css/CourseInfo.module.css'
 import axios from 'axios' // You may use axios for API calls
 import { useAuth } from '@contexts/AuthContext'
 import { apiClient } from '@lib/apiClient'
+import { LARAVEL_BACKEND_URL } from '../../config'
 
 const CourseInfoNavigation = () => {
   const { courseId } = useParams()
@@ -14,9 +15,9 @@ const CourseInfoNavigation = () => {
     const fetchData = async () => {
       try {
         // You can use axios or apiClient to fetch course details
-        const response = await apiClient.post('student/CourseInfoNavigation.php', {
-          courseId: courseId,
-          userid: user.userid, // If you need to send user information
+        const response = await axios.get(`${LARAVEL_BACKEND_URL}/courses/getCourseById/${courseId}`, {
+          // courseId: courseId,
+          // userid: user.userid, // If you need to send user information
         })
 
         setCourseDetails(response.data) // Update the state with the course details
@@ -36,10 +37,10 @@ const CourseInfoNavigation = () => {
         <>
           <div className={CouseInfoCSS.container}>
             <div className={CouseInfoCSS.leftElement}>
-              <h2>{courseDetails.name}</h2>
+              <h2>{courseDetails.data.course_name}</h2>
             </div>
             <div className={CouseInfoCSS.rightElement}>
-              <Link to={`/people/${courseId}`}>
+              <Link to={`/people/${courseDetails.data.course_id}`}>
                 {' '}
                 {/* Include courseId in the URL */}
                 <button className={CouseInfoCSS.button}>People</button>
@@ -51,31 +52,31 @@ const CourseInfoNavigation = () => {
               <button className={CouseInfoCSS.button}>Syllabus</button>
             </Link>
 
-            <Link to={`/studentExams/${courseId}/${courseDetails.name}`}>
+            <Link to={`/studentExams/${courseDetails.data.course_id}/${courseDetails.data.course_name}`}>
               <button className={CouseInfoCSS.button}>Exams</button>
             </Link>
-            <Link to={`/student-grades/${courseId}`}>
+            <Link to={`/student-grades/${courseDetails.data.course_id}`}>
               <button className={CouseInfoCSS.button}>Grades</button>
             </Link>
           </div>
           <div className={CouseInfoCSS.CourseInformation} style={{ height: '380px' }}>
             <p>
-              <strong>Course Code:</strong> {courseDetails.code}
+              <strong>Course Code:</strong> {courseDetails.data.course_code}
             </p>
             <p>
-              <strong>Course Name:</strong> {courseDetails.name}
+              <strong>Course Name:</strong> {courseDetails.data.course_name}
             </p>
             {/* <p>
           <strong>Course Instructor:</strong> {course.data.instructor.name}
         </p> */}
             <p>
-              <strong>Course Description:</strong> {courseDetails.description}
+              <strong>Course Description:</strong> {courseDetails.data.course_description}
             </p>
             <p>
-              <strong>Course Start Date:</strong> {courseDetails.start_date}
+              <strong>Course Start Date:</strong> {courseDetails.data.course_start_date}
             </p>
             <p>
-              <strong>Course End Date:</strong> {courseDetails.end_date}
+              <strong>Course End Date:</strong> {courseDetails.data.course_end_date}
             </p>
 
             {/* <p>

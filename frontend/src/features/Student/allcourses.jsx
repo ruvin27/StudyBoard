@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom'
 import StudentAllCoursesCSS from '@assets/css/courses.module.css'
 import { useAuth } from '@contexts/AuthContext'
 import { apiClient } from '@lib/apiClient'
+import axios from 'axios'
+import { LARAVEL_BACKEND_URL } from '../../config'
 
 const AllStudentCourses = () => {
   const { user } = useAuth()
@@ -12,10 +14,9 @@ const AllStudentCourses = () => {
 
   useEffect(() => {
     // Fetch color data from the database using Axios
-    apiClient
-      .get('/Admin/getobjectives.php')
+    axios.get(`${LARAVEL_BACKEND_URL}/objectives`)
       .then((response) => {
-        setObjectives(response.data)
+        setObjectives(response.data.data)
       })
       .catch((error) => {
         console.error('Error fetching Objectives data:', error)
@@ -26,11 +27,9 @@ const AllStudentCourses = () => {
     const fetchData = async () => {
       try {
         // Make an API request to fetch all course details
-        const response = await apiClient.post('student/AllCourses.php', {
-          userid: user.userid, // Pass user information if needed
-        })
+        const response = await axios.get(`${LARAVEL_BACKEND_URL}/get-all-courses`)
 
-        setCourseDetails(response.data)
+        setCourseDetails(response.data.data)
       } catch (error) {
         console.error('Error fetching course details:', error)
       }
@@ -84,8 +83,8 @@ const AllStudentCourses = () => {
               <tbody>
                 {allCourseDetails.map((course, index) => (
                   <tr key={index}>
-                    <td>{course.name}</td>
-                    <td>{course.instructor_name}</td>
+                    <td>{course.course_name}</td>
+                    <td>{course.instructor.name}</td>
                   </tr>
                 ))}
               </tbody>

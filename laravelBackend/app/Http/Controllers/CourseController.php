@@ -163,6 +163,19 @@ class CourseController extends Controller
             return response()->json(['code' => 400, 'status' => 'error', 'data' => null, 'message' => 'Failed to update course']);
         }
     }
+    public function getUserCourses( $userid)
+    {
+
+
+            $courses = Course::select('course.name', 'course.description', 'course.instructor_id', 'course.course_id', 'user.name as instructor_name')
+                ->join('enrollment as sec', 'course.course_id', '=', 'sec.course_id')
+                ->join('user', 'course.instructor_id', '=', 'user.userid')
+                ->where('sec.student_id', $userid)
+                ->get();
+
+            return response()->json($courses);
+        
+    }
 
     
 }

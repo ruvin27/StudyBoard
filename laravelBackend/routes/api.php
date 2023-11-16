@@ -18,6 +18,7 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\PolicyController;
 use App\Http\Controllers\ResolutionController;
 use App\Http\Controllers\GradeController;
+use App\Http\Controllers\PeopleController;
 
 /*
 |--------------------------------------------------------------------------
@@ -56,12 +57,14 @@ Route::get('courses/getCourseById/{courseId}', [CourseController::class, 'getByI
 Route::delete('courses/remove/{courseId}', [CourseController::class, 'removeCourse']);
 Route::post('courses/create', [CourseController::class, 'create']);
 Route::post('courses/update-course', [CourseController::class, 'updateCourse']);
+Route::get('courses/get-user-courses/{userid}', [CourseController::class, 'getUserCourses']);
+
 
 Route::get('exams/getAllByCourseId/{courseId}', [ExamController::class, 'getAllByCourseId']);
 Route::post('exams/create', [ExamController::class, 'create']);
 Route::put('exams/update', [ExamController::class, 'update']);
 Route::get('exams/getById/{id}', [ExamController::class, 'getById']);
-// Route::get('get-exam-titles/{courseId}', [ExamController::class, 'getExamTitles']);
+Route::get('exams/get-by-student-course/{courseId}/{userId}', [ExamController::class, 'getExamDetailsByStudentId']);
 
 
 Route::post('questions/replace', [QuestionController::class, 'replaceQuestions']);
@@ -97,3 +100,5 @@ Route::put('resolve-below-avg-exams', [ResolutionController::class, 'updateResol
 Route::get('get-students-by-course/{courseId}', [GradeController::class, 'getStudentsByCourseId']);
 Route::get('download-grades-by-exam/{courseId}/{examId}', [GradeController::class, 'downloadExamData']);
 Route::get('download-grades-by-student/{userid}/{courseId}', [GradeController::class, 'downloadStudentGrades']);
+
+Route::get('/get-people-details/{courseId}', [PeopleController::class, 'getPeopleDetails']);

@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import { useAuth } from '@contexts/AuthContext'
 import { apiClient } from '@lib/apiClient'
+import { LARAVEL_BACKEND_URL } from '../../config'
 
 const StudentDashboard = () => {
   const { user } = useAuth();
@@ -21,10 +22,8 @@ const StudentDashboard = () => {
       // } catch (error) {
       //   console.error("Error fetching courses:", error);
       // }
-      await apiClient
-    .post('/student/myCourses.php', {
-      userid: user.userid
-  })
+      await axios
+    .get(`${LARAVEL_BACKEND_URL}/courses/get-user-courses/${user.userid}`)
     .then(async (res) => {
       if (res.data === 'error') {
         alert(res.data.message)
@@ -60,7 +59,7 @@ const StudentDashboard = () => {
               <div className={MyCoursesCSS.courseCard}>
                 <div className={MyCoursesCSS.courseInfo}>
                   <h2 className={MyCoursesCSS.courseTitle}>{course.name}</h2>
-                  <p className={MyCoursesCSS.courseDescription}>{course.course_desc}</p>
+                  <p className={MyCoursesCSS.courseDescription}>{course.description}</p>
                   <div className={MyCoursesCSS.courseMeta}>
                     <p className={MyCoursesCSS.courseInstructor}>Instructor: {course.instructor_name}</p>
                   </div>

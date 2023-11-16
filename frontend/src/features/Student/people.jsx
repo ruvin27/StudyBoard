@@ -4,6 +4,8 @@ import { Link, useParams } from 'react-router-dom';
 import PeopleCSS from '@assets/css/NewUser.module.css';
 import { useAuth } from '@contexts/AuthContext';
 import { apiClient } from '@lib/apiClient';
+import axios from "axios";
+import { LARAVEL_BACKEND_URL } from '../../config'
 
 const StudentPeople = () => {
   const { courseId } = useParams();
@@ -13,12 +15,11 @@ const StudentPeople = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await apiClient.post('student/People.php', {
-          courseId: courseId,
-          userid: user.userid,
-        });
+        const response = await axios
+        .get(`${LARAVEL_BACKEND_URL}/get-people-details/${courseId}`)
 
         setPeopleDetails(response.data);
+        console.log(response.data)
       
       } catch (error) {
         console.error('Error fetching people details:', error);
