@@ -1,40 +1,41 @@
-import React, { useState, useEffect } from 'react'
-import GradesCSS from '@assets/css/Grades.module.css'
-import { apiClient } from '@lib/apiClient'
-import axios from 'axios'
-import { LARAVEL_BACKEND_URL } from '../../config'
+import React, { useState, useEffect } from 'react';
+import GradesCSS from '@assets/css/Grades.module.css';
+import { apiClient } from '@lib/apiClient';
+import axios from 'axios';
+import { LARAVEL_BACKEND_URL } from '../../config';
 
 const BelowAverageResultsQA = () => {
-  const [examData, setExamData] = useState([])
+  const [examData, setExamData] = useState([]);
 
   useEffect(() => {
-    fetchBelowAvgExamsData()
-  }, [])
+    fetchBelowAvgExamsData();
+  }, []);
 
   const fetchBelowAvgExamsData = () => {
-    axios.get(`${LARAVEL_BACKEND_URL}/get-below-avg-exams`).then((res)=> {
+    axios
+      .get(`${LARAVEL_BACKEND_URL}/get-below-avg-exams`)
+      .then((res) => {
         setExamData(res.data);
       })
       .catch((error) => {
-        console.error('Error fetching below-average exams data:', error)
-      })
-  }
+        console.error('Error fetching below-average exams data:', error);
+      });
+  };
 
   const resolveExam = (examId, resolvedBy) => {
-    axios.put(`${LARAVEL_BACKEND_URL}/resolve-below-avg-exams`, { examId, resolvedBy })
+    axios
+      .put(`${LARAVEL_BACKEND_URL}/resolve-below-avg-exams`, { examId, resolvedBy })
       .then((response) => {
         if (response.data.success) {
           fetchBelowAvgExamsData();
+        } else {
+          console.log(response.data);
         }
-        else{
-          console.log(response.data)
-        }
-
       })
       .catch((error) => {
-        console.error('Error resolving the exam:', error)
-      })
-  }
+        console.error('Error resolving the exam:', error);
+      });
+  };
 
   return (
     <div>
@@ -47,7 +48,7 @@ const BelowAverageResultsQA = () => {
         <table className={GradesCSS.customTable}>
           <thead>
             <tr>
-            <th>Course</th>
+              <th>Course</th>
               <th>Exam</th>
               <th>Class Average</th>
               <th>Total</th>
@@ -78,7 +79,7 @@ const BelowAverageResultsQA = () => {
         </table>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default BelowAverageResultsQA
+export default BelowAverageResultsQA;

@@ -1,35 +1,30 @@
-import React, { useState, useEffect } from 'react'
-import { Link, useParams } from 'react-router-dom'
-import CouseInfoCSS from '@assets/css/CourseInfo.module.css'
-import axios from 'axios' // You may use axios for API calls
-import { useAuth } from '@contexts/AuthContext'
-import { apiClient } from '@lib/apiClient'
-import { LARAVEL_BACKEND_URL } from '../../config'
+import React, { useState, useEffect } from 'react';
+import { Link, useParams } from 'react-router-dom';
+import CouseInfoCSS from '@assets/css/CourseInfo.module.css';
+import axios from 'axios';
+import { useAuth } from '@contexts/AuthContext';
+import { apiClient } from '@lib/apiClient';
+import { LARAVEL_BACKEND_URL } from '../../config';
 
 const CourseInfoNavigation = () => {
-  const { courseId } = useParams()
-  const { user } = useAuth()
-  const [courseDetails, setCourseDetails] = useState(null) // Initialize with null or an empty object
+  const { courseId } = useParams();
+  const { user } = useAuth();
+  const [courseDetails, setCourseDetails] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        // You can use axios or apiClient to fetch course details
-        const response = await axios.get(`${LARAVEL_BACKEND_URL}/courses/getCourseById/${courseId}`, {
-          // courseId: courseId,
-          // userid: user.userid, // If you need to send user information
-        })
-
-        setCourseDetails(response.data) // Update the state with the course details
+        const response = await axios.get(`${LARAVEL_BACKEND_URL}/courses/getCourseById/${courseId}`);
+        setCourseDetails(response.data);
       } catch (error) {
-        console.error('Error fetching course details:', error)
+        console.error('Error fetching course details:', error);
       }
-    }
+    };
 
     if (user) {
-      fetchData()
+      fetchData();
     }
-  }, [courseId, user]) // Add courseId to the dependency array
+  }, [courseId, user]);
 
   return (
     <>
@@ -48,7 +43,7 @@ const CourseInfoNavigation = () => {
             </div>
           </div>
           <div>
-            <Link to="/Syllabus.pdf" target="_blank" >
+            <Link to="/Syllabus.pdf" target="_blank">
               <button className={CouseInfoCSS.button}>Syllabus</button>
             </Link>
 
@@ -66,9 +61,9 @@ const CourseInfoNavigation = () => {
             <p>
               <strong>Course Name:</strong> {courseDetails.data.course_name}
             </p>
-            {/* <p>
-          <strong>Course Instructor:</strong> {course.data.instructor.name}
-        </p> */}
+            <p>
+              <strong>Course Instructor:</strong> {courseDetails.data.instructor.name}
+            </p>
             <p>
               <strong>Course Description:</strong> {courseDetails.data.course_description}
             </p>
@@ -79,16 +74,16 @@ const CourseInfoNavigation = () => {
               <strong>Course End Date:</strong> {courseDetails.data.course_end_date}
             </p>
 
-            {/* <p>
-          <strong>Students:</strong> {course.data.students.length}
-        </p> */}
+            <p>
+              <strong>Students:</strong> {courseDetails.data.students.length}
+            </p>
           </div>
         </>
       ) : (
         <p>Loading course details...</p>
       )}
     </>
-  )
-}
+  );
+};
 
-export default CourseInfoNavigation
+export default CourseInfoNavigation;

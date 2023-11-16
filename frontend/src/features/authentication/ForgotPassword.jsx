@@ -1,8 +1,8 @@
-import AuthCSS from '@assets/css/auth.module.css'
-import React, {useState} from 'react';
+import AuthCSS from '@assets/css/auth.module.css';
+import React, { useState } from 'react';
 import { apiClient } from '@lib/apiClient';
-import axios from 'axios'
-import { LARAVEL_BACKEND_URL } from '../../config'
+import axios from 'axios';
+import { LARAVEL_BACKEND_URL } from '../../config';
 const ForgotPassword = () => {
   const [email, setEmail] = useState('');
 
@@ -15,7 +15,8 @@ const ForgotPassword = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios.post(`${LARAVEL_BACKEND_URL}/resetpassword`, {
+    axios
+      .post(`${LARAVEL_BACKEND_URL}/resetpassword`, {
         email: email,
       })
       .then(async (res) => {
@@ -28,10 +29,7 @@ const ForgotPassword = () => {
         <div className={AuthCSS.headerimg}>
           <span>Forgot Password</span>
         </div>
-        <form
-          className={AuthCSS.forgotpasswordform}
-          onSubmit={handleSubmit}
-        >
+        <form className={AuthCSS.forgotpasswordform} onSubmit={handleSubmit}>
           <p style={{ color: 'red' }}>A password reset link will be sent to the Email*</p>
           <div className={AuthCSS.forgotpassInput}>
             <input
@@ -52,7 +50,7 @@ const ForgotPassword = () => {
         </form>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default ForgotPassword
+export default ForgotPassword;

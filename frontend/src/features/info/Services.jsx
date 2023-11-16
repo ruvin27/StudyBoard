@@ -1,12 +1,12 @@
-import ServicesCSS from '@assets/css/services.module.css'
-import analyticsIcon from '@assets/images/service images/icons8-analytics-48.png'
-import examIcon from '@assets/images/service images/icons8-exam-94.png'
-import forumIcon from '@assets/images/service images/icons8-forum-48.png'
-import parcelIcon from '@assets/images/service images/icons8-parcel-64.png'
-import profilesIcon from '@assets/images/service images/icons8-profiles-40.png'
-import reportCardIcon from '@assets/images/service images/icons8-report-card-48.png'
-import support1Icon from '@assets/images/service images/icons8-support-50 (1).png'
-import support2Icon from '@assets/images/service images/icons8-support-50.png'
+import ServicesCSS from '@assets/css/services.module.css';
+import analyticsIcon from '@assets/images/service images/icons8-analytics-48.png';
+import examIcon from '@assets/images/service images/icons8-exam-94.png';
+import forumIcon from '@assets/images/service images/icons8-forum-48.png';
+import parcelIcon from '@assets/images/service images/icons8-parcel-64.png';
+import profilesIcon from '@assets/images/service images/icons8-profiles-40.png';
+import reportCardIcon from '@assets/images/service images/icons8-report-card-48.png';
+import support1Icon from '@assets/images/service images/icons8-support-50 (1).png';
+import support2Icon from '@assets/images/service images/icons8-support-50.png';
 
 const Services = () => {
   return (
@@ -55,7 +55,7 @@ const Services = () => {
         </a>
       </p>
     </div>
-  )
-}
+  );
+};
 
-export default Services
+export default Services;

@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import ProgramCSS from '@assets/css/program.module.css';
 import { apiClient } from '@lib/apiClient';
-import axios from 'axios'
-import { LARAVEL_BACKEND_URL } from '../../config'
+import axios from 'axios';
+import { LARAVEL_BACKEND_URL } from '../../config';
 const Policies = () => {
   const [policies, setPolicies] = useState('');
 
@@ -11,7 +11,8 @@ const Policies = () => {
   }, []);
 
   const fetchPolicies = () => {
-    axios.get(`${LARAVEL_BACKEND_URL}/get-policies`)
+    axios
+      .get(`${LARAVEL_BACKEND_URL}/get-policies`)
       .then((response) => {
         setPolicies(response.data.data.policies);
       })
@@ -34,5 +35,5 @@ const Policies = () => {
       </div>
     </div>
   );
-          }
+};
 export default Policies;

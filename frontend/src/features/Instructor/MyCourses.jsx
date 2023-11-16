@@ -1,13 +1,13 @@
-import myCoursesCSS from '@assets/css/MyCourses.module.css'
-import { useAuth } from '@contexts/AuthContext'
-import LoadingSpinner from '@features/LoadingSpinner'
-import { apiClient } from '@lib/apiClient'
-import { useQuery } from '@tanstack/react-query'
-import { Link } from 'react-router-dom'
-import axios from 'axios'
-import { LARAVEL_BACKEND_URL } from '../../config'
+import myCoursesCSS from '@assets/css/MyCourses.module.css';
+import { useAuth } from '@contexts/AuthContext';
+import LoadingSpinner from '@features/LoadingSpinner';
+import { apiClient } from '@lib/apiClient';
+import { useQuery } from '@tanstack/react-query';
+import { Link } from 'react-router-dom';
+import axios from 'axios';
+import { LARAVEL_BACKEND_URL } from '../../config';
 const MyCourses = () => {
-  const { user: instructor } = useAuth()
+  const { user: instructor } = useAuth();
 
   const {
     data: courses,
@@ -16,15 +16,15 @@ const MyCourses = () => {
   } = useQuery({
     queryKey: ['courses', { instructorId: instructor.id }],
     queryFn: async () => {
-      const response = await axios.get(`${LARAVEL_BACKEND_URL}/courses/getAllByInstructorId/${instructor.userid}`)
+      const response = await axios.get(`${LARAVEL_BACKEND_URL}/courses/getAllByInstructorId/${instructor.userid}`);
 
-      return response.data
+      return response.data;
     },
     enabled: !!instructor,
-  })
+  });
 
   if (isLoading || isPaused) {
-    return <LoadingSpinner />
+    return <LoadingSpinner />;
   }
 
   return (
@@ -35,36 +35,23 @@ const MyCourses = () => {
         </div>
         <div className={myCoursesCSS.rightElement}>
           <Link to="/createCourse">
-            <button className={myCoursesCSS.mycoursesButton}>
-              Create Course
-            </button>
+            <button className={myCoursesCSS.mycoursesButton}>Create Course</button>
           </Link>
           <Link to="/">
-            <button className={myCoursesCSS.mycoursesButton}>
-              Program Details
-            </button>
+            <button className={myCoursesCSS.mycoursesButton}>Program Details</button>
           </Link>
         </div>
       </div>
       <div className={myCoursesCSS.courses}>
         {courses?.data.length > 0 ? (
           courses.data.map((course) => (
-            <Link
-              to={`/InstructorCourseInfo?courseId=${course.course_id}`}
-              key={course.course_id}
-            >
+            <Link to={`/InstructorCourseInfo?courseId=${course.course_id}`} key={course.course_id}>
               <div className={myCoursesCSS.courseCard}>
                 <div className={myCoursesCSS.courseInfo}>
-                  <h2 className={myCoursesCSS.courseTitle}>
-                    {course.course_name}
-                  </h2>
-                  <p className={myCoursesCSS.courseDescription}>
-                    {course.course_description}
-                  </p>
+                  <h2 className={myCoursesCSS.courseTitle}>{course.course_name}</h2>
+                  <p className={myCoursesCSS.courseDescription}>{course.course_description}</p>
                   <div className={myCoursesCSS.courseMeta}>
-                    <p className={myCoursesCSS.courseInstructor}>
-                      Students: {course.students.length}
-                    </p>
+                    <p className={myCoursesCSS.courseInstructor}>Students: {course.students.length}</p>
                   </div>
                 </div>
               </div>
@@ -75,6 +62,6 @@ const MyCourses = () => {
         )}
       </div>
     </div>
-  )
-}
-export default MyCourses
+  );
+};
+export default MyCourses;

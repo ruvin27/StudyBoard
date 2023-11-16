@@ -1,37 +1,35 @@
-import CourseInfoCSS from '@assets/css/CourseInfo.module.css'
-import * as React from 'react'
-import { apiClient } from '@lib/apiClient'
-import LoadingSpinner from '@features/LoadingSpinner'
-import { useQuery } from '@tanstack/react-query'
-import { Link, useNavigate, useSearchParams } from 'react-router-dom'
-import axios from 'axios'
-import { LARAVEL_BACKEND_URL } from '../../config'
+import CourseInfoCSS from '@assets/css/CourseInfo.module.css';
+import * as React from 'react';
+import { apiClient } from '@lib/apiClient';
+import LoadingSpinner from '@features/LoadingSpinner';
+import { useQuery } from '@tanstack/react-query';
+import { Link, useNavigate, useSearchParams } from 'react-router-dom';
+import axios from 'axios';
+import { LARAVEL_BACKEND_URL } from '../../config';
 
 const CourseInfo = () => {
-  const navigate = useNavigate()
-  const [searchParams] = useSearchParams()
+  const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
 
   React.useEffect(() => {
-    const courseId = searchParams.get('courseId')
+    const courseId = searchParams.get('courseId');
     if (!courseId) {
-      navigate('/pcmycourses')
+      navigate('/pcmycourses');
     }
-  }, [navigate, searchParams])
+  }, [navigate, searchParams]);
 
-  const courseId = searchParams.get('courseId')
+  const courseId = searchParams.get('courseId');
   const { data: course, isLoading } = useQuery({
     queryKey: ['course', { courseId }],
     queryFn: async () => {
-      const response = await axios.get(`${LARAVEL_BACKEND_URL}/courses/getCourseById/${courseId}`)
+      const response = await axios.get(`${LARAVEL_BACKEND_URL}/courses/getCourseById/${courseId}`);
 
-      return response.data
+      return response.data;
     },
-  })
-
-
+  });
 
   if (isLoading) {
-    return <LoadingSpinner />
+    return <LoadingSpinner />;
   }
 
   return (
@@ -47,9 +45,9 @@ const CourseInfo = () => {
         </div>
       </div>
       <div>
-      <Link to="/Syllabus.pdf" target="_blank" >
-              <button className={CourseInfoCSS.button}>Syllabus</button>
-            </Link>
+        <Link to="/Syllabus.pdf" target="_blank">
+          <button className={CourseInfoCSS.button}>Syllabus</button>
+        </Link>
         <Link to={`/PCExamAnalysis/${courseId}`}>
           <button className={CourseInfoCSS.button}>Reports</button>
         </Link>
@@ -57,8 +55,8 @@ const CourseInfo = () => {
           <button className={CourseInfoCSS.button}>Send Recommendation</button>
         </Link>
       </div>
-      
-      <div className={CourseInfoCSS.CourseInformation} style={{height: "380px"}}>
+
+      <div className={CourseInfoCSS.CourseInformation} style={{ height: '380px' }}>
         <p>
           <strong>Course Code:</strong> {course.data.course_code}
         </p>
@@ -83,7 +81,7 @@ const CourseInfo = () => {
         </p>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default CourseInfo
+export default CourseInfo;

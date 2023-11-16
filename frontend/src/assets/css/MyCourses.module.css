@@ -37,7 +37,8 @@ Valishetty,Srikar - 1002088509, Sesetti, Sri Budhi Sagar  - 1002131432 */
   overflow: hidden;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   margin: 10px;
-  max-width: 300px;
+  width: 300px;
+  height: 200px;
   transition: transform 0.3s ease-in-out;
 }
 

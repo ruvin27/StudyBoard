@@ -1,41 +1,43 @@
-import React, { useState } from 'react'
-import SendRecommendationsCSS from '@assets/css/sendRecommendations.module.css'
-import { apiClient } from '@lib/apiClient'
-import { useParams } from 'react-router-dom'
-import { useAuth } from '@contexts/AuthContext'
-import axios from 'axios'
-import { LARAVEL_BACKEND_URL } from '../../config'
+import React, { useState } from 'react';
+import SendRecommendationsCSS from '@assets/css/sendRecommendations.module.css';
+import { apiClient } from '@lib/apiClient';
+import { useParams } from 'react-router-dom';
+import { useAuth } from '@contexts/AuthContext';
+import axios from 'axios';
+import { LARAVEL_BACKEND_URL } from '../../config';
 
 const SendRecommendations = () => {
-  const {user} = useAuth();
-  const { courseId, name } = useParams()
+  const { user } = useAuth();
+  const { courseId, name } = useParams();
   const [inputs, setInputs] = useState({
-    message: ''
-  })
-  const [feedback, setFeedback] = useState('')
+    message: '',
+  });
+  const [feedback, setFeedback] = useState('');
 
   const handleChange = (event) => {
-    const name = event.target.name
-    const value = event.target.value
-    setInputs((prevState) => ({ ...prevState, [name]: value }))
-  }
+    const name = event.target.name;
+    const value = event.target.value;
+    setInputs((prevState) => ({ ...prevState, [name]: value }));
+  };
 
   const handleSubmit = async (event) => {
-    event.preventDefault()
+    event.preventDefault();
 
     try {
-      axios.post(`${LARAVEL_BACKEND_URL}/store-recommendation`, {
-        message: inputs.message,
-        course_id: courseId,
-        sender_id: user.userid
-      }).then((res)=>{
-        alert("Message Posted");
-      })
+      axios
+        .post(`${LARAVEL_BACKEND_URL}/store-recommendation`, {
+          message: inputs.message,
+          course_id: courseId,
+          sender_id: user.userid,
+        })
+        .then((res) => {
+          alert('Message Posted');
+        });
     } catch (error) {
-      console.error('Error sending recommendation:', error)
-      setFeedback('An error occurred while sending the recommendation.')
+      console.error('Error sending recommendation:', error);
+      setFeedback('An error occurred while sending the recommendation.');
     }
-  }
+  };
 
   return (
     <div>
@@ -61,7 +63,7 @@ const SendRecommendations = () => {
         {feedback && <p className={SendRecommendationsCSS.feedback}>{feedback}</p>}
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default SendRecommendations
+export default SendRecommendations;

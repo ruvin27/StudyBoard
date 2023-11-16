@@ -1,38 +1,38 @@
-import ExamsCSS from '@assets/css/Exams.module.css'
-import LoadingSpinner from '@features/LoadingSpinner'
-import { apiClient } from '@lib/apiClient'
-import { useQuery } from '@tanstack/react-query'
-import * as React from 'react'
-import { Link, useNavigate, useSearchParams } from 'react-router-dom'
-import axios from 'axios'
-import { LARAVEL_BACKEND_URL } from '../../config'
+import ExamsCSS from '@assets/css/Exams.module.css';
+import LoadingSpinner from '@features/LoadingSpinner';
+import { apiClient } from '@lib/apiClient';
+import { useQuery } from '@tanstack/react-query';
+import * as React from 'react';
+import { Link, useNavigate, useSearchParams } from 'react-router-dom';
+import axios from 'axios';
+import { LARAVEL_BACKEND_URL } from '../../config';
 
 const Exams = () => {
-  const navigate = useNavigate()
-  const [searchParams] = useSearchParams()
+  const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
 
   React.useEffect(() => {
-    const courseId = searchParams.get('courseId')
+    const courseId = searchParams.get('courseId');
     if (!courseId) {
-      navigate('/MyCoursesInstructor')
+      navigate('/MyCoursesInstructor');
     }
-  }, [navigate, searchParams])
+  }, [navigate, searchParams]);
 
-  const courseId = searchParams.get('courseId')
+  const courseId = searchParams.get('courseId');
 
   const { data: courseExams, isLoading } = useQuery({
     queryKey: ['exams', { courseId }],
     queryFn: async () => {
-      const response = await axios.get(`${LARAVEL_BACKEND_URL}/exams/getAllByCourseId/${courseId}`)
+      const response = await axios.get(`${LARAVEL_BACKEND_URL}/exams/getAllByCourseId/${courseId}`);
 
-      return response.data
+      return response.data;
     },
-  })
+  });
 
   if (isLoading) {
-    return <LoadingSpinner />
+    return <LoadingSpinner />;
   }
-  const { course, exams } = courseExams.data
+  const { course, exams } = courseExams.data;
 
   if (exams.length === 0) {
     return (
@@ -55,7 +55,7 @@ const Exams = () => {
           </div>
         </div>
       </div>
-    )
+    );
   }
 
   return (
@@ -86,9 +86,7 @@ const Exams = () => {
                 <tr key={exam.exam_id}>
                   <td>{exam.exam_title}</td>
                   <td>
-                    <Link
-                      to={`/createExam?courseId=${course.course_id}&examId=${exam.exam_id}`}
-                    >
+                    <Link to={`/createExam?courseId=${course.course_id}&examId=${exam.exam_id}`}>
                       <button className={ExamsCSS.customButton}>Edit</button>
                     </Link>
                   </td>
@@ -103,7 +101,7 @@ const Exams = () => {
         </table>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Exams
+export default Exams;

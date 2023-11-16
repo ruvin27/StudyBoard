@@ -1,71 +1,71 @@
-import React, { useState, useEffect } from 'react'
-import UserAccountsCSS from '@assets/css/userAccounts.module.css'
-import { apiClient } from '@lib/apiClient'
-import { Link } from 'react-router-dom'
-import axios from 'axios'
-import { LARAVEL_BACKEND_URL } from '../../config'
+import React, { useState, useEffect } from 'react';
+import UserAccountsCSS from '@assets/css/userAccounts.module.css';
+import { apiClient } from '@lib/apiClient';
+import { Link } from 'react-router-dom';
+import axios from 'axios';
+import { LARAVEL_BACKEND_URL } from '../../config';
 
 const UserAccounts = () => {
-  const [userData, setUserData] = useState([])
-  const [email, setEmail] = useState('')
-  const [course, setCourse] = useState(0)
-  const [courseOptions, setCourseOptions] = useState([])
-  const [searchInput, setSearchInput] = useState('')
-  const [users, setUsers] = useState([])
-  const [suggestions, setSuggestions] = useState([])
+  const [userData, setUserData] = useState([]);
+  const [email, setEmail] = useState('');
+  const [course, setCourse] = useState(0);
+  const [courseOptions, setCourseOptions] = useState([]);
+  const [searchInput, setSearchInput] = useState('');
+  const [users, setUsers] = useState([]);
+  const [suggestions, setSuggestions] = useState([]);
 
   useEffect(() => {
-    fetchEnrollments()
-    fetchCourseOptions()
-    fetchStudentEmails()
-  }, [])
+    fetchEnrollments();
+    fetchCourseOptions();
+    fetchStudentEmails();
+  }, []);
 
   const fetchStudentEmails = async () => {
-    const response = await axios.get(`${LARAVEL_BACKEND_URL}/get-student-emails`)
-    setUsers(response.data)
-  }
+    const response = await axios.get(`${LARAVEL_BACKEND_URL}/get-student-emails`);
+    setUsers(response.data);
+  };
 
   const fetchEnrollments = () => {
     axios
       .get(`${LARAVEL_BACKEND_URL}/enrollment-data`)
       .then((response) => {
-        setUserData(response.data)
+        setUserData(response.data);
       })
       .catch((error) => {
-        console.error('Error fetching user data:', error)
-      })
-  }
+        console.error('Error fetching user data:', error);
+      });
+  };
 
   const fetchCourseOptions = () => {
     axios
       .get(`${LARAVEL_BACKEND_URL}/get-all-courses`)
       .then((response) => {
-        console.log(response.data)
-        setCourseOptions(response.data.data)
+        console.log(response.data);
+        setCourseOptions(response.data.data);
         if (response.data.data.length > 0) {
-          setCourse(response.data.data[0].course_id)
+          setCourse(response.data.data[0].course_id);
         }
       })
       .catch((error) => {
-        console.error('Error fetching course options:', error)
-      })
-  }
+        console.error('Error fetching course options:', error);
+      });
+  };
 
   const isEmailValid = (email) => {
     // Regular expression for basic email validation
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-    return emailRegex.test(email)
-  }
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
 
   const handleAddEnrollment = (e) => {
-    e.preventDefault()
+    e.preventDefault();
     if (course === 0) {
-      alert('No Course to be selected')
-      return
+      alert('No Course to be selected');
+      return;
     }
     if (!isEmailValid(email)) {
-      alert('Please enter a valid email address.')
-      return
+      alert('Please enter a valid email address.');
+      return;
     }
     axios
       .post(`${LARAVEL_BACKEND_URL}/add-enrollment`, {
@@ -73,47 +73,47 @@ const UserAccounts = () => {
         course_id: course,
       })
       .then((response) => {
-          alert(response.data.message);
-          fetchEnrollments();
+        alert(response.data.message);
+        fetchEnrollments();
       })
       .catch((error) => {
-        alert(error.response.data.message)
-      })
-  }
+        alert(error.response.data.message);
+      });
+  };
 
   const handleRemoveEnrollment = (userid, course_id) => {
     axios
       .delete(`${LARAVEL_BACKEND_URL}/enrollments/${userid}/${course_id}`)
       .then((response) => {
         // Reload the current window
-        alert(response.data.message)
+        alert(response.data.message);
         fetchEnrollments();
       })
       .catch((error) => {
-        console.error('Error adding a new user:', error)
-      })
-  }
+        console.error('Error adding a new user:', error);
+      });
+  };
 
   const handleEmailChange = (e) => {
-    const inputEmail = e.target.value
-    setEmail(inputEmail)
+    const inputEmail = e.target.value;
+    setEmail(inputEmail);
 
     // Filter user emails that match the input
-    const matchingEmails = users.filter((userEmail) => userEmail.toLowerCase().includes(inputEmail.toLowerCase()))
+    const matchingEmails = users.filter((userEmail) => userEmail.toLowerCase().includes(inputEmail.toLowerCase()));
 
-    setSuggestions(matchingEmails)
-  }
+    setSuggestions(matchingEmails);
+  };
 
   const handleSuggestionClick = (suggestion) => {
     // Set the selected suggestion as the email input value
-    setEmail(suggestion)
+    setEmail(suggestion);
     // Clear suggestions
-    setSuggestions([])
-  }
+    setSuggestions([]);
+  };
 
   const filteredUsers = userData.filter((user) => {
-    return user.email.toLowerCase().includes(searchInput.toLowerCase())
-  })
+    return user.email.toLowerCase().includes(searchInput.toLowerCase());
+  });
 
   return (
     <div>
@@ -197,7 +197,6 @@ const UserAccounts = () => {
           </datalist>
         </div>
 
-
         <label htmlFor="course">Course:</label>
         <select id="course" name="course" className={UserAccountsCSS.select} value={course} onChange={(e) => setCourse(e.target.value)}>
           {courseOptions.map((course, index) => (
@@ -212,7 +211,7 @@ const UserAccounts = () => {
         </button>
       </form>
     </div>
-  )
-}
+  );
+};
 
-export default UserAccounts
+export default UserAccounts;

@@ -13,7 +13,7 @@
   },
   "prettier": {
     "endOfLine": "auto",
-    "semi": false,
+    "semi": true,
     "singleQuote": true,
     "tabWidth": 2,
     "trailingComma": "es5",
@@ -28,6 +28,7 @@
     "jspdf": "^2.5.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-google-charts": "^4.0.1",
     "react-router-dom": "^6.16.0",
     "socket.io-client": "^4.7.2",
     "sonner": "^1.1.0"

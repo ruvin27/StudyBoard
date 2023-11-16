@@ -2,8 +2,8 @@ import ContactUsCSS from '@assets/css/contact.module.css';
 import { useAuth } from '@contexts/AuthContext';
 import React, { useState } from 'react';
 import { apiClient } from '@lib/apiClient';
-import axios from 'axios'
-import { LARAVEL_BACKEND_URL } from '../../config'
+import axios from 'axios';
+import { LARAVEL_BACKEND_URL } from '../../config';
 
 const ContactUs = () => {
   const { user } = useAuth();
@@ -21,26 +21,25 @@ const ContactUs = () => {
   };
   const isEmailValid = (email) => {
     // Regular expression for basic email validation
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-    return emailRegex.test(email)
-  }
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!isEmailValid(formData.email)) {
-      alert('Please enter a valid email address.')
-      return
+      alert('Please enter a valid email address.');
+      return;
     }
 
-    
-    axios.post(`${LARAVEL_BACKEND_URL}/store-contact`, formData)
+    axios
+      .post(`${LARAVEL_BACKEND_URL}/store-contact`, formData)
       .then((response) => {
         alert(response.data.message);
         window.location.reload();
-
       })
       .catch((error) => {
-        console.error('Error fetching color data:', error)
-      })
+        console.error('Error fetching color data:', error);
+      });
   };
 
   return (
@@ -54,16 +53,7 @@ const ContactUs = () => {
         <label htmlFor={ContactUsCSS.email} className={ContactUsCSS.contactLabel}>
           Enter your email:
         </label>
-        <input
-          type="email"
-          id={ContactUsCSS.email}
-          name="email"
-          className={ContactUsCSS.contactInput}
-          placeholder="Your email address"
-          value={formData.email}
-          onChange={handleInputChange}
-          required
-        />
+        <input type="email" id={ContactUsCSS.email} name="email" className={ContactUsCSS.contactInput} placeholder="Your email address" value={formData.email} onChange={handleInputChange} required />
 
         <label htmlFor={ContactUsCSS.message} className={ContactUsCSS.contactLabel}>
           Message:

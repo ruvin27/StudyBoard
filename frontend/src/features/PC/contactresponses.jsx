@@ -2,8 +2,8 @@ import GradesCSS from '@assets/css/Grades.module.css';
 import { useAuth } from '@contexts/AuthContext';
 import { apiClient } from '@lib/apiClient';
 import React, { useState, useEffect } from 'react';
-import axios from 'axios'
-import { LARAVEL_BACKEND_URL } from '../../config'
+import axios from 'axios';
+import { LARAVEL_BACKEND_URL } from '../../config';
 
 const ContactUsResponses = () => {
   const [responses, setResponses] = useState([]);

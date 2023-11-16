@@ -1,44 +1,46 @@
-import FindUserCSS from '@assets/css/finduser.module.css'
-import React, { useState, useEffect } from 'react'
-import { apiClient } from '@lib/apiClient'
-import axios from 'axios'
-import { LARAVEL_BACKEND_URL } from '../../config'
+import FindUserCSS from '@assets/css/finduser.module.css';
+import React, { useState, useEffect } from 'react';
+import { apiClient } from '@lib/apiClient';
+import axios from 'axios';
+import { LARAVEL_BACKEND_URL } from '../../config';
 
 const Settings = () => {
-  const [colors, setColors] = useState([])
+  const [colors, setColors] = useState([]);
 
   useEffect(() => {
     // Fetch color data from the database using Axios
-    axios.get(`${LARAVEL_BACKEND_URL}/getcolors`)
+    axios
+      .get(`${LARAVEL_BACKEND_URL}/getcolors`)
       .then((response) => {
-        setColors(response.data)
+        setColors(response.data);
       })
       .catch((error) => {
-        console.error('Error fetching color data:', error)
-      })
-  }, [])
+        console.error('Error fetching color data:', error);
+      });
+  }, []);
 
   const handleColorCodeChange = (colorId, hexColor) => {
-    const updatedColors = [...colors]
+    const updatedColors = [...colors];
 
-    const colorIndex = updatedColors.findIndex((color) => color.id === colorId)
+    const colorIndex = updatedColors.findIndex((color) => color.id === colorId);
     if (colorIndex !== -1) {
-      updatedColors[colorIndex].hexColor = hexColor
+      updatedColors[colorIndex].hexColor = hexColor;
     }
 
-    setColors(updatedColors)
-  }
+    setColors(updatedColors);
+  };
 
   const handleChange = (index) => {
-    axios.post(`${LARAVEL_BACKEND_URL}/updatecolor`, {
+    axios
+      .post(`${LARAVEL_BACKEND_URL}/updatecolor`, {
         hexColor: colors[index].hexColor,
         id: colors[index].id,
       })
       .then((res) => {
-        alert(res.data)
+        alert(res.data);
         window.location.reload();
-      })
-  }
+      });
+  };
   return (
     <div>
       <div className={FindUserCSS.container}>
@@ -71,7 +73,7 @@ const Settings = () => {
         </tbody>
       </table>
     </div>
-  )
-}
+  );
+};
 
-export default Settings
+export default Settings;

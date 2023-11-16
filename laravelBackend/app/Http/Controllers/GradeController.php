@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\UserModel;
+use App\Models\Exam;
 use App\Grade;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Response;
@@ -19,6 +20,25 @@ class GradeController extends Controller
             ->get();
 
         return response()->json($students);
+    }
+
+    public function getGraphData($exam_id)
+    {
+        $examData = DB::table('exam as e')
+            ->select('u.name as student_name', 'g.score as exam_score')
+            ->join('grades as g', 'e.exam_id', '=', 'g.exam_id')
+            ->join('enrollment as en', 'en.student_id', '=', 'g.student_id')
+            ->join('user as u', 'u.userid', '=', 'en.student_id')
+            ->where('e.exam_id', $exam_id)
+            ->get();
+
+            $data = [];
+            $data[] = ['Student Name', 'Exam Score'];
+
+            foreach ($examData as $row) {
+                $data[] = [$row->student_name, (float)$row->exam_score];
+            }
+        return response()->json($data);
     }
 
     public function downloadExamData($exam_id, $courseId)

@@ -100,5 +100,6 @@ Route::put('resolve-below-avg-exams', [ResolutionController::class, 'updateResol
 Route::get('get-students-by-course/{courseId}', [GradeController::class, 'getStudentsByCourseId']);
 Route::get('download-grades-by-exam/{courseId}/{examId}', [GradeController::class, 'downloadExamData']);
 Route::get('download-grades-by-student/{userid}/{courseId}', [GradeController::class, 'downloadStudentGrades']);
+Route::get('exam-graph-data/{exam_id}', [GradeController::class, 'getGraphData']);
 
 Route::get('/get-people-details/{courseId}', [PeopleController::class, 'getPeopleDetails']);

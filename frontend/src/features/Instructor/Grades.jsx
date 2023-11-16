@@ -1,12 +1,12 @@
-import GradesCSS from '@assets/css/Grades.module.css'
-import { useAuth } from '@contexts/AuthContext'
-import LoadingSpinner from '@features/LoadingSpinner'
-import { apiClient } from '@lib/apiClient'
-import { useQuery } from '@tanstack/react-query'
-import * as React from 'react'
+import GradesCSS from '@assets/css/Grades.module.css';
+import { useAuth } from '@contexts/AuthContext';
+import LoadingSpinner from '@features/LoadingSpinner';
+import { apiClient } from '@lib/apiClient';
+import { useQuery } from '@tanstack/react-query';
+import * as React from 'react';
 
 const Grades = () => {
-  const { user: instructor } = useAuth()
+  const { user: instructor } = useAuth();
 
   const { data: courses, isLoading } = useQuery({
     queryKey: ['exam', { instructorId: instructor.userid }],
@@ -15,24 +15,24 @@ const Grades = () => {
         params: {
           id: instructor.userid,
         },
-      })
+      });
 
-      return response.data
+      return response.data;
     },
-  })
+  });
 
   if (isLoading) {
-    return <LoadingSpinner />
+    return <LoadingSpinner />;
   }
 
-  console.log(courses)
+  console.log(courses);
 
   if (courses.data.length === 0) {
     return (
       <div className={GradesCSS.container}>
         <h1>No courses found</h1>
       </div>
-    )
+    );
   }
 
   return (
@@ -42,11 +42,7 @@ const Grades = () => {
           {course.exams.length > 0 ? (
             <>
               {course.exams.map((exam) => {
-                const averageGrade =
-                  exam.students.reduce(
-                    (acc, student) => acc + Number(student.grade_score),
-                    0
-                  ) / exam.students.length
+                const averageGrade = exam.students.reduce((acc, student) => acc + Number(student.grade_score), 0) / exam.students.length;
 
                 return (
                   <div key={exam.exam_id}>
@@ -92,13 +88,11 @@ const Grades = () => {
                           </table>
                         </>
                       ) : (
-                        <p className={GradesCSS.customTable}>
-                          No students have taken this exam yet.
-                        </p>
+                        <p className={GradesCSS.customTable}>No students have taken this exam yet.</p>
                       )}
                     </div>
                   </div>
-                )
+                );
               })}
             </>
           ) : (
@@ -111,7 +105,7 @@ const Grades = () => {
         </React.Fragment>
       ))}
     </>
-  )
-}
+  );
+};
 
-export default Grades
+export default Grades;

@@ -1,37 +1,37 @@
-import RecommendationCSS from '@assets/css/NewUser.module.css'
-import LoadingSpinner from '@features/LoadingSpinner'
-import { apiClient } from '@lib/apiClient'
-import { useQuery } from '@tanstack/react-query'
-import * as React from 'react'
-import { useNavigate, useSearchParams } from 'react-router-dom'
-import axios from 'axios'
-import { LARAVEL_BACKEND_URL } from '../../config'
+import RecommendationCSS from '@assets/css/NewUser.module.css';
+import LoadingSpinner from '@features/LoadingSpinner';
+import { apiClient } from '@lib/apiClient';
+import { useQuery } from '@tanstack/react-query';
+import * as React from 'react';
+import { useNavigate, useSearchParams } from 'react-router-dom';
+import axios from 'axios';
+import { LARAVEL_BACKEND_URL } from '../../config';
 
 const Recommendation = () => {
-  const navigate = useNavigate()
-  const [searchParams] = useSearchParams()
+  const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
 
   React.useEffect(() => {
-    const courseId = searchParams.get('courseId')
+    const courseId = searchParams.get('courseId');
 
     if (!courseId) {
-      navigate('/InstructorCourseInfo')
+      navigate('/InstructorCourseInfo');
     }
-  }, [navigate, searchParams])
+  }, [navigate, searchParams]);
 
-  const courseId = searchParams.get('courseId')
+  const courseId = searchParams.get('courseId');
 
   const { data: recommendations, isLoading } = useQuery({
     queryKey: ['recommendation', { courseId }],
     queryFn: async () => {
-      const response = await axios.get(`${LARAVEL_BACKEND_URL}/recommendations/${courseId}`)
+      const response = await axios.get(`${LARAVEL_BACKEND_URL}/recommendations/${courseId}`);
 
-      return response.data
+      return response.data;
     },
-  })
+  });
 
   if (isLoading) {
-    return <LoadingSpinner />
+    return <LoadingSpinner />;
   }
 
   return (
@@ -73,6 +73,6 @@ const Recommendation = () => {
         )}
       </div>
     </div>
-  )
-}
-export default Recommendation
+  );
+};
+export default Recommendation;

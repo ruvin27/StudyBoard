@@ -1,73 +1,73 @@
-import CreateCourseCSS from '@assets/css/CreateCourse.module.css'
-import MyCoursesCSS from '@assets/css/MyCourses.module.css'
-import { useAuth } from '@contexts/AuthContext'
-import LoadingSpinner from '@features/LoadingSpinner'
-import { apiClient } from '@lib/apiClient'
-import { useMutation, useQuery } from '@tanstack/react-query'
-import { useNavigate, useSearchParams } from 'react-router-dom'
-import { toast } from 'sonner'
-import axios from 'axios'
-import { LARAVEL_BACKEND_URL } from '../../config'
+import CreateCourseCSS from '@assets/css/CreateCourse.module.css';
+import MyCoursesCSS from '@assets/css/MyCourses.module.css';
+import { useAuth } from '@contexts/AuthContext';
+import LoadingSpinner from '@features/LoadingSpinner';
+import { apiClient } from '@lib/apiClient';
+import { useMutation, useQuery } from '@tanstack/react-query';
+import { useNavigate, useSearchParams } from 'react-router-dom';
+import { toast } from 'sonner';
+import axios from 'axios';
+import { LARAVEL_BACKEND_URL } from '../../config';
 
 const CreateCourse = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
-  const [searchParams] = useSearchParams()
+  const [searchParams] = useSearchParams();
 
-  const courseId = searchParams.get('courseId')
+  const courseId = searchParams.get('courseId');
 
   const { data: course, isLoading: isCourseLoading } = useQuery({
     queryKey: ['course', courseId],
     enabled: !!courseId,
     queryFn: async () => {
-      const response = await axios.get(`${LARAVEL_BACKEND_URL}/courses/getCourseById/${courseId}`)
-      return response.data
+      const response = await axios.get(`${LARAVEL_BACKEND_URL}/courses/getCourseById/${courseId}`);
+      return response.data;
     },
-  })
+  });
 
   const { data: objectives, isLoading: isObjectivesLoading } = useQuery({
     queryKey: ['objectives'],
     queryFn: async () => {
-      const response = await axios.get(`${LARAVEL_BACKEND_URL}/objectives`)
-      return response.data
+      const response = await axios.get(`${LARAVEL_BACKEND_URL}/objectives`);
+      return response.data;
     },
-  })
+  });
 
   const { mutate: mutateCreateCourse } = useMutation({
     mutationFn: async (data) => {
-      const response = await axios.post(`${LARAVEL_BACKEND_URL}/courses/create`, data)
+      const response = await axios.post(`${LARAVEL_BACKEND_URL}/courses/create`, data);
 
-      return response.data
+      return response.data;
     },
     onSuccess: () => {
-      toast.success('Course created successfully')
-      navigate('/mycoursesInstructor')
+      toast.success('Course created successfully');
+      navigate('/mycoursesInstructor');
     },
     onError: () => {
-      toast.error('An error occurred')
+      toast.error('An error occurred');
     },
-  })
+  });
 
   const { mutate: mutateUpdateCourse } = useMutation({
     mutationFn: async (data) => {
-      const response = await axios.post(`${LARAVEL_BACKEND_URL}/courses/update-course`, data)
+      const response = await axios.post(`${LARAVEL_BACKEND_URL}/courses/update-course`, data);
 
-      return response.data
+      return response.data;
     },
     onSuccess: () => {
-      toast.success('Course updated successfully')
-      navigate('/mycoursesInstructor')
+      toast.success('Course updated successfully');
+      navigate('/mycoursesInstructor');
     },
     onError: () => {
-      toast.error('An error occurred')
+      toast.error('An error occurred');
     },
-  })
+  });
 
-  const { user: instructor } = useAuth()
+  const { user: instructor } = useAuth();
 
   const handleCreateCourse = (e) => {
-    e.preventDefault()
-    const formData = new FormData(e.target)
+    e.preventDefault();
+    const formData = new FormData(e.target);
 
     const _data = {
       name: formData.get('courseName'),
@@ -78,14 +78,14 @@ const CreateCourse = () => {
       start_date: formData.get('courseStartDate'),
       end_date: formData.get('courseEndDate'),
       objective: formData.get('programObjective'),
-    }
+    };
 
-    mutateCreateCourse(_data)
-  }
+    mutateCreateCourse(_data);
+  };
 
   const handleUpdateCourse = (e) => {
-    e.preventDefault()
-    const formData = new FormData(e.target)
+    e.preventDefault();
+    const formData = new FormData(e.target);
 
     const _data = {
       course_id: courseId,
@@ -95,12 +95,12 @@ const CreateCourse = () => {
       start_date: formData.get('courseStartDate'),
       end_date: formData.get('courseEndDate'),
       objective: formData.get('programObjective'),
-    }
-    mutateUpdateCourse(_data)
-  }
+    };
+    mutateUpdateCourse(_data);
+  };
 
   if (isObjectivesLoading || isCourseLoading) {
-    return <LoadingSpinner />
+    return <LoadingSpinner />;
   }
 
   return (
@@ -115,9 +115,9 @@ const CreateCourse = () => {
           id="courseForm"
           onSubmit={(e) => {
             if (courseId) {
-              handleUpdateCourse(e)
+              handleUpdateCourse(e);
             } else {
-              handleCreateCourse(e)
+              handleCreateCourse(e);
             }
           }}
         >
@@ -175,7 +175,7 @@ const CreateCourse = () => {
         </form>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default CreateCourse
+export default CreateCourse;

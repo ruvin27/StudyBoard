@@ -2,8 +2,8 @@ import { Link } from 'react-router-dom';
 import FindUserCSS from '@assets/css/finduser.module.css';
 import { apiClient } from '@lib/apiClient';
 import React, { useState, useEffect } from 'react';
-import axios from 'axios'
-import { LARAVEL_BACKEND_URL } from '../../config'
+import axios from 'axios';
+import { LARAVEL_BACKEND_URL } from '../../config';
 
 const FindUser = () => {
   const [users, setUsers] = useState([]);
@@ -11,7 +11,8 @@ const FindUser = () => {
 
   useEffect(() => {
     // Fetch user data from the database using Axios
-    axios.get(`${LARAVEL_BACKEND_URL}/get-all-users`)
+    axios
+      .get(`${LARAVEL_BACKEND_URL}/get-all-users`)
       .then((response) => {
         setUsers(response.data);
       })
@@ -33,13 +34,7 @@ const FindUser = () => {
         </div>
       </div>
       <div className={FindUserCSS.searchContainer}>
-        <input
-          type="text"
-          className={FindUserCSS.searchInput}
-          placeholder="Search User"
-          value={searchInput}
-          onChange={(e) => setSearchInput(e.target.value)}
-        />
+        <input type="text" className={FindUserCSS.searchInput} placeholder="Search User" value={searchInput} onChange={(e) => setSearchInput(e.target.value)} />
         <button className={FindUserCSS.searchButton}>Search</button>
       </div>
       <table className={FindUserCSS.findUserTable}>
@@ -63,7 +58,9 @@ const FindUser = () => {
             ))
           ) : (
             <tr>
-              <td colSpan="2" style={{textAlign: "center"}}>No users found.</td>
+              <td colSpan="2" style={{ textAlign: 'center' }}>
+                No users found.
+              </td>
             </tr>
           )}
         </tbody>

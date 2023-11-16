@@ -1,15 +1,15 @@
-import React, { useState, useEffect } from "react";
-import MyCoursesCSS from "../../assets/css/MyCourses.module.css";
-import { Link } from "react-router-dom";
-import { useAuth } from '@contexts/AuthContext'
-import { apiClient } from '@lib/apiClient'
-import LoadingSpinner from "@features/LoadingSpinner";
-import { useQuery } from "@tanstack/react-query";
-import axios from 'axios'
-import { LARAVEL_BACKEND_URL } from '../../config'
+import React, { useState, useEffect } from 'react';
+import MyCoursesCSS from '../../assets/css/MyCourses.module.css';
+import { Link } from 'react-router-dom';
+import { useAuth } from '@contexts/AuthContext';
+import { apiClient } from '@lib/apiClient';
+import LoadingSpinner from '@features/LoadingSpinner';
+import { useQuery } from '@tanstack/react-query';
+import axios from 'axios';
+import { LARAVEL_BACKEND_URL } from '../../config';
 
 const MyCoursesQA = () => {
-  const { user: qa } = useAuth()
+  const { user: qa } = useAuth();
 
   const {
     data: courses,
@@ -18,15 +18,15 @@ const MyCoursesQA = () => {
   } = useQuery({
     queryKey: ['courses', { QAId: qa.id }],
     queryFn: async () => {
-      const response = await axios.get(`${LARAVEL_BACKEND_URL}/get-all-courses`)
+      const response = await axios.get(`${LARAVEL_BACKEND_URL}/get-all-courses`);
 
-      return response.data
+      return response.data;
     },
     enabled: !!qa,
-  })
+  });
 
   if (isLoading || isPaused) {
-    return <LoadingSpinner />
+    return <LoadingSpinner />;
   }
   return (
     <>
@@ -41,30 +41,21 @@ const MyCoursesQA = () => {
           <Link to="/belowavgexamsqa">
             <button className={MyCoursesCSS.mycoursesButton}>Below Average Exams</button>
           </Link>
-          <Link to="/qapolicies"> 
+          <Link to="/qapolicies">
             <button className={MyCoursesCSS.mycoursesButton}>Policies and Processes</button>
           </Link>
         </div>
       </div>
       <div className={MyCoursesCSS.courses}>
-      {courses?.data.length > 0 ? (
-          courses.data.map((course,index) => (
-            <Link
-              to={`/courseinfoqa/${course.course_id}`}
-              key={index}
-            >
+        {courses?.data.length > 0 ? (
+          courses.data.map((course, index) => (
+            <Link to={`/courseinfoqa/${course.course_id}`} key={index}>
               <div className={MyCoursesCSS.courseCard}>
                 <div className={MyCoursesCSS.courseInfo}>
-                  <h2 className={MyCoursesCSS.courseTitle}>
-                    {course.course_name}
-                  </h2>
-                  <p className={MyCoursesCSS.courseDescription}>
-                    {course.course_description}
-                  </p>
+                  <h2 className={MyCoursesCSS.courseTitle}>{course.course_name}</h2>
+                  <p className={MyCoursesCSS.courseDescription}>{course.course_description}</p>
                   <div className={MyCoursesCSS.courseMeta}>
-                    <p className={MyCoursesCSS.courseInstructor}>
-                      Students: {course.students.length}
-                    </p>
+                    <p className={MyCoursesCSS.courseInstructor}>Students: {course.students.length}</p>
                   </div>
                 </div>
               </div>
@@ -73,7 +64,7 @@ const MyCoursesQA = () => {
         ) : (
           <p>No courses found.</p>
         )}
-        </div>
+      </div>
     </>
   );
 };

@@ -1,9 +1,9 @@
-import PanelCSS from '@assets/css/panel.module.css'
-import CoursesImg from '@assets/images/courses.png'
-import UserImg from '@assets/images/user.jpg'
-import ActivityImg from '@assets/images/activity.jpg'
-import { Link } from 'react-router-dom'
-import support2Icon from '@assets/images/settings.jpg'
+import PanelCSS from '@assets/css/panel.module.css';
+import CoursesImg from '@assets/images/courses.png';
+import UserImg from '@assets/images/user.jpg';
+import ActivityImg from '@assets/images/activity.jpg';
+import { Link } from 'react-router-dom';
+import support2Icon from '@assets/images/settings.jpg';
 
 const Panel = () => {
   return (
@@ -33,7 +33,7 @@ const Panel = () => {
         </Link>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Panel
+export default Panel;
