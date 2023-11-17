@@ -4,6 +4,8 @@ import { useAuth } from '@contexts/AuthContext';
 import { apiClient } from '@lib/apiClient';
 import { useParams } from 'react-router-dom';
 import jsPDF from 'jspdf';
+import axios from 'axios'
+import { LARAVEL_BACKEND_URL } from '../../config'
 
 const StudentGrades = () => {
   const { courseId } = useParams();
@@ -15,10 +17,7 @@ const StudentGrades = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await apiClient.post('student/grades.php', {
-          courseId: courseId,
-          userId: user.userid,
-        });
+        const response = await axios.get(`${LARAVEL_BACKEND_URL}/exams/get-grades/${courseId}/${user.userid}`);
         console.log(response.data)
         setGradeDetails(response.data);
 

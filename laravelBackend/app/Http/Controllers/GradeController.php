@@ -130,5 +130,4 @@ class GradeController extends Controller
         return response()->json(['message' => 'No data found'], 404);
     }
 
-    
 }
