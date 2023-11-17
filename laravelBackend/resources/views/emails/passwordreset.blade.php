@@ -28,7 +28,7 @@
             <div class='container'>
               <p class='message'>Hello, {{$receiverName}}</p>
               <p class='message'>You have requested to reset your password. Please click the following link to set up your new password:</p>
-              <p class='reset-link'><a href="http://localhost:3000/newpassword/{{$receiverEmail}}/{{$verificationCode}}">Reset Your Password</a></p>
+              <p class='reset-link'><a href="https://uxs4934.uta.cloud/newpassword/{{$receiverEmail}}/{{$verificationCode}}">Reset Your Password</a></p>
               <p class='message'>If you did not request this reset, please ignore this email.</p>
             </div>
             </body>
