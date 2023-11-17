@@ -26,13 +26,14 @@ cd frontend
 
 npm install
 
+4. **Change laravel backend url in frontend\src\config.js to the route where your laravel backend will run.**
 
-4. **You're now ready to start the development server.**
+5. **You're now ready to start the development server.**
 
 npm start
 
 
-5. **Open your browser and visit [http://localhost:3000](http://localhost:3000) to see the app in action.**
+6. **Open your browser and visit [http://localhost:3000](http://localhost:3000) to see the app in action.**
 
 ## Project Structure
 
@@ -52,38 +53,177 @@ To deploy the app to a production environment, follow these steps:
 
 1. **Build the app using `npm run build`.**
 
-You will get a `build` folder containing the optimized production build of your app.
+You will get a `dist` folder containing the optimized production build of your app.
 
-2. **Deploy the contents of the `build` folder to your web server or hosting service.**
+2. **Deploy the contents of the `dist` folder to your web server or hosting service.**
 
 You can use services like Netlify, Vercel, or traditional web hosting to deploy your application.
 
-MYSQL - Database
-1. Start the apache and mysql serve on Xampp.
-2. Create a database named rrr9569_studyboard.
-3. Run the file name createScripts.sql and tables will be created.
-4. Run the createData.sql and data will be populated in the tables.
+## MYSQL - Database
+
+### Prerequisites
+
+Before setting up the MySQL database for the StudyBoard app, ensure you have Xampp installed on your machine.
+
+### Steps to Setup Database
+
+1. **Start the Apache and MySQL servers in Xampp.**
+
+2. **Create a Database:**
+
+    - Open PhpMyAdmin (usually at [http://localhost/phpmyadmin](http://localhost/phpmyadmin)).
+    - Create a new database named `rrr9569_studyboard`.
+
+3. **Import SQL Scripts Manually:**
+
+   - Open PhpMyAdmin (usually at [http://localhost/phpmyadmin](http://localhost/phpmyadmin)).
+
+   - Create the `rrr9569_studyboard` database.
+
+   - Choose the "SQL" tab.
+
+   - Open the `createScripts.sql` file in a text editor.
+
+   - Copy the contents of `createScripts.sql` and paste them into the SQL tab.
+
+   - Execute the SQL query to create the necessary tables for the StudyBoard app.
+
+   - Repeat the above steps for the `createData.sql` file to populate the tables with initial data.
+
+By following these steps, you can manually import the SQL scripts into your MySQL database for the StudyBoard app.
 
 
-PHP Backend (If you are using pure php apis. Note The frontend was updated after this phase so some apis may not work)
+### Additional Information
 
-1. Place the backend folder in htdocs in xampp folder.
-2. Update the config.php file with connection details.
-3. Your apis should be working now.
-4. Need to update the apiUrl on the frontend.
+- The `createScripts.sql` file contains the SQL queries to create tables required for the StudyBoard app.
 
-Laravel Backend (Latest Backend that is connected to the react frontend)
-1. cd laravelBackend
-2. composer install
-3. create a .env file and copy paste contents from .env.example
-4. Update the variables inside .env
-5. Run php artisan serve
-6. May need to run php artisan optimize when updating or adding an api.
+- The `createData.sql` file contains the SQL queries to populate the tables with initial data.
 
-Chat Nodejs
+Now, the MySQL database for the StudyBoard app is set up and ready to be used.
 
-1. npm install
-2. npm start
-3. Update the serverURL in frontend/src/contexts/AuthContext.jsx to localhost.
+
+
+### PHP Backend (Pure PHP APIs)
+
+1. **Place Backend Folder:**
+    - Copy the contents of the `backend` folder.
+    - Paste it into the `htdocs` folder within your XAMPP installation directory.
+
+2. **Install Dependencies:**
+    - Open your terminal.
+    - Change the directory to the Laravel Backend folder:
+        ```bash
+        composer install
+        ```
+
+3. **Configure Connection Details:**
+    - Open the `config.php` file located in the `backend` folder using a text editor.
+    - Update the file with your database connection details and email smtp details, such as hostname, username, password, and database name.
+
+4. **Verify API Functionality:**
+    - Ensure that your Apache and MySQL servers are running in XAMPP.
+    - Open your web browser and navigate to the API endpoint to verify functionality.
+    - You can run 'http://localhost/backend/api.php' as a test file.
+
+5. **Update Frontend API URL:**
+    - Locate the axios configuration in all pages in your frontend.
+    - Update it with the appropriate URL to match your XAMPP setup.
+
+By following these steps, you should have the PHP backend APIs up and running. Make sure to adjust the configuration based on your specific environment.
+
+
+### Laravel Backend (Connected to React Frontend)
+
+1. **Navigate to Laravel Backend:**
+    - Open your terminal.
+    - Change the directory to the Laravel Backend folder:
+        ```bash
+        cd laravelBackend
+        ```
+
+2. **Install Composer Dependencies:**
+    - Run the following command to install the necessary dependencies:
+        ```bash
+        composer install
+        ```
+
+3. **Create and Configure .env File:**
+    - Duplicate the `.env.example` file in the `laravelBackend` directory.
+    - Rename the duplicated file to `.env`.
+    - Open the `.env` file and update the variables with your database and other configuration details.
+
+4. **Run Laravel Server:**
+    - Start the Laravel development server with the following command:
+        ```bash
+        php artisan serve
+        ```
+    - This will launch the server at `http://localhost:8000` by default.
+
+5. **Optional: Optimize Laravel (if needed):**
+    - Run the following command to optimize Laravel (may be necessary when updating or adding APIs):
+        ```bash
+        php artisan optimize
+        ```
+
+By following these steps, you should have the Laravel backend connected to the React frontend up and running. Adjust configurations as needed for your environment.
+
+
+## Chat Nodejs
+
+1. **Navigate to Chat Nodejs:**
+    ```bash
+    cd chat
+    ```
+
+2. **Install Node.js Dependencies:**
+    ```bash
+    npm install
+    ```
+
+3. **Start the Chat Server:**
+    ```bash
+    npm start
+    ```
+    Ensure the server is running at `http://localhost:5000`.
+
+4. **Update the AuthContext.jsx File:**
+    - Open `frontend/src/contexts/AuthContext.jsx`.
+    - Update the `serverURL` to `http://localhost:5000`.
+
+---
+
+## TextPredictionApi Nodejs
+
+1. **Navigate to TextPredictionApi Nodejs:**
+    ```bash
+    cd TextPredictionApi
+    ```
+
+2. **Install Node.js Dependencies:**
+    ```bash
+    npm i
+    ```
+
+3. **Create .env File:**
+    - Create a file named `.env` in the `TextPredictionApi` directory.
+    - Paste the following content into the `.env` file:
+        ```env
+        OPENAI_KEY='YOUR_OPENAI_KEY'
+        ```
+
+4. **Start the Text Prediction API Server:**
+    ```bash
+    npm start
+    ```
+    Ensure the server is running at `http://localhost:6000`.
+
+5. **Update the sendRecommendations.jsx File:**
+    - Open `frontend/src/features/PC/sendRecommendations.jsx`.
+    - Update the `TextPredictionUrl` to `http://localhost:6000`.
+
+---
+
+By following these steps, you should have the Chat Nodejs and TextPredictionApi Nodejs servers set up and configured for the StudyBoard app. Adjust configurations as needed for your environment.
+
 
 That's it! You should now have the StudyBoard website up and running on your local machine.
