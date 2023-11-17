@@ -102,5 +102,6 @@ Route::get('get-students-by-course/{courseId}', [GradeController::class, 'getStu
 Route::get('download-grades-by-exam/{courseId}/{examId}', [GradeController::class, 'downloadExamData']);
 Route::get('download-grades-by-student/{userid}/{courseId}', [GradeController::class, 'downloadStudentGrades']);
 Route::get('exam-graph-data/{exam_id}', [GradeController::class, 'getGraphData']);
+Route::post('/save-score', [GradeController::class, 'saveScore']);
 
 Route::get('/get-people-details/{courseId}', [PeopleController::class, 'getPeopleDetails']);

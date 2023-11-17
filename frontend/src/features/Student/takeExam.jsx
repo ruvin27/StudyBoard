@@ -62,8 +62,8 @@ const StudentTakeExam = () => {
     }
     setEarnedPoints(earnedPoints);
 
-    apiClient
-      .post('student/saveGrade.php', {
+    axios
+      .post(`${LARAVEL_BACKEND_URL}/save-score`, {
         studentId: user.userid,
         examId: examId,
         courseId: courseId,

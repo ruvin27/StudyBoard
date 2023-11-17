@@ -12,19 +12,18 @@ const SendRecommendations = () => {
   const [inputs, setInputs] = useState({
     message: '',
   });
+  const TextPredictionUrl = 'https://textpredictionapi.azurewebsites.net/';
   const [suggestions, setSuggestions] = useState([]);
   const [timer, setTimer] = useState(null);
 
   async function fetchSuggestions() {
     try {
-      const response = await axios.post('http://localhost:5000/getresponse', {
+      const response = await axios.post(`${TextPredictionUrl}getresponse`, {
         prompt: inputs.message,
       });
 
       // Extract suggestions from the API response
-      const suggestions = response.data[0]?.message?.content
-        ? JSON.parse(response.data[0].message.content)
-        : [];
+      const suggestions = response.data[0]?.message?.content ? JSON.parse(response.data[0].message.content) : [];
 
       if (Array.isArray(suggestions)) {
         setSuggestions(suggestions);
@@ -45,9 +44,11 @@ const SendRecommendations = () => {
     }
 
     // Set a new timer to fetch suggestions after 2 seconds of inactivity
-    setTimer(setTimeout(() => {
-      fetchSuggestions();
-    }, 2000)); // 2000 milliseconds = 2 seconds
+    setTimer(
+      setTimeout(() => {
+        fetchSuggestions();
+      }, 1500)
+    ); 
   };
 
   useEffect(() => {
@@ -93,7 +94,7 @@ const SendRecommendations = () => {
             Message
           </label>
           <textarea id="message" name="message" value={inputs.message} onChange={handleChange} required className={SendRecommendationsCSS.textarea}></textarea>
-{suggestions.length > 0 && (
+          {suggestions.length > 0 && (
             <ul>
               {suggestions.map((suggestion, index) => (
                 <li key={index} onClick={() => setInputs({ ...inputs, message: suggestion })}>

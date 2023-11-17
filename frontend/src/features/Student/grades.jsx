@@ -18,7 +18,6 @@ const StudentGrades = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(`${LARAVEL_BACKEND_URL}/exams/get-grades/${courseId}/${user.userid}`);
-        console.log(response.data)
         setGradeDetails(response.data);
 
         if (response.data.length > 0) {
@@ -28,7 +27,6 @@ const StudentGrades = () => {
           const sumOfScores = scores.reduce((total, score) => total + score, 0);
           const sumOfTotalScores = totalScores.reduce((total, totalScore) => total + totalScore, 0);
 
-          // Calculate the average percentage
           const averagePercentage = (sumOfScores / sumOfTotalScores) * 100;
           setOverallScore(averagePercentage);
         }

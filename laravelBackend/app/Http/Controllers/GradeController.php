@@ -130,4 +130,35 @@ class GradeController extends Controller
         return response()->json(['message' => 'No data found'], 404);
     }
 
+    public function saveScore(Request $request)
+    {
+        $data = $request->json()->all();
+
+        if (isset($data['studentId'], $data['examId'], $data['courseId'], $data['score'])) {
+            $studentId = $data['studentId'];
+            $examId = $data['examId'];
+            $courseId = $data['courseId'];
+            $score = $data['score'];
+
+            // Perform the insert operation
+            try {
+                // Assuming you have a 'grades' table in your database
+                DB::table('grades')->insert([
+                    'exam_id' => $examId,
+                    'course_id' => $courseId,
+                    'student_id' => $studentId,
+                    'date' => now(),
+                    'score' => $score,
+                ]);
+
+                $response = ["success" => "Score saved successfully"];
+            } catch (\Exception $e) {
+                $response = ["error" => "Failed to save score"];
+            }
+        } else {
+            $response = ["error" => "Invalid data received"];
+        }
+
+        return response()->json($response);
+    }
 }

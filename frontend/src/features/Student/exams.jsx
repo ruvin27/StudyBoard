@@ -16,7 +16,6 @@ const StudentExams = () => {
     const fetchData = async () => {
         // Fetch exam details
         const examResponse = await axios.get(`${LARAVEL_BACKEND_URL}/exams/get-by-student-course/${courseId}/${user.userid}`)
-        console.log(examResponse.data);
 
         setExamDetails(examResponse.data);
         let counter = 0;
@@ -26,7 +25,6 @@ const StudentExams = () => {
           }
         }
         setGradeCount(counter);
-        console.log(counter)
       }
     if (user) {
       fetchData();
