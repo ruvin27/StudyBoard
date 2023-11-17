@@ -12,7 +12,6 @@ const Navbar = () => {
 
   const handleLogout = async () => {
     logout()
-    console.log('User logged out.')
     navigate('/login')
   }
 

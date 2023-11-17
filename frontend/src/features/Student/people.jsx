@@ -19,7 +19,6 @@ const StudentPeople = () => {
         .get(`${LARAVEL_BACKEND_URL}/get-people-details/${courseId}`)
 
         setPeopleDetails(response.data);
-        console.log(response.data)
       
       } catch (error) {
         console.error('Error fetching people details:', error);

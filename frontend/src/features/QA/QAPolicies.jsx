@@ -33,8 +33,7 @@ const QAPolicies = () => {
     // Make an API call to save the edited policies to the backend
     axios
       .put(`${LARAVEL_BACKEND_URL}/update-policies`, { policies }) // Adjust the URL
-      .then((response) => {
-        console.log(response.data);
+      .then(() => {
         setIsEditing(false);
       })
       .catch((error) => {

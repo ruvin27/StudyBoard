@@ -22,7 +22,6 @@ const StudentTakeExam = () => {
         const response = await axios.get(`${LARAVEL_BACKEND_URL}/exams/take-exam/${examId}/${courseId}`);
 
         setTakeExamDetails(response.data);
-        console.log(response.data.data)
         setTotalPoints(response.data.length); // Set the total points
         setIsLoading(false);
       } catch (error) {
@@ -78,7 +77,6 @@ const StudentTakeExam = () => {
       });
   };
   
-  // console.log(courseId, examId, earnedPoints, user.userid)
 
   return (
     <div className={TakeExamCSS.container}>

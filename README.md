@@ -15,23 +15,35 @@ Before you begin, ensure you have met the following requirements:
 
 git clone https://github.com/ruvin27/studyboard.git
 
-
 2. **Navigate to the project directory.**
 
-cd studyboard
-cd frontend
+    ```bash
+    cd studyboard
+    ```
 
+---
 
-3. **Install project dependencies using npm.**
+## React Frontend
 
-npm install
+1. **Navigate to the react frontend directory.**
 
-4. **Change laravel backend url in frontend\src\config.js to the route where your laravel backend will run.**
+    ```bash
+    cd frontend
+    ```
 
-5. **You're now ready to start the development server.**
+2. **Install project dependencies using npm.**
 
-npm start
+    ```bash
+    npm install
+    ```
 
+3. **Change laravel backend url in frontend\src\config.js to the route where your laravel backend will run.**
+
+4. **You're now ready to start the development server.**
+
+    ```bash
+    npm start
+    ```
 
 6. **Open your browser and visit [http://localhost:3000](http://localhost:3000) to see the app in action.**
 
@@ -58,6 +70,8 @@ You will get a `dist` folder containing the optimized production build of your a
 2. **Deploy the contents of the `dist` folder to your web server or hosting service.**
 
 You can use services like Netlify, Vercel, or traditional web hosting to deploy your application.
+
+---
 
 ## MYSQL - Database
 
@@ -102,6 +116,7 @@ By following these steps, you can manually import the SQL scripts into your MySQ
 Now, the MySQL database for the StudyBoard app is set up and ready to be used.
 
 
+---
 
 ### PHP Backend (Pure PHP APIs)
 
@@ -131,6 +146,7 @@ Now, the MySQL database for the StudyBoard app is set up and ready to be used.
 
 By following these steps, you should have the PHP backend APIs up and running. Make sure to adjust the configuration based on your specific environment.
 
+---
 
 ### Laravel Backend (Connected to React Frontend)
 
@@ -167,6 +183,7 @@ By following these steps, you should have the PHP backend APIs up and running. M
 
 By following these steps, you should have the Laravel backend connected to the React frontend up and running. Adjust configurations as needed for your environment.
 
+---
 
 ## Chat Nodejs
 

@@ -13,15 +13,6 @@ const StudentDashboard = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      // try {
-      //   const response = await axios.post(`http://localhost/backend/src/student/myCourses.php`, {
-      //       userid: user.userid,
-      //   });
-      //   console.log(response.data)
-      //   setCourses(response.data);
-      // } catch (error) {
-      //   console.error("Error fetching courses:", error);
-      // }
       await axios
     .get(`${LARAVEL_BACKEND_URL}/courses/get-user-courses/${user.userid}`)
     .then(async (res) => {

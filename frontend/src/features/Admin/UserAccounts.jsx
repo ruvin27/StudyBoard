@@ -40,7 +40,6 @@ const UserAccounts = () => {
     axios
       .get(`${LARAVEL_BACKEND_URL}/get-all-courses`)
       .then((response) => {
-        console.log(response.data);
         setCourseOptions(response.data.data);
         if (response.data.data.length > 0) {
           setCourse(response.data.data[0].course_id);
