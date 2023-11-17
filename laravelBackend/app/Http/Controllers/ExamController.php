@@ -105,6 +105,32 @@ class ExamController extends Controller
 
         return response()->json($examDetails);
     }
+    public function getGrades($courseId, $userId)
+    {
+      
+        $grades = Exam::select('exam.exam_title', 'grades.score as score', 'course.name', 'exam.score as total')
+            ->join('grades', 'exam.exam_id', '=', 'grades.exam_id')
+            ->join('course', 'grades.course_id', '=', 'course.course_id')
+            ->where('grades.student_id', $userId)
+            ->where('grades.course_id', $courseId)
+            ->get();
 
+        return response()->json($grades->toArray());
+    }
 
+    public function takeExam($examId, $courseId)
+    {
+
+        $examDetails = Exam::select('exam.exam_id', 'question.question', 'question.mcq1', 'question.mcq2', 'question.mcq3', 'question.mcq4', 'question.answer')
+            ->join('question', 'exam.exam_id', '=', 'question.exam_id')
+            ->where('exam.course_id', $courseId)
+            ->where('exam.exam_id', $examId)
+            ->get();
+
+        if ($examDetails->isNotEmpty()) {
+            return response()->json($examDetails->toArray());
+        } else {
+            return response()->json(['error' => 'Exam not found']);
+        }
+    }
 }

@@ -58,16 +58,32 @@ You will get a `build` folder containing the optimized production build of your 
 
 You can use services like Netlify, Vercel, or traditional web hosting to deploy your application.
 
----
-**Backend
+MYSQL - Database
+1. Start the apache and mysql serve on Xampp.
+2. Create a database named rrr9569_studyboard.
+3. Run the file name createScripts.sql and tables will be created.
+4. Run the createData.sql and data will be populated in the tables.
 
-Place the backend folder in htdocs in xampp folder.
 
-SQL
+PHP Backend (If you are using pure php apis. Note The frontend was updated after this phase so some apis may not work)
 
-1. Create a database named rrr9569_studyboard.
-2. Run the file name createScripts.sql and tables will be created.
-3. Run the createData.sql and data will be populated in the tables.
+1. Place the backend folder in htdocs in xampp folder.
+2. Update the config.php file with connection details.
+3. Your apis should be working now.
+4. Need to update the apiUrl on the frontend.
 
+Laravel Backend (Latest Backend that is connected to the react frontend)
+1. cd laravelBackend
+2. composer install
+3. create a .env file and copy paste contents from .env.example
+4. Update the variables inside .env
+5. Run php artisan serve
+6. May need to run php artisan optimize when updating or adding an api.
+
+Chat Nodejs
+
+1. npm install
+2. npm start
+3. Update the serverURL in frontend/src/contexts/AuthContext.jsx to localhost.
 
 That's it! You should now have the StudyBoard website up and running on your local machine.

@@ -65,7 +65,8 @@ Route::post('exams/create', [ExamController::class, 'create']);
 Route::put('exams/update', [ExamController::class, 'update']);
 Route::get('exams/getById/{id}', [ExamController::class, 'getById']);
 Route::get('exams/get-by-student-course/{courseId}/{userId}', [ExamController::class, 'getExamDetailsByStudentId']);
-
+Route::get('exams/get-grades/{courseId}/{userId}', [ExamController::class, 'getGrades']);
+Route::get('exams/take-exam/{examId}/{userId}', [ExamController::class, 'takeExam']);
 
 Route::post('questions/replace', [QuestionController::class, 'replaceQuestions']);
 

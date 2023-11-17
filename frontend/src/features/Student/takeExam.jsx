@@ -3,6 +3,8 @@ import TakeExamCSS from '@assets/css/takeexam.module.css';
 import { useAuth } from '@contexts/AuthContext';
 import { apiClient } from '@lib/apiClient';
 import { useParams } from "react-router-dom";
+import axios from 'axios'
+import { LARAVEL_BACKEND_URL } from '../../config'
 
 const StudentTakeExam = () => {
   const { examId } = useParams();
@@ -17,12 +19,10 @@ const StudentTakeExam = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await apiClient.post('student/takeExam.php', {
-          examId: examId,
-          courseId: courseId
-        });
+        const response = await axios.get(`${LARAVEL_BACKEND_URL}/exams/take-exam/${examId}/${courseId}`);
 
         setTakeExamDetails(response.data);
+        console.log(response.data.data)
         setTotalPoints(response.data.length); // Set the total points
         setIsLoading(false);
       } catch (error) {
