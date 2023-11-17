@@ -34,11 +34,8 @@ const AllStudentCourses = () => {
         console.error('Error fetching course details:', error)
       }
     }
-
-    if (user) {
       fetchData()
-    }
-  }, [user])
+  }, [])
 
   return (
     <>

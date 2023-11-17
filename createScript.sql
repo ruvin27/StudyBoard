@@ -131,7 +131,7 @@ CREATE TABLE qa_policies
     policies TEXT
 );
 
-CREATE TABLE ColorTable
+CREATE TABLE colortable
 (
     id          INT AUTO_INCREMENT PRIMARY KEY,
     usedFor     VARCHAR(255) NOT NULL,

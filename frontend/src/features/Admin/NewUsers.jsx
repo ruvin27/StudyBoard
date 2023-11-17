@@ -7,15 +7,19 @@ const NewUsers = () => {
   const [users, setUsers] = useState([]);
   const [searchInput, setSearchInput] = useState('');
 
-  useEffect(() => {
+  const fetchUsers = () => {
     axios
-      .get(`${LARAVEL_BACKEND_URL}/unapproved-users`)
-      .then((response) => {
-        setUsers(response.data);
-      })
-      .catch((error) => {
-        console.error('Error fetching users data:', error);
-      });
+    .get(`${LARAVEL_BACKEND_URL}/unapproved-users`)
+    .then((response) => {
+      setUsers(response.data);
+    })
+    .catch((error) => {
+      console.error('Error fetching users data:', error);
+    });
+  }
+
+  useEffect(() => {
+    fetchUsers();
   }, []);
 
   const Approve = (id) => {
@@ -25,7 +29,7 @@ const NewUsers = () => {
       })
       .then((response) => {
         alert(response.data.message);
-        window.location.reload();
+        fetchUsers();
       })
       .catch((error) => {
         alert(error.response.data.error);

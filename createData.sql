@@ -74,7 +74,7 @@ This policy explains how the university collects, uses, and protects student and
 
 
 -- Insert 1 record in the 'ColorTable' table
-INSERT INTO ColorTable (`id`, `usedFor`, `hexColor`, `description`) VALUES
+INSERT INTO colortable (`id`, `usedFor`, `hexColor`, `description`) VALUES
 (1, 'theme', '007bff', 'Theme Color for the Website'),
 (2, 'nav-bar-hover', 'ff6600', 'Hover Color for Navbar Links'),
 (3, 'nav-bar', '333', 'Navbar background Color'),
