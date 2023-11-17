@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import SendRecommendationsCSS from '@assets/css/sendRecommendations.module.css';
 import { apiClient } from '@lib/apiClient';
 import { useParams } from 'react-router-dom';
@@ -12,13 +12,52 @@ const SendRecommendations = () => {
   const [inputs, setInputs] = useState({
     message: '',
   });
-  const [feedback, setFeedback] = useState('');
+  const [suggestions, setSuggestions] = useState([]);
+  const [timer, setTimer] = useState(null);
+
+  async function fetchSuggestions() {
+    try {
+      const response = await axios.post('http://localhost:5000/getresponse', {
+        prompt: inputs.message,
+      });
+
+      // Extract suggestions from the API response
+      const suggestions = response.data[0]?.message?.content
+        ? JSON.parse(response.data[0].message.content)
+        : [];
+
+      if (Array.isArray(suggestions)) {
+        setSuggestions(suggestions);
+      } else {
+        console.error('Invalid suggestions format:', suggestions);
+      }
+    } catch (error) {
+      console.error('Error fetching suggestions from ChatGPT:', error);
+    }
+  }
 
   const handleChange = (event) => {
     const name = event.target.name;
     const value = event.target.value;
     setInputs((prevState) => ({ ...prevState, [name]: value }));
+    if (timer) {
+      clearTimeout(timer);
+    }
+
+    // Set a new timer to fetch suggestions after 2 seconds of inactivity
+    setTimer(setTimeout(() => {
+      fetchSuggestions();
+    }, 2000)); // 2000 milliseconds = 2 seconds
   };
+
+  useEffect(() => {
+    // Clear the timer on component unmount
+    return () => {
+      if (timer) {
+        clearTimeout(timer);
+      }
+    };
+  }, [timer]);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -35,7 +74,6 @@ const SendRecommendations = () => {
         });
     } catch (error) {
       console.error('Error sending recommendation:', error);
-      setFeedback('An error occurred while sending the recommendation.');
     }
   };
 
@@ -55,12 +93,19 @@ const SendRecommendations = () => {
             Message
           </label>
           <textarea id="message" name="message" value={inputs.message} onChange={handleChange} required className={SendRecommendationsCSS.textarea}></textarea>
-
+{suggestions.length > 0 && (
+            <ul>
+              {suggestions.map((suggestion, index) => (
+                <li key={index} onClick={() => setInputs({ ...inputs, message: suggestion })}>
+                  {suggestion}
+                </li>
+              ))}
+            </ul>
+          )}
           <button type="submit" className={SendRecommendationsCSS.btn}>
             Send Recommendation
           </button>
         </form>
-        {feedback && <p className={SendRecommendationsCSS.feedback}>{feedback}</p>}
       </div>
     </div>
   );

@@ -7,6 +7,9 @@
 /chat/node_modules
 /backend/vendor
 /backend/vendor/composer
+/TextPredictionApi/node_modules
+/TextPredictionApi/.env
+
 # testing
 /coverage
 
