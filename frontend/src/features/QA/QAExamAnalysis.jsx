@@ -67,9 +67,9 @@ const QAExamAnalysis = () => {
                 <tr key={index}>
                   <td>{exam.exam_title}</td>
                   <td>
-                    <button className={ReportsCSS.downloadIcon} onClick={() => downloadExamData(exam.exam_id)}>
+                    {/* <button className={ReportsCSS.downloadIcon} onClick={() => downloadExamData(exam.exam_id)}>
                       &#x1F4E5;
-                    </button>
+                    </button> */}
                     <Link to={`/examresultgraph/${exam.exam_id}/${exam.exam_title}`}>
                       <button className={ReportsCSS.downloadIcon}>&#x1F4CA;</button>
                     </Link>

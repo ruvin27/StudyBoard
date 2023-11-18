@@ -33,7 +33,7 @@ const CreateExam = () => {
     },
     onSuccess: ({ data }) => {
       toast.success('Exam created successfully');
-      navigate(`/CreateQuestions?examId=${data.data}&courseId=${courseId}`);
+      navigate(`/CreateQuestions?examId=${data.data.exam_id}&courseId=${courseId}`);
     },
     onError: () => {
       toast.error('Exam creation failed. Please try again later');

@@ -24,12 +24,11 @@ class GradeController extends Controller
 
     public function getGraphData($exam_id)
     {
-        $examData = DB::table('exam as e')
+        $examData = DB::table('grades as g')
             ->select('u.name as student_name', 'g.score as exam_score')
-            ->join('grades as g', 'e.exam_id', '=', 'g.exam_id')
-            ->join('enrollment as en', 'en.student_id', '=', 'g.student_id')
-            ->join('user as u', 'u.userid', '=', 'en.student_id')
-            ->where('e.exam_id', $exam_id)
+            ->join('exam as e', 'e.exam_id', '=', 'g.exam_id')
+            ->join('user as u', 'u.userid', '=', 'g.student_id')
+            ->where('g.exam_id', $exam_id)
             ->get();
 
             $data = [];
@@ -88,29 +87,35 @@ class GradeController extends Controller
     }
 
     private function arrayToCsv(array $data)
-    {
-        $output = fopen('php://output', 'w');
-        foreach ($data as $row) {
-            fputcsv($output, $row);
-        }
-        fclose($output);
+{
+    ob_start(); // Start output buffering
+
+    $output = fopen('php://output', 'w');
+    foreach ($data as $row) {
+        fputcsv($output, $row);
     }
+    fclose($output);
+
+    // Capture the CSV content in a variable and return it
+    $csvContent = ob_get_clean();
+    return $csvContent;
+}
 
     public function downloadStudentGrades($userid, $courseId)
     {
-        $studentData = DB::table('exam AS e')
-            ->join('grades AS g', 'e.exam_id', '=', 'g.exam_id')
-            ->join('enrollment AS en', 'en.student_id', '=', 'g.student_id')
-            ->join('user AS u', 'u.userid', '=', 'en.student_id')
-            ->select(
-                'u.name AS student_name',
-                'e.exam_title AS exam_name',
-                'g.score AS exam_marks',
-                'e.score AS total_marks'
-            )
-            ->where('u.userid', $userid)
-            ->orderBy('u.name')
-            ->get();
+        $studentData = DB::table('grades AS g')
+        ->join('exam AS e', 'e.exam_id', '=', 'g.exam_id')
+        ->join('user AS u', 'u.userid', '=', 'g.student_id')
+        ->select(
+            'u.name AS student_name',
+            'e.exam_title AS exam_name',
+            'g.score AS exam_marks',
+            'e.score AS total_marks'
+        )
+        ->where('u.userid', $userid)
+        ->where('g.course_id', $courseId)
+        ->get();
+
 
         if ($studentData->isNotEmpty()) {
             $data = [];
